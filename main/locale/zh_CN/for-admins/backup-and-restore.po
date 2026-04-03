@@ -1,0 +1,239 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/administration/backup_and_restore.md:1
+msgid "Backup and Restore"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:3
+msgid "Docker and Ansible"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:5
+msgid ""
+"When using docker or ansible, there should be a `volumes` folder, which "
+"contains both the database, and all the pictures. Copy this folder to the "
+"new instance to restore your data."
+msgstr ""
+
+#: src/administration/backup_and_restore.md:7
+msgid "Full Database backup"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:9
+msgid "To take a complete backup of the DB to a `.sql.gz` file, you can run:"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:12
+#: src/administration/backup_and_restore.md:22
+msgid "\"_\""
+msgstr ""
+
+#: src/administration/backup_and_restore.md:15
+msgid "_For compression, you can use either gzip and gunzip, or xz and unxz._"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:17
+msgid "A Sample backup script"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:20
+msgid ""
+"#!/bin/sh\n"
+"# DB Backup\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:22
+msgid "\"docker compose exec postgres pg_dumpall -c -U lemmy\""
+msgstr ""
+
+#: src/administration/backup_and_restore.md:23
+msgid "# Volumes folder Backup\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:25
+msgid "\"sudo rsync\""
+msgstr ""
+
+#: src/administration/backup_and_restore.md:28
+msgid "Restoring the DB"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:30
+msgid "To restore, run:"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:34
+msgid "# Restore from the .sql.gz backup\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:37
+msgid ""
+"# Note: You may need to change the permissions on the postgres directory, "
+"depending on your system.\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:41
+msgid "# Continue with the startup\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:46
+msgid ""
+"If you've accidentally already started the lemmy service, you need to clear "
+"out your existing database:"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:49
+msgid "# Drop the existing DB\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:50
+msgid "\"DROP SCHEMA public CASCADE; CREATE SCHEMA public;\""
+msgstr ""
+
+#: src/administration/backup_and_restore.md:51
+msgid ""
+"# This also might be necessary when doing a db import with a different "
+"password.\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:53
+msgid "\"alter user lemmy with password 'bleh'\""
+msgstr ""
+
+#: src/administration/backup_and_restore.md:56
+msgid "Then run the restore commands above."
+msgstr ""
+
+#: src/administration/backup_and_restore.md:58
+msgid "Changing your domain name"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:60
+msgid ""
+"If you haven't federated yet, you can change your domain name in the DB. "
+"**Warning: do not do this after you've federated, or it will break "
+"federation.**"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:62
+msgid "Get into `psql` for your docker:"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:64
+msgid "`docker compose exec postgres psql -U lemmy`"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:67
+msgid "-- Instance\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:68
+#: src/administration/backup_and_restore.md:71
+#: src/administration/backup_and_restore.md:72
+#: src/administration/backup_and_restore.md:73
+#: src/administration/backup_and_restore.md:76
+#: src/administration/backup_and_restore.md:77
+#: src/administration/backup_and_restore.md:78
+#: src/administration/backup_and_restore.md:79
+#: src/administration/backup_and_restore.md:82
+#: src/administration/backup_and_restore.md:83
+#: src/administration/backup_and_restore.md:86
+#: src/administration/backup_and_restore.md:87
+#: src/administration/backup_and_restore.md:90
+#: src/administration/backup_and_restore.md:91
+#: src/administration/backup_and_restore.md:92
+#: src/administration/backup_and_restore.md:93
+#: src/administration/backup_and_restore.md:94
+#: src/administration/backup_and_restore.md:95
+#: src/administration/backup_and_restore.md:98
+#: src/administration/backup_and_restore.md:99
+#: src/administration/backup_and_restore.md:100
+#: src/administration/backup_and_restore.md:101
+#: src/administration/backup_and_restore.md:102
+#: src/administration/backup_and_restore.md:103
+#: src/administration/backup_and_restore.md:104
+#: src/administration/backup_and_restore.md:105
+#: src/administration/backup_and_restore.md:106
+#: src/administration/backup_and_restore.md:109
+msgid "'old_domain'"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:68
+#: src/administration/backup_and_restore.md:71
+#: src/administration/backup_and_restore.md:72
+#: src/administration/backup_and_restore.md:73
+#: src/administration/backup_and_restore.md:76
+#: src/administration/backup_and_restore.md:77
+#: src/administration/backup_and_restore.md:78
+#: src/administration/backup_and_restore.md:79
+#: src/administration/backup_and_restore.md:82
+#: src/administration/backup_and_restore.md:83
+#: src/administration/backup_and_restore.md:86
+#: src/administration/backup_and_restore.md:87
+#: src/administration/backup_and_restore.md:90
+#: src/administration/backup_and_restore.md:91
+#: src/administration/backup_and_restore.md:92
+#: src/administration/backup_and_restore.md:93
+#: src/administration/backup_and_restore.md:94
+#: src/administration/backup_and_restore.md:95
+#: src/administration/backup_and_restore.md:98
+#: src/administration/backup_and_restore.md:99
+#: src/administration/backup_and_restore.md:100
+#: src/administration/backup_and_restore.md:101
+#: src/administration/backup_and_restore.md:102
+#: src/administration/backup_and_restore.md:103
+#: src/administration/backup_and_restore.md:104
+#: src/administration/backup_and_restore.md:105
+#: src/administration/backup_and_restore.md:106
+#: src/administration/backup_and_restore.md:109
+msgid "'new_domain'"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:69
+msgid "-- Site\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:74
+msgid "-- Post\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:80
+msgid "-- Comments\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:84
+msgid "-- Private messages\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:88
+msgid "-- User\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:96
+msgid "-- Community\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:107
+msgid "--- Custom Emoji\n"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:113
+msgid "More resources"
+msgstr ""
+
+#: src/administration/backup_and_restore.md:115
+msgid ""
+"https://stackoverflow.com/questions/24718706/backup-restore-a-dockerized-"
+"postgresql-database"
+msgstr ""

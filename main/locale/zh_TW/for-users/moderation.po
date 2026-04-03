@@ -1,0 +1,212 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/users/04-moderation.md:1
+msgid "Moderation"
+msgstr ""
+
+#: src/users/04-moderation.md:3
+msgid ""
+"The internet is full of bots, trolls and other malicious actors. Sooner or "
+"later they will post unwanted content to any website that is open to the "
+"public. It is the task of administrators and moderators to remove such "
+"unwanted content. Lemmy provides many tools for this, from removing "
+"individual posts and issuing temporary bans, to removing all content "
+"submitted by an offending user."
+msgstr ""
+
+#: src/users/04-moderation.md:5
+msgid ""
+"Moderation in Lemmy is divided between administrators (_admins_) and "
+"moderators (_mods_). Admins are responsible for the entire instance, and can "
+"take action on any content. They are also the only ones who can completely "
+"ban users. In contrast, moderators are only responsible for a single "
+"community. Whereas admins can ban a user from the entire instance, mods can "
+"only ban them from their community."
+msgstr ""
+
+#: src/users/04-moderation.md:7
+msgid ""
+"The most important thing that normal users can do if they notice a rule-"
+"breaking post is to use the report function. If you notice such a post, "
+"click the flag icon to notify mods and admins. This way they can take action "
+"quickly and remove the offending content. To find out about removals and "
+"other mod actions, you can use the mod log which is linked at the bottom of "
+"the page. In some cases there may be content that you personally dislike, "
+"but which doesn't violate any rules. For this, there is a block function "
+"which hides all posts from a given user or community."
+msgstr ""
+
+#: src/users/04-moderation.md:9
+msgid "Rules"
+msgstr ""
+
+#: src/users/04-moderation.md:11
+msgid ""
+"Each instance has a set of rules to let users know which content is allowed "
+"or not. These rules can be found in the sidebar and apply to all local "
+"communities on that instance. Some communities may have their own rules in "
+"their respective sidebars, which apply in addition to the instance rules."
+msgstr ""
+
+#: src/users/04-moderation.md:13
+msgid ""
+"Because Lemmy is decentralized, there is no single moderation team for the "
+"platform, nor any platform-wide rules. Instead each instance is responsible "
+"to create and enforce its own moderation policy. This means that two Lemmy "
+"instances can have rules that completely disagree or even contradict. This "
+"can lead to problems if they interact with each other, because by default "
+"federation is open to any instance that speaks the same protocol. To handle "
+"such cases, administrators can choose to block federation with specific "
+"instances. To be even safer, they can also choose to be federated only with "
+"instances that are allowed explicitly."
+msgstr ""
+
+#: src/users/04-moderation.md:15
+msgid "How to Moderate"
+msgstr ""
+
+#: src/users/04-moderation.md:17
+msgid ""
+"To get moderator powers, you either need to create a new community, or be "
+"appointed by an existing moderator. Similarly, to become an admin, you need "
+"to create a new instance, or be appointed by an existing instance admin. "
+"Community moderation can be done over federation, you don't need to be "
+"registered on the same instance where the community is hosted. To be an "
+"instance administrator, you need an account on that specific instance. "
+"Admins and moderators are organized in a hierarchy, where the user who is "
+"listed first has the power to remove admins or mods who are listed later."
+msgstr ""
+
+#: src/users/04-moderation.md:19
+msgid ""
+"All moderation actions are taken in the context menu of posts or comments. "
+"Click the three dot button to expand available mod actions, as shown in the "
+"screenshot below. All actions can be reverted in the same way."
+msgstr ""
+
+#: src/users/04-moderation.md:21
+msgid ""
+"![moderation_01.png](moderation_01.png) ![moderation_02.png](moderation_02."
+"png)"
+msgstr ""
+
+#: src/users/04-moderation.md:24
+msgid "Action"
+msgstr ""
+
+#: src/users/04-moderation.md:24
+msgid "Result"
+msgstr ""
+
+#: src/users/04-moderation.md:24
+msgid "Permission level"
+msgstr ""
+
+#: src/users/04-moderation.md:26
+msgid "Lock"
+msgstr ""
+
+#: src/users/04-moderation.md:26
+msgid "Prevents making new comments under the post"
+msgstr ""
+
+#: src/users/04-moderation.md:26 src/users/04-moderation.md:27
+#: src/users/04-moderation.md:29 src/users/04-moderation.md:30
+#: src/users/04-moderation.md:31
+msgid "Moderator"
+msgstr ""
+
+#: src/users/04-moderation.md:27
+msgid "Sticky (Community)"
+msgstr ""
+
+#: src/users/04-moderation.md:27
+msgid "Pin the publication to the top of the community listing"
+msgstr ""
+
+#: src/users/04-moderation.md:28
+msgid "Sticky (Local)"
+msgstr ""
+
+#: src/users/04-moderation.md:28
+msgid "Pin the publication to the top of the front page"
+msgstr ""
+
+#: src/users/04-moderation.md:28 src/users/04-moderation.md:32
+#: src/users/04-moderation.md:33 src/users/04-moderation.md:34
+#: src/users/04-moderation.md:35
+msgid "Admin"
+msgstr ""
+
+#: src/users/04-moderation.md:29
+msgid "Remove"
+msgstr ""
+
+#: src/users/04-moderation.md:29
+msgid "Delete the post"
+msgstr ""
+
+#: src/users/04-moderation.md:30
+msgid "Ban from community"
+msgstr ""
+
+#: src/users/04-moderation.md:30
+msgid ""
+"Ban the user from interacting with the community, but they can still use the "
+"rest of the site. There is also an option to remove all existing posts."
+msgstr ""
+
+#: src/users/04-moderation.md:31
+msgid "Appoint as mod"
+msgstr ""
+
+#: src/users/04-moderation.md:31
+msgid "Gives the user moderator status"
+msgstr ""
+
+#: src/users/04-moderation.md:32
+msgid "Ban from site"
+msgstr ""
+
+#: src/users/04-moderation.md:32
+msgid ""
+"Completely bans the account, so it cannot log in or interact at all. There "
+"is also an option to remove all existing posts."
+msgstr ""
+
+#: src/users/04-moderation.md:33
+msgid "Purge user"
+msgstr ""
+
+#: src/users/04-moderation.md:33
+msgid ""
+"Completely delete the user, including all posts and uploaded media. Use with "
+"caution."
+msgstr ""
+
+#: src/users/04-moderation.md:34
+msgid "Purge post/comment"
+msgstr ""
+
+#: src/users/04-moderation.md:34
+msgid "Completely delete the post, including attached media."
+msgstr ""
+
+#: src/users/04-moderation.md:35
+msgid "Appoint as admin"
+msgstr ""
+
+#: src/users/04-moderation.md:35
+msgid "Gives the user administrator status"
+msgstr ""

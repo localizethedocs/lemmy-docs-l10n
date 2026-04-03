@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/contributors/01-overview.md:1
+msgid "Overview"
+msgstr ""
+
+#: src/contributors/01-overview.md:3
+msgid ""
+"Lemmy is an open source project and relies on community contributions to get "
+"better. Development happens mainly in the [Lemmy Github repositories]"
+"(https://github.com/LemmyNet). Communication is done over [Matrix](https://"
+"matrix.to/#/#activitypub-community:codelutin.com)."
+msgstr ""
+
+#: src/contributors/01-overview.md:5
+msgid "These are the main repositories which are relevant for contributors:"
+msgstr ""
+
+#: src/contributors/01-overview.md:7
+msgid ""
+"[lemmy](https://github.com/LemmyNet/lemmy): The backend which is the core of "
+"Lemmy. It implements SQL queries, provides the API and handles ActivityPub "
+"federation. Additionally it sends emails and provides RSS feeds. Written in "
+"Rust with actix-web and diesel. The issue tracker is also used for general "
+"enhancements which affect multiple repositories."
+msgstr ""
+
+#: src/contributors/01-overview.md:8
+msgid ""
+"[lemmy-ui](https://github.com/LemmyNet/lemmy-ui): The main frontend for "
+"Lemmy. It provides the user interface that you see when viewing a Lemmy "
+"instance. Written in Typescript and CSS with the Inferno framework."
+msgstr ""
+
+#: src/contributors/01-overview.md:9
+msgid ""
+"[lemmy-ansible](https://github.com/LemmyNet/lemmy-ansible): Automated "
+"installation method which is recommended for users without technical "
+"knowledge."
+msgstr ""
+
+#: src/contributors/01-overview.md:10
+msgid ""
+"[joinlemmy-site](https://github.com/LemmyNet/joinlemmy-site): Source code "
+"for the official project website [join-lemmy.org](https://join-lemmy.org/). "
+"Landing page for new users which includes general information and a list of "
+"instances."
+msgstr ""
+
+#: src/contributors/01-overview.md:11
+msgid ""
+"[lemmy-js-client](https://github.com/LemmyNet/lemmy-js-client): Client for "
+"the Lemmy API which is used by lemmy-ui. Can also be used by other projects "
+"to get started more easily."
+msgstr ""
+
+#: src/contributors/01-overview.md:12
+msgid ""
+"[activitypub-federation-rust](https://github.com/LemmyNet/activitypub-"
+"federation-rust): High-level framework for ActivityPub federation in Rust. "
+"Was originally part of the Lemmy code, but was extracted and made more "
+"generic so that other projects can use it too."
+msgstr ""
+
+#: src/contributors/01-overview.md:14
+msgid ""
+"There are many different ways to contribute, depending on your skills and "
+"interests:"
+msgstr ""
+
+#: src/contributors/01-overview.md:16
+msgid "Reporting issues"
+msgstr ""
+
+#: src/contributors/01-overview.md:18
+msgid ""
+"You may notice different problems or potential improvements when using "
+"Lemmy. You can report them in the relevant repository. Make sure to first "
+"search the issue tracker to avoid duplicates. When creating the issue, fill "
+"in the template and include as much relevant information as possible."
+msgstr ""
+
+#: src/contributors/01-overview.md:20
+msgid "Translating"
+msgstr ""
+
+#: src/contributors/01-overview.md:22
+msgid ""
+"Use [Weblate](https://weblate.join-lemmy.org/projects/lemmy/) to help "
+"translate Lemmy into different languages."
+msgstr ""
+
+#: src/contributors/01-overview.md:24
+msgid "Programming and Design"
+msgstr ""
+
+#: src/contributors/01-overview.md:26
+msgid ""
+"You can open a pull request to make changes to Lemmy. In case of bigger "
+"contributions it is recommended to discuss it in an issue first. See the "
+"next sections for instructions to compile and develop the projects."
+msgstr ""
+
+#: src/contributors/01-overview.md:28
+msgid "Donating"
+msgstr ""
+
+#: src/contributors/01-overview.md:30
+msgid ""
+"Besides contributing with your time, you can also consider [making a "
+"donation](https://join-lemmy.org/donate) to support the developers."
+msgstr ""

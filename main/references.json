@@ -13,22 +13,22 @@
     },
     "zh_CN" : 
     {
-      "branch" : "",
+      "branch" : "main",
       "commit" : 
       {
-        "date" : "",
-        "hash" : "",
-        "title" : ""
+        "date" : "2026-03-23 10:32:45 +0100",
+        "hash" : "b5472bcb8a08db142d7635f5bfd6bbd006a82254",
+        "title" : "docs: add Grafana dashboard to Visualizing Metrics section (#420)"
       }
     },
     "zh_TW" : 
     {
-      "branch" : "",
+      "branch" : "main",
       "commit" : 
       {
-        "date" : "",
-        "hash" : "",
-        "title" : ""
+        "date" : "2026-03-23 10:32:45 +0100",
+        "hash" : "b5472bcb8a08db142d7635f5bfd6bbd006a82254",
+        "title" : "docs: add Grafana dashboard to Visualizing Metrics section (#420)"
       }
     }
   },

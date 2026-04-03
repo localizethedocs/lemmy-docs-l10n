@@ -1,0 +1,278 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/contributors/03-docker-development.md:1
+msgid "Docker Development"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:3
+msgid "Dependencies"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:5
+msgid "Debian-based distro:"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:13
+msgid "Arch-based distro:"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:20
+msgid "Get the code with submodules:"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:26
+msgid "Building"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:28
+msgid ""
+"Use these commands to create a custom container based on your local branch "
+"and tagged accordingly."
+msgstr ""
+
+#: src/contributors/03-docker-development.md:30
+msgid ""
+"This is useful if you want to modify the source code of your instance to add "
+"some extra functionalities which are not available in the main release."
+msgstr ""
+
+#: src/contributors/03-docker-development.md:33
+msgid "\"lemmy:${git rev-parse --abbrev-ref HEAD}\""
+msgstr ""
+
+#: src/contributors/03-docker-development.md:36
+msgid "Build Troubleshooting"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:38
+msgid "In case the build fails, the following might help resolve it"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:40
+msgid "Translations missing"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:42
+msgid "If you see an error like this"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:44
+msgid ""
+"```\n"
+"Error: FileRead { file: \"translations/email/en.json\", source: Os { code: "
+"2, kind: NotFound, message: \"No such file or directory\" } }\n"
+"```"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:48
+msgid "Try these commands"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:54
+msgid "Then try building again"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:56
+msgid "Running custom build on your server"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:58
+msgid ""
+"If you want a custom docker build to run on your instance via docker, you "
+"don't need to upload to a container repository, you can upload directly from "
+"your PC through ssh."
+msgstr ""
+
+#: src/contributors/03-docker-development.md:60
+msgid ""
+"The following commands will copy the file to your instance and then load it "
+"onto your server's container registry"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:63
+msgid ""
+"lemmy.example.com # Add the FQDN, IP or hostname of your lemmy server here\n"
+"# We store in /tmp to avoid putting it in our local branch and committing it "
+"by mistake\n"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:65
+msgid ""
+"# We change permissios to allow our normal user to read the file as root "
+"might not have ssh keys\n"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:69
+msgid ""
+"# This command should be run while in your lemmy server as the user you "
+"uploaded\n"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:74
+msgid ""
+"After the container is in your registry, simply change the docker-compose to "
+"have your own tag in the `image` key"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:80
+msgid "Finally, reinitiate the container"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:86
+msgid "You should now be running your custom docker container."
+msgstr ""
+
+#: src/contributors/03-docker-development.md:88
+msgid "Running"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:95
+msgid "Then open [localhost:1236](http://localhost:1236) in your browser."
+msgstr ""
+
+#: src/contributors/03-docker-development.md:97
+msgid ""
+"Building with Docker is relatively slow. To get faster builds you need to "
+"use [local development](02-local-development.md) instead."
+msgstr ""
+
+#: src/contributors/03-docker-development.md:99
+msgid "Federation Development"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:101
+msgid ""
+"The federation setup allows starting a few local Lemmy instances, to test "
+"federation functionality. You can start it with the following commands:"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:108
+msgid "The federation test sets up 5 instances:"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:110
+msgid "Instance"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:110
+msgid "Admin username"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:110
+msgid "Location"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:110
+msgid "Notes"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:112
+msgid "lemmy-alpha"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:112
+msgid "lemmy_alpha"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:112
+msgid "[127.0.0.1:8540](http://127.0.0.1:8540)"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:112
+#: src/contributors/03-docker-development.md:113
+#: src/contributors/03-docker-development.md:114
+msgid "federated with all other instances"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:113
+msgid "lemmy-beta"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:113
+msgid "lemmy_beta"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:113
+msgid "[127.0.0.1:8550](http://127.0.0.1:8550)"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:114
+msgid "lemmy-gamma"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:114
+msgid "lemmy_gamma"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:114
+msgid "[127.0.0.1:8560](http://127.0.0.1:8560)"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:115
+msgid "lemmy-delta"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:115
+msgid "lemmy_delta"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:115
+msgid "[127.0.0.1:8570](http://127.0.0.1:8570)"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:115
+msgid "only allows federation with lemmy-beta"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:116
+msgid "lemmy-epsilon"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:116
+msgid "lemmy_epsilon"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:116
+msgid "[127.0.0.1:8580](http://127.0.0.1:8580)"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:116
+msgid "uses blocklist, has lemmy-alpha blocked"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:118
+msgid ""
+"You can log into each using the instance name, and `lemmylemmy` as the "
+"password, IE (`lemmy_alpha`, `lemmylemmy`)."
+msgstr ""
+
+#: src/contributors/03-docker-development.md:120
+msgid ""
+"To start federation between instances, visit one of them and search for a "
+"user, community or post, like this. Note that the Lemmy backend runs on a "
+"different port than the frontend, so you have to increment the port number "
+"from the URL bar by one."
+msgstr ""
+
+#: src/contributors/03-docker-development.md:124
+msgid "`http://lemmy-gamma:8561/u/lemmy-gamma`"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:125
+msgid "`http://lemmy-alpha:8541/c/main`"
+msgstr ""
+
+#: src/contributors/03-docker-development.md:126
+msgid "`http://lemmy-beta:8551/post/3`"
+msgstr ""
