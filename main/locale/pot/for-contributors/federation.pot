@@ -1,0 +1,2154 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/contributors/05-federation.md:1
+msgid "Federation"
+msgstr ""
+
+#: src/contributors/05-federation.md:3
+msgid ""
+"Lemmy uses the ActivityPub protocol for communication between servers. If "
+"you are unfamiliar with the protocol, you can start by reading the [resource "
+"links](06-resources.md#activitypub-resources). This document explains how to "
+"interact with it from other projects."
+msgstr ""
+
+#: src/contributors/05-federation.md:5
+msgid ""
+"In Lemmy we use some specific terms to refer to ActivityPub items. They are "
+"essentially our specific implementations of well-known ActivityPub concepts:"
+msgstr ""
+
+#: src/contributors/05-federation.md:7
+msgid "Community: `Group`"
+msgstr ""
+
+#: src/contributors/05-federation.md:8
+msgid "User: `Person`"
+msgstr ""
+
+#: src/contributors/05-federation.md:9
+msgid "Post: `Page`"
+msgstr ""
+
+#: src/contributors/05-federation.md:10
+msgid "Comment: `Note`"
+msgstr ""
+
+#: src/contributors/05-federation.md:12
+msgid ""
+"Almost every action in Lemmy happens inside a group. The Federation "
+"Enhancement Proposal [Group Federation](https://codeberg.org/fediverse/fep/"
+"src/branch/main/feps/fep-1b12.md) gives a high-level overview how this "
+"works. The generic federation logic is implemented in the [activitypub-"
+"federation](https://github.com/LemmyNet/activitypub-federation-rust) "
+"library. It can also be used by other Rust projects."
+msgstr ""
+
+#: src/contributors/05-federation.md:14
+msgid ""
+"Sometimes you will see a notation like `Create/Note`. This refers to a "
+"`Create` activity with a `Note` as object."
+msgstr ""
+
+#: src/contributors/05-federation.md:16
+msgid ""
+"Below are explanations and examples for all actors, objects and activities "
+"from Lemmy. These include many optional fields which you can safely ignore."
+msgstr ""
+
+#: src/contributors/05-federation.md:18
+msgid ""
+"If you have trouble to make your project federate with Lemmy, feel free to "
+"[open an issue](https://github.com/LemmyNet/lemmy/issues). Make sure to "
+"include the specific federation messages you are sending, and any errors "
+"returned by Lemmy."
+msgstr ""
+
+#: src/contributors/05-federation.md:20
+msgid "Context"
+msgstr ""
+
+#: src/contributors/05-federation.md:23 src/contributors/05-federation.md:986
+msgid "\"@context\""
+msgstr ""
+
+#: src/contributors/05-federation.md:24
+msgid "\"https://join-lemmy.org/context.json\""
+msgstr ""
+
+#: src/contributors/05-federation.md:25 src/contributors/05-federation.md:987
+msgid "\"https://www.w3.org/ns/activitystreams\""
+msgstr ""
+
+#: src/contributors/05-federation.md:29
+msgid "The context is identical for all activities and objects."
+msgstr ""
+
+#: src/contributors/05-federation.md:31
+msgid "Actors"
+msgstr ""
+
+#: src/contributors/05-federation.md:33
+msgid "Community"
+msgstr ""
+
+#: src/contributors/05-federation.md:35
+msgid ""
+"An automated actor. Users can send posts or comments to it, which the "
+"community forwards to its followers in the form of `Announce`."
+msgstr ""
+
+#: src/contributors/05-federation.md:39 src/contributors/05-federation.md:67
+#: src/contributors/05-federation.md:109 src/contributors/05-federation.md:135
+#: src/contributors/05-federation.md:162 src/contributors/05-federation.md:175
+#: src/contributors/05-federation.md:214 src/contributors/05-federation.md:268
+#: src/contributors/05-federation.md:316 src/contributors/05-federation.md:345
+#: src/contributors/05-federation.md:356 src/contributors/05-federation.md:359
+#: src/contributors/05-federation.md:374 src/contributors/05-federation.md:384
+#: src/contributors/05-federation.md:387 src/contributors/05-federation.md:402
+#: src/contributors/05-federation.md:414 src/contributors/05-federation.md:430
+#: src/contributors/05-federation.md:442 src/contributors/05-federation.md:447
+#: src/contributors/05-federation.md:467 src/contributors/05-federation.md:496
+#: src/contributors/05-federation.md:516 src/contributors/05-federation.md:533
+#: src/contributors/05-federation.md:536 src/contributors/05-federation.md:550
+#: src/contributors/05-federation.md:580 src/contributors/05-federation.md:597
+#: src/contributors/05-federation.md:627 src/contributors/05-federation.md:641
+#: src/contributors/05-federation.md:655 src/contributors/05-federation.md:671
+#: src/contributors/05-federation.md:675 src/contributors/05-federation.md:693
+#: src/contributors/05-federation.md:712 src/contributors/05-federation.md:717
+#: src/contributors/05-federation.md:733 src/contributors/05-federation.md:747
+#: src/contributors/05-federation.md:767 src/contributors/05-federation.md:770
+#: src/contributors/05-federation.md:787 src/contributors/05-federation.md:802
+#: src/contributors/05-federation.md:806 src/contributors/05-federation.md:827
+#: src/contributors/05-federation.md:847 src/contributors/05-federation.md:857
+#: src/contributors/05-federation.md:883 src/contributors/05-federation.md:888
+#: src/contributors/05-federation.md:907 src/contributors/05-federation.md:912
+#: src/contributors/05-federation.md:923 src/contributors/05-federation.md:936
+#: src/contributors/05-federation.md:959 src/contributors/05-federation.md:974
+#: src/contributors/05-federation.md:995 src/contributors/05-federation.md:1009
+#: src/contributors/05-federation.md:1014
+#: src/contributors/05-federation.md:1039
+#: src/contributors/05-federation.md:1056
+#: src/contributors/05-federation.md:1059
+msgid "\"id\""
+msgstr ""
+
+#: src/contributors/05-federation.md:39 src/contributors/05-federation.md:68
+#: src/contributors/05-federation.md:218 src/contributors/05-federation.md:221
+#: src/contributors/05-federation.md:273 src/contributors/05-federation.md:276
+#: src/contributors/05-federation.md:639 src/contributors/05-federation.md:653
+#: src/contributors/05-federation.md:669 src/contributors/05-federation.md:673
+msgid "\"https://enterprise.lemmy.ml/c/tenforward\""
+msgstr ""
+
+#: src/contributors/05-federation.md:40 src/contributors/05-federation.md:50
+#: src/contributors/05-federation.md:54 src/contributors/05-federation.md:110
+#: src/contributors/05-federation.md:119 src/contributors/05-federation.md:123
+#: src/contributors/05-federation.md:161 src/contributors/05-federation.md:215
+#: src/contributors/05-federation.md:231 src/contributors/05-federation.md:236
+#: src/contributors/05-federation.md:269 src/contributors/05-federation.md:287
+#: src/contributors/05-federation.md:317 src/contributors/05-federation.md:344
+#: src/contributors/05-federation.md:355 src/contributors/05-federation.md:358
+#: src/contributors/05-federation.md:373 src/contributors/05-federation.md:383
+#: src/contributors/05-federation.md:386 src/contributors/05-federation.md:401
+#: src/contributors/05-federation.md:415 src/contributors/05-federation.md:429
+#: src/contributors/05-federation.md:441 src/contributors/05-federation.md:446
+#: src/contributors/05-federation.md:466 src/contributors/05-federation.md:495
+#: src/contributors/05-federation.md:515 src/contributors/05-federation.md:532
+#: src/contributors/05-federation.md:535 src/contributors/05-federation.md:549
+#: src/contributors/05-federation.md:566 src/contributors/05-federation.md:579
+#: src/contributors/05-federation.md:596 src/contributors/05-federation.md:622
+#: src/contributors/05-federation.md:626 src/contributors/05-federation.md:640
+#: src/contributors/05-federation.md:654 src/contributors/05-federation.md:670
+#: src/contributors/05-federation.md:674 src/contributors/05-federation.md:692
+#: src/contributors/05-federation.md:711 src/contributors/05-federation.md:716
+#: src/contributors/05-federation.md:732 src/contributors/05-federation.md:746
+#: src/contributors/05-federation.md:766 src/contributors/05-federation.md:769
+#: src/contributors/05-federation.md:786 src/contributors/05-federation.md:801
+#: src/contributors/05-federation.md:805 src/contributors/05-federation.md:825
+#: src/contributors/05-federation.md:843 src/contributors/05-federation.md:862
+#: src/contributors/05-federation.md:881 src/contributors/05-federation.md:887
+#: src/contributors/05-federation.md:903 src/contributors/05-federation.md:911
+#: src/contributors/05-federation.md:925 src/contributors/05-federation.md:938
+#: src/contributors/05-federation.md:958 src/contributors/05-federation.md:971
+#: src/contributors/05-federation.md:999 src/contributors/05-federation.md:1013
+#: src/contributors/05-federation.md:1025
+#: src/contributors/05-federation.md:1038
+#: src/contributors/05-federation.md:1055
+#: src/contributors/05-federation.md:1058
+msgid "\"type\""
+msgstr ""
+
+#: src/contributors/05-federation.md:40
+msgid "\"Group\""
+msgstr ""
+
+#: src/contributors/05-federation.md:41 src/contributors/05-federation.md:111
+#: src/contributors/05-federation.md:164
+msgid "\"preferredUsername\""
+msgstr ""
+
+#: src/contributors/05-federation.md:41
+msgid "\"tenforward\""
+msgstr ""
+
+#: src/contributors/05-federation.md:42 src/contributors/05-federation.md:74
+#: src/contributors/05-federation.md:78 src/contributors/05-federation.md:112
+#: src/contributors/05-federation.md:163 src/contributors/05-federation.md:182
+#: src/contributors/05-federation.md:186 src/contributors/05-federation.md:222
+#: src/contributors/05-federation.md:242 src/contributors/05-federation.md:288
+#: src/contributors/05-federation.md:294 src/contributors/05-federation.md:365
+#: src/contributors/05-federation.md:393 src/contributors/05-federation.md:453
+#: src/contributors/05-federation.md:461 src/contributors/05-federation.md:473
+#: src/contributors/05-federation.md:481 src/contributors/05-federation.md:557
+#: src/contributors/05-federation.md:573 src/contributors/05-federation.md:623
+#: src/contributors/05-federation.md:793
+msgid "\"name\""
+msgstr ""
+
+#: src/contributors/05-federation.md:42
+msgid "\"Ten Forward\""
+msgstr ""
+
+#: src/contributors/05-federation.md:43 src/contributors/05-federation.md:113
+#: src/contributors/05-federation.md:165 src/contributors/05-federation.md:731
+#: src/contributors/05-federation.md:826 src/contributors/05-federation.md:845
+#: src/contributors/05-federation.md:882 src/contributors/05-federation.md:905
+msgid "\"summary\""
+msgstr ""
+
+#: src/contributors/05-federation.md:43
+msgid ""
+"\"<p>Lounge and recreation facility</p>\\n<hr />\\n<p>Welcome to the <a "
+"href=\\\"https://memory-alpha.fandom.com/wiki/USS_Enterprise_(NCC-1701-D)\\"
+"\">Enterprise</a>!.</p>\\n\""
+msgstr ""
+
+#: src/contributors/05-federation.md:44 src/contributors/05-federation.md:114
+#: src/contributors/05-federation.md:168 src/contributors/05-federation.md:225
+#: src/contributors/05-federation.md:280 src/contributors/05-federation.md:322
+#: src/contributors/05-federation.md:560 src/contributors/05-federation.md:607
+#: src/contributors/05-federation.md:1019
+msgid "\"source\""
+msgstr ""
+
+#: src/contributors/05-federation.md:45 src/contributors/05-federation.md:115
+#: src/contributors/05-federation.md:166 src/contributors/05-federation.md:169
+#: src/contributors/05-federation.md:223 src/contributors/05-federation.md:226
+#: src/contributors/05-federation.md:278 src/contributors/05-federation.md:281
+#: src/contributors/05-federation.md:320 src/contributors/05-federation.md:323
+#: src/contributors/05-federation.md:558 src/contributors/05-federation.md:561
+#: src/contributors/05-federation.md:605 src/contributors/05-federation.md:608
+#: src/contributors/05-federation.md:1017
+#: src/contributors/05-federation.md:1020
+msgid "\"content\""
+msgstr ""
+
+#: src/contributors/05-federation.md:45
+msgid ""
+"\"Lounge and recreation facility\\n\\n---\\n\\nWelcome to the [Enterprise]"
+"(https://memory-alpha.fandom.com/wiki/USS_Enterprise_(NCC-1701-D))!.\""
+msgstr ""
+
+#: src/contributors/05-federation.md:46 src/contributors/05-federation.md:116
+#: src/contributors/05-federation.md:167 src/contributors/05-federation.md:170
+#: src/contributors/05-federation.md:224 src/contributors/05-federation.md:227
+#: src/contributors/05-federation.md:279 src/contributors/05-federation.md:282
+#: src/contributors/05-federation.md:321 src/contributors/05-federation.md:324
+#: src/contributors/05-federation.md:366 src/contributors/05-federation.md:394
+#: src/contributors/05-federation.md:455 src/contributors/05-federation.md:475
+#: src/contributors/05-federation.md:559 src/contributors/05-federation.md:562
+#: src/contributors/05-federation.md:606 src/contributors/05-federation.md:609
+#: src/contributors/05-federation.md:794 src/contributors/05-federation.md:1018
+#: src/contributors/05-federation.md:1021
+msgid "\"mediaType\""
+msgstr ""
+
+#: src/contributors/05-federation.md:46 src/contributors/05-federation.md:116
+#: src/contributors/05-federation.md:170 src/contributors/05-federation.md:227
+#: src/contributors/05-federation.md:282 src/contributors/05-federation.md:324
+#: src/contributors/05-federation.md:562 src/contributors/05-federation.md:609
+#: src/contributors/05-federation.md:1021
+msgid "\"text/markdown\""
+msgstr ""
+
+#: src/contributors/05-federation.md:48 src/contributors/05-federation.md:239
+#: src/contributors/05-federation.md:367 src/contributors/05-federation.md:395
+#: src/contributors/05-federation.md:457 src/contributors/05-federation.md:477
+#: src/contributors/05-federation.md:570 src/contributors/05-federation.md:796
+msgid "\"sensitive\""
+msgstr ""
+
+#: src/contributors/05-federation.md:49 src/contributors/05-federation.md:118
+msgid "\"icon\""
+msgstr ""
+
+#: src/contributors/05-federation.md:50 src/contributors/05-federation.md:54
+#: src/contributors/05-federation.md:119 src/contributors/05-federation.md:123
+#: src/contributors/05-federation.md:236
+msgid "\"Image\""
+msgstr ""
+
+#: src/contributors/05-federation.md:51 src/contributors/05-federation.md:55
+#: src/contributors/05-federation.md:120 src/contributors/05-federation.md:124
+#: src/contributors/05-federation.md:237
+msgid "\"url\""
+msgstr ""
+
+#: src/contributors/05-federation.md:51
+msgid "\"https://enterprise.lemmy.ml/pictrs/image/waqyZwLAy4.webp\""
+msgstr ""
+
+#: src/contributors/05-federation.md:53 src/contributors/05-federation.md:122
+#: src/contributors/05-federation.md:235
+msgid "\"image\""
+msgstr ""
+
+#: src/contributors/05-federation.md:55
+msgid "\"https://enterprise.lemmy.ml/pictrs/image/Wt8zoMcCmE.jpg\""
+msgstr ""
+
+#: src/contributors/05-federation.md:57 src/contributors/05-federation.md:127
+#: src/contributors/05-federation.md:172
+msgid "\"inbox\""
+msgstr ""
+
+#: src/contributors/05-federation.md:57
+msgid "\"https://enterprise.lemmy.ml/c/tenforward/inbox\""
+msgstr ""
+
+#: src/contributors/05-federation.md:58
+msgid "\"followers\""
+msgstr ""
+
+#: src/contributors/05-federation.md:58
+msgid "\"https://enterprise.lemmy.ml/c/tenforward/followers\""
+msgstr ""
+
+#: src/contributors/05-federation.md:59 src/contributors/05-federation.md:216
+#: src/contributors/05-federation.md:270 src/contributors/05-federation.md:318
+#: src/contributors/05-federation.md:360 src/contributors/05-federation.md:388
+#: src/contributors/05-federation.md:448 src/contributors/05-federation.md:468
+#: src/contributors/05-federation.md:551 src/contributors/05-federation.md:598
+#: src/contributors/05-federation.md:788 src/contributors/05-federation.md:1015
+msgid "\"attributedTo\""
+msgstr ""
+
+#: src/contributors/05-federation.md:59 src/contributors/05-federation.md:430
+msgid "\"https://enterprise.lemmy.ml/c/tenforward/moderators\""
+msgstr ""
+
+#: src/contributors/05-federation.md:60
+msgid "\"featured\""
+msgstr ""
+
+#: src/contributors/05-federation.md:60
+msgid "\"https://enterprise.lemmy.ml/c/tenforward//featured\""
+msgstr ""
+
+#: src/contributors/05-federation.md:61
+msgid "\"postingRestrictedToMods\""
+msgstr ""
+
+#: src/contributors/05-federation.md:62 src/contributors/05-federation.md:129
+msgid "\"endpoints\""
+msgstr ""
+
+#: src/contributors/05-federation.md:63 src/contributors/05-federation.md:130
+msgid "\"sharedInbox\""
+msgstr ""
+
+#: src/contributors/05-federation.md:63 src/contributors/05-federation.md:130
+#: src/contributors/05-federation.md:172
+msgid "\"https://enterprise.lemmy.ml/inbox\""
+msgstr ""
+
+#: src/contributors/05-federation.md:65 src/contributors/05-federation.md:128
+#: src/contributors/05-federation.md:173
+msgid "\"outbox\""
+msgstr ""
+
+#: src/contributors/05-federation.md:65
+msgid "\"https://enterprise.lemmy.ml/c/tenforward/outbox\""
+msgstr ""
+
+#: src/contributors/05-federation.md:66 src/contributors/05-federation.md:134
+#: src/contributors/05-federation.md:174
+msgid "\"publicKey\""
+msgstr ""
+
+#: src/contributors/05-federation.md:67
+msgid "\"https://enterprise.lemmy.ml/c/tenforward#main-key\""
+msgstr ""
+
+#: src/contributors/05-federation.md:68 src/contributors/05-federation.md:136
+#: src/contributors/05-federation.md:176
+msgid "\"owner\""
+msgstr ""
+
+#: src/contributors/05-federation.md:69 src/contributors/05-federation.md:137
+#: src/contributors/05-federation.md:177
+msgid "\"publicKeyPem\""
+msgstr ""
+
+#: src/contributors/05-federation.md:69
+msgid ""
+"\"-----BEGIN PUBLIC KEY-----"
+"\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzRjKTNtvDCmugplwEh+g\\nx1bhKm6BHUZfXfpscgMMm7tXFswSDzUQirMgfkxa9ubfr1PDFKffA2vQ9x6CyuO/"
+"\\n70xTafdOHyV1tSqzgKz0ZvFZ/VCOo6qy1mYWVkrtBm/fKzM+87MdkKYB/"
+"zI4VyEJ\\nLfLQgjwxBAEYUH3CBG71U0gO0TwbimWNN0vqlfp0QfThNe1WYObF88ZVzMLgFbr7\\nRHBItZjlZ/"
+"d8foPDidlIR3l2dJjy0EsD8F9JM340jtX7LXqFmU4j1AQKNHTDLnUF\\nwYVhzuQGNJ504l5LZkFG54XfIFT7dx2QwuuM9bSnfPv/98RYrq1Si6tCkxEt1cVe\\n4wIDAQAB\\n-----"
+"END PUBLIC KEY-----\\n\""
+msgstr ""
+
+#: src/contributors/05-federation.md:71 src/contributors/05-federation.md:179
+#: src/contributors/05-federation.md:240 src/contributors/05-federation.md:292
+#: src/contributors/05-federation.md:459 src/contributors/05-federation.md:479
+#: src/contributors/05-federation.md:571
+msgid "\"language\""
+msgstr ""
+
+#: src/contributors/05-federation.md:73 src/contributors/05-federation.md:77
+#: src/contributors/05-federation.md:181 src/contributors/05-federation.md:185
+#: src/contributors/05-federation.md:241 src/contributors/05-federation.md:293
+#: src/contributors/05-federation.md:460 src/contributors/05-federation.md:480
+#: src/contributors/05-federation.md:572
+msgid "\"identifier\""
+msgstr ""
+
+#: src/contributors/05-federation.md:73 src/contributors/05-federation.md:181
+#: src/contributors/05-federation.md:241 src/contributors/05-federation.md:293
+msgid "\"fr\""
+msgstr ""
+
+#: src/contributors/05-federation.md:74 src/contributors/05-federation.md:182
+#: src/contributors/05-federation.md:242 src/contributors/05-federation.md:294
+msgid "\"Français\""
+msgstr ""
+
+#: src/contributors/05-federation.md:77 src/contributors/05-federation.md:460
+#: src/contributors/05-federation.md:480
+msgid "\"de\""
+msgstr ""
+
+#: src/contributors/05-federation.md:78 src/contributors/05-federation.md:461
+#: src/contributors/05-federation.md:481
+msgid "\"Deutsch\""
+msgstr ""
+
+#: src/contributors/05-federation.md:81 src/contributors/05-federation.md:132
+#: src/contributors/05-federation.md:189 src/contributors/05-federation.md:244
+#: src/contributors/05-federation.md:296 src/contributors/05-federation.md:326
+#: src/contributors/05-federation.md:369 src/contributors/05-federation.md:397
+#: src/contributors/05-federation.md:458 src/contributors/05-federation.md:478
+#: src/contributors/05-federation.md:575 src/contributors/05-federation.md:612
+#: src/contributors/05-federation.md:798 src/contributors/05-federation.md:1023
+msgid "\"published\""
+msgstr ""
+
+#: src/contributors/05-federation.md:81
+msgid "\"2019-06-02T16:43:50.799554Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:82 src/contributors/05-federation.md:133
+#: src/contributors/05-federation.md:297
+msgid "\"updated\""
+msgstr ""
+
+#: src/contributors/05-federation.md:82
+msgid "\"2021-03-10T17:18:10.498868Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:86 src/contributors/05-federation.md:142
+#: src/contributors/05-federation.md:193 src/contributors/05-federation.md:248
+#: src/contributors/05-federation.md:301 src/contributors/05-federation.md:330
+msgid "Field Name"
+msgstr ""
+
+#: src/contributors/05-federation.md:86 src/contributors/05-federation.md:142
+#: src/contributors/05-federation.md:193 src/contributors/05-federation.md:248
+#: src/contributors/05-federation.md:301 src/contributors/05-federation.md:330
+msgid "Description"
+msgstr ""
+
+#: src/contributors/05-federation.md:88 src/contributors/05-federation.md:144
+msgid "`preferredUsername`"
+msgstr ""
+
+#: src/contributors/05-federation.md:88 src/contributors/05-federation.md:144
+msgid "Name of the actor"
+msgstr ""
+
+#: src/contributors/05-federation.md:89 src/contributors/05-federation.md:145
+#: src/contributors/05-federation.md:195 src/contributors/05-federation.md:252
+msgid "`name`"
+msgstr ""
+
+#: src/contributors/05-federation.md:89
+msgid "Title of the community"
+msgstr ""
+
+#: src/contributors/05-federation.md:90 src/contributors/05-federation.md:257
+msgid "`sensitive`"
+msgstr ""
+
+#: src/contributors/05-federation.md:90
+msgid "True indicates that all posts in the community are nsfw"
+msgstr ""
+
+#: src/contributors/05-federation.md:91 src/contributors/05-federation.md:250
+#: src/contributors/05-federation.md:303 src/contributors/05-federation.md:332
+msgid "`attributedTo`"
+msgstr ""
+
+#: src/contributors/05-federation.md:91
+msgid "First the community creator, then all the remaining moderators"
+msgstr ""
+
+#: src/contributors/05-federation.md:92 src/contributors/05-federation.md:146
+#: src/contributors/05-federation.md:196
+msgid "`summary`"
+msgstr ""
+
+#: src/contributors/05-federation.md:92
+msgid ""
+"Text for the community sidebar, usually containing a description and rules"
+msgstr ""
+
+#: src/contributors/05-federation.md:93 src/contributors/05-federation.md:147
+#: src/contributors/05-federation.md:198
+msgid "`icon`"
+msgstr ""
+
+#: src/contributors/05-federation.md:93
+msgid "Icon, shown next to the community name"
+msgstr ""
+
+#: src/contributors/05-federation.md:94 src/contributors/05-federation.md:148
+#: src/contributors/05-federation.md:199 src/contributors/05-federation.md:255
+msgid "`image`"
+msgstr ""
+
+#: src/contributors/05-federation.md:94
+msgid "Banner image, shown on top of the community page"
+msgstr ""
+
+#: src/contributors/05-federation.md:95 src/contributors/05-federation.md:149
+#: src/contributors/05-federation.md:200
+msgid "`inbox`"
+msgstr ""
+
+#: src/contributors/05-federation.md:95 src/contributors/05-federation.md:149
+#: src/contributors/05-federation.md:200
+msgid "ActivityPub inbox URL"
+msgstr ""
+
+#: src/contributors/05-federation.md:96
+msgid "`outbox`"
+msgstr ""
+
+#: src/contributors/05-federation.md:96
+msgid ""
+"ActivityPub outbox URL, only contains up to 20 latest posts, no comments, "
+"votes or other activities"
+msgstr ""
+
+#: src/contributors/05-federation.md:97
+msgid "`followers`"
+msgstr ""
+
+#: src/contributors/05-federation.md:97
+msgid ""
+"Follower collection URL, only contains the number of followers, no "
+"references to individual followers"
+msgstr ""
+
+#: src/contributors/05-federation.md:98 src/contributors/05-federation.md:150
+#: src/contributors/05-federation.md:201
+msgid "`endpoints`"
+msgstr ""
+
+#: src/contributors/05-federation.md:98 src/contributors/05-federation.md:150
+#: src/contributors/05-federation.md:201
+msgid "Contains URL of shared inbox"
+msgstr ""
+
+#: src/contributors/05-federation.md:99 src/contributors/05-federation.md:151
+#: src/contributors/05-federation.md:202 src/contributors/05-federation.md:259
+#: src/contributors/05-federation.md:307 src/contributors/05-federation.md:335
+msgid "`published`"
+msgstr ""
+
+#: src/contributors/05-federation.md:99
+msgid "Datetime when the community was first created"
+msgstr ""
+
+#: src/contributors/05-federation.md:100 src/contributors/05-federation.md:152
+#: src/contributors/05-federation.md:203 src/contributors/05-federation.md:260
+#: src/contributors/05-federation.md:308 src/contributors/05-federation.md:336
+msgid "`updated`"
+msgstr ""
+
+#: src/contributors/05-federation.md:100
+msgid "Datetime when the community was last changed"
+msgstr ""
+
+#: src/contributors/05-federation.md:101 src/contributors/05-federation.md:153
+#: src/contributors/05-federation.md:204
+msgid "`publicKey`"
+msgstr ""
+
+#: src/contributors/05-federation.md:101 src/contributors/05-federation.md:153
+#: src/contributors/05-federation.md:204
+msgid "The public key used to verify signatures from this actor"
+msgstr ""
+
+#: src/contributors/05-federation.md:103
+msgid "User"
+msgstr ""
+
+#: src/contributors/05-federation.md:105
+msgid ""
+"A person, interacts primarily with the community where it sends and receives "
+"posts/comments. Can also create and moderate communities, and send private "
+"messages to other users. Can be followed from other platforms."
+msgstr ""
+
+#: src/contributors/05-federation.md:109 src/contributors/05-federation.md:136
+#: src/contributors/05-federation.md:216 src/contributors/05-federation.md:270
+#: src/contributors/05-federation.md:274 src/contributors/05-federation.md:286
+#: src/contributors/05-federation.md:318 src/contributors/05-federation.md:431
+msgid "\"https://enterprise.lemmy.ml/u/picard\""
+msgstr ""
+
+#: src/contributors/05-federation.md:110
+msgid "\"Person\""
+msgstr ""
+
+#: src/contributors/05-federation.md:111
+msgid "\"picard\""
+msgstr ""
+
+#: src/contributors/05-federation.md:112
+msgid "\"Jean-Luc Picard\""
+msgstr ""
+
+#: src/contributors/05-federation.md:113
+msgid "\"<p>Captain of the starship <strong>Enterprise</strong>.</p>\\n\""
+msgstr ""
+
+#: src/contributors/05-federation.md:115
+msgid "\"Captain of the starship **Enterprise**.\""
+msgstr ""
+
+#: src/contributors/05-federation.md:120
+msgid "\"https://enterprise.lemmy.ml/pictrs/image/ed9ej7.jpg\""
+msgstr ""
+
+#: src/contributors/05-federation.md:124
+msgid "\"https://enterprise.lemmy.ml/pictrs/image/XenaYI5hTn.png\""
+msgstr ""
+
+#: src/contributors/05-federation.md:126
+msgid "\"matrixUserId\""
+msgstr ""
+
+#: src/contributors/05-federation.md:126
+msgid "\"@picard:matrix.org\""
+msgstr ""
+
+#: src/contributors/05-federation.md:127
+msgid "\"https://enterprise.lemmy.ml/u/picard/inbox\""
+msgstr ""
+
+#: src/contributors/05-federation.md:128
+msgid "\"https://enterprise.lemmy.ml/u/picard/outbox\""
+msgstr ""
+
+#: src/contributors/05-federation.md:132
+msgid "\"2020-01-17T01:38:22.348392Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:133
+msgid "\"2021-08-13T00:11:15.941990Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:135
+msgid "\"https://enterprise.lemmy.ml/u/picard#main-key\""
+msgstr ""
+
+#: src/contributors/05-federation.md:137
+msgid ""
+"\"-----BEGIN PUBLIC KEY-----"
+"\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0lP99/"
+"s5Vv+XbPdkeqIJ\\nwoD4GFnHmBnBHdEKChEUWfWj1TtioC/"
+"rGNoXFQeXQA3Amhy4nxSceiDnUgwkkuQY\\nv0MtIW58NzgknEavtllxL+LSds5pg3gANaDIk8UiWTkqXTg0GnlJMpCK1Chen0l/"
+"\\nszL6DEvUyTSuS5ZYDXFgewF89Pe7U0S15V5U2Harv7AgJYDyxmUL0D1pGuUCRqcE\\nl5MTHJjrXeNnH1w2g8aly8YlO/"
+"Cr0L51rFg/"
+"lBF23vni7ZLv8HbmWh6YpaAf1R8h\\nE45zKR7OHqymdjzrg1ITBwovefpwMkVgnJ+Wdr4HPnFlBSkXPoZeM11+Z8L0anzA\\nXwIDAQAB\\n-----"
+"END PUBLIC KEY-----\\n\""
+msgstr ""
+
+#: src/contributors/05-federation.md:145
+msgid "The user's displayname"
+msgstr ""
+
+#: src/contributors/05-federation.md:146
+msgid "User bio"
+msgstr ""
+
+#: src/contributors/05-federation.md:147
+msgid "The user's avatar, shown next to the username"
+msgstr ""
+
+#: src/contributors/05-federation.md:148
+msgid "The user's banner, shown on top of the profile"
+msgstr ""
+
+#: src/contributors/05-federation.md:151
+msgid "Datetime when the user signed up"
+msgstr ""
+
+#: src/contributors/05-federation.md:152
+msgid "Datetime when the user profile was last changed"
+msgstr ""
+
+#: src/contributors/05-federation.md:155
+msgid "Instance"
+msgstr ""
+
+#: src/contributors/05-federation.md:157
+msgid ""
+"Represents a Lemmy instance, and is used to federate global data like the "
+"instance description or site bans. It can be fetched from the root path."
+msgstr ""
+
+#: src/contributors/05-federation.md:161
+msgid "\"Application\""
+msgstr ""
+
+#: src/contributors/05-federation.md:162 src/contributors/05-federation.md:176
+msgid "\"https://enterprise.lemmy.ml/\""
+msgstr ""
+
+#: src/contributors/05-federation.md:163
+msgid "\"Enterprise\""
+msgstr ""
+
+#: src/contributors/05-federation.md:164
+msgid "\"enterprise.lemmy.ml\""
+msgstr ""
+
+#: src/contributors/05-federation.md:165
+msgid "\"A test instance\""
+msgstr ""
+
+#: src/contributors/05-federation.md:166
+msgid "\"<p>Enterprise sidebar</p>\\\\n\""
+msgstr ""
+
+#: src/contributors/05-federation.md:167 src/contributors/05-federation.md:224
+#: src/contributors/05-federation.md:279 src/contributors/05-federation.md:321
+#: src/contributors/05-federation.md:366 src/contributors/05-federation.md:394
+#: src/contributors/05-federation.md:455 src/contributors/05-federation.md:475
+#: src/contributors/05-federation.md:559 src/contributors/05-federation.md:606
+#: src/contributors/05-federation.md:794 src/contributors/05-federation.md:1018
+msgid "\"text/html\""
+msgstr ""
+
+#: src/contributors/05-federation.md:169
+msgid "\"Enterprise sidebar\""
+msgstr ""
+
+#: src/contributors/05-federation.md:173
+msgid "\"https://enterprise.lemmy.ml/outbox\""
+msgstr ""
+
+#: src/contributors/05-federation.md:175
+msgid "\"https://enterprise.lemmy.ml/#main-key\""
+msgstr ""
+
+#: src/contributors/05-federation.md:177
+msgid ""
+"\"-----BEGIN PUBLIC KEY-----"
+"\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAupcK0xTw5yQb/"
+"fnztAmb\\n9LfPbhJJP1+1GwUaOXGYiDJD6uYJhl9CLmgztLl3RyV9ltOYoN8/"
+"NLNDfOMmgOjd\\nrsNWEjDI9IcVPmiZnhU7hsi6KgQvJzzv8O5/"
+"xYjAGhDfrGmtdpL+lyG0B5fQod8J\\n/V5VWvTQ0B0qFrLSBBuhOrp8/"
+"fTtDskdtElDPtnNfH2jn6FgtLOijidWwf9ekFo4\\n0I1JeuEw6LuD/CzKVJTPoztzabUV1DQF/"
+"DnFJm+8y7SCJa9jEO56Uf9eVfa1jF6f\\ndH6ZvNJMiafstVuLMAw7C/"
+"eNJy3ufXgtZ4403oOKA0aRSYf1cc9pHSZ9gDE/mevH\\nLwIDAQAB\\n-----END PUBLIC "
+"KEY-----\\n\""
+msgstr ""
+
+#: src/contributors/05-federation.md:185
+msgid "\"es\""
+msgstr ""
+
+#: src/contributors/05-federation.md:186
+msgid "\"Español\""
+msgstr ""
+
+#: src/contributors/05-federation.md:189
+msgid "\"2022-01-19T21:52:11.110741Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:195
+msgid "Instance name"
+msgstr ""
+
+#: src/contributors/05-federation.md:196
+msgid "Short description"
+msgstr ""
+
+#: src/contributors/05-federation.md:197 src/contributors/05-federation.md:253
+#: src/contributors/05-federation.md:305 src/contributors/05-federation.md:334
+msgid "`content`"
+msgstr ""
+
+#: src/contributors/05-federation.md:197
+msgid "Long description (sidebar)"
+msgstr ""
+
+#: src/contributors/05-federation.md:198
+msgid "Instance icon"
+msgstr ""
+
+#: src/contributors/05-federation.md:199
+msgid "Instance banner"
+msgstr ""
+
+#: src/contributors/05-federation.md:202
+msgid "Datetime when the instance was created"
+msgstr ""
+
+#: src/contributors/05-federation.md:203
+msgid "Datetime when the instance metadata"
+msgstr ""
+
+#: src/contributors/05-federation.md:206
+msgid "Objects"
+msgstr ""
+
+#: src/contributors/05-federation.md:208
+msgid "Post"
+msgstr ""
+
+#: src/contributors/05-federation.md:210
+msgid ""
+"A page with title, and optional URL and text content. The attachment URL "
+"often leads to an image, in which case a thumbnail is included. Each post "
+"belongs to exactly one community. Sent out as `Page`, but for receiving the "
+"types `Article`, `Note`, `Video` and `Event` are also accepted."
+msgstr ""
+
+#: src/contributors/05-federation.md:214 src/contributors/05-federation.md:277
+msgid "\"https://enterprise.lemmy.ml/post/55143\""
+msgstr ""
+
+#: src/contributors/05-federation.md:215 src/contributors/05-federation.md:358
+#: src/contributors/05-federation.md:386 src/contributors/05-federation.md:446
+#: src/contributors/05-federation.md:466 src/contributors/05-federation.md:549
+#: src/contributors/05-federation.md:786
+msgid "\"Page\""
+msgstr ""
+
+#: src/contributors/05-federation.md:217 src/contributors/05-federation.md:271
+#: src/contributors/05-federation.md:319 src/contributors/05-federation.md:350
+#: src/contributors/05-federation.md:353 src/contributors/05-federation.md:361
+#: src/contributors/05-federation.md:378 src/contributors/05-federation.md:381
+#: src/contributors/05-federation.md:389 src/contributors/05-federation.md:449
+#: src/contributors/05-federation.md:469 src/contributors/05-federation.md:513
+#: src/contributors/05-federation.md:527 src/contributors/05-federation.md:530
+#: src/contributors/05-federation.md:547 src/contributors/05-federation.md:552
+#: src/contributors/05-federation.md:594 src/contributors/05-federation.md:599
+#: src/contributors/05-federation.md:688 src/contributors/05-federation.md:704
+#: src/contributors/05-federation.md:707 src/contributors/05-federation.md:728
+#: src/contributors/05-federation.md:744 src/contributors/05-federation.md:761
+#: src/contributors/05-federation.md:764 src/contributors/05-federation.md:781
+#: src/contributors/05-federation.md:784 src/contributors/05-federation.md:789
+#: src/contributors/05-federation.md:821 src/contributors/05-federation.md:838
+#: src/contributors/05-federation.md:859 src/contributors/05-federation.md:874
+#: src/contributors/05-federation.md:877 src/contributors/05-federation.md:895
+#: src/contributors/05-federation.md:898 src/contributors/05-federation.md:924
+#: src/contributors/05-federation.md:937 src/contributors/05-federation.md:953
+#: src/contributors/05-federation.md:968 src/contributors/05-federation.md:998
+#: src/contributors/05-federation.md:1011
+#: src/contributors/05-federation.md:1016
+#: src/contributors/05-federation.md:1036
+#: src/contributors/05-federation.md:1050
+#: src/contributors/05-federation.md:1053
+msgid "\"to\""
+msgstr ""
+
+#: src/contributors/05-federation.md:219 src/contributors/05-federation.md:271
+#: src/contributors/05-federation.md:350 src/contributors/05-federation.md:353
+#: src/contributors/05-federation.md:363 src/contributors/05-federation.md:378
+#: src/contributors/05-federation.md:381 src/contributors/05-federation.md:391
+#: src/contributors/05-federation.md:451 src/contributors/05-federation.md:471
+#: src/contributors/05-federation.md:547 src/contributors/05-federation.md:554
+#: src/contributors/05-federation.md:594 src/contributors/05-federation.md:599
+#: src/contributors/05-federation.md:688 src/contributors/05-federation.md:704
+#: src/contributors/05-federation.md:707 src/contributors/05-federation.md:744
+#: src/contributors/05-federation.md:781 src/contributors/05-federation.md:784
+#: src/contributors/05-federation.md:791 src/contributors/05-federation.md:821
+#: src/contributors/05-federation.md:838 src/contributors/05-federation.md:859
+#: src/contributors/05-federation.md:874 src/contributors/05-federation.md:877
+#: src/contributors/05-federation.md:895 src/contributors/05-federation.md:898
+#: src/contributors/05-federation.md:924 src/contributors/05-federation.md:937
+#: src/contributors/05-federation.md:953 src/contributors/05-federation.md:968
+msgid "\"https://www.w3.org/ns/activitystreams#Public\""
+msgstr ""
+
+#: src/contributors/05-federation.md:221 src/contributors/05-federation.md:276
+#: src/contributors/05-federation.md:463 src/contributors/05-federation.md:483
+#: src/contributors/05-federation.md:556 src/contributors/05-federation.md:578
+#: src/contributors/05-federation.md:604 src/contributors/05-federation.md:618
+#: src/contributors/05-federation.md:639 src/contributors/05-federation.md:653
+#: src/contributors/05-federation.md:669 src/contributors/05-federation.md:673
+#: src/contributors/05-federation.md:691 src/contributors/05-federation.md:710
+#: src/contributors/05-federation.md:715 src/contributors/05-federation.md:729
+#: src/contributors/05-federation.md:824 src/contributors/05-federation.md:841
+#: src/contributors/05-federation.md:863 src/contributors/05-federation.md:880
+#: src/contributors/05-federation.md:886 src/contributors/05-federation.md:901
+#: src/contributors/05-federation.md:910 src/contributors/05-federation.md:929
+#: src/contributors/05-federation.md:942 src/contributors/05-federation.md:957
+#: src/contributors/05-federation.md:973
+msgid "\"audience\""
+msgstr ""
+
+#: src/contributors/05-federation.md:222
+msgid "\"Post title\""
+msgstr ""
+
+#: src/contributors/05-federation.md:223
+msgid "\"<p>This is a post in the /c/tenforward community</p>\\n\""
+msgstr ""
+
+#: src/contributors/05-federation.md:226
+msgid "\"This is a post in the /c/tenforward community\""
+msgstr ""
+
+#: src/contributors/05-federation.md:229 src/contributors/05-federation.md:456
+#: src/contributors/05-federation.md:476 src/contributors/05-federation.md:564
+msgid "\"attachment\""
+msgstr ""
+
+#: src/contributors/05-federation.md:231 src/contributors/05-federation.md:566
+msgid "\"Link\""
+msgstr ""
+
+#: src/contributors/05-federation.md:232 src/contributors/05-federation.md:286
+#: src/contributors/05-federation.md:567 src/contributors/05-federation.md:621
+msgid "\"href\""
+msgstr ""
+
+#: src/contributors/05-federation.md:232 src/contributors/05-federation.md:237
+msgid "\"https://enterprise.lemmy.ml/pictrs/image/eOtYb9iEiB.png\""
+msgstr ""
+
+#: src/contributors/05-federation.md:244
+msgid "\"2021-02-26T12:35:34.292626Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:250
+msgid "ID of the user which created this post"
+msgstr ""
+
+#: src/contributors/05-federation.md:251 src/contributors/05-federation.md:304
+#: src/contributors/05-federation.md:333
+msgid "`to`"
+msgstr ""
+
+#: src/contributors/05-federation.md:251
+msgid "ID of the community where it was posted to"
+msgstr ""
+
+#: src/contributors/05-federation.md:252
+msgid "Title of the post (mandatory)"
+msgstr ""
+
+#: src/contributors/05-federation.md:253
+msgid "Body of the post"
+msgstr ""
+
+#: src/contributors/05-federation.md:254
+msgid "`attachment`"
+msgstr ""
+
+#: src/contributors/05-federation.md:254
+msgid "A single website or image link"
+msgstr ""
+
+#: src/contributors/05-federation.md:255
+msgid "Thumbnail for `url`, only present if it is an image link"
+msgstr ""
+
+#: src/contributors/05-federation.md:256
+msgid "`commentsEnabled`"
+msgstr ""
+
+#: src/contributors/05-federation.md:256
+msgid "False indicates that the post is locked, and no comments can be added"
+msgstr ""
+
+#: src/contributors/05-federation.md:257
+msgid ""
+"True marks the post as NSFW, blurs the thumbnail and hides it from users "
+"with NSFW setting disabled"
+msgstr ""
+
+#: src/contributors/05-federation.md:258
+msgid "`stickied`"
+msgstr ""
+
+#: src/contributors/05-federation.md:258
+msgid "True means that it is shown on top of the community"
+msgstr ""
+
+#: src/contributors/05-federation.md:259
+msgid "Datetime when the post was created"
+msgstr ""
+
+#: src/contributors/05-federation.md:260
+msgid "Datetime when the post was edited (not present if it was never edited)"
+msgstr ""
+
+#: src/contributors/05-federation.md:262
+msgid "Comment"
+msgstr ""
+
+#: src/contributors/05-federation.md:264
+msgid ""
+"A reply to a post, or reply to another comment. Contains only text "
+"(including references to other users or communities). Lemmy displays "
+"comments in a tree structure."
+msgstr ""
+
+#: src/contributors/05-federation.md:268
+msgid "\"https://enterprise.lemmy.ml/comment/38741\""
+msgstr ""
+
+#: src/contributors/05-federation.md:269 src/contributors/05-federation.md:596
+msgid "\"Note\""
+msgstr ""
+
+#: src/contributors/05-federation.md:272 src/contributors/05-federation.md:354
+#: src/contributors/05-federation.md:372 src/contributors/05-federation.md:382
+#: src/contributors/05-federation.md:400 src/contributors/05-federation.md:454
+#: src/contributors/05-federation.md:474 src/contributors/05-federation.md:577
+#: src/contributors/05-federation.md:600 src/contributors/05-federation.md:614
+#: src/contributors/05-federation.md:690 src/contributors/05-federation.md:709
+#: src/contributors/05-federation.md:714 src/contributors/05-federation.md:800
+#: src/contributors/05-federation.md:804 src/contributors/05-federation.md:823
+#: src/contributors/05-federation.md:840 src/contributors/05-federation.md:861
+#: src/contributors/05-federation.md:879 src/contributors/05-federation.md:885
+#: src/contributors/05-federation.md:900 src/contributors/05-federation.md:909
+#: src/contributors/05-federation.md:922 src/contributors/05-federation.md:935
+#: src/contributors/05-federation.md:956 src/contributors/05-federation.md:970
+#: src/contributors/05-federation.md:994
+msgid "\"cc\""
+msgstr ""
+
+#: src/contributors/05-federation.md:277 src/contributors/05-federation.md:611
+msgid "\"inReplyTo\""
+msgstr ""
+
+#: src/contributors/05-federation.md:278
+msgid "\"<p>first comment!</p>\\n\""
+msgstr ""
+
+#: src/contributors/05-federation.md:281
+msgid "\"first comment!\""
+msgstr ""
+
+#: src/contributors/05-federation.md:284 src/contributors/05-federation.md:619
+msgid "\"tag\""
+msgstr ""
+
+#: src/contributors/05-federation.md:287 src/contributors/05-federation.md:622
+msgid "\"Mention\""
+msgstr ""
+
+#: src/contributors/05-federation.md:288
+msgid "\"@picard@enterprise.lemmy.ml\""
+msgstr ""
+
+#: src/contributors/05-federation.md:291
+msgid "\"distinguished\""
+msgstr ""
+
+#: src/contributors/05-federation.md:296
+msgid "\"2021-03-01T13:42:43.966208Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:297
+msgid "\"2021-03-01T13:43:03.955787Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:303
+msgid "ID of the user who created the comment"
+msgstr ""
+
+#: src/contributors/05-federation.md:304
+msgid "Community where the comment was made"
+msgstr ""
+
+#: src/contributors/05-federation.md:305
+msgid "The comment text"
+msgstr ""
+
+#: src/contributors/05-federation.md:306
+msgid "`inReplyTo`"
+msgstr ""
+
+#: src/contributors/05-federation.md:306
+msgid ""
+"ID of the parent object. In case of a top-level comment this is the post ID, "
+"in case of a nested comment it is the parent comment ID."
+msgstr ""
+
+#: src/contributors/05-federation.md:307
+msgid "Datetime when the comment was created"
+msgstr ""
+
+#: src/contributors/05-federation.md:308
+msgid ""
+"Datetime when the comment was edited (not present if it was never edited)"
+msgstr ""
+
+#: src/contributors/05-federation.md:310
+msgid "Private Message"
+msgstr ""
+
+#: src/contributors/05-federation.md:312
+msgid ""
+"A direct message from one user to another. Can not include additional users. "
+"Threading is not implemented yet, so the `inReplyTo` field is missing."
+msgstr ""
+
+#: src/contributors/05-federation.md:316
+msgid "\"https://enterprise.lemmy.ml/private_message/1621\""
+msgstr ""
+
+#: src/contributors/05-federation.md:317 src/contributors/05-federation.md:1013
+msgid "\"ChatMessage\""
+msgstr ""
+
+#: src/contributors/05-federation.md:319
+msgid "\"https://queer.hacktivis.me/users/lanodan\""
+msgstr ""
+
+#: src/contributors/05-federation.md:320
+msgid "\"<p>Hello hello, testing</p>\\n\""
+msgstr ""
+
+#: src/contributors/05-federation.md:323
+msgid "\"Hello hello, testing\""
+msgstr ""
+
+#: src/contributors/05-federation.md:326
+msgid "\"2021-10-21T10:13:14.597721Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:332
+msgid "ID of the user who created this private message"
+msgstr ""
+
+#: src/contributors/05-federation.md:333
+msgid "ID of the recipient"
+msgstr ""
+
+#: src/contributors/05-federation.md:334
+msgid "The text of the private message"
+msgstr ""
+
+#: src/contributors/05-federation.md:335
+msgid "Datetime when the message was created"
+msgstr ""
+
+#: src/contributors/05-federation.md:336
+msgid ""
+"Datetime when the message was edited (not present if it was never edited)"
+msgstr ""
+
+#: src/contributors/05-federation.md:338
+msgid "Collections"
+msgstr ""
+
+#: src/contributors/05-federation.md:340
+msgid "Community Outbox"
+msgstr ""
+
+#: src/contributors/05-federation.md:344 src/contributors/05-federation.md:429
+#: src/contributors/05-federation.md:441 src/contributors/05-federation.md:495
+msgid "\"OrderedCollection\""
+msgstr ""
+
+#: src/contributors/05-federation.md:345
+msgid "\"https://ds9.lemmy.ml/c/testcom/outbox\""
+msgstr ""
+
+#: src/contributors/05-federation.md:346 src/contributors/05-federation.md:416
+#: src/contributors/05-federation.md:443 src/contributors/05-federation.md:498
+msgid "\"totalItems\""
+msgstr ""
+
+#: src/contributors/05-federation.md:347 src/contributors/05-federation.md:431
+#: src/contributors/05-federation.md:444 src/contributors/05-federation.md:497
+msgid "\"orderedItems\""
+msgstr ""
+
+#: src/contributors/05-federation.md:349 src/contributors/05-federation.md:352
+#: src/contributors/05-federation.md:377 src/contributors/05-federation.md:380
+#: src/contributors/05-federation.md:512 src/contributors/05-federation.md:526
+#: src/contributors/05-federation.md:529 src/contributors/05-federation.md:546
+#: src/contributors/05-federation.md:593 src/contributors/05-federation.md:637
+#: src/contributors/05-federation.md:651 src/contributors/05-federation.md:665
+#: src/contributors/05-federation.md:667 src/contributors/05-federation.md:687
+#: src/contributors/05-federation.md:703 src/contributors/05-federation.md:706
+#: src/contributors/05-federation.md:727 src/contributors/05-federation.md:743
+#: src/contributors/05-federation.md:760 src/contributors/05-federation.md:763
+#: src/contributors/05-federation.md:780 src/contributors/05-federation.md:783
+#: src/contributors/05-federation.md:820 src/contributors/05-federation.md:837
+#: src/contributors/05-federation.md:858 src/contributors/05-federation.md:873
+#: src/contributors/05-federation.md:876 src/contributors/05-federation.md:894
+#: src/contributors/05-federation.md:897 src/contributors/05-federation.md:926
+#: src/contributors/05-federation.md:939 src/contributors/05-federation.md:952
+#: src/contributors/05-federation.md:967 src/contributors/05-federation.md:993
+#: src/contributors/05-federation.md:1010
+#: src/contributors/05-federation.md:1035
+#: src/contributors/05-federation.md:1049
+#: src/contributors/05-federation.md:1052
+msgid "\"actor\""
+msgstr ""
+
+#: src/contributors/05-federation.md:349 src/contributors/05-federation.md:354
+#: src/contributors/05-federation.md:362 src/contributors/05-federation.md:377
+#: src/contributors/05-federation.md:382 src/contributors/05-federation.md:390
+msgid "\"https://ds9.lemmy.ml/c/testcom\""
+msgstr ""
+
+#: src/contributors/05-federation.md:351 src/contributors/05-federation.md:357
+#: src/contributors/05-federation.md:379 src/contributors/05-federation.md:385
+#: src/contributors/05-federation.md:514 src/contributors/05-federation.md:528
+#: src/contributors/05-federation.md:531 src/contributors/05-federation.md:548
+#: src/contributors/05-federation.md:595 src/contributors/05-federation.md:638
+#: src/contributors/05-federation.md:652 src/contributors/05-federation.md:666
+#: src/contributors/05-federation.md:668 src/contributors/05-federation.md:689
+#: src/contributors/05-federation.md:705 src/contributors/05-federation.md:708
+#: src/contributors/05-federation.md:730 src/contributors/05-federation.md:745
+#: src/contributors/05-federation.md:762 src/contributors/05-federation.md:765
+#: src/contributors/05-federation.md:782 src/contributors/05-federation.md:785
+#: src/contributors/05-federation.md:822 src/contributors/05-federation.md:839
+#: src/contributors/05-federation.md:860 src/contributors/05-federation.md:875
+#: src/contributors/05-federation.md:878 src/contributors/05-federation.md:896
+#: src/contributors/05-federation.md:899 src/contributors/05-federation.md:927
+#: src/contributors/05-federation.md:940 src/contributors/05-federation.md:954
+#: src/contributors/05-federation.md:969 src/contributors/05-federation.md:996
+#: src/contributors/05-federation.md:1012
+#: src/contributors/05-federation.md:1037
+#: src/contributors/05-federation.md:1051
+#: src/contributors/05-federation.md:1054
+msgid "\"object\""
+msgstr ""
+
+#: src/contributors/05-federation.md:352 src/contributors/05-federation.md:360
+#: src/contributors/05-federation.md:380 src/contributors/05-federation.md:388
+msgid "\"https://ds9.lemmy.ml/u/nutomic\""
+msgstr ""
+
+#: src/contributors/05-federation.md:355 src/contributors/05-federation.md:383
+#: src/contributors/05-federation.md:579 src/contributors/05-federation.md:626
+#: src/contributors/05-federation.md:801 src/contributors/05-federation.md:1025
+msgid "\"Create\""
+msgstr ""
+
+#: src/contributors/05-federation.md:356 src/contributors/05-federation.md:384
+#: src/contributors/05-federation.md:580
+msgid ""
+"\"http://ds9.lemmy.ml/activities/create/eee6a57a-622f-464d-"
+"b560-73ae1fcd3ddf\""
+msgstr ""
+
+#: src/contributors/05-federation.md:359
+msgid "\"https://ds9.lemmy.ml/post/2328\""
+msgstr ""
+
+#: src/contributors/05-federation.md:365
+msgid "\"another outbox test\""
+msgstr ""
+
+#: src/contributors/05-federation.md:368 src/contributors/05-federation.md:396
+#: src/contributors/05-federation.md:797
+msgid "\"stickied\""
+msgstr ""
+
+#: src/contributors/05-federation.md:369
+msgid "\"2021-11-18T17:19:45.895163Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:372 src/contributors/05-federation.md:400
+msgid "\"https://ds9.lemmy.ml/c/testcom/followers\""
+msgstr ""
+
+#: src/contributors/05-federation.md:373 src/contributors/05-federation.md:401
+#: src/contributors/05-federation.md:805
+msgid "\"Announce\""
+msgstr ""
+
+#: src/contributors/05-federation.md:374
+msgid ""
+"\"https://ds9.lemmy.ml/activities/announce/b204fe9f-"
+"b13d-4af2-9d22-239ac2d892e6\""
+msgstr ""
+
+#: src/contributors/05-federation.md:387
+msgid "\"https://ds9.lemmy.ml/post/2327\""
+msgstr ""
+
+#: src/contributors/05-federation.md:393
+msgid "\"outbox test\""
+msgstr ""
+
+#: src/contributors/05-federation.md:397
+msgid "\"2021-11-18T17:19:05.763109Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:402
+msgid ""
+"\"https://ds9.lemmy.ml/activities/announce/c6c960ce-"
+"c8d8-4231-925e-3ba367468f18\""
+msgstr ""
+
+#: src/contributors/05-federation.md:408
+msgid "The outbox only contains `Create/Post` activities for now."
+msgstr ""
+
+#: src/contributors/05-federation.md:410
+msgid "Community Followers"
+msgstr ""
+
+#: src/contributors/05-federation.md:414 src/contributors/05-federation.md:804
+msgid "\"http://enterprise.lemmy.ml/c/main/followers\""
+msgstr ""
+
+#: src/contributors/05-federation.md:415
+msgid "\"Collection\""
+msgstr ""
+
+#: src/contributors/05-federation.md:417
+msgid "\"items\""
+msgstr ""
+
+#: src/contributors/05-federation.md:421
+msgid ""
+"The followers collection is only used to expose the number of followers. "
+"Actor IDs are not included, to protect user privacy."
+msgstr ""
+
+#: src/contributors/05-federation.md:423
+msgid "Community Moderators"
+msgstr ""
+
+#: src/contributors/05-federation.md:425
+msgid ""
+"List of moderators who can perform actions like removing posts or banning "
+"users."
+msgstr ""
+
+#: src/contributors/05-federation.md:435
+msgid "Community Featured Posts"
+msgstr ""
+
+#: src/contributors/05-federation.md:437
+msgid "List of posts which are stickied in the community."
+msgstr ""
+
+#: src/contributors/05-federation.md:442 src/contributors/05-federation.md:928
+#: src/contributors/05-federation.md:941
+msgid "\"https://ds9.lemmy.ml/c/main/featured\""
+msgstr ""
+
+#: src/contributors/05-federation.md:447 src/contributors/05-federation.md:927
+#: src/contributors/05-federation.md:940
+msgid "\"https://ds9.lemmy.ml/post/2\""
+msgstr ""
+
+#: src/contributors/05-federation.md:448 src/contributors/05-federation.md:468
+#: src/contributors/05-federation.md:926 src/contributors/05-federation.md:939
+msgid "\"https://ds9.lemmy.ml/u/lemmy_alpha\""
+msgstr ""
+
+#: src/contributors/05-federation.md:450 src/contributors/05-federation.md:463
+#: src/contributors/05-federation.md:470 src/contributors/05-federation.md:483
+#: src/contributors/05-federation.md:922 src/contributors/05-federation.md:929
+#: src/contributors/05-federation.md:935 src/contributors/05-federation.md:942
+msgid "\"https://ds9.lemmy.ml/c/main\""
+msgstr ""
+
+#: src/contributors/05-federation.md:453
+msgid "\"test 2\""
+msgstr ""
+
+#: src/contributors/05-federation.md:458
+msgid "\"2023-02-06T06:42:41.939437Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:467
+msgid "\"https://ds9.lemmy.ml/post/1\""
+msgstr ""
+
+#: src/contributors/05-federation.md:473
+msgid "\"test 1\""
+msgstr ""
+
+#: src/contributors/05-federation.md:478
+msgid "\"2023-02-06T06:42:37.119567Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:489
+msgid "User Outbox"
+msgstr ""
+
+#: src/contributors/05-federation.md:491
+msgid ""
+"Only contains `totalItems` count, but no actual `items` for privacy reasons."
+msgstr ""
+
+#: src/contributors/05-federation.md:496
+msgid "\"http://ds9.lemmy.ml/u/lemmy_alpha/outbox\""
+msgstr ""
+
+#: src/contributors/05-federation.md:502
+msgid "Activities"
+msgstr ""
+
+#: src/contributors/05-federation.md:504
+msgid "User to Community"
+msgstr ""
+
+#: src/contributors/05-federation.md:506
+msgid "Follow"
+msgstr ""
+
+#: src/contributors/05-federation.md:508
+msgid ""
+"Each Community page has a \"Follow\" button. Clicking this triggers a "
+"`Follow` activity to be sent from the user to the Community inbox. The "
+"Community will automatically respond with an `Accept/Follow` activity to the "
+"user inbox. It will also add the user to its list of followers, and deliver "
+"any activities about Posts/Comments in the Community to the user."
+msgstr ""
+
+#: src/contributors/05-federation.md:512 src/contributors/05-federation.md:526
+#: src/contributors/05-federation.md:529 src/contributors/05-federation.md:546
+#: src/contributors/05-federation.md:551 src/contributors/05-federation.md:593
+#: src/contributors/05-federation.md:598 src/contributors/05-federation.md:602
+#: src/contributors/05-federation.md:604 src/contributors/05-federation.md:616
+#: src/contributors/05-federation.md:618 src/contributors/05-federation.md:621
+#: src/contributors/05-federation.md:637 src/contributors/05-federation.md:665
+#: src/contributors/05-federation.md:667 src/contributors/05-federation.md:687
+#: src/contributors/05-federation.md:703 src/contributors/05-federation.md:706
+#: src/contributors/05-federation.md:727 src/contributors/05-federation.md:743
+#: src/contributors/05-federation.md:745 src/contributors/05-federation.md:761
+#: src/contributors/05-federation.md:763 src/contributors/05-federation.md:839
+#: src/contributors/05-federation.md:899 src/contributors/05-federation.md:954
+#: src/contributors/05-federation.md:969 src/contributors/05-federation.md:1011
+#: src/contributors/05-federation.md:1016
+#: src/contributors/05-federation.md:1050
+msgid "\"http://ds9.lemmy.ml/u/lemmy_alpha\""
+msgstr ""
+
+#: src/contributors/05-federation.md:513 src/contributors/05-federation.md:514
+#: src/contributors/05-federation.md:527 src/contributors/05-federation.md:530
+#: src/contributors/05-federation.md:531 src/contributors/05-federation.md:553
+#: src/contributors/05-federation.md:577 src/contributors/05-federation.md:601
+#: src/contributors/05-federation.md:615 src/contributors/05-federation.md:690
+#: src/contributors/05-federation.md:709 src/contributors/05-federation.md:714
+#: src/contributors/05-federation.md:728 src/contributors/05-federation.md:760
+#: src/contributors/05-federation.md:764 src/contributors/05-federation.md:765
+#: src/contributors/05-federation.md:780 src/contributors/05-federation.md:790
+#: src/contributors/05-federation.md:800 src/contributors/05-federation.md:823
+#: src/contributors/05-federation.md:840 src/contributors/05-federation.md:842
+#: src/contributors/05-federation.md:879 src/contributors/05-federation.md:885
+#: src/contributors/05-federation.md:900 src/contributors/05-federation.md:902
+#: src/contributors/05-federation.md:909 src/contributors/05-federation.md:956
+#: src/contributors/05-federation.md:970
+msgid "\"http://enterprise.lemmy.ml/c/main\""
+msgstr ""
+
+#: src/contributors/05-federation.md:515 src/contributors/05-federation.md:532
+#: src/contributors/05-federation.md:766 src/contributors/05-federation.md:999
+msgid "\"Follow\""
+msgstr ""
+
+#: src/contributors/05-federation.md:516 src/contributors/05-federation.md:767
+msgid ""
+"\"http://ds9.lemmy.ml/activities/follow/6abcd50b-b8ca-4952-86b0-"
+"a6dd8cc12866\""
+msgstr ""
+
+#: src/contributors/05-federation.md:520
+msgid "Unfollow"
+msgstr ""
+
+#: src/contributors/05-federation.md:522
+msgid ""
+"After following a Community, the \"Follow\" button is replaced by "
+"\"Unfollow\". Clicking this sends an `Undo/Follow` activity to the Community "
+"inbox. The Community removes the User from its followers list and doesn't "
+"send any activities to it anymore."
+msgstr ""
+
+#: src/contributors/05-federation.md:533
+msgid ""
+"\"http://ds9.lemmy.ml/activities/follow/dc2f1bc5-f3a0-4daa-"
+"a46b-428cbfbd023c\""
+msgstr ""
+
+#: src/contributors/05-federation.md:535 src/contributors/05-federation.md:674
+#: src/contributors/05-federation.md:716 src/contributors/05-federation.md:887
+#: src/contributors/05-federation.md:911 src/contributors/05-federation.md:1058
+msgid "\"Undo\""
+msgstr ""
+
+#: src/contributors/05-federation.md:536
+msgid ""
+"\"http://ds9.lemmy.ml/activities/undo/dd83c482-8ebd-4b6c-9008-c8373bd1a86a\""
+msgstr ""
+
+#: src/contributors/05-federation.md:540
+msgid "Create or Update Post"
+msgstr ""
+
+#: src/contributors/05-federation.md:542
+msgid ""
+"When a user creates a new post, it is sent to the respective community as "
+"`Create/Page`. Editing a previously created post sends an almost identical "
+"activity, except the `type` being `Update`."
+msgstr ""
+
+#: src/contributors/05-federation.md:550 src/contributors/05-federation.md:611
+#: src/contributors/05-federation.md:652 src/contributors/05-federation.md:689
+#: src/contributors/05-federation.md:708
+msgid "\"http://ds9.lemmy.ml/post/1\""
+msgstr ""
+
+#: src/contributors/05-federation.md:556 src/contributors/05-federation.md:578
+msgid "\"https://enterprise.lemmy.ml/c/main\""
+msgstr ""
+
+#: src/contributors/05-federation.md:557
+msgid "\"test post\""
+msgstr ""
+
+#: src/contributors/05-federation.md:558
+msgid "\"<p>test body</p>\\n\""
+msgstr ""
+
+#: src/contributors/05-federation.md:561
+msgid "\"test body\""
+msgstr ""
+
+#: src/contributors/05-federation.md:567
+msgid "\"https://lemmy.ml/pictrs/image/xl8W7FZfk9.jpg\""
+msgstr ""
+
+#: src/contributors/05-federation.md:572
+msgid "\"ko\""
+msgstr ""
+
+#: src/contributors/05-federation.md:573
+msgid "\"한국어\""
+msgstr ""
+
+#: src/contributors/05-federation.md:575
+msgid "\"2021-10-29T15:10:51.557399Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:584
+msgid "Create or Update Comment"
+msgstr ""
+
+#: src/contributors/05-federation.md:586
+msgid ""
+"A reply to a post, or to another comment as `Create/Note`. Can contain "
+"mentions of other users. Editing a previously created post sends an almost "
+"identical activity, except the `type` being `Update`."
+msgstr ""
+
+#: src/contributors/05-federation.md:588
+msgid ""
+"The origin instance also scans the Comment for any User mentions, and sends "
+"the `Create/Note` to those Users as well."
+msgstr ""
+
+#: src/contributors/05-federation.md:597 src/contributors/05-federation.md:638
+#: src/contributors/05-federation.md:668 src/contributors/05-federation.md:822
+#: src/contributors/05-federation.md:878
+msgid "\"http://ds9.lemmy.ml/comment/1\""
+msgstr ""
+
+#: src/contributors/05-federation.md:605 src/contributors/05-federation.md:608
+#: src/contributors/05-federation.md:1017
+#: src/contributors/05-federation.md:1020
+msgid "\"hello\""
+msgstr ""
+
+#: src/contributors/05-federation.md:612
+msgid "\"2021-11-01T11:45:49.794920Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:623
+msgid "\"@lemmy_alpha@ds9.lemmy.ml\""
+msgstr ""
+
+#: src/contributors/05-federation.md:627
+msgid ""
+"\"http://ds9.lemmy.ml/activities/create/1e77d67c-44ac-45ed-"
+"bf2a-460e21f60236\""
+msgstr ""
+
+#: src/contributors/05-federation.md:631
+msgid "Like Post or Comment"
+msgstr ""
+
+#: src/contributors/05-federation.md:633
+msgid "An upvote for a post or comment."
+msgstr ""
+
+#: src/contributors/05-federation.md:640 src/contributors/05-federation.md:670
+msgid "\"Like\""
+msgstr ""
+
+#: src/contributors/05-federation.md:641
+msgid ""
+"\"http://ds9.lemmy.ml/activities/like/fd61d070-7382-46a9-b2b7-6bb253732877\""
+msgstr ""
+
+#: src/contributors/05-federation.md:645
+msgid "Dislike Post or Comment"
+msgstr ""
+
+#: src/contributors/05-federation.md:647
+msgid "A downvote for a post or comment."
+msgstr ""
+
+#: src/contributors/05-federation.md:651 src/contributors/05-federation.md:783
+#: src/contributors/05-federation.md:788 src/contributors/05-federation.md:820
+#: src/contributors/05-federation.md:837 src/contributors/05-federation.md:873
+#: src/contributors/05-federation.md:876 src/contributors/05-federation.md:894
+#: src/contributors/05-federation.md:897 src/contributors/05-federation.md:952
+#: src/contributors/05-federation.md:967 src/contributors/05-federation.md:1010
+#: src/contributors/05-federation.md:1015
+#: src/contributors/05-federation.md:1035
+#: src/contributors/05-federation.md:1036
+#: src/contributors/05-federation.md:1049
+#: src/contributors/05-federation.md:1052
+#: src/contributors/05-federation.md:1053
+msgid "\"http://enterprise.lemmy.ml/u/lemmy_beta\""
+msgstr ""
+
+#: src/contributors/05-federation.md:654
+msgid "\"Dislike\""
+msgstr ""
+
+#: src/contributors/05-federation.md:655
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/dislike/64d40d40-"
+"a829-43a5-8247-1fb595b3ca1c\""
+msgstr ""
+
+#: src/contributors/05-federation.md:659
+msgid "Undo Like or Dislike Post or Comment"
+msgstr ""
+
+#: src/contributors/05-federation.md:661
+msgid "Revert a vote that was previously done by the same user."
+msgstr ""
+
+#: src/contributors/05-federation.md:671
+msgid ""
+"\"http://ds9.lemmy.ml/activities/like/efcf7ae2-dfcc-4ff4-9ce4-6adf251ff004\""
+msgstr ""
+
+#: src/contributors/05-federation.md:675
+msgid ""
+"\"http://ds9.lemmy.ml/activities/undo/3518565c-24a7-4d9e-8e0a-f7a2f45ac618\""
+msgstr ""
+
+#: src/contributors/05-federation.md:679
+msgid "Delete Post or Comment"
+msgstr ""
+
+#: src/contributors/05-federation.md:681
+msgid ""
+"Mods can remove Posts and Comments from their Communities. Admins can remove "
+"any Posts or Comments on the entire site. Communities can also be removed by "
+"admins. The item is then hidden from all users."
+msgstr ""
+
+#: src/contributors/05-federation.md:683
+msgid ""
+"Removals are sent to all followers of the Community, so that they also take "
+"effect there. The exception is if an admin removes an item from a Community "
+"which is hosted on a different instance. In this case, the removal only "
+"takes effect locally."
+msgstr ""
+
+#: src/contributors/05-federation.md:691 src/contributors/05-federation.md:710
+#: src/contributors/05-federation.md:715 src/contributors/05-federation.md:729
+#: src/contributors/05-federation.md:824 src/contributors/05-federation.md:841
+#: src/contributors/05-federation.md:880 src/contributors/05-federation.md:886
+#: src/contributors/05-federation.md:901 src/contributors/05-federation.md:910
+#: src/contributors/05-federation.md:957 src/contributors/05-federation.md:973
+msgid "\"http://enterprise.lemmy.ml/u/main\""
+msgstr ""
+
+#: src/contributors/05-federation.md:692 src/contributors/05-federation.md:711
+#: src/contributors/05-federation.md:746 src/contributors/05-federation.md:825
+#: src/contributors/05-federation.md:881 src/contributors/05-federation.md:1038
+#: src/contributors/05-federation.md:1055
+msgid "\"Delete\""
+msgstr ""
+
+#: src/contributors/05-federation.md:693 src/contributors/05-federation.md:747
+msgid ""
+"\"http://ds9.lemmy.ml/activities/delete/f2abee48-"
+"c7bb-41d5-9e27-8775ff32db12\""
+msgstr ""
+
+#: src/contributors/05-federation.md:697
+msgid "Undo Delete"
+msgstr ""
+
+#: src/contributors/05-federation.md:699
+msgid "Post or comment deletions can be reverted by the same user."
+msgstr ""
+
+#: src/contributors/05-federation.md:712
+msgid ""
+"\"http://ds9.lemmy.ml/activities/delete/"
+"b13cca96-7737-41e1-9769-8fbf972b3509\""
+msgstr ""
+
+#: src/contributors/05-federation.md:717
+msgid ""
+"\"http://ds9.lemmy.ml/activities/undo/5e939cfb-b8a1-4de8-950f-9d684e9162b9\""
+msgstr ""
+
+#: src/contributors/05-federation.md:721
+msgid "Report Post, comment or private message"
+msgstr ""
+
+#: src/contributors/05-federation.md:723
+msgid "Reports content for rule violation, so that mods/admins can review it."
+msgstr ""
+
+#: src/contributors/05-federation.md:730 src/contributors/05-federation.md:787
+msgid "\"http://enterprise.lemmy.ml/post/7\""
+msgstr ""
+
+#: src/contributors/05-federation.md:731
+msgid "\"report this post\""
+msgstr ""
+
+#: src/contributors/05-federation.md:732
+msgid "\"Flag\""
+msgstr ""
+
+#: src/contributors/05-federation.md:733
+msgid ""
+"\"http://ds9.lemmy.ml/activities/flag/98b0933f-5e45-4a95-a15f-e0dc86361ba4\""
+msgstr ""
+
+#: src/contributors/05-federation.md:737
+msgid "Delete User"
+msgstr ""
+
+#: src/contributors/05-federation.md:739
+msgid "Sent when a user deletes his own account."
+msgstr ""
+
+#: src/contributors/05-federation.md:748 src/contributors/05-federation.md:844
+#: src/contributors/05-federation.md:904
+msgid "\"removeData\""
+msgstr ""
+
+#: src/contributors/05-federation.md:752
+msgid "Community to User"
+msgstr ""
+
+#: src/contributors/05-federation.md:754
+msgid "Accept Follow"
+msgstr ""
+
+#: src/contributors/05-federation.md:756
+msgid ""
+"Automatically sent by the community in response to a `Follow`. At the same "
+"time, the community adds this user to its followers list."
+msgstr ""
+
+#: src/contributors/05-federation.md:769
+msgid "\"Accept\""
+msgstr ""
+
+#: src/contributors/05-federation.md:770
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/"
+"accept/75f080cc-3d45-4654-8186-8f3bb853fa27\""
+msgstr ""
+
+#: src/contributors/05-federation.md:774
+msgid "Announce"
+msgstr ""
+
+#: src/contributors/05-federation.md:776
+msgid ""
+"If the Community receives any Post or Comment related activity (Create, "
+"Update, Like, Dislike, Remove, Delete, Undo etc.), it will forward this to "
+"its followers. For this, an Announce is created with the Community as actor, "
+"and the received activity as object. This is sent to all followers, so they "
+"get updated in real time."
+msgstr ""
+
+#: src/contributors/05-federation.md:793
+msgid "\"post 4\""
+msgstr ""
+
+#: src/contributors/05-federation.md:795
+msgid "\"commentsEnabled\""
+msgstr ""
+
+#: src/contributors/05-federation.md:798
+msgid "\"2021-11-01T12:11:22.871846Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:802
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/create/2807c9ec-3ad8-4859-"
+"a9e0-28b59b6e499f\""
+msgstr ""
+
+#: src/contributors/05-federation.md:806
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/"
+"announce/8030b171-803a-4108-94b1-342688f375cf\""
+msgstr ""
+
+#: src/contributors/05-federation.md:810
+msgid "Moderation"
+msgstr ""
+
+#: src/contributors/05-federation.md:812
+msgid ""
+"These actions can only be done by instance admins or community moderators. "
+"They are sent to the community and announced by it. See [](../users/04-"
+"moderation.md) for a general overview how moderation works in Lemmy. "
+"Communities can only be created on the same instance where a user is "
+"registered. After that, mods from other instances can be added with `Add/"
+"User` activity."
+msgstr ""
+
+#: src/contributors/05-federation.md:814
+msgid "Remove Post or Comment"
+msgstr ""
+
+#: src/contributors/05-federation.md:816
+msgid ""
+"Removes a post or comment. The difference to delete is that remove "
+"activities have a summary field, which contains the reason for removal, as "
+"provided by the mod/admin."
+msgstr ""
+
+#: src/contributors/05-federation.md:826 src/contributors/05-federation.md:882
+msgid "\"bad comment\""
+msgstr ""
+
+#: src/contributors/05-federation.md:827
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/delete/42ca1a79-f99e-4518-a2ca-"
+"ba2df221eb5e\""
+msgstr ""
+
+#: src/contributors/05-federation.md:831
+msgid "Block User"
+msgstr ""
+
+#: src/contributors/05-federation.md:833
+msgid ""
+"Blocks a user so he can't participate anymore. The scope is determined by "
+"the `target` field: either a community, or a whole instance. The "
+"`removeData` field can optionally be set to indicate that all previous posts "
+"of the user should be deleted."
+msgstr ""
+
+#: src/contributors/05-federation.md:842 src/contributors/05-federation.md:902
+#: src/contributors/05-federation.md:928 src/contributors/05-federation.md:941
+#: src/contributors/05-federation.md:955 src/contributors/05-federation.md:972
+msgid "\"target\""
+msgstr ""
+
+#: src/contributors/05-federation.md:843 src/contributors/05-federation.md:903
+msgid "\"Block\""
+msgstr ""
+
+#: src/contributors/05-federation.md:845 src/contributors/05-federation.md:905
+msgid "\"spam post\""
+msgstr ""
+
+#: src/contributors/05-federation.md:846 src/contributors/05-federation.md:906
+msgid "\"expires\""
+msgstr ""
+
+#: src/contributors/05-federation.md:846 src/contributors/05-federation.md:906
+msgid "\"2021-11-01T12:23:50.151874Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:847
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/"
+"block/5d42fffb-0903-4625-86d4-0b39bb344fc2\""
+msgstr ""
+
+#: src/contributors/05-federation.md:851
+msgid "Lock post"
+msgstr ""
+
+#: src/contributors/05-federation.md:853
+msgid "Posts can be locked so that no new comments can be created."
+msgstr ""
+
+#: src/contributors/05-federation.md:857
+msgid ""
+"\"http://lemmy-alpha:8541/activities/lock/cb48761d-9e8c-42ce-aacb-"
+"b4bbe6408db2\""
+msgstr ""
+
+#: src/contributors/05-federation.md:858
+msgid "\"http://lemmy-alpha:8541/u/lemmy_alpha\""
+msgstr ""
+
+#: src/contributors/05-federation.md:860
+msgid "\"http://lemmy-alpha:8541/post/2\""
+msgstr ""
+
+#: src/contributors/05-federation.md:861 src/contributors/05-federation.md:863
+msgid "\"http://lemmy-alpha:8541/c/main\""
+msgstr ""
+
+#: src/contributors/05-federation.md:862
+msgid "\"Lock\""
+msgstr ""
+
+#: src/contributors/05-federation.md:867
+msgid "Undo mod actions"
+msgstr ""
+
+#: src/contributors/05-federation.md:869
+msgid ""
+"All previously listed mod actions can be reverted by wrapping the original "
+"activity in `Undo`. Note that Lemmy regenerates the inner activity with a "
+"new ID."
+msgstr ""
+
+#: src/contributors/05-federation.md:883
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/delete/2598435c-87a3-49cd-81f3-"
+"a44b03b7af9d\""
+msgstr ""
+
+#: src/contributors/05-federation.md:888
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/undo/a850cf21-3866-4b3a-"
+"b80b-56aa00997fee\""
+msgstr ""
+
+#: src/contributors/05-federation.md:907
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/block/726f43ab-"
+"bd0e-4ab3-89c8-627e976f553c\""
+msgstr ""
+
+#: src/contributors/05-federation.md:912
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/"
+"undo/06a20ffb-3e32-42fb-8f4c-674b36d7c557\""
+msgstr ""
+
+#: src/contributors/05-federation.md:916
+msgid "Add or remove featured post"
+msgstr ""
+
+#: src/contributors/05-federation.md:918
+msgid ""
+"Posts can be pinned so that they are always shown on top of the community. "
+"This is federated with the [Community featured posts](#community-featured-"
+"posts) collection."
+msgstr ""
+
+#: src/contributors/05-federation.md:923 src/contributors/05-federation.md:936
+msgid ""
+"\"https://ds9.lemmy.ml/activities/add/47d911f5-52c5-4659-b2fd-0e58c451a427\""
+msgstr ""
+
+#: src/contributors/05-federation.md:925 src/contributors/05-federation.md:958
+msgid "\"Add\""
+msgstr ""
+
+#: src/contributors/05-federation.md:938 src/contributors/05-federation.md:971
+msgid "\"Remove\""
+msgstr ""
+
+#: src/contributors/05-federation.md:946
+msgid "Add or remove mod"
+msgstr ""
+
+#: src/contributors/05-federation.md:948
+msgid ""
+"Add a new mod to the community. Has to be sent by an existing community mod, "
+"or an admin of the community's instance."
+msgstr ""
+
+#: src/contributors/05-federation.md:955 src/contributors/05-federation.md:972
+msgid "\"http://enterprise.lemmy.ml/c/main/moderators\""
+msgstr ""
+
+#: src/contributors/05-federation.md:959
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/add/"
+"ec069147-77c3-447f-88c8-0ef1df10403f\""
+msgstr ""
+
+#: src/contributors/05-federation.md:963
+msgid "An existing mod can be removed in the same way."
+msgstr ""
+
+#: src/contributors/05-federation.md:974
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/remove/aab114f8-cfbd-4935-a5b7-"
+"e1a64603650d\""
+msgstr ""
+
+#: src/contributors/05-federation.md:978
+msgid "User to User"
+msgstr ""
+
+#: src/contributors/05-federation.md:980
+msgid "Follow a user"
+msgstr ""
+
+#: src/contributors/05-federation.md:982
+msgid ""
+"Users from other platforms can follow Lemmy users and receive all of their "
+"posts to the inbox. Note that users who are registered on Lemmy can only "
+"follow groups, not other users."
+msgstr ""
+
+#: src/contributors/05-federation.md:988
+msgid "\"https://mycrowd.ca/schemas/litepub-0.1.jsonld\""
+msgstr ""
+
+#: src/contributors/05-federation.md:990
+msgid "\"@language\""
+msgstr ""
+
+#: src/contributors/05-federation.md:990
+msgid "\"und\""
+msgstr ""
+
+#: src/contributors/05-federation.md:993
+msgid "\"https://mycrowd.ca/users/kinetix\""
+msgstr ""
+
+#: src/contributors/05-federation.md:995
+msgid "\"https://mycrowd.ca/activities/dab6a4d3-0db0-41ee-8aab-7bfa4929b4fd\""
+msgstr ""
+
+#: src/contributors/05-federation.md:996 src/contributors/05-federation.md:998
+msgid "\"https://lemmy.ca/u/kinetix\""
+msgstr ""
+
+#: src/contributors/05-federation.md:997
+msgid "\"state\""
+msgstr ""
+
+#: src/contributors/05-federation.md:997
+msgid "\"pending\""
+msgstr ""
+
+#: src/contributors/05-federation.md:1003
+msgid "Create or Update Private message"
+msgstr ""
+
+#: src/contributors/05-federation.md:1005
+msgid ""
+"User profiles have a \"Send Message\" button, which opens a dialog "
+"permitting to send a private message to this user. It is sent as a `Create/"
+"ChatMessage` to the user inbox. Private messages can only be directed at a "
+"single User. They can also be edited with `Update/ChatMessage`."
+msgstr ""
+
+#: src/contributors/05-federation.md:1009
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/create/987d05fa-"
+"f637-46d7-85be-13d112bc269f\""
+msgstr ""
+
+#: src/contributors/05-federation.md:1014
+#: src/contributors/05-federation.md:1037
+#: src/contributors/05-federation.md:1054
+msgid "\"http://enterprise.lemmy.ml/private_message/1\""
+msgstr ""
+
+#: src/contributors/05-federation.md:1023
+msgid "\"2021-10-29T15:31:56.058289Z\""
+msgstr ""
+
+#: src/contributors/05-federation.md:1029
+msgid "Delete Private Message"
+msgstr ""
+
+#: src/contributors/05-federation.md:1031
+msgid "Deletes a previous private message."
+msgstr ""
+
+#: src/contributors/05-federation.md:1039
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/"
+"delete/041d9858-5eef-4ad9-84ae-7455b4d87ed9\""
+msgstr ""
+
+#: src/contributors/05-federation.md:1043
+msgid "Undo Delete Private Message"
+msgstr ""
+
+#: src/contributors/05-federation.md:1045
+msgid ""
+"Restores a previously deleted private message. The `object` is regenerated "
+"from scratch, as such the activity ID and other fields are different."
+msgstr ""
+
+#: src/contributors/05-federation.md:1056
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/delete/616c41be-04ed-4bd4-"
+"b865-30712186b122\""
+msgstr ""
+
+#: src/contributors/05-federation.md:1059
+msgid ""
+"\"http://enterprise.lemmy.ml/activities/"
+"undo/35e5b337-014c-4bbe-8d63-6fac96f51409\""
+msgstr ""

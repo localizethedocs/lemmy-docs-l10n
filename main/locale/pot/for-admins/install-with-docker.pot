@@ -1,0 +1,165 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/administration/install_docker.md:1
+msgid "Install with Docker"
+msgstr ""
+
+#: src/administration/install_docker.md:3
+msgid ""
+"Make sure you have both docker and docker-compose(>=`2.0`) installed. On "
+"Ubuntu, just run `apt install docker-compose-v2 docker.io`. On Debian, you "
+"need to install Docker [using their official installation instructions and "
+"custom `apt` repo](https://docs.docker.com/engine/install/debian/)."
+msgstr ""
+
+#: src/administration/install_docker.md:5
+msgid ""
+"Create a folder for the lemmy files. the location doesnt matter. You can put "
+"this anywhere you want, for example under `/srv/`:"
+msgstr ""
+
+#: src/administration/install_docker.md:12
+msgid "Then download default config files:"
+msgstr ""
+
+#: src/administration/install_docker.md:21
+msgid ""
+"Edit `docker-compose.yml` and `lemmy.hjson` to replace all occurrences of "
+"`{{ domain }}` with your actual Lemmy domain, `{{ postgres_password }}` with "
+"a random password."
+msgstr ""
+
+#: src/administration/install_docker.md:23
+msgid ""
+"Also edit `nginx_internal.conf` and replace `{{ nginx_internal_resolver }}` "
+"with `127.0.0.11` (use `10.89.0.1` for RedHat distributions)."
+msgstr ""
+
+#: src/administration/install_docker.md:25
+msgid ""
+"If you'd like further customization, have a look at the [config file]"
+"(configuration.md) named `lemmy.hjson`, and adjust it accordingly."
+msgstr ""
+
+#: src/administration/install_docker.md:27
+msgid "Database tweaks"
+msgstr ""
+
+#: src/administration/install_docker.md:29
+msgid "To optimize your database, add this file."
+msgstr ""
+
+#: src/administration/install_docker.md:31
+msgid ""
+"You can input your system specs, using this tool: https://pgtune.leopard.in."
+"ua/"
+msgstr ""
+
+#: src/administration/install_docker.md:33
+msgid ""
+"`wget https://raw.githubusercontent.com/LemmyNet/lemmy-ansible/main/examples/"
+"customPostgresql.conf`"
+msgstr ""
+
+#: src/administration/install_docker.md:35
+msgid "Folder permissions"
+msgstr ""
+
+#: src/administration/install_docker.md:37
+msgid "Set the correct permissions for pictrs folder:"
+msgstr ""
+
+#: src/administration/install_docker.md:44
+msgid "Finally, run:"
+msgstr ""
+
+#: src/administration/install_docker.md:46
+msgid "`docker compose up -d`"
+msgstr ""
+
+#: src/administration/install_docker.md:48
+msgid ""
+"lemmy-ui is accessible on the server at `http://localhost:{{ lemmy_port }}`"
+msgstr ""
+
+#: src/administration/install_docker.md:50
+msgid "Reverse Proxy / Webserver"
+msgstr ""
+
+#: src/administration/install_docker.md:52
+msgid ""
+"Here's an optional nginx reverse proxy template, which you can place in `/"
+"etc/nginx/sites-enabled`"
+msgstr ""
+
+#: src/administration/install_docker.md:54
+msgid ""
+"Alternatively, you can use any other web server such as caddy as a simple "
+"reverse proxy."
+msgstr ""
+
+#: src/administration/install_docker.md:56
+msgid "Be sure to edit the `{{ }}` to match your domain and port."
+msgstr ""
+
+#: src/administration/install_docker.md:58
+msgid ""
+"If you're using this, you will need to set up Let's Encrypt. See those "
+"instructions below."
+msgstr ""
+
+#: src/administration/install_docker.md:60
+msgid ""
+"`wget https://raw.githubusercontent.com/LemmyNet/lemmy-ansible/main/"
+"templates/nginx.conf`"
+msgstr ""
+
+#: src/administration/install_docker.md:62
+msgid ""
+"If you've set up Let's Encrypt and your reverse proxy, you can go to "
+"`https://{{ domain }}`"
+msgstr ""
+
+#: src/administration/install_docker.md:64
+msgid "Let's Encrypt"
+msgstr ""
+
+#: src/administration/install_docker.md:66
+msgid ""
+"You should also setup TLS, for example with [Let's Encrypt](https://"
+"letsencrypt.org/). [Here's a guide for setting up letsencrypt on Ubuntu]"
+"(https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-"
+"let-s-encrypt-on-ubuntu-22-04)."
+msgstr ""
+
+#: src/administration/install_docker.md:68
+msgid ""
+"For federation to work, it is important that you do not change any headers "
+"that form part of the signature. This includes the `Host` header - you may "
+"need to refer to the documentation for your proxy server to pass through the "
+"`Host` header unmodified."
+msgstr ""
+
+#: src/administration/install_docker.md:70
+msgid "Updating"
+msgstr ""
+
+#: src/administration/install_docker.md:72
+msgid ""
+"To update to the newest version, it is usually enough to change the version "
+"numbers in `docker-compose.yml`, eg `dessalines/lemmy:0.19.4` to `dessalines/"
+"lemmy:0.19.5`. If additional steps are required, these are explained in the "
+"respective release announcement. After changing the versions, run these "
+"commands:"
+msgstr ""

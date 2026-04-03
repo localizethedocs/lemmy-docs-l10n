@@ -1,0 +1,200 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/contributors/06-resources.md:1
+msgid "Resources"
+msgstr ""
+
+#: src/contributors/06-resources.md:3
+msgid "Rust"
+msgstr ""
+
+#: src/contributors/06-resources.md:5
+msgid ""
+"[Diesel to Postgres data types](https://kotiri.com/2018/01/31/postgresql-"
+"diesel-rust-types.html)"
+msgstr ""
+
+#: src/contributors/06-resources.md:6
+msgid "[helpful diesel examples](http://siciarz.net/24-days-rust-diesel/)"
+msgstr ""
+
+#: src/contributors/06-resources.md:7
+msgid "[Rust JWT](https://github.com/Keats/jsonwebtoken)"
+msgstr ""
+
+#: src/contributors/06-resources.md:8
+msgid ""
+"[Rust docker build](https://shaneutt.com/blog/rust-fast-small-docker-image-"
+"builds/)"
+msgstr ""
+
+#: src/contributors/06-resources.md:10
+msgid "Typescript"
+msgstr ""
+
+#: src/contributors/06-resources.md:12
+msgid "[Markdown-it](https://github.com/markdown-it/markdown-it)"
+msgstr ""
+
+#: src/contributors/06-resources.md:13
+msgid ""
+"[Sticky Sidebar](https://stackoverflow.com/questions/38382043/how-to-use-css-"
+"position-sticky-to-keep-a-sidebar-visible-with-bootstrap-4/49111934)"
+msgstr ""
+
+#: src/contributors/06-resources.md:14
+msgid ""
+"[RXJS websocket](https://stackoverflow.com/questions/44060315/reconnecting-a-"
+"websocket-in-angular-and-rxjs/44067972#44067972)"
+msgstr ""
+
+#: src/contributors/06-resources.md:15
+msgid ""
+"[Simple markdown editor](https://github.com/sparksuite/simplemde-markdown-"
+"editor)"
+msgstr ""
+
+#: src/contributors/06-resources.md:16
+msgid "[Zurb mentions](https://github.com/zurb/tribute)"
+msgstr ""
+
+#: src/contributors/06-resources.md:17
+msgid "[TippyJS](https://github.com/atomiks/tippyjs)"
+msgstr ""
+
+#: src/contributors/06-resources.md:19
+msgid "Trees"
+msgstr ""
+
+#: src/contributors/06-resources.md:21
+msgid ""
+"[Hierarchical tree building javascript](https://stackoverflow.com/"
+"a/40732240/1655478)"
+msgstr ""
+
+#: src/contributors/06-resources.md:22
+msgid ""
+"[Recursive query for adjacency list for nested comments](https://"
+"stackoverflow.com/questions/192220/what-is-the-most-efficient-elegant-way-to-"
+"parse-a-flat-table-into-a-tree/192462#192462)"
+msgstr ""
+
+#: src/contributors/06-resources.md:24
+msgid "Sorting"
+msgstr ""
+
+#: src/contributors/06-resources.md:26
+msgid ""
+"[Hot sorting discussion](https://meta.stackexchange.com/questions/11602/what-"
+"formula-should-be-used-to-determine-hot-questions) [2](https://archive.is/"
+"x0AJT)"
+msgstr ""
+
+#: src/contributors/06-resources.md:28
+msgid "SQL"
+msgstr ""
+
+#: src/contributors/06-resources.md:30
+msgid ""
+"[SQL function indexes](https://sorentwo.com/2013/12/30/let-postgres-do-the-"
+"work.html)"
+msgstr ""
+
+#: src/contributors/06-resources.md:32
+msgid "ActivityPub Resources"
+msgstr ""
+
+#: src/contributors/06-resources.md:34
+msgid "Official Documents"
+msgstr ""
+
+#: src/contributors/06-resources.md:36
+msgid "[ActivityPub standard](https://www.w3.org/TR/activitypub/)"
+msgstr ""
+
+#: src/contributors/06-resources.md:37
+msgid ""
+"[Activitypub vocabulary](https://www.w3.org/TR/activitystreams-vocabulary/)"
+msgstr ""
+
+#: src/contributors/06-resources.md:39
+msgid "Explanations"
+msgstr ""
+
+#: src/contributors/06-resources.md:41
+msgid ""
+"[ActivityPub - one protocol to rule them all?](https://schub.io/"
+"blog/2018/02/01/activitypub-one-protocol-to-rule-them-all.html)"
+msgstr ""
+
+#: src/contributors/06-resources.md:42
+msgid ""
+"[A highly opinionated guide to learning about ActivityPub](https://"
+"tinysubversions.com/notes/reading-activitypub/)"
+msgstr ""
+
+#: src/contributors/06-resources.md:43
+msgid ""
+"[Activitypub implementers guide](https://socialhub.activitypub.rocks/t/draft-"
+"guide-for-new-activitypub-implementers/479)"
+msgstr ""
+
+#: src/contributors/06-resources.md:44
+msgid ""
+"[Mastodon Blog: How to implement a basic ActivityPub server](https://blog."
+"joinmastodon.org/2018/06/how-to-implement-a-basic-activitypub-server/)"
+msgstr ""
+
+#: src/contributors/06-resources.md:45
+msgid ""
+"[Mastodon Blog: Implementing an ActivityPub inbox](https://blog.joinmastodon."
+"org/2018/07/how-to-make-friends-and-verify-requests/)"
+msgstr ""
+
+#: src/contributors/06-resources.md:46
+msgid ""
+"[Data storage questions](https://socialhub.activitypub.rocks/t/data-storage-"
+"questions/579)"
+msgstr ""
+
+#: src/contributors/06-resources.md:47
+msgid ""
+"[Activitypub as it has been understood](https://flak.tedunangst.com/post/"
+"ActivityPub-as-it-has-been-understood)"
+msgstr ""
+
+#: src/contributors/06-resources.md:49
+msgid "Examples and Libraries"
+msgstr ""
+
+#: src/contributors/06-resources.md:51
+msgid ""
+"[activitypub-federation-rust library](https://crates.io/crates/activitypub-"
+"federation)"
+msgstr ""
+
+#: src/contributors/06-resources.md:52
+msgid ""
+"[ActivityPub example server](https://github.com/tOkeshu/activitypub-example)"
+msgstr ""
+
+#: src/contributors/06-resources.md:53
+msgid "[ActivityStreams crate](https://docs.rs/activitystreams/)"
+msgstr ""
+
+#: src/contributors/06-resources.md:54
+msgid ""
+"[HTTP Signatures crate](https://git.asonix.dog/asonix/http-signature-"
+"normalization)"
+msgstr ""
