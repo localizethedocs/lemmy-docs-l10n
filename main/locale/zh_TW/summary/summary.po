@@ -5,10 +5,10 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: src/SUMMARY.md:1
@@ -49,7 +49,7 @@ msgstr ""
 
 #: src/SUMMARY.md:13
 msgid "Other Features"
-msgstr ""
+msgstr "其他功能"
 
 #: src/SUMMARY.md:14
 msgid "History of Lemmy"
@@ -137,7 +137,7 @@ msgstr ""
 
 #: src/SUMMARY.md:39
 msgid "Docker Development"
-msgstr ""
+msgstr "Docker 開發"
 
 #: src/SUMMARY.md:40
 msgid "API"
@@ -161,4 +161,4 @@ msgstr ""
 
 #: src/SUMMARY.md:46 src/SUMMARY.md:48
 msgid "Code of Conduct"
-msgstr ""
+msgstr "行為守則"

@@ -5,15 +5,15 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: src/introduction.md:1
 msgid "Introduction"
-msgstr ""
+msgstr "介紹"
 
 #: src/introduction.md:3
 msgid ""
@@ -25,6 +25,10 @@ msgid ""
 "completely free and open, not controlled by any company. This means that "
 "there is no advertising, tracking, or secret algorithms."
 msgstr ""
+"Lemmy 是一個自託管、聯邦制的社交連結聚合與討論論壇。它由許多專注於不同主題的"
+"不同社群所組成。使用者可以張貼文字、連結或圖片，並與他人進行討論。投票機制有"
+"助於將最有趣的項目推向頂端。系統具備強大的管理工具以排除垃圾訊息和網路白目。"
+"這一切完全免費且開放，不受任何公司控制。這意味著沒有廣告、追蹤或秘密演算法。"
 
 #: src/introduction.md:5
 msgid ""
@@ -32,6 +36,8 @@ msgid ""
 "service that everyone uses, there are multiple services that any number of "
 "people can use."
 msgstr ""
+"聯邦制是一種去中心化的形式。不同於單一中央服務供所有人使用，而是有多個服務可"
+"供任意數量的人使用。"
 
 #: src/introduction.md:7
 msgid ""
@@ -43,6 +49,11 @@ msgid ""
 "provider, as long as you know their email address, you can mention or "
 "message anyone on any website using their address."
 msgstr ""
+"一個 Lemmy 網站可以獨立運作。就像傳統網站一樣，人們在上面註冊、張貼訊息、上傳"
+"圖片並互相交流。不同於傳統網站的是，Lemmy 實例之間可以互通，讓它們的使用者能"
+"夠相互溝通；就像你可以從你的 Gmail 帳號發送電子郵件給使用 Outlook、Fastmail、"
+"Proton Mail 或其他任何電子郵件服務提供商的人，只要你知道他們的電子郵件地址，"
+"你就可以使用他們的地址在任何網站上提及或發送訊息給任何人。"
 
 #: src/introduction.md:9
 msgid ""
@@ -51,6 +62,9 @@ msgid ""
 "ActivityPub can seamlessly communicate with Lemmy, just like Lemmy instances "
 "communicate with one another."
 msgstr ""
+"Lemmy 使用一種標準化、開放的協定來實現聯邦制，這種協定稱為 ActivityPub。任何"
+"同樣透過 ActivityPub 實現聯邦制的軟體都能與 Lemmy 無縫溝通，就像 Lemmy 實例之"
+"間互相溝通一樣。"
 
 #: src/introduction.md:11
 msgid ""
@@ -58,18 +72,20 @@ msgid ""
 "can communicate with each other over ActivityPub and the World Wide Web. "
 "That includes all Lemmy servers, but also other implementations:"
 msgstr ""
+"聯邦宇宙（\"federated universe\"）是指所有能透過 ActivityPub 和全球資訊網互相"
+"通訊的實例總稱。這包含所有 Lemmy 伺服器，以及其他實作："
 
 #: src/introduction.md:13
 msgid "[Mastodon](https://joinmastodon.org/) (microblogging)"
-msgstr ""
+msgstr "[Mastodon](https://joinmastodon.org/)（微網誌）"
 
 #: src/introduction.md:14
 msgid "[PeerTube](https://joinpeertube.org/) (videos)"
-msgstr ""
+msgstr "[PeerTube](https://joinpeertube.org/)（影片）"
 
 #: src/introduction.md:15
 msgid "[Friendica](https://friendi.ca/) (multi-purpose)"
-msgstr ""
+msgstr "[Friendica](https://friendi.ca/)（多用途）"
 
 #: src/introduction.md:16
 msgid "and many more!"
@@ -97,15 +113,24 @@ msgid ""
 "as the original Lemmy project. Because Lemmy is libre software that respects "
 "your freedom, personalizations are not only allowed but encouraged."
 msgstr ""
+"與專有服務不同，任何人都擁有完全的自由來執行、檢查、檢視、複製、修改、散佈和"
+"重複使用 Lemmy 的來源碼。就如同 Lemmy 的使用者可以選擇他們的服務供應商一樣，"
+"您作為個人也可以自由地為 Lemmy 貢獻功能，或是發佈包含不同功能的 Lemmy 修改版"
+"本。這些修改版本，亦稱為軟體分叉，同樣必須維護與原始 Lemmy 專案相同的自由。因"
+"為 Lemmy 是尊重你自由的自由軟體，個人化不僅被允許，而且受到鼓勵。"
 
 #: src/introduction.md:22
 msgid ""
 "<sub>You can contribute to this documentation in the [git repository]"
 "(https://github.com/LemmyNet/lemmy-docs).</sub>"
 msgstr ""
+"<sub>您可以在 [git 儲存庫]( https://github.com/LemmyNet/lemmy-docs) 中參與貢"
+"獻本文件。</sub>"
 
 #: src/introduction.md:24
 msgid ""
 "<sub>This page is adapted from [Mastodon documentation](https://docs."
 "joinmastodon.org/) under CC BY-SA 4.0.</sub>"
 msgstr ""
+"<sub>本頁面改編自 [Mastodon 文件](https://docs.joinmastodon.org/)，採用 CC "
+"BY-SA 4.0 授權。</sub>"
