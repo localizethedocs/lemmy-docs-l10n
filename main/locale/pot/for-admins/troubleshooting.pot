@@ -1,0 +1,641 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/administration/troubleshooting.md:1
+msgid "Troubleshooting"
+msgstr ""
+
+#: src/administration/troubleshooting.md:3
+msgid ""
+"Different problems that can occur on a new instance, and how to solve them."
+msgstr ""
+
+#: src/administration/troubleshooting.md:5
+msgid ""
+"Many Lemmy features depend on a correct reverse proxy configuration. Make "
+"sure yours is equivalent to our [nginx config](https://github.com/LemmyNet/"
+"lemmy-ansible/blob/main/templates/nginx.conf)."
+msgstr ""
+
+#: src/administration/troubleshooting.md:7
+msgid "General"
+msgstr ""
+
+#: src/administration/troubleshooting.md:9
+msgid "Logs"
+msgstr ""
+
+#: src/administration/troubleshooting.md:11
+msgid ""
+"For frontend issues, check the [browser console](https://webmasters."
+"stackexchange.com/a/77337) for any error messages."
+msgstr ""
+
+#: src/administration/troubleshooting.md:13
+msgid ""
+"For server logs, run `docker compose logs -f lemmy` in your installation "
+"folder. You can also do `docker compose logs -f lemmy lemmy-ui pictrs` to "
+"get logs from different services."
+msgstr ""
+
+#: src/administration/troubleshooting.md:15
+msgid ""
+"If that doesn't give enough info, try changing the line `RUST_LOG=error` in "
+"`docker-compose.yml` to `RUST_LOG=info` or `RUST_LOG=trace`, then do `docker "
+"compose restart lemmy`."
+msgstr ""
+
+#: src/administration/troubleshooting.md:17
+msgid "Creating admin user doesn't work"
+msgstr ""
+
+#: src/administration/troubleshooting.md:19
+msgid ""
+"Make sure that websocket is working correctly, by checking the browser "
+"console for errors. In nginx, the following headers are important for this:"
+msgstr ""
+
+#: src/administration/troubleshooting.md:21
+msgid ""
+"```\n"
+"proxy_http_version 1.1;\n"
+"proxy_set_header Upgrade $http_upgrade;\n"
+"proxy_set_header Connection \"upgrade\";\n"
+"```"
+msgstr ""
+
+#: src/administration/troubleshooting.md:27
+msgid "Rate limit error when many users access the site"
+msgstr ""
+
+#: src/administration/troubleshooting.md:29
+msgid ""
+"Check that the headers `X-Real-IP` and `X-Forwarded-For` are sent to Lemmy "
+"by the reverse proxy. Otherwise, it will count all actions towards the rate "
+"limit of the reverse proxy's IP. In nginx it should look like this:"
+msgstr ""
+
+#: src/administration/troubleshooting.md:37
+msgid "Federation"
+msgstr ""
+
+#: src/administration/troubleshooting.md:39
+msgid "Other instances can't fetch local objects (community, post, etc)"
+msgstr ""
+
+#: src/administration/troubleshooting.md:41
+msgid ""
+"Your reverse proxy (eg nginx) needs to forward requests with header `Accept: "
+"application/activity+json` to the backend. This is handled by the following "
+"lines:"
+msgstr ""
+
+#: src/administration/troubleshooting.md:43
+msgid ""
+"```\n"
+"set $proxpass \"http://0.0.0.0:{{ lemmy_ui_port }}\";\n"
+"if ($http_accept = \"application/activity+json\") {\n"
+"set $proxpass \"http://0.0.0.0:{{ lemmy_port }}\";\n"
+"}\n"
+"if ($http_accept = \"application/ld+json; profile=\\\"https://www.w3.org/ns/"
+"activitystreams\\\"\") {\n"
+"set $proxpass \"http://0.0.0.0:{{ lemmy_port }}\";\n"
+"}\n"
+"proxy_pass $proxpass;\n"
+"```"
+msgstr ""
+
+#: src/administration/troubleshooting.md:54
+msgid ""
+"You can test that it works correctly by running the following commands, all "
+"of them should return valid JSON:"
+msgstr ""
+
+#: src/administration/troubleshooting.md:56
+msgid ""
+"```\n"
+"curl -H \"Accept: application/activity+json\" https://your-instance.com/u/"
+"some-local-user\n"
+"curl -H \"Accept: application/activity+json\" https://your-instance.com/c/"
+"some-local-community\n"
+"curl -H \"Accept: application/activity+json\" https://your-instance.com/"
+"post/123 # the id of a local post\n"
+"curl -H \"Accept: application/activity+json\" https://your-instance.com/"
+"comment/123 # the id of a local comment\n"
+"```"
+msgstr ""
+
+#: src/administration/troubleshooting.md:63
+msgid ""
+"Fetching remote objects works, but posting/commenting in remote communities "
+"fails"
+msgstr ""
+
+#: src/administration/troubleshooting.md:65
+msgid ""
+"Check that [federation is allowed on both instances]"
+"(federation_getting_started.md)."
+msgstr ""
+
+#: src/administration/troubleshooting.md:67
+msgid ""
+"Also ensure that the time is correct on your server. Activities are signed "
+"with a timestamp, and will be discarded if it is off by more than one hour."
+msgstr ""
+
+#: src/administration/troubleshooting.md:69
+msgid ""
+"It is possible that federation requests to `/inbox` are blocked by tools "
+"such as Cloudflare. The sending instance can find HTTP errors with the "
+"following steps:"
+msgstr ""
+
+#: src/administration/troubleshooting.md:71
+msgid ""
+"If you use a [separate container for outgoing federation](horizontal_scaling."
+"md), you need to apply the following steps to that container only"
+msgstr ""
+
+#: src/administration/troubleshooting.md:72
+msgid "Set `RUST_LOG=lemmy_federate=trace` for Lemmy"
+msgstr ""
+
+#: src/administration/troubleshooting.md:73
+msgid "Reload the new configuration: `docker compose up -d`"
+msgstr ""
+
+#: src/administration/troubleshooting.md:74
+msgid ""
+"Search for messages containing the target instance domain: `docker compose "
+"logs -f --tail=100 lemmy |  grep -F lemm.ee -C 10`"
+msgstr ""
+
+#: src/administration/troubleshooting.md:75
+msgid ""
+"You also may have to reset the fail count for the target instance (see below)"
+msgstr ""
+
+#: src/administration/troubleshooting.md:77
+msgid "Reset federation fail count for instance"
+msgstr ""
+
+#: src/administration/troubleshooting.md:79
+msgid ""
+"If federation sending to a specific instance has been failing consistently, "
+"Lemmy will slow down sending using exponential backoff. For testing it can "
+"be useful to reset this and make Lemmy send activities immediately. To do "
+"this use the following steps:"
+msgstr ""
+
+#: src/administration/troubleshooting.md:81
+msgid ""
+"Stop Lemmy, or specifically the container for outgoing federation `docker "
+"compose stop lemmy`"
+msgstr ""
+
+#: src/administration/troubleshooting.md:82
+msgid ""
+"Enter SQL command line: `sudo docker compose exec postgres psql -U lemmy`"
+msgstr ""
+
+#: src/administration/troubleshooting.md:83
+msgid "Reset failure count via SQL:"
+msgstr ""
+
+#: src/administration/troubleshooting.md:90
+msgid "'lemm.ee'"
+msgstr ""
+
+#: src/administration/troubleshooting.md:93
+msgid ""
+"Exit SQL command line with `\\q`, then restart Lemmy: `docker compose start "
+"lemmy`"
+msgstr ""
+
+#: src/administration/troubleshooting.md:95
+msgid "Other instances don't receive actions reliably"
+msgstr ""
+
+#: src/administration/troubleshooting.md:97
+msgid ""
+"Lemmy uses one queue per federated instance to send out activities. Search "
+"the logs for \"Federation state\" for summaries. Errors will also be logged."
+msgstr ""
+
+#: src/administration/troubleshooting.md:99
+msgid "For details, execute this SQL query:"
+msgstr ""
+
+#: src/administration/troubleshooting.md:102
+msgid "'sent_activity_id_seq'"
+msgstr ""
+
+#: src/administration/troubleshooting.md:106
+msgid "You will see a table like the following:"
+msgstr ""
+
+#: src/administration/troubleshooting.md:108
+msgid "domain"
+msgstr ""
+
+#: src/administration/troubleshooting.md:108
+msgid "latest_id"
+msgstr ""
+
+#: src/administration/troubleshooting.md:108
+msgid "last_successful_id"
+msgstr ""
+
+#: src/administration/troubleshooting.md:108
+msgid "fail_count"
+msgstr ""
+
+#: src/administration/troubleshooting.md:108
+msgid "last_retry"
+msgstr ""
+
+#: src/administration/troubleshooting.md:110
+msgid "toad.work"
+msgstr ""
+
+#: src/administration/troubleshooting.md:110
+#: src/administration/troubleshooting.md:111
+#: src/administration/troubleshooting.md:112
+#: src/administration/troubleshooting.md:113
+#: src/administration/troubleshooting.md:114
+msgid "6837196"
+msgstr ""
+
+#: src/administration/troubleshooting.md:110
+msgid "6832351"
+msgstr ""
+
+#: src/administration/troubleshooting.md:110
+msgid "14"
+msgstr ""
+
+#: src/administration/troubleshooting.md:110
+msgid "2023-07-12 21:42:22.642379+00"
+msgstr ""
+
+#: src/administration/troubleshooting.md:111
+msgid "lemmy.deltaa.xyz"
+msgstr ""
+
+#: src/administration/troubleshooting.md:111
+#: src/administration/troubleshooting.md:112
+#: src/administration/troubleshooting.md:113
+#: src/administration/troubleshooting.md:114
+msgid "0"
+msgstr ""
+
+#: src/administration/troubleshooting.md:111
+#: src/administration/troubleshooting.md:112
+#: src/administration/troubleshooting.md:113
+#: src/administration/troubleshooting.md:114
+msgid "1970-01-01 00:00:00+00"
+msgstr ""
+
+#: src/administration/troubleshooting.md:112
+msgid "battleangels.net"
+msgstr ""
+
+#: src/administration/troubleshooting.md:113
+msgid "social.fbxl.net"
+msgstr ""
+
+#: src/administration/troubleshooting.md:114
+msgid "mastodon.coloradocrest.net"
+msgstr ""
+
+#: src/administration/troubleshooting.md:116
+msgid "This will show you exactly which instances are up to date or not."
+msgstr ""
+
+#: src/administration/troubleshooting.md:118
+msgid ""
+"You can also use this website which will help you monitor this without admin "
+"rights, and also let others see it"
+msgstr ""
+
+#: src/administration/troubleshooting.md:120
+msgid "https://phiresky.github.io/lemmy-federation-state/site"
+msgstr ""
+
+#: src/administration/troubleshooting.md:122
+msgid "You don't receive actions reliably"
+msgstr ""
+
+#: src/administration/troubleshooting.md:124
+msgid ""
+"Due to the lemmy queue, remote lemmy instances will be sending apub sync "
+"actions serially to you. If your server rate of processing them is slower "
+"than the rate the origin server is sending them, when visiting the [lemmy-"
+"federation-state](https://phiresky.github.io/lemmy-federation-state/site) "
+"for the remote server, you'll see your instance in the \"lagging behind\" "
+"section."
+msgstr ""
+
+#: src/administration/troubleshooting.md:126
+msgid ""
+"This can be avoided by setting the config value `federation."
+"concurrent_sends_per_instance` to a value greater than 1 on the sending "
+"instance."
+msgstr ""
+
+#: src/administration/troubleshooting.md:128
+msgid ""
+"Typically the speed at which you process an incoming action should be less "
+"than 100ms. If this is higher, this might signify problems with your "
+"database performance or your networking setup."
+msgstr ""
+
+#: src/administration/troubleshooting.md:130
+msgid ""
+"Note that even apub action ingestion speed which seems sufficient for most "
+"other instances, might become insufficient if the origin server is receiving "
+"actions from their userbase faster than you can process them. I.e. if the "
+"origin server receives 10 actions per second, but you can only process 8 "
+"actions per second, you'll inevitably start falling behind that one server "
+"only."
+msgstr ""
+
+#: src/administration/troubleshooting.md:132
+msgid "These steps might help you diagnose this."
+msgstr ""
+
+#: src/administration/troubleshooting.md:134
+msgid "Check processing time on the loadbalancer"
+msgstr ""
+
+#: src/administration/troubleshooting.md:136
+msgid ""
+"Check how long a request takes to process on the backend. In haproxy for "
+"example, the following command will show you the time it takes for apub "
+"actions to complete"
+msgstr ""
+
+#: src/administration/troubleshooting.md:139
+msgid "\"POST \\/inbox\""
+msgstr ""
+
+#: src/administration/troubleshooting.md:142
+msgid ""
+"[See here for nginx](https://www.nginx.com/blog/using-nginx-logging-for-"
+"application-performance-monitoring/)"
+msgstr ""
+
+#: src/administration/troubleshooting.md:144
+msgid ""
+"If these actions take more than 100ms, you might want to investigate deeper."
+msgstr ""
+
+#: src/administration/troubleshooting.md:146
+msgid "Check your Database performance"
+msgstr ""
+
+#: src/administration/troubleshooting.md:148
+msgid "Ensure that it's not very high in CPU or RAM utilization."
+msgstr ""
+
+#: src/administration/troubleshooting.md:150
+msgid ""
+"Afterwards check for slow queries. If you regularly see common queries with "
+"high max and mean exec time, it might signify your database is struggling. "
+"The below SQL query will show you all queries (you will need "
+"`pg_stat_statements` [enabled](https://www.postgresql.org/docs/current/"
+"pgstatstatements.html))"
+msgstr ""
+
+#: src/administration/troubleshooting.md:157
+msgid ""
+"If you see very high time on inserts, you might want to consider disabling "
+"`synchronous_commit` to see if this helps."
+msgstr ""
+
+#: src/administration/troubleshooting.md:159
+msgid "Check your backend performance."
+msgstr ""
+
+#: src/administration/troubleshooting.md:161
+msgid ""
+"Like the DB, if the server where your lemmy rust backend is running is "
+"overloaded, you might see such an impact"
+msgstr ""
+
+#: src/administration/troubleshooting.md:163
+msgid "Check your Network Layout"
+msgstr ""
+
+#: src/administration/troubleshooting.md:165
+msgid ""
+"If your backend and database appear to be in good condition, it might be "
+"that your issue is network based."
+msgstr ""
+
+#: src/administration/troubleshooting.md:167
+msgid ""
+"One problem can occur is your backend and your database are not in the same "
+"server and are too far from each other in geographic location. Due to the "
+"amount of DB queries performed for each apub sync request, even a small "
+"amount of latency can quickly add up."
+msgstr ""
+
+#: src/administration/troubleshooting.md:169
+msgid "Check the latency between your rust backend and your DB using ping"
+msgstr ""
+
+#: src/administration/troubleshooting.md:175
+msgid ""
+"if the `time` you see if above 1-2ms, this can start causing such delays. In "
+"that case, you might want to consider moving your backend closer to your DB "
+"geographically, so that your latency is below 2ms"
+msgstr ""
+
+#: src/administration/troubleshooting.md:177
+msgid ""
+"Note that your external loadbalancer(s) (if any) do not necessarily need to "
+"be closer to the DB, as they do not do multiple small DB requests."
+msgstr ""
+
+#: src/administration/troubleshooting.md:179
+msgid "Downgrading"
+msgstr ""
+
+#: src/administration/troubleshooting.md:181
+msgid ""
+"If you upgraded your instance to a newer version (by mistake or planned) and "
+"need to downgrade it. Often you need to reverse database changes as well."
+msgstr ""
+
+#: src/administration/troubleshooting.md:183
+msgid ""
+"First you need to figure out what SQL changes happened between your upgraded "
+"version, and the one you're downgrading. Then in that diff, check which "
+"files were added in the `migrations` dir."
+msgstr ""
+
+#: src/administration/troubleshooting.md:185
+msgid "Let's say that for the migration you're doing, the following were added"
+msgstr ""
+
+#: src/administration/troubleshooting.md:201
+msgid ""
+"Each of these folders contains a `down.sql` file. We need to run that "
+"against our postgresql DB to rollback those DB changes."
+msgstr ""
+
+#: src/administration/troubleshooting.md:203
+msgid "Stop your lemmy backend, and take a backup of your DB."
+msgstr ""
+
+#: src/administration/troubleshooting.md:204
+msgid "Copy the `migrations` folder to your DB container or server"
+msgstr ""
+
+#: src/administration/troubleshooting.md:205
+msgid ""
+"Acquire a shell in your postgresql container or server and switch to the "
+"`postgres` user"
+msgstr ""
+
+#: src/administration/troubleshooting.md:206
+msgid "Run each relevant script with this command"
+msgstr ""
+
+#: src/administration/troubleshooting.md:208
+msgid "2024-02-28-144211_hide_posts"
+msgstr ""
+
+#: src/administration/troubleshooting.md:211
+msgid ""
+"Alternatively, copy the content of the file and paste into a psql session"
+msgstr ""
+
+#: src/administration/troubleshooting.md:212
+msgid ""
+"You now need to clean the `__diesel_schema_migrations` table from the "
+"migration records, so that they will be correctly applied the next time you "
+"upgrade. You can use this command to sort them"
+msgstr ""
+
+#: src/administration/troubleshooting.md:216
+msgid ""
+"You have to delete the entries in that table which match the current "
+"timestamp you applied them (This should typically be any time in the past "
+"few minutes)"
+msgstr ""
+
+#: src/administration/troubleshooting.md:218
+msgid "'20240228144211'"
+msgstr ""
+
+#: src/administration/troubleshooting.md:220
+msgid "You should now be able to start your lemmy in the previous version"
+msgstr ""
+
+#: src/administration/troubleshooting.md:222
+msgid "UI randomly slow or offline"
+msgstr ""
+
+#: src/administration/troubleshooting.md:224
+msgid ""
+"If you notice that your lemmy-ui sometimes becomes sluggish or unresponsive "
+"over a period of minutes/hours and then it passes, you might be getting "
+"targeted by scraping bots."
+msgstr ""
+
+#: src/administration/troubleshooting.md:226
+msgid ""
+"There's a lot of scraping bots online and they can easily overwhelm your "
+"site when they're behaving too \"greedily\". Unfortunately the existing "
+"lemmy-ui has a habit of falling over when polled too eagerly, while the "
+"backend still continues to work."
+msgstr ""
+
+#: src/administration/troubleshooting.md:228
+msgid ""
+"A solution is to cache responses in nginx as seen in lemmy-ansible [here]"
+"(https://github.com/LemmyNet/lemmy-ansible/blob/1.5.3/templates/nginx."
+"conf#L2-L3) and [here](https://github.com/LemmyNet/lemmy-ansible/blob/1.5.3/"
+"templates/nginx.conf#L66-L71). This way lemmy-ui doesn't have to generate "
+"all responses from scratch, which reduces CPU load. However it won't help if "
+"a single crawler goes through thousands of unique urls in a short time."
+msgstr ""
+
+#: src/administration/troubleshooting.md:230
+msgid ""
+"Another option is to block the scraper's user agents. To do so, you can "
+"modify your `nginx_internal.conf` to block some of the usual suspects, with "
+"this line under `server`"
+msgstr ""
+
+#: src/administration/troubleshooting.md:233
+msgid "\" Bytedance|Bytespider|Amazonbot|ClaudeBot\""
+msgstr ""
+
+#: src/administration/troubleshooting.md:236
+msgid ""
+"This is an example blocking some the well-known misbehaving bots, but there "
+"are many more more. To discover the ones affecting you, you can use the "
+"following bash script at your lemmy backend (where your docker compose is) "
+"to enumerate any agents which are hitting you too much."
+msgstr ""
+
+#: src/administration/troubleshooting.md:240
+msgid "'\"[^\"]*\"$'"
+msgstr ""
+
+#: src/administration/troubleshooting.md:240
+msgid "# Extract the last quoted string (user agent)\n"
+msgstr ""
+
+#: src/administration/troubleshooting.md:241
+msgid "'^\"$'"
+msgstr ""
+
+#: src/administration/troubleshooting.md:241
+msgid "# Remove empty quotes\n"
+msgstr ""
+
+#: src/administration/troubleshooting.md:242
+msgid "'\"'"
+msgstr ""
+
+#: src/administration/troubleshooting.md:242
+msgid "# Remove the quotes\n"
+msgstr ""
+
+#: src/administration/troubleshooting.md:243
+msgid "# Sort the user agents\n"
+msgstr ""
+
+#: src/administration/troubleshooting.md:244
+msgid "# Count unique occurrences\n"
+msgstr ""
+
+#: src/administration/troubleshooting.md:245
+msgid "# Sort numerically in reverse order\n"
+msgstr ""
+
+#: src/administration/troubleshooting.md:246
+msgid "# Show top 10 results\n"
+msgstr ""
+
+#: src/administration/troubleshooting.md:249
+msgid ""
+"This will parse the last 10K log entries in your nginx internal proxy and "
+"show the agents which cause the most hits. This should give a good indicator "
+"of which agents are potentially misbehaving and you can proceed to block "
+"those as well by adding their names to the list above."
+msgstr ""
