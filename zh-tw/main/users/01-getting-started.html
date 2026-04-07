@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html lang="zh_TW" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>開始使用</title>
+
+
+        <!-- Custom HTML head -->
+        <script type="text/javascript" src="../ltd-provenance.js"></script>
+        <script type="text/javascript" src="../ltd-current.js"></script>
+        <script type="text/javascript" src="../../../ltd-config.js"></script>
+        <script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/LemmyNet/lemmy-docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="開始使用"><a class="header" href="#開始使用">開始使用</a></h1>
+<h2 id="choosing-an-instance"><a class="header" href="#choosing-an-instance">Choosing an Instance</a></h2>
+<p>If you are used to sites like Reddit, then Lemmy works in a fundamentally different way. Instead of a single website like reddit.com, there are many different websites (called <em>instances</em>). These are operated by different people, have different topics and rules. Nevertheless, posts created in one instance can directly be seen by users who are registered on another. Its basically like email, but for social media.</p>
+<p>This means before using Lemmy and registering an account, you need to pick an instance. For this you can browse the instance list and look for one that matches your topics of interest. You can also see if the rules match your expectations, and how many users there are. It is better to avoid very big or very small instances. But don't worry too much about this choice, you can always create another account on a different instance later.</p>
+<p><a href="https://join-lemmy.org/instances"><strong>實例列表</strong></a></p>
+<h2 id="註冊"><a class="header" href="#註冊">註冊</a></h2>
+<p>Once you choose an instance, it's time to create your account. To do this, click <em>sign up</em> in the top right of the page, or click the top right button on mobile to open a menu with <em>sign up</em> link.</p>
+<p>On the signup page you need to enter a few things:</p>
+<ul>
+<li><strong>Username</strong>: How do you want to be called? This name can not be changed and is unique within an instance. Later you can also set a <em>displayname</em> which can be freely changed. If your desired username is taken, consider choosing a different instance where it is still available.</li>
+<li><strong>Email</strong>: Your email address. This is used for password resets and notifications (if enabled). Providing an email address is usually optional, but admins may choose to make it mandatory. In this case you will have to wait for a confirmation mail and click the link after completing this form.</li>
+<li><strong>Password</strong>: The password for logging in to your account. Make sure to choose a long and unique password which isn't used on any other website.</li>
+<li><strong>Verify password</strong>: Repeat the same password from above to ensure that it was entered correctly.</li>
+</ul>
+<p>There are also a few optional fields, which you may need to fill in depending on the instance configuration:</p>
+<ul>
+<li><strong>Question/Answer</strong>: Instance admins can set an arbitrary question which needs to be answered in order to create an account. This is often used to prevent spam bots from signing up. After submitting the form, you will need to wait for some time until the answer is approved manually before you can login.</li>
+<li><strong>Code</strong>: A captcha which is easy to solve for humans but hard for bots. Enter the letters and numbers that you see in the text box, ignoring uppercase or lowercase. Click the refresh button if you are unable to read a character. The <em>play</em> button plays an audio version of the captcha.</li>
+<li><strong>Show NSFW content</strong>: Here you can choose if content that is "not safe for work" (or adult-only) should be shown.</li>
+</ul>
+<p>When you are done, press the <em>sign up</em> button.</p>
+<p>It depends on the instance configuration when you can login and start using the account. In case the email is mandatory, you need to wait for the confirmation email and click the link first. In case "Question/Answer" is present, you need to wait for an admin to manually review and approve your registration. If you have problems with the registration, try to get in contact with the admin for support. You can also choose a different instance to sign up if your primary choice does not work.</p>
+<h2 id="關注社群"><a class="header" href="#關注社群">關注社群</a></h2>
+<p>After logging in to your new account, its time to follow communities that you are interested in. For this you can click on the <em>communities</em> link at the top of the page (on mobile, you need to click the menu icon on the top right first). You will see a list of communities which can be filtered by subscribed, local or all. Local communities are those which are hosted on the same site where you are signed in, while <em>all</em> also contains federated communities from other instances. In any case you can directly subscribe to communities with the right-hand subscribe link. Or click on the community name to browse the community first, see what its posted and what the rules are before subscribing.</p>
+<p>Another way to find communities to subscribe to is by going to the front page and browsing the posts. If there is something that interests you, click on the post title to see more details and comments. Here you can subscribe to the community in the right-hand sidebar, or by clicking the "sidebar" button on mobile.</p>
+<p>These previous ways will only show communities that are already known to the instance. Especially if you joined a small or inactive Lemmy instance, there will be few communities to discover. You can find more communities by browsing different Lemmy instances, or using the <a href="https://lemmyverse.net/communities">Lemmy Explorer</a>. When you found a community that you want to follow, enter its URL (e.g. <code>https://feddit.org/c/main</code>) or the identifier (e.g. <code>!main@feddit.org</code>) into the search field of your own Lemmy instance. Lemmy will then fetch the community from its original instance, and allow you to interact with it. The same method also works to fetch users, posts or comments from other instances.</p>
+<h2 id="setting-up-your-profile"><a class="header" href="#setting-up-your-profile">Setting up Your Profile</a></h2>
+<p>Before you start posting, its a good idea to provide some details about yourself. Open the top-right menu and go to "settings". Here the following settings are available for your public profile:</p>
+<ul>
+<li><strong>Displayname</strong>: An alternative username which can be changed at any time</li>
+<li><strong>Bio</strong>: Long description of yourself, can be formatted with Markdown</li>
+<li><strong>Matrix User</strong>: Your username on the decentralized <a href="https://matrix.org/">Matrix chat</a></li>
+<li><strong>Avatar</strong>: Profile picture that is shown next to all your posts</li>
+<li><strong>Banner</strong>: A header image for your profile page</li>
+</ul>
+<p>On this page you can also change the email and password. Additionally there are many other settings available, which allow customizing of your browsing experience:</p>
+<ul>
+<li><strong>Blocks</strong> (tab at top of the page): Here you can block users and communities, so that their posts will be hidden.</li>
+<li><strong>Interface language</strong>: Which language the user interface should use.</li>
+<li><strong>Languages</strong>: Select the languages that you speak to see only content in these languages. This is a new feature and many posts don't specify a language yet, so be sure to select "Undetermined" to see them.</li>
+<li><strong>Theme</strong>: You can choose between different color themes for the user interface. Instance admins can add more themes.</li>
+<li><strong>Type</strong>: Which timeline you want to see by default on the front page; only posts from communities that you subscribe to, posts in local communities, or all posts including federated.</li>
+<li><strong>排序類型</strong>：貼文和留言預設的排序方式。詳情請參閱<a href="03-votes-and-ranking.html">投票與排名</a>。</li>
+<li><strong>顯示 NSFW 內容</strong>：是否要查看「不適合在工作場合瀏覽」（或僅限成人）的內容。</li>
+<li><strong>Show Scores</strong>: Whether the number of upvotes and downvotes should be visible.</li>
+<li><strong>Show Avatars</strong>: Whether profile pictures of other users should be shown.</li>
+<li><strong>Bot Account</strong>: Enable this if you are using a script or program to create posts automatically</li>
+<li><strong>Show Bot Accounts</strong>: Disable this to hide posts that were created by bot accounts.</li>
+<li><strong>Show Read Posts</strong>: If this is disabled, posts that you already viewed are not shown in listings anymore. Useful if you want to find new content easily, but makes it difficult to follow ongoing discussion under existing posts.</li>
+<li><strong>Show Notifications for New Posts</strong>: Enable this to receive a popup notification for each new post that is created.</li>
+<li><strong>Send notifications to Email</strong>: Enable to receive notifications about new comment replies and private messages to your email address.</li>
+</ul>
+<h2 id="開始發文"><a class="header" href="#開始發文">開始發文</a></h2>
+<p>Finally its time to start posting! To do this it is always a good idea to read the community rules in the sidebar (below the <em>Subscribe</em> button). When you are ready, go to a post and type your comment in the box directly below for a top-level reply. You can also write a nested reply to an existing comment, by clicking the left-pointing arrow.</p>
+<p>Other than commenting on existing posts, you can also create new posts. To do this, click the button <em>Create a post</em> in the sidebar. Here you can optionally supply an external link or upload an image. The title field is mandatory and should describe what you are posting. The body is again optional, and gives space for long texts. You can also embed additional images here. The <em>Community</em> dropdown below allows choosing a different community to post in. With <em>NSFW</em>, posts can be marked as "not safe for work". Finally you can specify the language that the post is written in, and then click on <em>Create</em>.</p>
+<p>One more possibility is to write private messages to individual users. To do this, simply visit a user profile and click <em>Send message</em>. You will be notified about new private messages and comment replies with the bell icon in the top right.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../users/02-media.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../users/02-media.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

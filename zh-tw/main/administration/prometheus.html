@@ -1,0 +1,345 @@
+<!DOCTYPE HTML>
+<html lang="zh_TW" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Prometheus Metrics</title>
+
+
+        <!-- Custom HTML head -->
+        <script type="text/javascript" src="../ltd-provenance.js"></script>
+        <script type="text/javascript" src="../ltd-current.js"></script>
+        <script type="text/javascript" src="../../../ltd-config.js"></script>
+        <script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/LemmyNet/lemmy-docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="prometheus-metrics"><a class="header" href="#prometheus-metrics">Prometheus Metrics</a></h1>
+<p>Lemmy supports the export of metrics in the <a href="https://prometheus.io/">Prometheus</a> format. This document outlines how to enable the feature and begin collecting metrics.</p>
+<h2 id="configuration"><a class="header" href="#configuration">Configuration</a></h2>
+<p>Configuration of the Prometheus endpoint is contained under the optional <code>prometheus</code> object in the <code>lemmy.hjson</code> file. In this configuration block, the <code>bind</code> address and <code>port</code> of the Prometheus metrics server can be configured.</p>
+<p>By default, it will serve on <code>127.0.0.1:10002</code>. If running inside a container, it should instead bind on all addresses as below.</p>
+<pre><code>prometheus: {
+  bind: "0.0.0.0"
+  port: 10002
+}
+</code></pre>
+<h2 id="scrape"><a class="header" href="#scrape">Scrape</a></h2>
+<p>After Lemmy has been deployed, test that it is serving properly (substitute the correct hostname if not running locally).</p>
+<pre><code class="language-shell">curl localhost:10002/metrics
+</code></pre>
+<h3 id="prometheus-configuration"><a class="header" href="#prometheus-configuration">Prometheus Configuration</a></h3>
+<p>Below is a minimal configuration on the Prometheus server's side that will scrape the metrics from Lemmy.</p>
+<pre><code class="language-yaml">global:
+scrape_configs:
+  - job_name: lemmy
+    scrape_interval: 1m
+    static_configs:
+      - targets:
+          - localhost:10002
+</code></pre>
+<p>Then run a Prometheus server to scrape the metrics.</p>
+<pre><code class="language-shell">docker run -p 9090:9090 -v prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+</code></pre>
+<p>If Lemmy was deployed using the <code>docker-compose.yml</code>, then use the following configurations instead.</p>
+<pre><code class="language-yaml">global:
+scrape_configs:
+  - job_name: lemmy
+    scrape_interval: 1m
+    static_configs:
+      - targets:
+          - lemmy:10002
+</code></pre>
+<p>Run the Prometheus server inside the same docker network that Lemmy is running in. This can be discovered by running <code>docker inspect</code> on the lemmy container.</p>
+<pre><code class="language-shell">docker run -p 9090:9090 -v prometheus.yml:/etc/prometheus/prometheus.yml --network $LEMMY_NETWORK prom/prometheus
+</code></pre>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<p>Below is an example of what is returned from the <code>/metrics</code> endpoint. Each combination of <code>endpoint</code>, <code>method</code>, and <code>status</code> will produce a histogram (<code>lemmy_api_http_requests_duration_seconds_*</code>), so for brevity the output was reduced to a single endpoint.</p>
+<p>For the HTTP metrics, this is saying that <code>/api/v3/post/list</code> received 12 <code>GET</code> requests that returned a <code>200</code> HTTP code. Cumulatively, these requests took 0.383 seconds. 5 requests completed between 0.01 and 0.025 seconds. 5 more completed between 0.025 and 0.05 seconds. And the remaining 2 requests completed between 0.05 and 0.1 seconds.</p>
+<pre><code>lemmy_api_http_requests_duration_seconds_bucket{endpoint="/api/v3/post/list",method="GET",status="200",le="0.005"} 0
+lemmy_api_http_requests_duration_seconds_bucket{endpoint="/api/v3/post/list",method="GET",status="200",le="0.01"} 0
+lemmy_api_http_requests_duration_seconds_bucket{endpoint="/api/v3/post/list",method="GET",status="200",le="0.025"} 5
+lemmy_api_http_requests_duration_seconds_bucket{endpoint="/api/v3/post/list",method="GET",status="200",le="0.05"} 10
+lemmy_api_http_requests_duration_seconds_bucket{endpoint="/api/v3/post/list",method="GET",status="200",le="0.1"} 12
+lemmy_api_http_requests_duration_seconds_bucket{endpoint="/api/v3/post/list",method="GET",status="200",le="0.25"} 12
+lemmy_api_http_requests_duration_seconds_bucket{endpoint="/api/v3/post/list",method="GET",status="200",le="0.5"} 12
+lemmy_api_http_requests_duration_seconds_bucket{endpoint="/api/v3/post/list",method="GET",status="200",le="1"} 12
+lemmy_api_http_requests_duration_seconds_bucket{endpoint="/api/v3/post/list",method="GET",status="200",le="2.5"} 12
+lemmy_api_http_requests_duration_seconds_bucket{endpoint="/api/v3/post/list",method="GET",status="200",le="5"} 12
+lemmy_api_http_requests_duration_seconds_bucket{endpoint="/api/v3/post/list",method="GET",status="200",le="10"} 12
+lemmy_api_http_requests_duration_seconds_bucket{endpoint="/api/v3/post/list",method="GET",status="200",le="+Inf"} 12
+lemmy_api_http_requests_duration_seconds_sum{endpoint="/api/v3/post/list",method="GET",status="200"} 0.3834808429999999
+lemmy_api_http_requests_duration_seconds_count{endpoint="/api/v3/post/list",method="GET",status="200"} 12
+
+lemmy_api_http_requests_total{endpoint="/api/v3/post/list",method="GET",status="200"} 12
+
+# HELP lemmy_db_pool_available_connections Number of available connections in the pool
+# TYPE lemmy_db_pool_available_connections gauge
+lemmy_db_pool_available_connections 2
+# HELP lemmy_db_pool_connections Current number of connections in the pool
+# TYPE lemmy_db_pool_connections gauge
+lemmy_db_pool_connections 2
+# HELP lemmy_db_pool_max_connections Maximum number of connections in the pool
+# TYPE lemmy_db_pool_max_connections gauge
+lemmy_db_pool_max_connections 5
+
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 14
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1073741816
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 91
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 75603968
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1688487611
+# HELP process_threads Number of OS threads in the process.
+# TYPE process_threads gauge
+process_threads 37
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 206000128
+</code></pre>
+<h2 id="visualizing-metrics"><a class="header" href="#visualizing-metrics">Visualizing Metrics</a></h2>
+<p><a href="https://grafana.com/">Grafana</a> can be used to visualize the metrics collected by Prometheus. A community-maintained Grafana dashboard for Lemmy is available on the Grafana dashboard registry.</p>
+<p>Dashboard: <a href="https://grafana.com/grafana/dashboards/25020-lemmy/">Lemmy – Grafana Dashboards</a></p>
+<p>Before importing the dashboard, add Prometheus as a data source in Grafana:</p>
+<ol>
+<li>In Grafana, go to <strong>Connections</strong> → <strong>Data sources</strong>.</li>
+<li>Click <strong>Add new data source</strong>, and select <strong>Prometheus</strong>.</li>
+<li>Set the server URL to your Prometheus instance (e.g. <code>http://localhost:10002</code>).</li>
+<li>Click <strong>Save &amp; test</strong> to confirm the connection.</li>
+</ol>
+<p>To use it:</p>
+<ol>
+<li>In your Grafana instance, go to <strong>Dashboards</strong> → <strong>Import</strong>.</li>
+<li>Enter the ID <code>25020</code> or paste the dashboard URL.</li>
+<li>Select your Prometheus data source and click <strong>Import</strong>.</li>
+</ol>
+<p>The dashboard provides an overview of HTTP request rates and latencies, database connection pool usage, and process-level metrics such as CPU, memory, and open file descriptors.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../administration/tor_hidden_service.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../administration/horizontal_scaling.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../administration/tor_hidden_service.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../administration/horizontal_scaling.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
