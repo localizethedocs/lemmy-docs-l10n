@@ -1,0 +1,235 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/users/03-votes-and-ranking.md:1
+msgid "Votes and Ranking"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:3
+msgid "Posts"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:5
+msgid ""
+"Lemmy uses a voting system to sort post listings. On the left side of each "
+"post there are _up_ and _down_ arrows, which let you _upvote_ or _downvote_ "
+"it. You can upvote posts that you like so that more users will see them, or "
+"downvote posts so that they are less likely to be seen. Each post receives a "
+"score which is the number of upvotes minus the number of downvotes."
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:7
+msgid "Sorting Posts"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:9
+msgid ""
+"When browsing the front page or a community, you can choose between the "
+"following sort types for posts:"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:11 src/users/03-votes-and-ranking.md:35
+msgid "Sort"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:11 src/users/03-votes-and-ranking.md:35
+msgid "Description"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:13
+msgid "Active (default)"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:13
+msgid ""
+"Calculates a rank based on the score and time of the latest comment, with "
+"decay over time"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:14
+msgid "Hot"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:14
+msgid "Like active, but uses time when the post was published"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:15
+msgid "Scaled"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:15
+msgid "Like hot, but gives a boost to less active communities"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:16
+msgid "Controversial"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:16
+msgid "Shows most controversial posts (many up and downvotes)"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:17 src/users/03-votes-and-ranking.md:39
+msgid "New"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:17
+msgid "Shows most recent posts first"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:18 src/users/03-votes-and-ranking.md:40
+msgid "Old"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:18
+msgid "Shows oldest posts first"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:19
+msgid "Most Comments"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:19
+msgid "Shows posts with highest number of comments first"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:20
+msgid "New Comments"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:20
+msgid ""
+"Bumps posts to the top when they are created or receive a new reply, "
+"analogous to the sorting of traditional forums"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:21
+msgid "Top Day"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:21
+msgid "Highest scoring posts during the last 24 hours"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:22
+msgid "Top Week"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:22
+msgid "Highest scoring posts during the last 7 days"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:23
+msgid "Top Month"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:23
+msgid "Highest scoring posts during the last 30 days"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:24
+msgid "Top Year"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:24
+msgid "Highest scoring posts during the last 12 months"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:25
+msgid "Top All Time"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:25
+msgid "Highest scoring posts of all time"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:27
+msgid "Comments"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:29
+msgid ""
+"Comments are by default arranged in a hierarchy which shows at a glance who "
+"it is replying to. Top-level comments which reply directly to a post are on "
+"the very left, not indented at all. Comments that are responding to top-"
+"level comments are indented one level and each further level of indentation "
+"means that the comment is deeper in the conversation. With this layout, it "
+"is always easy to see the context for a given comment, by simply scrolling "
+"up to the next comment which is indented one level less."
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:31
+msgid "Sorting Comments"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:33
+msgid ""
+"Comments can be sorted in the following ways. These all keep the indentation "
+"intact, so only replies to the same parent are shuffled around."
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:37
+msgid "Hot (default)"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:37
+msgid "Equivalent to the _Hot_ sort for posts"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:38
+msgid "Top"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:38
+msgid "Shows comments with highest score first"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:39
+msgid "Shows most recent comments first"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:40
+msgid "Shows oldest comments first"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:42
+msgid ""
+"Additionally there is a sort option **Chat**. This eliminates the hierarchy, "
+"and puts all comments on the top level, with newest comments shown at the "
+"top. It is useful to see new replies at any point in the conversation, but "
+"makes it difficult to see the context."
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:44
+msgid ""
+"The ranking algorithm is described in detail [here](../contributors/07-"
+"ranking-algo.md)."
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:46
+msgid "Vote Privacy"
+msgstr ""
+
+#: src/users/03-votes-and-ranking.md:48
+msgid ""
+"Lemmy attempts to limit the visibility of votes to protect user privacy. But "
+"due to the way Lemmy works, votes cannot be completely private. Instance "
+"admins can see the names of everyone who voted on a given post or comment, "
+"and community moderators can see the names for the communities they "
+"moderate. This helps to fight against vote manipulation. Additionally, "
+"individual votes are federated over ActivityPub together with the "
+"corresponding username. This means that other federated platforms can freely "
+"choose how to display vote information, even going as far as publicly "
+"displaying individual votes."
+msgstr ""

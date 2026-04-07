@@ -1,0 +1,164 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/administration/administration.md:1
+msgid "Administration"
+msgstr ""
+
+#: src/administration/administration.md:3
+msgid ""
+"Information for Lemmy instance admins, and those who want to run a server."
+msgstr ""
+
+#: src/administration/administration.md:5
+msgid ""
+"If you have any problems in the installation, you can ask for help in [!"
+"lemmy_support](https://lemmy.ml/c/lemmy_support) or [Matrix](https://matrix."
+"to/#/#lemmy-support-general:discuss.online). Do not open Github issues for "
+"support."
+msgstr ""
+
+#: src/administration/administration.md:7
+msgid "Install"
+msgstr ""
+
+#: src/administration/administration.md:9
+msgid "Official/Supported methods"
+msgstr ""
+
+#: src/administration/administration.md:11
+msgid "Lemmy has two primary installation methods:"
+msgstr ""
+
+#: src/administration/administration.md:13
+msgid "[Manually with Docker](install_docker.md)"
+msgstr ""
+
+#: src/administration/administration.md:14
+msgid "[Automated with Ansible](install_ansible.md)"
+msgstr ""
+
+#: src/administration/administration.md:16
+msgid ""
+"We recommend using Ansible, because it simplifies the installation and also "
+"makes updating easier."
+msgstr ""
+
+#: src/administration/administration.md:18
+msgid ""
+"Lemmy uses roughly 150 MB of RAM in the default Docker installation. CPU "
+"usage is negligible."
+msgstr ""
+
+#: src/administration/administration.md:20
+msgid "Managed Hostings"
+msgstr ""
+
+#: src/administration/administration.md:22
+msgid "[Elestio](https://elest.io/open-source/lemmy)"
+msgstr ""
+
+#: src/administration/administration.md:23
+msgid "[Communick](https://communick.com/lemmy)"
+msgstr ""
+
+#: src/administration/administration.md:25
+msgid "Other installation methods"
+msgstr ""
+
+#: src/administration/administration.md:27
+msgid "⚠️ **Under your own risk.**"
+msgstr ""
+
+#: src/administration/administration.md:29
+msgid ""
+"In some cases, it might be necessary to use different installation methods."
+msgstr ""
+
+#: src/administration/administration.md:31
+msgid "[From Scratch](from_scratch.md)"
+msgstr ""
+
+#: src/administration/administration.md:32
+msgid ""
+"[YunoHost](https://install-app.yunohost.org/?app=lemmy) ([source code]"
+"(https://github.com/YunoHost-Apps/lemmy_ynh))"
+msgstr ""
+
+#: src/administration/administration.md:33
+msgid "[On Amazon Web Services (AWS)](on_aws.md)"
+msgstr ""
+
+#: src/administration/administration.md:34
+msgid ""
+"[Nomad](https://www.nomadproject.io/) ([see this external repo for examples]"
+"(https://github.com/Cottand/lemmy-on-nomad-examples))"
+msgstr ""
+
+#: src/administration/administration.md:36
+msgid "You could use any other reverse proxy"
+msgstr ""
+
+#: src/administration/administration.md:38
+msgid "An Example [Caddy configuration](caddy.md)."
+msgstr ""
+
+#: src/administration/administration.md:40
+msgid "Lemmy components"
+msgstr ""
+
+#: src/administration/administration.md:42
+msgid "Lemmy-ui"
+msgstr ""
+
+#: src/administration/administration.md:44
+msgid ""
+"Lemmy-ui is the main frontend for Lemmy. It consists of an expressjs based "
+"server-side process (necessary for SSR) and client code which run in the "
+"browser. It does not use a lot of resources and will happily run on quite "
+"low powered servers."
+msgstr ""
+
+#: src/administration/administration.md:46
+msgid "Lemmy_server"
+msgstr ""
+
+#: src/administration/administration.md:48
+msgid "Lemmy_server is the backend process, which handles:"
+msgstr ""
+
+#: src/administration/administration.md:50
+msgid ""
+"Incoming HTTP requests (both from Lemmy clients and incoming federation from "
+"other servers)"
+msgstr ""
+
+#: src/administration/administration.md:51
+msgid "Outgoing federation"
+msgstr ""
+
+#: src/administration/administration.md:52
+msgid ""
+"Scheduled tasks (most notably, constant hot rank calculations, which keep "
+"the front page fresh)"
+msgstr ""
+
+#: src/administration/administration.md:54
+msgid "Pict-rs"
+msgstr ""
+
+#: src/administration/administration.md:56
+msgid ""
+"Pict-rs is a service which does image processing. It handles user-uploaded "
+"images as well as downloading thumbnails for external images."
+msgstr ""

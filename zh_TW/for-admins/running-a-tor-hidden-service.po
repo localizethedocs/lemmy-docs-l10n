@@ -1,0 +1,467 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/administration/tor_hidden_service.md:1
+msgid "Running a Tor Hidden Service"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:3
+msgid ""
+"This guide assumes Lemmy has been installed using the official [Docker "
+"Compose](install_docker.md) method."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:5
+msgid ""
+"Note that federation is not currently supported over the Tor network. An "
+"existing Lemmy instance is required. This procedure will proxy Lemmy though "
+"Tor, but federation tasks are still handled by HTTPS on the open internet."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:7
+msgid ""
+"[Tor](https://torproject.org) (\"The Onion Router\") is software designed to "
+"circumvent censorship and prevent bad actors from monitoring your activity "
+"on the internet by encrypting and distributing network traffic through a "
+"decentralized pool of relay servers run by volunteers all over the world."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:9
+msgid ""
+"A Tor hidden service is only accessible through the Tor network using the `."
+"onion` top-level domain with the official [Tor Browser](https://www."
+"torproject.org/download/), or any client capable of communicating over a "
+"SOCKS5 proxy. Hosting a service on the Tor network is a good way to promote "
+"digital privacy and internet freedom."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:11
+msgid "Installing Tor"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:13
+msgid ""
+"The official [documentation](https://support.torproject.org/apt/tor-deb-"
+"repo/) suggests Ubuntu and Debian users install Tor from the `deb.torproject."
+"org` repository because it always provides the latest stable release of the "
+"software."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:15
+msgid "**Administrative Access is Required**"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:17
+msgid ""
+"Commands below are expected to be executed as the `root` user. To become "
+"root use `sudo -i` or `su -`."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:19
+msgid "With `sudo`:"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:26
+msgid "With `su`:"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:33
+msgid "Note: To return to your account run: `exit`."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:35
+msgid "**Verify your architecture is supported**"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:37
+msgid ""
+"The package repository only supports `amd64`, `arm64`, and `i386` "
+"architectures."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:43
+msgid ""
+"If your architecture is not supported you may want to consider installing "
+"Tor [from source](https://community.torproject.org/onion-services/setup/"
+"install/#installing-tor-from-source)."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:45
+msgid "**Install prerequisite packages**"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:51
+msgid "**Enable the deb.torproject.org repository**"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:53
+msgid "Configure `apt` to pull packages from `deb.torproject.org`."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:55
+msgid ""
+"```\n"
+"bash -c 'dist=$(lsb_release -s -c); /bin/echo -e \\\n"
+"\"deb [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] \\\n"
+"https://deb.torproject.org/torproject.org $dist main\\n\\\n"
+"deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] \\\n"
+"https://deb.torproject.org/torproject.org $dist main\" \\\n"
+"> /etc/apt/sources.list.d/tor.list'\n"
+"```"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:64
+msgid "**Import deb.torproject.org's GPG signing key**"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:66
+msgid ""
+"```\n"
+"wget -qO- https://deb.torproject.org/torproject.org/"
+"A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc \\\n"
+"    | gpg --dearmor \\\n"
+"    | tee /usr/share/keyrings/tor-archive-keyring.gpg >/dev/null\n"
+"```"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:72
+msgid ""
+"The signing key ensures the package retrieved from the server was created by "
+"`deb.torproject.org`."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:74
+msgid "**Install tor**"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:80
+msgid "Creating a Tor hidden service"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:82
+msgid "Create a new hidden service directory:"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:88
+msgid ""
+"Append the following to `/etc/tor/torrc` to tie the hidden service directory "
+"to the `tor` daemon:"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:95
+msgid ""
+"`HiddenServiceDir [path]` is where `tor` will store data related to the "
+"hidden service, and `HiddenServicePort [hidden_service_port] [host_ip:port]` "
+"binds a port on the host to a hidden service port on the Tor network."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:97
+msgid "Enable and start the Tor daemon"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:103
+msgid ""
+"At startup `tor` daemon will automatically populate `/var/lib/tor/"
+"hidden_lemmy_service/` with encryption keys, certificates, and assign a "
+"hostname for the new service."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:105
+msgid "Determine your hidden service's hostname"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:111
+msgid ""
+"The `.onion` address contained in this file will be referred to as "
+"`HIDDEN_SERVICE_ADDR` from here on."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:113
+msgid "Configure your existing Lemmy instance"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:115
+msgid "Docker compose"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:117
+msgid ""
+"Forward port `10080` from the `proxy` container to the hidden service port "
+"`127.0.0.1:10080`. This exposes `10080/tcp` to the local host, and will not "
+"be directly accessible from the internet. For context `\"80:80\"` binds port "
+"`80/tcp` (HTTP) to `0.0.0.0:80` on the host. Unless a firewall is configured "
+"to block incoming traffic to `80` this will be exposed to other hosts on the "
+"local area network (LAN) and/or the open internet."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:119
+msgid "**docker-compose.yml**"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:121
+msgid ""
+"```\n"
+"services:\n"
+"  # ...\n"
+"  proxy:\n"
+"    # ...\n"
+"    ports:\n"
+"      - \"80:80\"\n"
+"      - \"443:443\"\n"
+"      - \"127.0.0.1:10080:10080\"\n"
+"```"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:132
+msgid "Configure NGINX"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:134
+msgid ""
+"Append a new `server {...}` block to handle tor traffic, and add the `Onion-"
+"Location` header to the SSL encrypted server exposed to the internet. This "
+"header informs Tor Browser users that an equivalent `.onion` site exists on "
+"the Tor network by displaying an icon next to the address bar."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:136
+msgid "**nginx.conf**"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:138
+msgid ""
+"```\n"
+"worker_processes 1;\n"
+"events {\n"
+"    worker_connections 1024;\n"
+"}\n"
+"\n"
+"http {\n"
+"    # Original configuration listening on port 80\n"
+"    server {\n"
+"        listen 80;\n"
+"        # ...\n"
+"    }\n"
+"\n"
+"    # Original configuration listening on port 443\n"
+"    server {\n"
+"        listen 443;\n"
+"        # ...\n"
+"        location / {\n"
+"            # Handle Tor Browser's \".onion\" link detection\n"
+"            add_header Onion-Location \"http://"
+"HIDDEN_SERVICE_ADDR$request_uri\" always;\n"
+"            # ...\n"
+"        }\n"
+"    }\n"
+"\n"
+"    # Establish a rate limit for the hidden service address\n"
+"    limit_req_zone $binary_remote_addr "
+"zone=HIDDEN_SERVICE_ADDR_ratelimit:10m rate=1r/s;\n"
+"\n"
+"    # Add tor-specific upstream aliases as a visual aid to\n"
+"    # avoid editing the incorrect server block in the future\n"
+"    upstream lemmy-tor {\n"
+"        server \"lemmy:8536\";\n"
+"    }\n"
+"    upstream lemmy-ui-tor {\n"
+"        server \"lemmy-ui:1234\";\n"
+"    }\n"
+"\n"
+"    # Add a copy of your current internet-facing configuration with\n"
+"    # \"listen\" and \"server_listen\" modified to send all traffic\n"
+"    # over the Tor network, incorporating the visual upstream aliases\n"
+"    # above.\n"
+"    server {\n"
+"        # Tell nginx to listen on the hidden service port\n"
+"        listen 10080;\n"
+"\n"
+"        # Set server_name to the contents of the file:\n"
+"        # /var/lib/tor/hidden_lemmy_service/hostname\n"
+"        server_name HIDDEN_SERVICE_ADDR;\n"
+"\n"
+"        # Hide nginx version\n"
+"        server_tokens off;\n"
+"\n"
+"        # Enable compression for JS/CSS/HTML bundle, for improved client "
+"load times.\n"
+"        # It might be nice to compress JSON, but leaving that out to protect "
+"against potential\n"
+"        # compression+encryption information leak attacks like BREACH.\n"
+"        gzip on;\n"
+"        gzip_types text/css application/javascript image/svg+xml;\n"
+"        gzip_vary on;\n"
+"\n"
+"        # Various content security headers\n"
+"        add_header Referrer-Policy \"same-origin\";\n"
+"        add_header X-Content-Type-Options \"nosniff\";\n"
+"        add_header X-Frame-Options \"DENY\";\n"
+"        add_header X-XSS-Protection \"1; mode=block\";\n"
+"\n"
+"        # Upload limit for pictrs\n"
+"        client_max_body_size 20M;\n"
+"\n"
+"        # frontend\n"
+"        location / {\n"
+"            # distinguish between ui requests and backend\n"
+"            # don't change lemmy-ui or lemmy here, they refer to the "
+"upstream definitions on top\n"
+"            set $proxpass \"http://lemmy-ui-tor\";\n"
+"\n"
+"            if ($http_accept = \"application/activity+json\") {\n"
+"                set $proxpass \"http://lemmy-tor\";\n"
+"            }\n"
+"            if ($http_accept = \"application/ld+json; profile=\\\"https://"
+"www.w3.org/ns/activitystreams\\\"\") {\n"
+"                set $proxpass \"http://lemmy-tor\";\n"
+"            }\n"
+"            if ($request_method = POST) {\n"
+"                set $proxpass \"http://lemmy-tor\";\n"
+"            }\n"
+"            proxy_pass $proxpass;\n"
+"\n"
+"            rewrite ^(.+)/+$ $1 permanent;\n"
+"\n"
+"            # Send actual client IP upstream\n"
+"            proxy_set_header X-Real-IP $remote_addr;\n"
+"            proxy_set_header Host $host;\n"
+"            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n"
+"        }\n"
+"\n"
+"        # backend\n"
+"        location ~ ^/(api|feeds|nodeinfo|.well-known) {\n"
+"            proxy_pass \"http://lemmy-tor\";\n"
+"            proxy_http_version 1.1;\n"
+"            proxy_set_header Upgrade $http_upgrade;\n"
+"            proxy_set_header Connection \"upgrade\";\n"
+"\n"
+"            # Rate limit\n"
+"            limit_req zone=HIDDEN_SERVICE_ADDR_ratelimit burst=30 nodelay;\n"
+"\n"
+"            # Add IP forwarding headers\n"
+"            proxy_set_header X-Real-IP $remote_addr;\n"
+"            proxy_set_header Host $host;\n"
+"            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n"
+"        }\n"
+"\n"
+"        # pictrs only - for adding browser cache control.\n"
+"        location ~ ^/(pictrs) {\n"
+"            # allow browser cache, images never update, we can apply long "
+"term cache\n"
+"            expires 120d;\n"
+"            add_header Pragma \"public\";\n"
+"            add_header Cache-Control \"public\";\n"
+"\n"
+"            proxy_pass \"http://lemmy-tor\";\n"
+"            proxy_http_version 1.1;\n"
+"            proxy_set_header Upgrade $http_upgrade;\n"
+"            proxy_set_header Connection \"upgrade\";\n"
+"\n"
+"            # Rate limit\n"
+"            limit_req zone=HIDDEN_SERVICE_ADDR_ratelimit burst=30 nodelay;\n"
+"\n"
+"            # Add IP forwarding headers\n"
+"            proxy_set_header X-Real-IP $remote_addr;\n"
+"            proxy_set_header Host $host;\n"
+"            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n"
+"        }\n"
+"\n"
+"        # Redirect pictshare images to pictrs\n"
+"        location ~ /pictshare/(.*)$ {\n"
+"            return 301 /pictrs/image/$1;\n"
+"        }\n"
+"    }\n"
+"\n"
+"    # ...\n"
+"}\n"
+"```"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:277
+msgid "Apply the configuration(s)"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:279
+msgid "Restart all services associated with your Lemmy instance:"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:286
+msgid "Test connectivity over Tor"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:288
+msgid ""
+"Using `torsocks`, verify your hidden service is available on the Tor network."
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:290
+msgid ""
+"```\n"
+"torsocks curl -vI http://HIDDEN_SERVICE_ADDR\n"
+"*   Trying 127.*.*.*:80...\n"
+"* Connected to HIDDEN_SERVICE_ADDR (127.*.*.*) port 80 (#0)\n"
+"> HEAD / HTTP/1.1\n"
+"> Host: HIDDEN_SERVICE_ADDR\n"
+"> User-Agent: curl/7.76.1\n"
+"> Accept: */*\n"
+">\n"
+"* Mark bundle as not supporting multiuse\n"
+"< HTTP/1.1 200 OK\n"
+"HTTP/1.1 200 OK\n"
+"< Server: nginx\n"
+"Server: nginx\n"
+"< Date: Wed, 07 Jun 2023 17:06:00 GMT\n"
+"Date: Wed, 07 Jun 2023 17:06:00 GMT\n"
+"< Content-Type: text/html; charset=utf-8\n"
+"Content-Type: text/html; charset=utf-8\n"
+"< Content-Length: 98487\n"
+"Content-Length: 98487\n"
+"< Connection: keep-alive\n"
+"Connection: keep-alive\n"
+"< Vary: Accept-Encoding\n"
+"Vary: Accept-Encoding\n"
+"< X-Powered-By: Express\n"
+"X-Powered-By: Express\n"
+"< Content-Security-Policy: default-src 'self'; manifest-src *; connect-src "
+"*; img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-"
+"src 'self' 'unsafe-inline'; form-action 'self'; base-uri 'self'; frame-src "
+"*\n"
+"Content-Security-Policy: default-src 'self'; manifest-src *; connect-src *; "
+"img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src "
+"'self' 'unsafe-inline'; form-action 'self'; base-uri 'self'; frame-src *\n"
+"< ETag: W/\"180b7-EC9iFYAIlbnN8zHCayBwL3wAm64\"\n"
+"ETag: W/\"180b7-EC9iFYAIlbnN8zHCayBwL3wAm64\"\n"
+"< Referrer-Policy: same-origin\n"
+"Referrer-Policy: same-origin\n"
+"< X-Content-Type-Options: nosniff\n"
+"X-Content-Type-Options: nosniff\n"
+"< X-Frame-Options: DENY\n"
+"X-Frame-Options: DENY\n"
+"< X-XSS-Protection: 1; mode=block\n"
+"X-XSS-Protection: 1; mode=block\n"
+"\n"
+"<\n"
+"* Connection #0 to host HIDDEN_SERVICE_ADDR left intact\n"
+"```"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:333
+msgid "Logging behavior"
+msgstr ""
+
+#: src/administration/tor_hidden_service.md:335
+msgid ""
+"Hidden service traffic will appear to originate from the "
+"`lemmyexternalproxy` docker network instead of an internet IP. Docker's "
+"default network address pool is `172.17.0.0/16`."
+msgstr ""

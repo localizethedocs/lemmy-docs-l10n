@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/contributors/07-ranking-algo.md:1
+msgid "Ranking Algorithm"
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:3
+msgid "Goals"
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:5
+msgid ""
+"During the day, new posts and comments should be near the top, so they can "
+"be voted on."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:6
+msgid "After a day or so, the time factor should go away."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:7
+msgid ""
+"Use a log scale, since votes tend to snowball, and so the first 10 votes are "
+"just as important as the next hundred."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:9
+msgid "Implementations"
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:11
+msgid "Reddit"
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:13
+msgid ""
+"Does not take the lifetime of the thread into account, [giving early "
+"comments an overwhelming advantage over later ones,](https://minimaxir."
+"com/2016/11/first-comment/) with the effect being even worse in small "
+"communities. New comments pool at the bottom of the thread, effectively "
+"killing off discussion and making each thread a race to comment early. This "
+"lowers the quality of conversation and rewards comments that are repetitive "
+"and spammy."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:15
+msgid "Hacker News"
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:17
+msgid ""
+"While far superior to Reddit's implementation for its decay of scores over "
+"time, [Hacker News' ranking algorithm](https://medium.com/hacking-and-gonzo/"
+"how-hacker-news-ranking-algorithm-works-1d9b0cf2c08d) does not use a "
+"logarithmic scale for scores."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:19
+msgid "Lemmy"
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:21
+msgid ""
+"Counterbalances the snowballing effect of votes over time with a logarithmic "
+"scale. Negates the inherent advantage of early comments while still ensuring "
+"that votes still matter in the long-term, not nuking older popular comments."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:33
+msgid ""
+"Lemmy uses the same `Rank` algorithm above, in three sorts: `Active`, `Hot`, "
+"and `Scaled`."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:34
+msgid ""
+"`Active` uses the post votes, and latest comment time (limited to two days)."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:35
+msgid "`Hot` uses the post votes, and the post published time."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:36
+msgid ""
+"`Scaled` is similar to `Hot`, but gives a boost to smaller / less active "
+"communities."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:37
+msgid "Use Max(1, score) to make sure all comments are affected by time decay."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:38
+msgid ""
+"Add 3 to the score, so that everything that has less than 3 downvotes will "
+"seem new. Otherwise all new comments would stay at zero, near the bottom."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:39
+msgid ""
+"The sign and abs of the score are necessary for dealing with the log of "
+"negative scores."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:40
+msgid "A scale factor of 10k gets the rank in integer form."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:42
+msgid ""
+"A plot of rank over 24 hours, of scores of 1, 5, 10, 100, 1000, with a scale "
+"factor of 10k."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:44
+msgid "![rank_algorithm.png](rank_algorithm.png)"
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:46
+msgid "Active User counts"
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:48
+msgid ""
+"Lemmy also shows counts of _active users_ for your site, and its "
+"communities. These are counted within the last `day`, `week`, `month`, and "
+"`half year`, and are cached on starting up lemmy, and every hour."
+msgstr ""
+
+#: src/contributors/07-ranking-algo.md:50
+msgid ""
+"An active user is someone who has posted, commented, or voted on our "
+"instance or community within the last given time frame. For site counts, "
+"only local users are counted. For community counts, federated users are "
+"included."
+msgstr ""

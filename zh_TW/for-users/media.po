@@ -1,0 +1,375 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/users/02-media.md:1
+msgid "Media"
+msgstr ""
+
+#: src/users/02-media.md:3
+msgid "Text"
+msgstr ""
+
+#: src/users/02-media.md:5
+msgid ""
+"The main type of content in Lemmy is text which can be formatted with "
+"Markdown. Refer to the table below for supported formatting rules. The Lemmy "
+"user interface also provides buttons for formatting, so it's not necessary "
+"to remember all of it. You can also follow the interactive [CommonMark "
+"tutorial](https://commonmark.org/help/tutorial/) to get started."
+msgstr ""
+
+#: src/users/02-media.md:7
+msgid "Type"
+msgstr ""
+
+#: src/users/02-media.md:7
+msgid "Or"
+msgstr ""
+
+#: src/users/02-media.md:7
+msgid "… to Get"
+msgstr ""
+
+#: src/users/02-media.md:9
+msgid "\\*Italic\\*"
+msgstr ""
+
+#: src/users/02-media.md:9
+msgid "\\_Italic\\_"
+msgstr ""
+
+#: src/users/02-media.md:9
+msgid "_Italic_"
+msgstr ""
+
+#: src/users/02-media.md:10
+msgid "\\*\\*Bold\\*\\*"
+msgstr ""
+
+#: src/users/02-media.md:10
+msgid "\\_\\_Bold\\_\\_"
+msgstr ""
+
+#: src/users/02-media.md:10
+msgid "**Bold**"
+msgstr ""
+
+#: src/users/02-media.md:11
+msgid "\\# Heading 1"
+msgstr ""
+
+#: src/users/02-media.md:11
+msgid "Heading 1 <br> ========="
+msgstr ""
+
+#: src/users/02-media.md:11
+msgid "<h4>Heading 1</h4>"
+msgstr ""
+
+#: src/users/02-media.md:12
+msgid "\\## Heading 2"
+msgstr ""
+
+#: src/users/02-media.md:12
+msgid "Heading 2 <br>\\---------"
+msgstr ""
+
+#: src/users/02-media.md:12
+msgid "<h5>Heading 2</h5>"
+msgstr ""
+
+#: src/users/02-media.md:13
+msgid "\\[Link\\](http://a.com)"
+msgstr ""
+
+#: src/users/02-media.md:13
+msgid "\\[Link\\]\\[1\\]<br>⋮ <br>\\[1\\]: http://b.org"
+msgstr ""
+
+#: src/users/02-media.md:13
+msgid "[Link](https://commonmark.org/)"
+msgstr ""
+
+#: src/users/02-media.md:14
+msgid "!\\[Image\\](http://url/a.png)"
+msgstr ""
+
+#: src/users/02-media.md:14
+msgid "!\\[Image\\]\\[1\\]<br>⋮ <br>\\[1\\]: http://url/b.jpg"
+msgstr ""
+
+#: src/users/02-media.md:14
+msgid "![Markdown](https://commonmark.org/help/images/favicon.png)"
+msgstr ""
+
+#: src/users/02-media.md:15
+msgid "Example^\\[Footnote\\]"
+msgstr ""
+
+#: src/users/02-media.md:15
+msgid ""
+"Example<sup><a href=\"#fn1\" id=\"fnref1\">\\[1\\]</a></"
+"sup><br>⋮<hr><section><ol><li id=\"fn1\"><p>Footnote <a href=\"#fnref1\" >↩︎</"
+"a></p></li></ol></section>"
+msgstr ""
+
+#: src/users/02-media.md:16
+msgid "\\> Blockquote"
+msgstr ""
+
+#: src/users/02-media.md:16
+msgid "<blockquote>Blockquote</blockquote>"
+msgstr ""
+
+#: src/users/02-media.md:17
+msgid "\\* List <br>\\* List <br>\\* List"
+msgstr ""
+
+#: src/users/02-media.md:17
+msgid "\\- List <br>\\- List <br>\\- List <br>"
+msgstr ""
+
+#: src/users/02-media.md:17
+msgid "<ul><li>List</li><li>List</li><li>List</li></ul>"
+msgstr ""
+
+#: src/users/02-media.md:18
+msgid "1. One <br>2. Two <br>3. Three"
+msgstr ""
+
+#: src/users/02-media.md:18
+msgid "1) One<br>2) Two<br>3) Three"
+msgstr ""
+
+#: src/users/02-media.md:18
+msgid "<ol><li>One</li><li>Two</li><li>Three</li></ol>"
+msgstr ""
+
+#: src/users/02-media.md:19
+msgid "Horizontal Rule <br>\\---"
+msgstr ""
+
+#: src/users/02-media.md:19
+msgid "Horizontal Rule<br>\\*\\*\\*"
+msgstr ""
+
+#: src/users/02-media.md:19
+msgid "Horizontal Rule <br><hr>"
+msgstr ""
+
+#: src/users/02-media.md:20
+msgid "\\`Inline code\\` with backticks"
+msgstr ""
+
+#: src/users/02-media.md:20
+msgid "`Inline code` with backticks"
+msgstr ""
+
+#: src/users/02-media.md:21
+msgid ""
+"\\`\\`\\`<br>\\# code block <br>print '3 backticks or'<br>print 'indent 4 "
+"spaces' <br>\\`\\`\\`"
+msgstr ""
+
+#: src/users/02-media.md:21
+msgid ""
+"····\\# code block<br>····print '3 backticks or'<br>····print 'indent 4 "
+"spaces'"
+msgstr ""
+
+#: src/users/02-media.md:21
+msgid ""
+"<pre><code>\\# code block<br>print '3 backticks or'<br>print 'indent 4 "
+"spaces'</code></pre>"
+msgstr ""
+
+#: src/users/02-media.md:22
+msgid "::: spoiler hidden or nsfw stuff<br>_a bunch of spoilers here_<br>:::"
+msgstr ""
+
+#: src/users/02-media.md:22
+msgid ""
+"<details><summary> hidden or nsfw stuff </summary><p><em>a bunch of spoilers "
+"here</em></p></details>"
+msgstr ""
+
+#: src/users/02-media.md:23
+msgid "Some ~subscript~ text"
+msgstr ""
+
+#: src/users/02-media.md:23
+msgid "Some <sub>subscript</sub> text"
+msgstr ""
+
+#: src/users/02-media.md:24
+msgid "Some ^superscript^ text"
+msgstr ""
+
+#: src/users/02-media.md:24
+msgid "Some <sup>superscript</sup> text"
+msgstr ""
+
+#: src/users/02-media.md:25
+msgid "~~Strikethrough~~"
+msgstr ""
+
+#: src/users/02-media.md:25
+msgid "Some ~~removed~~ text"
+msgstr ""
+
+#: src/users/02-media.md:26
+msgid "{Ruby\\|text}"
+msgstr ""
+
+#: src/users/02-media.md:26
+msgid "<ruby>Ruby<rt>text</rt></ruby>"
+msgstr ""
+
+#: src/users/02-media.md:28
+msgid "[CommonMark Tutorial](https://commonmark.org/help/tutorial/)"
+msgstr ""
+
+#: src/users/02-media.md:30
+msgid "Images and Video"
+msgstr ""
+
+#: src/users/02-media.md:32
+msgid ""
+"Lemmy also allows sharing of images and videos. To upload an image, go to "
+"the _Create post_ page and click the little image icon under the _URL_ "
+"field. This allows you to select a local image. If you made a mistake, a "
+"popup message allows you to delete the image. The same image button also "
+"allows uploading of videos in .gif format. Instead of uploading a local "
+"file, you can also simply paste the URL of an image or video from another "
+"website."
+msgstr ""
+
+#: src/users/02-media.md:34
+msgid ""
+"Note that this functionality is not meant to share large images or videos, "
+"because that would require too many server resources. Instead, upload them "
+"on another platform like [PeerTube](https://joinpeertube.org/) or [Pixelfed]"
+"(https://pixelfed.org/), and share the link on Lemmy."
+msgstr ""
+
+#: src/users/02-media.md:36
+msgid "Torrents"
+msgstr ""
+
+#: src/users/02-media.md:38
+msgid ""
+"Since Lemmy doesn't host large videos or other media, users can share files "
+"using [BitTorrent](https://en.wikipedia.org/wiki/BitTorrent) links. In "
+"BitTorrent, files are shared not by a single user, but by _many users_ at "
+"the same time. This makes file sharing efficient, fast, and reliable, as "
+"long as several sources are sharing the files."
+msgstr ""
+
+#: src/users/02-media.md:40
+msgid ""
+"Lemmy supports posting torrent magnet links (links that start with `magnet:"
+"`) in the post _URL_ field, or as Markdown links within comments. You can "
+"get a magnet link by clicking _copy magnet link_ in your torrent app."
+msgstr ""
+
+#: src/users/02-media.md:42
+msgid ""
+"With this, Lemmy can serve as an alternative to centralized media-centric "
+"services like YouTube and Spotify."
+msgstr ""
+
+#: src/users/02-media.md:44
+msgid "How to Watch Torrents"
+msgstr ""
+
+#: src/users/02-media.md:46
+msgid "Beginner"
+msgstr ""
+
+#: src/users/02-media.md:48
+msgid ""
+"To easily stream videos and audio on Lemmy, you can use any of the following "
+"apps. After clicking on a torrent link in Lemmy, a dialog will pop up asking "
+"you to open the link in the app."
+msgstr ""
+
+#: src/users/02-media.md:50
+msgid "[Stremio](https://www.stremio.com/) (Desktop, Android)"
+msgstr ""
+
+#: src/users/02-media.md:51
+msgid "[WebTorrent Desktop](https://webtorrent.io/desktop/) (Desktop)"
+msgstr ""
+
+#: src/users/02-media.md:52
+msgid ""
+"[Popcorn Time](https://github.com/popcorn-official/popcorn-desktop) (Desktop)"
+msgstr ""
+
+#: src/users/02-media.md:53
+msgid ""
+"[xTorrent](https://play.google.com/store/apps/details?id=com.gamemalt."
+"streamtorrentvideos) (Android)"
+msgstr ""
+
+#: src/users/02-media.md:55
+msgid "Advanced"
+msgstr ""
+
+#: src/users/02-media.md:57
+msgid ""
+"For those who would like to help share files, you can use any of the "
+"following torrent clients:"
+msgstr ""
+
+#: src/users/02-media.md:59
+msgid "[qBittorrent](https://qbittorrent.org/) (Desktop)"
+msgstr ""
+
+#: src/users/02-media.md:60
+msgid "[Deluge](https://www.deluge-torrent.org/) (Desktop)"
+msgstr ""
+
+#: src/users/02-media.md:61
+msgid "[Transmission](https://transmissionbt.com/) (Desktop)"
+msgstr ""
+
+#: src/users/02-media.md:62
+msgid ""
+"[LibreTorrent](https://gitlab.com/proninyaroslav/libretorrent) (Android)"
+msgstr ""
+
+#: src/users/02-media.md:64
+msgid ""
+"Many of these support _streaming_ videos. To do this, make sure you check "
+"_sequential download_, wait for enough of the download to complete, then "
+"click to open the video file."
+msgstr ""
+
+#: src/users/02-media.md:66
+msgid ""
+"If you'd like, you can also set up a media server to view this content on "
+"any device. Some good options are:"
+msgstr ""
+
+#: src/users/02-media.md:68
+msgid "[Jellyfin](https://jellyfin.org/) (Movies, TV, Music, Audiobooks)"
+msgstr ""
+
+#: src/users/02-media.md:69
+msgid "[Navidrome](https://www.navidrome.org/) (Music)"
+msgstr ""
+
+#: src/users/02-media.md:70
+msgid "[audiobookshelf](https://www.audiobookshelf.org/) (Audiobooks)"
+msgstr ""

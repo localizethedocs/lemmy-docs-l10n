@@ -1,0 +1,335 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/contributors/04-api.md:1
+msgid "API"
+msgstr ""
+
+#: src/contributors/04-api.md:3
+msgid ""
+"Lemmy has `OpenAPI` and javascript client docs, for app and client "
+"developers."
+msgstr ""
+
+#: src/contributors/04-api.md:5
+msgid "Version"
+msgstr ""
+
+#: src/contributors/04-api.md:5
+msgid "OpenAPI"
+msgstr ""
+
+#: src/contributors/04-api.md:5
+msgid "lemmy-js-client"
+msgstr ""
+
+#: src/contributors/04-api.md:7
+msgid "release/v0.19"
+msgstr ""
+
+#: src/contributors/04-api.md:7
+msgid "Not available"
+msgstr ""
+
+#: src/contributors/04-api.md:7
+msgid "[JS-client](/lemmy-js-client-docs/v0.19)"
+msgstr ""
+
+#: src/contributors/04-api.md:8
+msgid "main / dev"
+msgstr ""
+
+#: src/contributors/04-api.md:8
+msgid "[OpenAPI](/api/main)"
+msgstr ""
+
+#: src/contributors/04-api.md:8
+msgid "[JS-client](/lemmy-js-client-docs/main)"
+msgstr ""
+
+#: src/contributors/04-api.md:10
+msgid ""
+"Instead of using the API directly you can use one of the existing [libraries]"
+"(https://github.com/dbeley/awesome-lemmy#libraries). You can either interact "
+"with a local development instance via `http://localhost:8536`, or connect to "
+"a production instance. The following instances are available for testing "
+"purposes:"
+msgstr ""
+
+#: src/contributors/04-api.md:12
+msgid "https://enterprise.lemmy.ml/"
+msgstr ""
+
+#: src/contributors/04-api.md:13
+msgid "https://ds9.lemmy.ml/"
+msgstr ""
+
+#: src/contributors/04-api.md:14
+msgid "https://voyager.lemmy.ml/"
+msgstr ""
+
+#: src/contributors/04-api.md:16
+msgid "Other unofficial API documentation is available at:"
+msgstr ""
+
+#: src/contributors/04-api.md:18
+msgid "[lemmy.readme.io](https://lemmy.readme.io/)"
+msgstr ""
+
+#: src/contributors/04-api.md:19
+msgid ""
+"[mv-gh.github.io/lemmy_openapi_spec](https://mv-gh.github.io/"
+"lemmy_openapi_spec/)"
+msgstr ""
+
+#: src/contributors/04-api.md:21
+msgid "Curl Examples"
+msgstr ""
+
+#: src/contributors/04-api.md:23
+msgid "**GET example**"
+msgstr ""
+
+#: src/contributors/04-api.md:25
+msgid ""
+"The current API `{version}` is [here](https://github.com/LemmyNet/lemmy-js-"
+"client/blob/main/src/other_types.ts#L1)."
+msgstr ""
+
+#: src/contributors/04-api.md:27
+msgid ""
+"```\n"
+"curl \"https://lemmy.ml/api/{version}/community/list?sort=Hot\"`\n"
+"```"
+msgstr ""
+
+#: src/contributors/04-api.md:31
+msgid "**POST example**"
+msgstr ""
+
+#: src/contributors/04-api.md:33
+msgid ""
+"```\n"
+"curl -i -H \\\n"
+"\"Content-Type: application/json\" \\\n"
+"-X POST \\\n"
+"-d '{\n"
+"  \"comment_id\": 374,\n"
+"  \"score\": 1,\n"
+"  \"auth\": eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9."
+"eyJpZCI6MiwiaXNzIjoidGVzdC5sZW1teS5tbCJ9.P77RX_kpz1a_geY5eCp29sl_5mAm-"
+"k27Cwnk8JcIZJk\n"
+"}' \\\n"
+"https://lemmy.ml/api/{version}/comment/like\n"
+"```"
+msgstr ""
+
+#: src/contributors/04-api.md:45
+msgid "RSS/Atom feeds"
+msgstr ""
+
+#: src/contributors/04-api.md:47
+msgid "_These links can added by clicking on RSS icons in lemmy-ui._"
+msgstr ""
+
+#: src/contributors/04-api.md:49
+msgid "Type"
+msgstr ""
+
+#: src/contributors/04-api.md:49
+msgid "url"
+msgstr ""
+
+#: src/contributors/04-api.md:51
+msgid "All"
+msgstr ""
+
+#: src/contributors/04-api.md:51
+msgid "`/feeds/all.xml?sort=Hot`"
+msgstr ""
+
+#: src/contributors/04-api.md:52
+msgid "Local"
+msgstr ""
+
+#: src/contributors/04-api.md:52
+msgid "`/feeds/local.xml?sort=Hot`"
+msgstr ""
+
+#: src/contributors/04-api.md:53
+msgid "Community"
+msgstr ""
+
+#: src/contributors/04-api.md:53
+msgid "`/feeds/c/community-name.xml?sort=Hot`"
+msgstr ""
+
+#: src/contributors/04-api.md:54
+msgid "User"
+msgstr ""
+
+#: src/contributors/04-api.md:54
+msgid "`/feeds/u/user-name.xml?sort=Hot`"
+msgstr ""
+
+#: src/contributors/04-api.md:55
+msgid "Your front page"
+msgstr ""
+
+#: src/contributors/04-api.md:55
+msgid "`/feeds/front.xml/{jwt_token}`"
+msgstr ""
+
+#: src/contributors/04-api.md:56
+msgid "Your inbox"
+msgstr ""
+
+#: src/contributors/04-api.md:56
+msgid "`/feeds/inbox.xml/{jwt_token}`"
+msgstr ""
+
+#: src/contributors/04-api.md:57
+msgid "Your modlog"
+msgstr ""
+
+#: src/contributors/04-api.md:57
+msgid "`/feeds/modlog.xml/{jwt_token}`"
+msgstr ""
+
+#: src/contributors/04-api.md:59
+msgid "Images"
+msgstr ""
+
+#: src/contributors/04-api.md:61
+msgid "Lemmy forwards image requests to a locally running Pictrs."
+msgstr ""
+
+#: src/contributors/04-api.md:63
+msgid "`GET /pictrs/image/{filename}?format={webp, jpg, ...}&thumbnail={96}`"
+msgstr ""
+
+#: src/contributors/04-api.md:65
+msgid "_Format and thumbnail are optional._"
+msgstr ""
+
+#: src/contributors/04-api.md:67
+msgid "Create (request)"
+msgstr ""
+
+#: src/contributors/04-api.md:69
+msgid ""
+"Uploaded content must be valid multipart/form-data with an image array "
+"located within the images\\[\\] key."
+msgstr ""
+
+#: src/contributors/04-api.md:71
+msgid "`POST /pictrs/image`"
+msgstr ""
+
+#: src/contributors/04-api.md:73
+msgid "Create (response)"
+msgstr ""
+
+#: src/contributors/04-api.md:75
+msgid ""
+"```\n"
+"{\n"
+"  \"files\": [\n"
+"    {\n"
+"      \"delete_token\": \"{token}\",\n"
+"      \"file\": \"{file}.jpg\"\n"
+"    }\n"
+"  ],\n"
+"  \"msg\": \"ok\"\n"
+"}\n"
+"```"
+msgstr ""
+
+#: src/contributors/04-api.md:87
+msgid "Delete"
+msgstr ""
+
+#: src/contributors/04-api.md:89
+msgid "`GET /pictrs/image/delete/{delete_token}/{file}`"
+msgstr ""
+
+#: src/contributors/04-api.md:91
+msgid "Rust API"
+msgstr ""
+
+#: src/contributors/04-api.md:93
+msgid ""
+"If you want to develop a Rust application which interacts with Lemmy, you "
+"can directly pull in the relevant API structs. This uses the exact API "
+"structs used in Lemmy, but with most heavyweight dependencies disabled. API "
+"paths or HTTP client are not included, so you need to handle those aspects "
+"manually. See the [readme](https://github.com/LemmyNet/lemmy/blob/main/"
+"crates/api_common/README.md) for details."
+msgstr ""
+
+#: src/contributors/04-api.md:95
+msgid "Creating a Custom Frontend"
+msgstr ""
+
+#: src/contributors/04-api.md:97
+msgid ""
+"The Lemmy backend and frontend are completely separate projects. This "
+"creates a lot of potential for alternative frontends which can change much "
+"of the design and user experience of Lemmy. For example, it is possible to "
+"create a frontend in the style of a traditional forum like [phpBB](https://"
+"www.phpbb.com/), a question-and-answer site like [Stack Overflow](https://"
+"stackoverflow.com/), a blogging platform or an image gallery. This way you "
+"don't have to write any SQL queries, federation logic, API code and so on, "
+"but can use the proven implementation from Lemmy. It is also possible to run "
+"multiple frontends for a single Lemmy instance."
+msgstr ""
+
+#: src/contributors/04-api.md:99
+msgid "Development"
+msgstr ""
+
+#: src/contributors/04-api.md:101
+msgid ""
+"The easiest way to get started is by forking one of the [existing frontends]"
+"(https://join-lemmy.org/apps). But you can also create a new frontend from "
+"scratch. In any case the principle is the same: bind to a port to serve user "
+"requests, and connect to the API of a Lemmy instance as described above to "
+"fetch data."
+msgstr ""
+
+#: src/contributors/04-api.md:103
+msgid "Translations"
+msgstr ""
+
+#: src/contributors/04-api.md:105
+msgid ""
+"You can add the [lemmy-translations](https://github.com/LemmyNet/lemmy-"
+"translations) repository to your project as a [git submodule](https://git-"
+"scm.com/book/en/v2/Git-Tools-Submodules). That way you can take advantage of "
+"same translations used in the official frontend, and you will also receive "
+"new translations contributed via Weblate."
+msgstr ""
+
+#: src/contributors/04-api.md:107
+msgid "Rate limiting"
+msgstr ""
+
+#: src/contributors/04-api.md:109
+msgid ""
+"Lemmy does rate limiting for many actions based on the client IP. But if you "
+"make any API calls on the server side (e.g. in the case of server-side "
+"rendering, or javascript pre-rendering), Lemmy will take the IP of the "
+"Docker container. Meaning that all requests come from the same IP, and get "
+"rate limited much earlier. To avoid this problem, you need to pass the "
+"actual client IP via `Forwarded` or `X-Forwarded-For` HTTP header."
+msgstr ""

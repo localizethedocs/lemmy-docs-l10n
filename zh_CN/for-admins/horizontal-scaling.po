@@ -1,0 +1,346 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/administration/horizontal_scaling.md:1
+msgid "Horizontal Scaling"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:3
+msgid ""
+"This is a collection of notes on scaling different Lemmy components "
+"horizontally. This is not meant as a step-by-step guide, rather as general "
+"tips and knowledge that might be useful to somebody who is already familiar "
+"with and horizontal scaling concepts and best practices. If you don't "
+"already know about concepts like load balancing, object storage, and reverse "
+"proxies, then this document will probably be hard (or impossible) to "
+"understand."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:5
+msgid ""
+"**Note: scaling Lemmy this way is not necessary, and for small instances, "
+"the added overhead most likely outweighs any benefits.**"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:7
+msgid "Why scale horizontally?"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:9
+msgid ""
+"If one of your Lemmy servers dies for any reason, your instance can still "
+"remain operational"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:10
+msgid ""
+"Having multiple Lemmy servers allows you to do rolling upgrades (no downtime "
+"needed to upgrade Lemmy!)"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:11
+msgid ""
+"Horizontal scaling provides additional flexibility in how you upgrade your "
+"infrastructure"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:12
+msgid ""
+"As of Lemmy version 0.18.2, Lemmy appears to be able to use the same "
+"resources more efficiently if they are split between multiple Lemmy processes"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:14
+msgid "Breakdown of Lemmy components"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:16
+msgid ""
+"See [Lemmy components](administration.md#lemmy-components) for a high level "
+"overview of what each component does."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:18
+msgid "Lemmy-ui"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:20
+msgid ""
+"Lemmy-ui can be horizontally scaled, but make sure you read the following "
+"section for information about rolling upgrades."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:22
+#: src/administration/horizontal_scaling.md:102
+msgid "Rolling upgrades"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:24
+msgid ""
+"In general, there is nothing preventing you from running multiple load "
+"balanced Lemmy-ui servers in parallel, but without some custom "
+"configuration, **rolling upgrades will break Lemmy for your users!** This is "
+"because by default, Lemmy-ui will serve static files through the express "
+"process."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:26
+msgid ""
+"Consider the scenario where you have 2 Lemmy-ui servers, one is running on "
+"version 1, and the other has just come online running version 2. A user "
+"opening your Lemmy in their browser might have their front page html request "
+"routed to version 1. This html will contain a reference to many other static "
+"files which are specific to version 1. Most likely, some of these requests "
+"will get routed to the server running version 2. **The files will not exist "
+"on this server, the server will respond with 404, and the UI will remain in "
+"a broken state.**"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:28
+msgid "There are a few ways to work around this issue:"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:30
+msgid ""
+"The safest option is to ensure that all servers are able to serve static "
+"files for all currently active Lemmy-ui versions."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:31
+msgid ""
+"There are many ways to achieve this, the most obvious one being to upload "
+"your static files to object storage, and have reverse proxies route static "
+"file requests to your static files bucket."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:32
+msgid "Here's one possible example of how to do this with nginx:"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:34
+msgid ""
+"```\n"
+"location /static {\n"
+"   expires 1y;\n"
+"   add_header Cache-Control \"public\";\n"
+"   proxy_pass https://${bucket_fqdn};\n"
+"\n"
+"   limit_except GET {\n"
+"       deny  all;\n"
+"   }\n"
+"\n"
+"   proxy_intercept_errors on;\n"
+"   # invalid keys result in 403\n"
+"   error_page 403 =404 /@404static;\n"
+"}\n"
+"```"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:50
+msgid ""
+"Replace `${bucket_fqdn}` with the URL to your bucket. With this setup, you "
+"should upload the contents of the lemmy-ui `dist/` directory to a "
+"\"directory\" named `static/$LEMMY_UI_HASH` in your bucket, where the hash "
+"is calculated from the commit you are deploying: `export LEMMY_UI_HASH=$(git "
+"rev-parse --short HEAD)`. Note that this setup requires public acl on "
+"uploaded files, so it's recommended to limit access to your bucket with an "
+"IP allowlist policy."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:52
+msgid ""
+"An alternative option is to configure sticky sessions in your load balancer. "
+"This will ensure that subsequent requests all end up on the same Lemmy-ui "
+"server, and as long as your sticky sessions last longer than your upgrade "
+"process, most clients should remain functional."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:53
+msgid ""
+"Similarly to sticky sessions, another possibility is to configure ip hash "
+"based load balancing."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:54
+msgid ""
+"There is always the option to just employ downtime and upgrade all servers "
+"at once (but that's not very fun!)"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:56
+msgid "Lemmy_server"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:58
+msgid "Lemmy_server can be horizontally scaled, with a few caveats."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:60
+msgid ""
+"Here's a quick example on how you could start 3 web servers, 3 federation "
+"servers and one scheduled task process:"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:67
+msgid ""
+"Or run the Docker container with the `-e LEMMY_DISABLE_HTTP_SERVER=true` and "
+"`-e LEMMY_DISABLE_ACTIVITY_SENDING=true` ENV parameters."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:76
+msgid ""
+"Or run the Docker containers with the `-e "
+"LEMMY_DISABLE_ACTIVITY_SENDING=true` and `-e "
+"LEMMY_DISABLE_SCHEDULED_TASKS=true` ENV parameters."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:85
+msgid ""
+"Or run the Docker containers with the `-e LEMMY_DISABLE_HTTP_SERVER=true`, `-"
+"e LEMMY_DISABLE_SCHEDULED_TASKS=true`, `-e LEMMY_FEDERATE_PROCESS_INDEX=1` "
+"and `-e LEMMY_FEDERATE_PROCESS_COUNT=3` ENV parameters."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:87
+msgid "Scheduled tasks"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:89
+msgid ""
+"By default, a Lemmy_server process will run background scheduled tasks, "
+"which must be run only on one server. Launching multiple processes with the "
+"default configuration will result in multiple duplicated scheduled tasks all "
+"starting at the same moment and trying to do the same thing at once."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:91
+msgid ""
+"To solve this, Lemmy must be started with the `--disable-scheduled-tasks` "
+"flag (or `LEMMY_DISABLE_SCHEDULED_TASKS=true`) on all but one instance. In "
+"general, there are two approaches:"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:93
+msgid ""
+"Run all your load balanced Lemmy servers with the `--disable-scheduled-"
+"tasks` flag, and run one additional Lemmy server without this flag which is "
+"not in your load balancer and does not accept any HTTP traffic."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:94
+msgid ""
+"Run one load balanced Lemmy server without the flag, and all other load "
+"balanced servers with the flag."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:96
+msgid "Federation queue"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:98
+msgid ""
+"The persistent federation queue (since 0.19) is split by federated domain "
+"and can be processed in equal-size parts run in separate processes. To split "
+"the queue up into N processes numbered 1...N, use the arguments `--federate-"
+"process-index=i --federate-process-count=N` on each (or "
+"`LEMMY_FEDERATE_PROCESS_INDEX=i` and `LEMMY_FEDERATE_PROCESS_COUNT=N` "
+"respectively). It is important that each index is is given to exactly one "
+"process, otherwise you will get undefined behaviour (missing, dupe "
+"federation, crashes)."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:100
+msgid ""
+"Federation processes can be started and stopped at will. They will restart "
+"federation to each instance from the last transmitted activity regardless of "
+"downtime."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:104
+msgid ""
+"For most versions, rolling releases have been completely OK, but there have "
+"been some cases where a database migration slips in which is NOT backwards "
+"compatible (causing any servers running the older version of Lemmy to "
+"potentially start generating errors). To be safe, you should always first "
+"take a look at [what database migrations are included in a new version]"
+"(https://github.com/LemmyNet/lemmy/tree/main/migrations), and evaluate "
+"whether the changes are for sure safe to apply with running servers."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:106
+msgid ""
+"Note that even if there are no backwards incompatible migrations between "
+"immediate version upgrades (version 1 -> 2 is safe and 2 -> 3 is safe), "
+"doing bigger upgrades might cause these same migrations to become backwards "
+"incompatible (a server running version 1 might not be compatible with "
+"migrations from version 3 in this scenario). **It is generally best to only "
+"upgrade one version at a time!**."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:108
+msgid ""
+"For the scheduled task process, it shouldn't cause any major issues to have "
+"two servers running in parallel for a short duration during an upgrade, but "
+"shutting the old one down before starting the new one will always be safer."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:110
+msgid "Pict-rs"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:112
+msgid ""
+"Pict-rs does not scale horizontally as of writing this document. This is due "
+"to a dependency on a Sled database, which is a disk based database file."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:114
+msgid ""
+"The developer of pict-rs has mentioned plans to eventually add Postgres "
+"support (which should in theory enable horizontal scaling), but work on this "
+"has not yet started."
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:116
+msgid ""
+"Note that by caching pict-rs images (for example, with nginx, or with a "
+"CDN), you can really minimize load on the pict-rs server!"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:118
+msgid "Other tips"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:120
+msgid ""
+"Your lemmy-ui servers need to access your backend as well. If you don't want "
+"a complicated setup with multiple load balancers, you could just have each "
+"of your servers contain nginx, lemmy-ui, and lemmy_server, and just load "
+"balance to an nginx on each of your servers"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:121
+msgid ""
+"Make sure you're passing the real client ip address to Lemmy, otherwise "
+"Lemmy's built in rate limiter will trigger very often (if it rate limits "
+"based on your load balancer's IP address, for example). With nginx, you "
+"should use something like this in your nginx.conf:"
+msgstr ""
+
+#: src/administration/horizontal_scaling.md:129
+msgid ""
+"The internal Lemmy load balancer works based on an in-memory storage of ip "
+"addresses. That means that by adding more Lemmy servers, you are effectively "
+"making your rate limits less strict. If you rely on the built in limiter, "
+"make sure to adjust the limits accordingly!"
+msgstr ""

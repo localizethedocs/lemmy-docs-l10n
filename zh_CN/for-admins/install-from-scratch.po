@@ -1,0 +1,609 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/administration/from_scratch.md:1
+msgid "Install from Scratch"
+msgstr ""
+
+#: src/administration/from_scratch.md:3
+msgid ""
+"These instructions are written for Ubuntu 20.04 / Ubuntu 22.04. They are "
+"particularly useful when you'd like to setup a Lemmy container (e.g. LXC on "
+"Proxmox) and cannot use Docker."
+msgstr ""
+
+#: src/administration/from_scratch.md:5
+msgid ""
+"Lemmy is built from source in this guide, so this may take a while, "
+"especially on slow devices. For example, Lemmy v0.18.5 takes around 7 "
+"minutes to build on a quad core VPS."
+msgstr ""
+
+#: src/administration/from_scratch.md:7
+msgid ""
+"Installing and configuring Lemmy using this guide takes about 60-90 minutes. "
+"You might need to make yourself a fresh cup of coffee before you start."
+msgstr ""
+
+#: src/administration/from_scratch.md:9
+msgid "Installation"
+msgstr ""
+
+#: src/administration/from_scratch.md:11
+msgid "Database"
+msgstr ""
+
+#: src/administration/from_scratch.md:13
+msgid ""
+"For Ubuntu 20.04 the shipped PostgreSQL version is 12 which is not supported "
+"by Lemmy. So let's set up a newer one. The most recent stable version of "
+"PostgreSQL is 16 at the time of writing this guide."
+msgstr ""
+
+#: src/administration/from_scratch.md:16 src/administration/from_scratch.md:212
+#: src/administration/from_scratch.md:289
+msgid "Install dependencies"
+msgstr ""
+
+#: src/administration/from_scratch.md:18
+msgid ""
+"```\n"
+"sudo apt install -y wget ca-certificates pkg-config\n"
+"wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo "
+"apt-key add -\n"
+"sudo sh -c 'echo \"deb http://apt.postgresql.org/pub/repos/apt/ "
+"$(lsb_release -cs)-pgdg main\" >> /etc/apt/sources.list.d/pgdg.list'\n"
+"sudo apt update\n"
+"sudo apt install libssl-dev libpq-dev postgresql\n"
+"```"
+msgstr ""
+
+#: src/administration/from_scratch.md:26
+msgid "Setup Lemmy database"
+msgstr ""
+
+#: src/administration/from_scratch.md:28
+msgid ""
+"Replace db-passwd with a unique password of your choice in the commands "
+"below."
+msgstr ""
+
+#: src/administration/from_scratch.md:30
+msgid ""
+"```\n"
+"sudo -iu postgres psql -c \"CREATE USER lemmy WITH PASSWORD 'db-passwd';\"\n"
+"sudo -iu postgres psql -c \"CREATE DATABASE lemmy WITH OWNER lemmy;\"\n"
+"```"
+msgstr ""
+
+#: src/administration/from_scratch.md:35
+msgid ""
+"If you're migrating from an older version of Lemmy, the following might be "
+"required."
+msgstr ""
+
+#: src/administration/from_scratch.md:37
+msgid ""
+"```\n"
+"sudo -iu postgres psql -c \"ALTER USER lemmy WITH SUPERUSER;\"\n"
+"```"
+msgstr ""
+
+#: src/administration/from_scratch.md:41
+msgid ""
+"Tune your PostgreSQL settings to match your hardware via [this guide]"
+"(https://pgtune.leopard.in.ua/#/)"
+msgstr ""
+
+#: src/administration/from_scratch.md:43
+msgid "Setup md5 auth"
+msgstr ""
+
+#: src/administration/from_scratch.md:45
+msgid ""
+"Your Postgres config might need to be edited to allow password "
+"authentication instead of peer authentication. Simply add the following to "
+"your `pg_hba.conf`:"
+msgstr ""
+
+#: src/administration/from_scratch.md:51
+msgid "Install Rust"
+msgstr ""
+
+#: src/administration/from_scratch.md:53
+msgid ""
+"For the Rust compiles, it is ideal to use a non-privileged Linux account on "
+"your system. Install Rust by following the instructions on [Rustup](https://"
+"rustup.rs/) (using a non-privileged Linux account, it will install file in "
+"that user's home folder for rustup and cargo)."
+msgstr ""
+
+#: src/administration/from_scratch.md:55
+msgid ""
+"protobuf-compiler may be required for Ubuntu 20.04 or 22.04 installs, please "
+"report testing in lemmy-docs issues."
+msgstr ""
+
+#: src/administration/from_scratch.md:61
+msgid "Setup pict-rs (Optional)"
+msgstr ""
+
+#: src/administration/from_scratch.md:63
+msgid ""
+"You can skip this section if you don't require image hosting, but **NOTE "
+"that Lemmy-ui will still allow users to attempt uploading images even if "
+"pict-rs is not configured. In this situation, the upload will fail and users "
+"will receive technical error messages.**"
+msgstr ""
+
+#: src/administration/from_scratch.md:65
+msgid ""
+"Lemmy supports image hosting using [pict-rs](https://git.asonix.dog/asonix/"
+"pict-rs/). We need to install a couple of dependencies for this. It requires "
+"the `magick` command which comes with Imagemagick version 7, but Ubuntu "
+"20.04 only comes with Imagemagick 6. So you need to install that command "
+"manually, eg from the [official website](https://imagemagick.org/script/"
+"download.php#linux)."
+msgstr ""
+
+#: src/administration/from_scratch.md:67
+msgid ""
+"**NOTE: on standard LXC containers an AppImage-based ImageMagick "
+"installation [will not work properly](https://github.com/LemmyNet/lemmy/"
+"issues/4112). It uses FUSE which will emit \"permission denied\" errors when "
+"trying to upload an image through pict-rs. You must use alternative "
+"installation methods, such as [imei.sh](https://github.com/SoftCreatR/imei)."
+"**"
+msgstr ""
+
+#: src/administration/from_scratch.md:69
+msgid "AppImage-based installation of ImageMagick"
+msgstr ""
+
+#: src/administration/from_scratch.md:71
+msgid ""
+"```\n"
+"sudo apt install ffmpeg exiftool libgexiv2-dev --no-install-recommends\n"
+"# save the file to a working folder it can be verified before copying to /"
+"usr/bin/\n"
+"wget https://download.imagemagick.org/ImageMagick/download/binaries/magick\n"
+"# compare hash with the \"message digest\" on the official page linked "
+"above\n"
+"sha256sum magick\n"
+"sudo mv magick /usr/bin/\n"
+"sudo chmod 755 /usr/bin/magick\n"
+"```"
+msgstr ""
+
+#: src/administration/from_scratch.md:81
+msgid "imei.sh-based installation of ImageMagick"
+msgstr ""
+
+#: src/administration/from_scratch.md:83
+msgid ""
+"Follow the instructions from the [official imei.sh page on GitHub](https://"
+"github.com/SoftCreatR/imei)"
+msgstr ""
+
+#: src/administration/from_scratch.md:85
+msgid "Standalone pict-rs installation"
+msgstr ""
+
+#: src/administration/from_scratch.md:87
+msgid ""
+"Since we're building stuff from source here, let's do the same for pict-rs. "
+"Follow the [instructions here](https://git.asonix.dog/asonix/pict-rs/#user-"
+"content-compile-from-source)."
+msgstr ""
+
+#: src/administration/from_scratch.md:89
+msgid "Lemmy Backend"
+msgstr ""
+
+#: src/administration/from_scratch.md:91
+msgid "Build the backend"
+msgstr ""
+
+#: src/administration/from_scratch.md:93
+msgid "Create user account on Linux for the lemmy_server application"
+msgstr ""
+
+#: src/administration/from_scratch.md:99
+msgid ""
+"Compile and install Lemmy, given the from-scratch intention, this will be "
+"done via GitHub checkout. This can be done by a normal unprivledged user "
+"(using the same Linux account you used for rustup)."
+msgstr ""
+
+#: src/administration/from_scratch.md:109
+msgid "Then build Lemmy with the following command:"
+msgstr ""
+
+#: src/administration/from_scratch.md:115
+msgid "Deployment"
+msgstr ""
+
+#: src/administration/from_scratch.md:117
+msgid ""
+"Because we should [follow the Linux way](https://tldp.org/LDP/Linux-"
+"Filesystem-Hierarchy/html/opt.html), we should use the `/opt` directory to "
+"colocate the backend, frontend and pict-rs."
+msgstr ""
+
+#: src/administration/from_scratch.md:129
+msgid ""
+"Note that it might not be the most obvious thing, but **creating the pictrs "
+"directories is not optional**."
+msgstr ""
+
+#: src/administration/from_scratch.md:131
+msgid "Then copy the binary."
+msgstr ""
+
+#: src/administration/from_scratch.md:137
+msgid "Configuration"
+msgstr ""
+
+#: src/administration/from_scratch.md:139
+msgid ""
+"This is the minimal Lemmy config, put this in `/opt/lemmy/lemmy-server/lemmy."
+"hjson` (see [here](https://github.com/LemmyNet/lemmy/blob/main/config/"
+"defaults.hjson) for more config options)."
+msgstr ""
+
+#: src/administration/from_scratch.md:141
+msgid ""
+"```hjson\n"
+"{\n"
+"  database: {\n"
+"    # put your db-passwd from above\n"
+"    password: \"db-passwd\"\n"
+"  }\n"
+"  # replace with your domain\n"
+"  hostname: example.com\n"
+"  bind: \"127.0.0.1\"\n"
+"  federation: {\n"
+"    enabled: true\n"
+"  }\n"
+"  # remove this block if you don't require image hosting\n"
+"  pictrs: {\n"
+"    url: \"http://localhost:8080/\"\n"
+"  }\n"
+"}\n"
+"```"
+msgstr ""
+
+#: src/administration/from_scratch.md:160
+msgid "Set the correct owner"
+msgstr ""
+
+#: src/administration/from_scratch.md:166
+msgid "Server daemon"
+msgstr ""
+
+#: src/administration/from_scratch.md:168
+msgid ""
+"Add a systemd unit file, so that Lemmy automatically starts and stops, logs "
+"are handled via journalctl etc. Put this file into /etc/systemd/system/lemmy."
+"service."
+msgstr ""
+
+#: src/administration/from_scratch.md:170
+msgid ""
+"```\n"
+"[Unit]\n"
+"Description=Lemmy Server\n"
+"After=network.target\n"
+"\n"
+"[Service]\n"
+"User=lemmy\n"
+"ExecStart=/opt/lemmy/lemmy-server/lemmy_server\n"
+"Environment=LEMMY_CONFIG_LOCATION=/opt/lemmy/lemmy-server/lemmy.hjson\n"
+"Environment=PICTRS_ADDR=127.0.0.1:8080\n"
+"Environment=RUST_LOG=\"info\"\n"
+"Restart=on-failure\n"
+"WorkingDirectory=/opt/lemmy\n"
+"\n"
+"# Hardening\n"
+"ProtectSystem=yes\n"
+"PrivateTmp=true\n"
+"MemoryDenyWriteExecute=true\n"
+"NoNewPrivileges=true\n"
+"\n"
+"[Install]\n"
+"WantedBy=multi-user.target\n"
+"```"
+msgstr ""
+
+#: src/administration/from_scratch.md:194
+msgid ""
+"If you need debug output in the logs, change the RUST_LOG line in the file "
+"above to"
+msgstr ""
+
+#: src/administration/from_scratch.md:196
+msgid ""
+"```\n"
+"Environment=RUST_LOG=\"debug,lemmy_server=debug,lemmy_api=debug,"
+"lemmy_api_common=debug,lemmy_api_crud=debug,lemmy_apub=debug,"
+"lemmy_db_schema=debug,lemmy_db_views=debug,lemmy_db_views_actor=debug,"
+"lemmy_db_views_moderator=debug,lemmy_routes=debug,lemmy_utils=debug,"
+"lemmy_websocket=debug\"\n"
+"```"
+msgstr ""
+
+#: src/administration/from_scratch.md:200
+msgid "Then run"
+msgstr ""
+
+#: src/administration/from_scratch.md:208
+msgid ""
+"If you did everything right, the Lemmy logs from `sudo journalctl -u lemmy` "
+"should show \"Starting http server at 127.0.0.1:8536\". You can also run "
+"`curl localhost:8536/api/v3/site` which should give a successful response, "
+"looking like `{\"site_view\":null,\"admins\":[],\"banned\":[],\"online\":0,"
+"\"version\":\"unknown version\",\"my_user\":null,\"federated_instances\":"
+"null}`. For pict-rs, run `curl 127.0.0.1:8080` and ensure that it outputs "
+"nothing (particularly no errors)."
+msgstr ""
+
+#: src/administration/from_scratch.md:210
+msgid "Lemmy Front-end (lemmy-ui)"
+msgstr ""
+
+#: src/administration/from_scratch.md:214
+msgid ""
+"Nodejs in Ubuntu 20.04 / Ubuntu 22.04 repos are too old, so let's install "
+"Node 20."
+msgstr ""
+
+#: src/administration/from_scratch.md:216
+msgid ""
+"```\n"
+"# nodejs\n"
+"sudo apt install -y ca-certificates curl gnupg\n"
+"sudo mkdir -p /etc/apt/keyrings\n"
+"curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo "
+"gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg\n"
+"echo \"deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb."
+"nodesource.com/node_20.x nodistro main\" | sudo tee /etc/apt/sources.list.d/"
+"nodesource.list\n"
+"\n"
+"sudo apt update\n"
+"sudo apt install nodejs\n"
+"\n"
+"# pnpm\n"
+"npm i -g pnpm\n"
+"\n"
+"```"
+msgstr ""
+
+#: src/administration/from_scratch.md:231
+msgid "Build the front-end"
+msgstr ""
+
+#: src/administration/from_scratch.md:233
+msgid ""
+"Clone the git repo, checkout the version you want (0.18.5 in this case), and "
+"compile it."
+msgstr ""
+
+#: src/administration/from_scratch.md:235
+msgid ""
+"```\n"
+"# dont compile as admin\n"
+"cd /opt/lemmy\n"
+"sudo -u lemmy bash\n"
+"git clone https://github.com/LemmyNet/lemmy-ui.git --recursive\n"
+"cd lemmy-ui\n"
+"git checkout 0.18.5 # replace with the version you want to install\n"
+"pnpm i\n"
+"pnpm build:prod\n"
+"exit\n"
+"```"
+msgstr ""
+
+#: src/administration/from_scratch.md:247
+msgid "UI daemon"
+msgstr ""
+
+#: src/administration/from_scratch.md:249
+msgid ""
+"Add another systemd unit file, this time for lemmy-ui. You need to replace "
+"`example.com` with your actual domain. Put the file in `/etc/systemd/system/"
+"lemmy-ui.service`"
+msgstr ""
+
+#: src/administration/from_scratch.md:275
+msgid ""
+"More UI-related variables can be [found here](https://github.com/LemmyNet/"
+"lemmy-ui#configuration)."
+msgstr ""
+
+#: src/administration/from_scratch.md:277
+msgid "Then run."
+msgstr ""
+
+#: src/administration/from_scratch.md:285
+msgid ""
+"If everything went right, the command `curl -I localhost:1234` should show "
+"`200 OK` at the top."
+msgstr ""
+
+#: src/administration/from_scratch.md:287
+msgid "Configure reverse proxy and TLS"
+msgstr ""
+
+#: src/administration/from_scratch.md:295
+msgid "Request Let's Encrypt TLS certificate (just follow the instructions)"
+msgstr ""
+
+#: src/administration/from_scratch.md:301
+msgid ""
+"Let's Encrypt certificates should be renewed automatically, so add the line "
+"below to your crontab, by running `sudo crontab -e`. Replace `example.com` "
+"with your actual domain."
+msgstr ""
+
+#: src/administration/from_scratch.md:307
+msgid ""
+"Finally, add the Nginx virtual host config file. Copy paste the file below "
+"to `/etc/nginx/sites-enabled/lemmy.conf`"
+msgstr ""
+
+#: src/administration/from_scratch.md:309
+msgid ""
+"```\n"
+"limit_req_zone $binary_remote_addr zone={{domain}}_ratelimit:10m rate=1r/s;\n"
+"\n"
+"server {\n"
+"    listen 80;\n"
+"    listen [::]:80;\n"
+"    server_name {{domain}};\n"
+"    location /.well-known/acme-challenge/ {\n"
+"        root /var/www/certbot;\n"
+"    }\n"
+"    location / {\n"
+"        return 301 https://$host$request_uri;\n"
+"    }\n"
+"}\n"
+"\n"
+"server {\n"
+"    listen 443 ssl http2;\n"
+"    listen [::]:443 ssl http2;\n"
+"    server_name {{domain}};\n"
+"\n"
+"    ssl_certificate /etc/letsencrypt/live/{{domain}}/fullchain.pem;\n"
+"    ssl_certificate_key /etc/letsencrypt/live/{{domain}}/privkey.pem;\n"
+"\n"
+"    # Various TLS hardening settings\n"
+"    # https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html\n"
+"    ssl_protocols TLSv1.2 TLSv1.3;\n"
+"    ssl_prefer_server_ciphers on;\n"
+"    ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:"
+"ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-"
+"GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-"
+"AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';\n"
+"    ssl_session_timeout  10m;\n"
+"    ssl_session_cache shared:SSL:10m;\n"
+"    ssl_session_tickets on;\n"
+"    ssl_stapling on;\n"
+"    ssl_stapling_verify on;\n"
+"\n"
+"    # Hide nginx version\n"
+"    server_tokens off;\n"
+"\n"
+"    # Enable compression for JS/CSS/HTML bundle, for improved client load "
+"times.\n"
+"    # It might be nice to compress JSON, but leaving that out to protect "
+"against potential\n"
+"    # compression+encryption information leak attacks like BREACH.\n"
+"    gzip on;\n"
+"    gzip_types text/css application/javascript image/svg+xml;\n"
+"    gzip_vary on;\n"
+"\n"
+"    # Only connect to this site via HTTPS for the two years\n"
+"    add_header Strict-Transport-Security \"max-age=63072000\";\n"
+"\n"
+"    # Various content security headers\n"
+"    add_header Referrer-Policy \"same-origin\";\n"
+"    add_header X-Content-Type-Options \"nosniff\";\n"
+"    add_header X-Frame-Options \"DENY\";\n"
+"    add_header X-XSS-Protection \"1; mode=block\";\n"
+"\n"
+"    # Upload limit for pictrs\n"
+"    client_max_body_size 20M;\n"
+"\n"
+"    # frontend\n"
+"    location / {\n"
+"      # The default ports:\n"
+"\n"
+"      set $proxpass \"http://0.0.0.0:1234\";\n"
+"      if ($http_accept ~ \"^application/.*$\") {\n"
+"        set $proxpass \"http://0.0.0.0:8536\";\n"
+"      }\n"
+"      if ($request_method = POST) {\n"
+"        set $proxpass \"http://0.0.0.0:8536\";\n"
+"      }\n"
+"      proxy_pass $proxpass;\n"
+"\n"
+"      rewrite ^(.+)/+$ $1 permanent;\n"
+"\n"
+"      # Send actual client IP upstream\n"
+"      proxy_set_header X-Real-IP $remote_addr;\n"
+"      proxy_set_header Host $host;\n"
+"      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n"
+"    }\n"
+"\n"
+"    # backend\n"
+"    location ~ ^/(api|pictrs|feeds|nodeinfo|.well-known) {\n"
+"      proxy_pass http://0.0.0.0:8536;\n"
+"      proxy_http_version 1.1;\n"
+"      proxy_set_header Upgrade $http_upgrade;\n"
+"      proxy_set_header Connection \"upgrade\";\n"
+"\n"
+"      # Rate limit\n"
+"      limit_req zone={{domain}}_ratelimit burst=30 nodelay;\n"
+"\n"
+"      # Add IP forwarding headers\n"
+"      proxy_set_header X-Real-IP $remote_addr;\n"
+"      proxy_set_header Host $host;\n"
+"      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n"
+"    }\n"
+"}\n"
+"\n"
+"access_log /var/log/nginx/access.log combined;\n"
+"```"
+msgstr ""
+
+#: src/administration/from_scratch.md:406
+msgid ""
+"And then replace some variables in the file. Put your actual domain instead "
+"of example.com"
+msgstr ""
+
+#: src/administration/from_scratch.md:413
+msgid ""
+"Now open your Lemmy domain in the browser, and it should show you a "
+"configuration screen. Use it to create the first admin user and the default "
+"community."
+msgstr ""
+
+#: src/administration/from_scratch.md:415
+msgid "Upgrading"
+msgstr ""
+
+#: src/administration/from_scratch.md:417
+msgid "Lemmy"
+msgstr ""
+
+#: src/administration/from_scratch.md:419
+msgid ""
+"Compile and install lemmy_server changes. This compile can be done by a "
+"normal unprivledged user (using the same Linux account you used for rustup "
+"and first install of Lemmy)."
+msgstr ""
+
+#: src/administration/from_scratch.md:434
+msgid "Lemmy UI"
+msgstr ""
+
+#: src/administration/from_scratch.md:449
+msgid "Pict-rs"
+msgstr ""
+
+#: src/administration/from_scratch.md:451
+msgid ""
+"Refer to [pict-rs documentation](https://git.asonix.dog/asonix/pict-rs) for "
+"instructions on upgrading."
+msgstr ""

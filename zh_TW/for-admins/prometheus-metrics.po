@@ -1,0 +1,285 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/administration/prometheus.md:1
+msgid "Prometheus Metrics"
+msgstr ""
+
+#: src/administration/prometheus.md:3
+msgid ""
+"Lemmy supports the export of metrics in the [Prometheus](https://prometheus."
+"io/) format. This document outlines how to enable the feature and begin "
+"collecting metrics."
+msgstr ""
+
+#: src/administration/prometheus.md:7
+msgid "Configuration"
+msgstr ""
+
+#: src/administration/prometheus.md:9
+msgid ""
+"Configuration of the Prometheus endpoint is contained under the optional "
+"`prometheus` object in the `lemmy.hjson` file. In this configuration block, "
+"the `bind` address and `port` of the Prometheus metrics server can be "
+"configured."
+msgstr ""
+
+#: src/administration/prometheus.md:13
+msgid ""
+"By default, it will serve on `127.0.0.1:10002`. If running inside a "
+"container, it should instead bind on all addresses as below."
+msgstr ""
+
+#: src/administration/prometheus.md:16
+msgid ""
+"```\n"
+"prometheus: {\n"
+"  bind: \"0.0.0.0\"\n"
+"  port: 10002\n"
+"}\n"
+"```"
+msgstr ""
+
+#: src/administration/prometheus.md:23
+msgid "Scrape"
+msgstr ""
+
+#: src/administration/prometheus.md:25
+msgid ""
+"After Lemmy has been deployed, test that it is serving properly (substitute "
+"the correct hostname if not running locally)."
+msgstr ""
+
+#: src/administration/prometheus.md:32
+msgid "Prometheus Configuration"
+msgstr ""
+
+#: src/administration/prometheus.md:34
+msgid ""
+"Below is a minimal configuration on the Prometheus server's side that will "
+"scrape the metrics from Lemmy."
+msgstr ""
+
+#: src/administration/prometheus.md:38 src/administration/prometheus.md:57
+msgid "global"
+msgstr ""
+
+#: src/administration/prometheus.md:38 src/administration/prometheus.md:57
+msgid "scrape_configs"
+msgstr ""
+
+#: src/administration/prometheus.md:40 src/administration/prometheus.md:59
+msgid "job_name"
+msgstr ""
+
+#: src/administration/prometheus.md:40 src/administration/prometheus.md:59
+msgid "lemmy"
+msgstr ""
+
+#: src/administration/prometheus.md:41 src/administration/prometheus.md:60
+msgid "scrape_interval"
+msgstr ""
+
+#: src/administration/prometheus.md:41 src/administration/prometheus.md:60
+msgid "1m"
+msgstr ""
+
+#: src/administration/prometheus.md:42 src/administration/prometheus.md:61
+msgid "static_configs"
+msgstr ""
+
+#: src/administration/prometheus.md:43 src/administration/prometheus.md:62
+msgid "targets"
+msgstr ""
+
+#: src/administration/prometheus.md:44
+msgid "localhost:10002"
+msgstr ""
+
+#: src/administration/prometheus.md:47
+msgid "Then run a Prometheus server to scrape the metrics."
+msgstr ""
+
+#: src/administration/prometheus.md:53
+msgid ""
+"If Lemmy was deployed using the `docker-compose.yml`, then use the following "
+"configurations instead."
+msgstr ""
+
+#: src/administration/prometheus.md:63
+msgid "lemmy:10002"
+msgstr ""
+
+#: src/administration/prometheus.md:66
+msgid ""
+"Run the Prometheus server inside the same docker network that Lemmy is "
+"running in. This can be discovered by running `docker inspect` on the lemmy "
+"container."
+msgstr ""
+
+#: src/administration/prometheus.md:73
+msgid "Example"
+msgstr ""
+
+#: src/administration/prometheus.md:75
+msgid ""
+"Below is an example of what is returned from the `/metrics` endpoint. Each "
+"combination of `endpoint`, `method`, and `status` will produce a histogram "
+"(`lemmy_api_http_requests_duration_seconds_*`), so for brevity the output "
+"was reduced to a single endpoint."
+msgstr ""
+
+#: src/administration/prometheus.md:80
+msgid ""
+"For the HTTP metrics, this is saying that `/api/v3/post/list` received 12 "
+"`GET` requests that returned a `200` HTTP code. Cumulatively, these requests "
+"took 0.383 seconds. 5 requests completed between 0.01 and 0.025 seconds. 5 "
+"more completed between 0.025 and 0.05 seconds. And the remaining 2 requests "
+"completed between 0.05 and 0.1 seconds."
+msgstr ""
+
+#: src/administration/prometheus.md:86
+msgid ""
+"```\n"
+"lemmy_api_http_requests_duration_seconds_bucket{endpoint=\"/api/v3/post/"
+"list\",method=\"GET\",status=\"200\",le=\"0.005\"} 0\n"
+"lemmy_api_http_requests_duration_seconds_bucket{endpoint=\"/api/v3/post/"
+"list\",method=\"GET\",status=\"200\",le=\"0.01\"} 0\n"
+"lemmy_api_http_requests_duration_seconds_bucket{endpoint=\"/api/v3/post/"
+"list\",method=\"GET\",status=\"200\",le=\"0.025\"} 5\n"
+"lemmy_api_http_requests_duration_seconds_bucket{endpoint=\"/api/v3/post/"
+"list\",method=\"GET\",status=\"200\",le=\"0.05\"} 10\n"
+"lemmy_api_http_requests_duration_seconds_bucket{endpoint=\"/api/v3/post/"
+"list\",method=\"GET\",status=\"200\",le=\"0.1\"} 12\n"
+"lemmy_api_http_requests_duration_seconds_bucket{endpoint=\"/api/v3/post/"
+"list\",method=\"GET\",status=\"200\",le=\"0.25\"} 12\n"
+"lemmy_api_http_requests_duration_seconds_bucket{endpoint=\"/api/v3/post/"
+"list\",method=\"GET\",status=\"200\",le=\"0.5\"} 12\n"
+"lemmy_api_http_requests_duration_seconds_bucket{endpoint=\"/api/v3/post/"
+"list\",method=\"GET\",status=\"200\",le=\"1\"} 12\n"
+"lemmy_api_http_requests_duration_seconds_bucket{endpoint=\"/api/v3/post/"
+"list\",method=\"GET\",status=\"200\",le=\"2.5\"} 12\n"
+"lemmy_api_http_requests_duration_seconds_bucket{endpoint=\"/api/v3/post/"
+"list\",method=\"GET\",status=\"200\",le=\"5\"} 12\n"
+"lemmy_api_http_requests_duration_seconds_bucket{endpoint=\"/api/v3/post/"
+"list\",method=\"GET\",status=\"200\",le=\"10\"} 12\n"
+"lemmy_api_http_requests_duration_seconds_bucket{endpoint=\"/api/v3/post/"
+"list\",method=\"GET\",status=\"200\",le=\"+Inf\"} 12\n"
+"lemmy_api_http_requests_duration_seconds_sum{endpoint=\"/api/v3/post/list\","
+"method=\"GET\",status=\"200\"} 0.3834808429999999\n"
+"lemmy_api_http_requests_duration_seconds_count{endpoint=\"/api/v3/post/"
+"list\",method=\"GET\",status=\"200\"} 12\n"
+"\n"
+"lemmy_api_http_requests_total{endpoint=\"/api/v3/post/list\",method=\"GET\","
+"status=\"200\"} 12\n"
+"\n"
+"# HELP lemmy_db_pool_available_connections Number of available connections "
+"in the pool\n"
+"# TYPE lemmy_db_pool_available_connections gauge\n"
+"lemmy_db_pool_available_connections 2\n"
+"# HELP lemmy_db_pool_connections Current number of connections in the pool\n"
+"# TYPE lemmy_db_pool_connections gauge\n"
+"lemmy_db_pool_connections 2\n"
+"# HELP lemmy_db_pool_max_connections Maximum number of connections in the "
+"pool\n"
+"# TYPE lemmy_db_pool_max_connections gauge\n"
+"lemmy_db_pool_max_connections 5\n"
+"\n"
+"# HELP process_cpu_seconds_total Total user and system CPU time spent in "
+"seconds.\n"
+"# TYPE process_cpu_seconds_total counter\n"
+"process_cpu_seconds_total 14\n"
+"# HELP process_max_fds Maximum number of open file descriptors.\n"
+"# TYPE process_max_fds gauge\n"
+"process_max_fds 1073741816\n"
+"# HELP process_open_fds Number of open file descriptors.\n"
+"# TYPE process_open_fds gauge\n"
+"process_open_fds 91\n"
+"# HELP process_resident_memory_bytes Resident memory size in bytes.\n"
+"# TYPE process_resident_memory_bytes gauge\n"
+"process_resident_memory_bytes 75603968\n"
+"# HELP process_start_time_seconds Start time of the process since unix epoch "
+"in seconds.\n"
+"# TYPE process_start_time_seconds gauge\n"
+"process_start_time_seconds 1688487611\n"
+"# HELP process_threads Number of OS threads in the process.\n"
+"# TYPE process_threads gauge\n"
+"process_threads 37\n"
+"# HELP process_virtual_memory_bytes Virtual memory size in bytes.\n"
+"# TYPE process_virtual_memory_bytes gauge\n"
+"process_virtual_memory_bytes 206000128\n"
+"```"
+msgstr ""
+
+#: src/administration/prometheus.md:137
+msgid "Visualizing Metrics"
+msgstr ""
+
+#: src/administration/prometheus.md:139
+msgid ""
+"[Grafana](https://grafana.com/) can be used to visualize the metrics "
+"collected by Prometheus. A community-maintained Grafana dashboard for Lemmy "
+"is available on the Grafana dashboard registry."
+msgstr ""
+
+#: src/administration/prometheus.md:141
+msgid ""
+"Dashboard: [Lemmy – Grafana Dashboards](https://grafana.com/grafana/"
+"dashboards/25020-lemmy/)"
+msgstr ""
+
+#: src/administration/prometheus.md:143
+msgid ""
+"Before importing the dashboard, add Prometheus as a data source in Grafana:"
+msgstr ""
+
+#: src/administration/prometheus.md:145
+msgid "In Grafana, go to **Connections** → **Data sources**."
+msgstr ""
+
+#: src/administration/prometheus.md:146
+msgid "Click **Add new data source**, and select **Prometheus**."
+msgstr ""
+
+#: src/administration/prometheus.md:147
+msgid ""
+"Set the server URL to your Prometheus instance (e.g. `http://"
+"localhost:10002`)."
+msgstr ""
+
+#: src/administration/prometheus.md:148
+msgid "Click **Save & test** to confirm the connection."
+msgstr ""
+
+#: src/administration/prometheus.md:150
+msgid "To use it:"
+msgstr ""
+
+#: src/administration/prometheus.md:152
+msgid "In your Grafana instance, go to **Dashboards** → **Import**."
+msgstr ""
+
+#: src/administration/prometheus.md:153
+msgid "Enter the ID `25020` or paste the dashboard URL."
+msgstr ""
+
+#: src/administration/prometheus.md:154
+msgid "Select your Prometheus data source and click **Import**."
+msgstr ""
+
+#: src/administration/prometheus.md:156
+msgid ""
+"The dashboard provides an overview of HTTP request rates and latencies, "
+"database connection pool usage, and process-level metrics such as CPU, "
+"memory, and open file descriptors."
+msgstr ""

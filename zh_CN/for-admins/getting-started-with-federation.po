@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/administration/federation_getting_started.md:1
+msgid "Getting started with Federation"
+msgstr ""
+
+#: src/administration/federation_getting_started.md:3
+msgid ""
+"Federation is enabled by default, but initially you won't see any content "
+"from other Lemmy instances. To get started you can browse [other Lemmy "
+"instances](https://join-lemmy.org/instances) for interesting communities, or "
+"browse the community list on [lemmyverse.net](https://lemmyverse.net/"
+"communities). Once you find an interesting community, simply paste the URL "
+"into the search field on your own Lemmy instance, for example `https://lemmy."
+"ml/c/announcements`. To have new content in the community pushed to your "
+"instance, you need to click the \"Follow\" button in the sidebar."
+msgstr ""
+
+#: src/administration/federation_getting_started.md:5
+msgid ""
+"If you notice that community follows are still shown as \"Subscription "
+"Pending\" after a few hours, or your posts are not visible on other "
+"instances, you may have a configuration problem. Check out the "
+"[troubleshooting guide](troubleshooting.md), you can also ask for help in [!"
+"lemmy@lemmy.ml](https://lemmy.ml/c/lemmy) or the [admin chat on Matrix]"
+"(https://matrix.to/#/#lemmy-support-general:discuss.online)."
+msgstr ""
+
+#: src/administration/federation_getting_started.md:7
+msgid "Fetching Data"
+msgstr ""
+
+#: src/administration/federation_getting_started.md:9
+msgid ""
+"If you see something interesting while browsing another Lemmy instance, you "
+"can easily import it in order to interact with the content. This works for "
+"users, communities, posts and comments. For posts and comments, you can get "
+"the correct URL from the colorful \"Fedilink\" icon. All of the following "
+"formats are valid to fetch data over federation:"
+msgstr ""
+
+#: src/administration/federation_getting_started.md:11
+msgid "`https://lemmy.ml/c/programming` (Community)"
+msgstr ""
+
+#: src/administration/federation_getting_started.md:12
+msgid "`https://lemmy.ml/u/nutomic` (User)"
+msgstr ""
+
+#: src/administration/federation_getting_started.md:13
+msgid "`https://lemmy.ml/post/123` (Post)"
+msgstr ""
+
+#: src/administration/federation_getting_started.md:14
+msgid "`https://lemmy.ml/comment/321` (Comment)"
+msgstr ""
+
+#: src/administration/federation_getting_started.md:15
+msgid "`!main@lemmy.ml` (Community)"
+msgstr ""
+
+#: src/administration/federation_getting_started.md:16
+msgid "`@nutomic@lemmy.ml` (User)"
+msgstr ""
+
+#: src/administration/federation_getting_started.md:18
+msgid ""
+"When fetching a community, the most recent posts are also fetched "
+"automatically (but not comments or votes). When fetching a post, the "
+"community and author are also fetched automatically. And for comments, all "
+"parent comments, the post, their respective authors and the community are "
+"fetched. Sibling comments are not fetched automatically. If you want more "
+"comments from older posts, you have to search for each of them as described "
+"above."
+msgstr ""
+
+#: src/administration/federation_getting_started.md:20
+msgid ""
+"You can also fetch content from other Fediverse platforms such as [Piefed]"
+"(https://join.piefed.social/) or [Mbin](https://joinmbin.org/). Other "
+"platforms may also work, but only if they use communities like Lemmy."
+msgstr ""
+
+#: src/administration/federation_getting_started.md:22
+msgid "Blocking or Allowing Instances"
+msgstr ""
+
+#: src/administration/federation_getting_started.md:24
+msgid "Lemmy has three types of federation:"
+msgstr ""
+
+#: src/administration/federation_getting_started.md:26
+msgid "Allowlist: Explicitly list instances to connect to."
+msgstr ""
+
+#: src/administration/federation_getting_started.md:27
+msgid ""
+"BlockList: Explicitly list instances to not connect to. Federation is open "
+"to all other instances."
+msgstr ""
+
+#: src/administration/federation_getting_started.md:28
+msgid "Open: Federate with all potential instances."
+msgstr ""
+
+#: src/administration/federation_getting_started.md:30
+msgid ""
+"You can add allowed and blocked instances, by adding a list in your instance "
+"admin panel. IE to only federate with these instances, add: `enterprise."
+"lemmy.ml,lemmy.ml` to the allowed instances section."
+msgstr ""
+
+#: src/administration/federation_getting_started.md:32
+msgid ""
+"Lemmy uses the ActivityPub protocol (a W3C standard) to enable federation "
+"between different servers (often called instances). This is very similar to "
+"the way email works. For example, if you use gmail.com, then you can not "
+"only send mails to other gmail.com users, but also to yahoo.com, yandex.ru "
+"and so on. Email uses the SMTP protocol to achieve this, so you can think of "
+"ActivityPub as \"SMTP for social media\". The many of different actions "
+"possible on social media (post, comment, like, share, etc) make that "
+"ActivityPub is much more complicated than SMTP."
+msgstr ""
+
+#: src/administration/federation_getting_started.md:34
+msgid ""
+"As with email, ActivityPub federation happens only between servers. So if "
+"you are registered on `enterprise.lemmy.ml`, you only connect to the API of "
+"`enterprise.lemmy.ml`, while the server takes care of sending and receiving "
+"data from other instances (eg `voyager.lemmy.ml`). The great advantage of "
+"this approach is that the average user doesn't have to do anything to use "
+"federation. In fact if you are using Lemmy, you are likely already using it. "
+"One way to confirm is by going to a community or user profile. If you are on "
+"`enterprise.lemmy.ml` and you see a user like `@nutomic@voyager.lemmy.ml`, "
+"or a community like `!main@ds9.lemmy.ml`, then those are federated, meaning "
+"they use a different instance from yours."
+msgstr ""

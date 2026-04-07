@@ -1,0 +1,155 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/contributors/08-plugins.md:1
+msgid "Lemmy Plugins"
+msgstr ""
+
+#: src/contributors/08-plugins.md:3
+msgid ""
+"Plugin support will be added in the upcoming 1.0 release. You can already "
+"start developing plugins now."
+msgstr ""
+
+#: src/contributors/08-plugins.md:5
+msgid "Follow these steps:"
+msgstr ""
+
+#: src/contributors/08-plugins.md:7
+msgid ""
+"Follow the normal [setup instructions](/docs/administration/administration."
+"html), using `:nightly` tags to get the latest development version."
+msgstr ""
+
+#: src/contributors/08-plugins.md:8
+msgid ""
+"Specify plugins in `lemmy.hjson` ([docs](https://github.com/LemmyNet/lemmy/"
+"blob/main/config/defaults.hjson#L130)):"
+msgstr ""
+
+#: src/contributors/08-plugins.md:12
+msgid ""
+"\"https://github.com/LemmyNet/lemmy-plugins/releases/download/0.1.3/"
+"rust_lingua.wasm\""
+msgstr ""
+
+#: src/contributors/08-plugins.md:13
+msgid "\"e1f58029f2ecca5127a4584609494120683b691fc63a543979ea071f32cf690f\""
+msgstr ""
+
+#: src/contributors/08-plugins.md:14
+msgid "\"0.0.0.0\""
+msgstr ""
+
+#: src/contributors/08-plugins.md:18
+msgid ""
+"You can skip the hash check by setting the env var "
+"`DANGER_PLUGIN_SKIP_HASH_CHECK`."
+msgstr ""
+
+#: src/contributors/08-plugins.md:20
+msgid ""
+"Plugins are implemented using [Extism](https://extism.org/) and Webassembly. "
+"They can be written in any language that compiles to Wasm. Checkout the "
+"[documentation](https://extism.org/docs/quickstart/plugin-quickstart) for "
+"general development instructions."
+msgstr ""
+
+#: src/contributors/08-plugins.md:22
+msgid ""
+"The [lemmy-plugins](https://github.com/LemmyNet/lemmy-plugins/) repo "
+"contains various example plugins written in different languages."
+msgstr ""
+
+#: src/contributors/08-plugins.md:24
+msgid "API `before` hooks"
+msgstr ""
+
+#: src/contributors/08-plugins.md:26
+msgid ""
+"These are called before a given API endpoint is invoked, with the raw JSON "
+"data submitted by the user, and need to return data in the same format. "
+"Useful for moderation bots which can alter or reject posts."
+msgstr ""
+
+#: src/contributors/08-plugins.md:28 src/contributors/08-plugins.md:39
+msgid "Examples:"
+msgstr ""
+
+#: src/contributors/08-plugins.md:30
+msgid ""
+"`local_post_before_create` with data [CreatePost](https://github.com/"
+"LemmyNet/lemmy/blob/main/crates/db_views/post/src/api.rs#L16)"
+msgstr ""
+
+#: src/contributors/08-plugins.md:31
+msgid ""
+"`local_comment_before_update` with data [EditComment](https://github.com/"
+"LemmyNet/lemmy/blob/main/crates/db_views/comment/src/api.rs#L145)"
+msgstr ""
+
+#: src/contributors/08-plugins.md:32
+msgid ""
+"`federated_post_before_receive` with [PostInsertForm](https://github.com/"
+"LemmyNet/lemmy/blob/main/crates/db_schema/src/source/post.rs#L97)"
+msgstr ""
+
+#: src/contributors/08-plugins.md:33 src/contributors/08-plugins.md:44
+msgid "Search the code for `plugin_hook_before` to find all available hooks"
+msgstr ""
+
+#: src/contributors/08-plugins.md:35
+msgid "API `after` hooks"
+msgstr ""
+
+#: src/contributors/08-plugins.md:37
+msgid ""
+"Called after an endpoint was successfully invoked and gets passed the API "
+"return data. Useful for notifications."
+msgstr ""
+
+#: src/contributors/08-plugins.md:41
+msgid ""
+"`local_post_after_create` with data [CreatePost](https://github.com/LemmyNet/"
+"lemmy/blob/main/crates/db_views/post/src/api.rs#L16)"
+msgstr ""
+
+#: src/contributors/08-plugins.md:42
+msgid ""
+"`local_comment_after_update` with data [EditComment](https://github.com/"
+"LemmyNet/lemmy/blob/main/crates/db_views/comment/src/api.rs#L145)"
+msgstr ""
+
+#: src/contributors/08-plugins.md:43
+msgid ""
+"`federated_post_after_receive` with [Post](https://github.com/LemmyNet/lemmy/"
+"blob/main/crates/db_schema/src/source/post.rs#L25)"
+msgstr ""
+
+#: src/contributors/08-plugins.md:46
+msgid "Captcha Plugin"
+msgstr ""
+
+#: src/contributors/08-plugins.md:48
+msgid ""
+"`get_captcha` generates a new captcha, returns [CaptchaResponse](https://"
+"github.com/LemmyNet/lemmy/blob/main/crates/db_views/site/src/api.rs#L353)"
+msgstr ""
+
+#: src/contributors/08-plugins.md:49
+msgid ""
+"`validate_captcha` takes [CaptchaAnswer](https://github.com/LemmyNet/lemmy/"
+"blob/141d12d9ab249b3e425313a9e4f59b2410f4b319/crates/db_views/"
+"registration_applications/src/api.rs#L69) and should return error if the "
+"answer is wrong"
+msgstr ""

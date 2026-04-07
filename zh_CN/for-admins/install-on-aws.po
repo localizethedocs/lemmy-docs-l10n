@@ -1,0 +1,135 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/administration/on_aws.md:1
+msgid "Install on AWS"
+msgstr ""
+
+#: src/administration/on_aws.md:3
+msgid ""
+"⚠️ **Disclaimer:** this installation method is not recommended by the Lemmy "
+"developers. If you have any problems, you need to solve them yourself or ask "
+"the respective authors. If you notice any Lemmy bugs on an instance "
+"installed like this, please mention it in the bug report."
+msgstr ""
+
+#: src/administration/on_aws.md:5
+msgid "Lemmy AWS CDK"
+msgstr ""
+
+#: src/administration/on_aws.md:7
+msgid ""
+"This contains the necessary infrastructure definitions to deploy [Lemmy]"
+"(https://github.com/LemmyNet/lemmy) to AWS using their [Cloud Development "
+"Kit](https://docs.aws.amazon.com/cdk/latest/guide/home.html)."
+msgstr ""
+
+#: src/administration/on_aws.md:10
+msgid "Included:"
+msgstr ""
+
+#: src/administration/on_aws.md:12
+msgid "ECS Fargate cluster"
+msgstr ""
+
+#: src/administration/on_aws.md:13
+msgid "Lemmy-UI"
+msgstr ""
+
+#: src/administration/on_aws.md:14
+msgid "Lemmy"
+msgstr ""
+
+#: src/administration/on_aws.md:15
+msgid "Pictrs"
+msgstr ""
+
+#: src/administration/on_aws.md:16
+msgid "CloudFront CDN"
+msgstr ""
+
+#: src/administration/on_aws.md:17
+msgid "EFS storage for image uploads"
+msgstr ""
+
+#: src/administration/on_aws.md:18
+msgid "Aurora Serverless Postgres DB"
+msgstr ""
+
+#: src/administration/on_aws.md:19
+msgid "Bastion VPC host"
+msgstr ""
+
+#: src/administration/on_aws.md:20
+msgid "Load balancers for Lemmy"
+msgstr ""
+
+#: src/administration/on_aws.md:21
+msgid "DNS records for your site"
+msgstr ""
+
+#: src/administration/on_aws.md:23
+msgid "Quickstart"
+msgstr ""
+
+#: src/administration/on_aws.md:25
+msgid "Clone the [Lemmy-CDK](https://github.com/jetbridge/lemmy-cdk)."
+msgstr ""
+
+#: src/administration/on_aws.md:27
+msgid ""
+"Clone [Lemmy](https://github.com/LemmyNet/lemmy) and [Lemmy-UI](https://"
+"github.com/LemmyNet/lemmy-ui) to the directory above this."
+msgstr ""
+
+#: src/administration/on_aws.md:34
+msgid "You should edit .env.local with your site settings."
+msgstr ""
+
+#: src/administration/on_aws.md:43
+msgid "Cost"
+msgstr ""
+
+#: src/administration/on_aws.md:45
+msgid ""
+"This is _not_ the cheapest way to run Lemmy. The Serverless Aurora DB can "
+"run you ~$90/mo if it doesn't go to sleep."
+msgstr ""
+
+#: src/administration/on_aws.md:47
+msgid "Useful CDK commands"
+msgstr ""
+
+#: src/administration/on_aws.md:49
+msgid "`npm run build` compile typescript to js"
+msgstr ""
+
+#: src/administration/on_aws.md:50
+msgid "`npm run watch` watch for changes and compile"
+msgstr ""
+
+#: src/administration/on_aws.md:51
+msgid "`npm run test` perform the jest unit tests"
+msgstr ""
+
+#: src/administration/on_aws.md:52
+msgid "`cdk deploy` deploy this stack to your default AWS account/region"
+msgstr ""
+
+#: src/administration/on_aws.md:53
+msgid "`cdk diff` compare deployed stack with current state"
+msgstr ""
+
+#: src/administration/on_aws.md:54
+msgid "`cdk synth` emits the synthesized CloudFormation template"
+msgstr ""

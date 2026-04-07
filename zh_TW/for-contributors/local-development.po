@@ -1,0 +1,203 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/contributors/02-local-development.md:1
+msgid "Local Development"
+msgstr ""
+
+#: src/contributors/02-local-development.md:3
+msgid "Install build requirements"
+msgstr ""
+
+#: src/contributors/02-local-development.md:5
+msgid ""
+"Install the latest Rust version using [rustup](https://www.rust-lang.org/"
+"tools/install)."
+msgstr ""
+
+#: src/contributors/02-local-development.md:7
+#: src/contributors/02-local-development.md:43
+#: src/contributors/02-local-development.md:90
+msgid "Debian-based distro:"
+msgstr ""
+
+#: src/contributors/02-local-development.md:13
+#: src/contributors/02-local-development.md:50
+#: src/contributors/02-local-development.md:96
+msgid "Arch-based distro:"
+msgstr ""
+
+#: src/contributors/02-local-development.md:19
+msgid "Fedora-based distro:"
+msgstr ""
+
+#: src/contributors/02-local-development.md:25
+#: src/contributors/02-local-development.md:62
+#: src/contributors/02-local-development.md:102
+msgid "macOS:"
+msgstr ""
+
+#: src/contributors/02-local-development.md:27
+msgid ""
+"Install [Homebrew](https://brew.sh/) if you don't already have it installed. "
+"Then install Node and pnpm."
+msgstr ""
+
+#: src/contributors/02-local-development.md:33
+msgid "Install pnpm"
+msgstr ""
+
+#: src/contributors/02-local-development.md:35
+msgid ""
+"The install instructions are [here](https://pnpm.io/installation), or you "
+"can run"
+msgstr ""
+
+#: src/contributors/02-local-development.md:41
+msgid "Setup PostgreSQL database"
+msgstr ""
+
+#: src/contributors/02-local-development.md:54
+msgid "# If the systemctl command errors, then run the following\n"
+msgstr ""
+
+#: src/contributors/02-local-development.md:70
+msgid ""
+"Either execute `scripts/db-init.sh`, or manually initialize the postgres "
+"database:"
+msgstr ""
+
+#: src/contributors/02-local-development.md:73
+msgid "\"create user lemmy with password 'password' superuser;\""
+msgstr ""
+
+#: src/contributors/02-local-development.md:74
+msgid "'create database lemmy with owner lemmy;'"
+msgstr ""
+
+#: src/contributors/02-local-development.md:75
+msgid "postgres://lemmy:password@localhost:5432/lemmy"
+msgstr ""
+
+#: src/contributors/02-local-development.md:78
+msgid "Code formatting tools"
+msgstr ""
+
+#: src/contributors/02-local-development.md:80
+msgid "Taplo"
+msgstr ""
+
+#: src/contributors/02-local-development.md:82
+msgid ""
+"See installation instructions [here](https://taplo.tamasfe.dev/), or run"
+msgstr ""
+
+#: src/contributors/02-local-development.md:88
+msgid "pg_format"
+msgstr ""
+
+#: src/contributors/02-local-development.md:108
+msgid "Get the code"
+msgstr ""
+
+#: src/contributors/02-local-development.md:110
+msgid ""
+"Clone frontend and backend code to local folders. Be sure to include `--"
+"recursive` to initialize git submodules."
+msgstr ""
+
+#: src/contributors/02-local-development.md:117
+msgid "Backend development"
+msgstr ""
+
+#: src/contributors/02-local-development.md:119
+msgid ""
+"Use `cargo check` to find compilation errors. To start the Lemmy backend, "
+"run `cargo run`. It will bind to `0.0.0.0:8536`."
+msgstr ""
+
+#: src/contributors/02-local-development.md:121
+msgid ""
+"After making changes, you need to format the code with `cargo +nightly fmt --"
+"all` and run the linter with `./scripts/lint.sh`."
+msgstr ""
+
+#: src/contributors/02-local-development.md:123
+msgid ""
+"If you'd like to speed up compilation times, you can install [mold](https://"
+"github.com/rui314/mold), and [sccache](https://github.com/mozilla/sccache), "
+"then add the following to `~/.cargo/config.toml`. Note that the parameter `-"
+"Zthreads=x` only works on nightly Rust."
+msgstr ""
+
+#: src/contributors/02-local-development.md:125
+msgid ""
+"```toml\n"
+"[build]\n"
+"rustc-wrapper = \"/usr/bin/sccache\"\n"
+"\n"
+"[target.x86_64-unknown-linux-gnu]\n"
+"linker = \"clang\"\n"
+"rustflags = [\"-C\", \"link-arg=-fuse-ld=/usr/bin/mold\", \"-Z\", "
+"\"threads=16\"]\n"
+"```"
+msgstr ""
+
+#: src/contributors/02-local-development.md:134
+msgid "To make changes to the database schema:"
+msgstr ""
+
+#: src/contributors/02-local-development.md:136
+msgid ""
+"Add a new migration in the migrations folder. This is most easily done by "
+"running `diesel migration generate` then editing the added files."
+msgstr ""
+
+#: src/contributors/02-local-development.md:137
+msgid "Run `./scripts/update_schema_file.sh`."
+msgstr ""
+
+#: src/contributors/02-local-development.md:139
+msgid "Frontend development"
+msgstr ""
+
+#: src/contributors/02-local-development.md:141
+msgid ""
+"Install dependencies by running `pnpm i`. Then run `pnpm dev` to launch "
+"lemmy-ui locally. It automatically connects to the Lemmy backend on "
+"`localhost:8536`. Open [localhost:1234](http://localhost:1234) in your "
+"browser. The project is rebuilt automatically when you change any files."
+msgstr ""
+
+#: src/contributors/02-local-development.md:143
+msgid ""
+"Note that this setup doesn't support image uploads. If you want to test "
+"those, you need to use the [Docker development](03-docker-development.md)."
+msgstr ""
+
+#: src/contributors/02-local-development.md:146
+msgid "Tests"
+msgstr ""
+
+#: src/contributors/02-local-development.md:148
+msgid "Run Rust unit tests:"
+msgstr ""
+
+#: src/contributors/02-local-development.md:154
+msgid ""
+"To run federation/API tests, first add the following lines to `/etc/hosts`:"
+msgstr ""
+
+#: src/contributors/02-local-development.md:164
+msgid "Then run the following script:"
+msgstr ""
