@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/users/08-history-of-lemmy.md:1
 msgid "History of Lemmy"
-msgstr ""
+msgstr "Lemmy 的歷史"
 
 #: src/users/08-history-of-lemmy.md:3
 msgid "The idea to make Lemmy was a combination of factors."
-msgstr ""
+msgstr "開發 Lemmy 的想法是多種因素結合的結果。"
 
 #: src/users/08-history-of-lemmy.md:5
 msgid ""
@@ -28,6 +28,10 @@ msgid ""
 "subvert this trend, in a way that is easily accessible to a non-tech focused "
 "audience."
 msgstr ""
+"我這樣的開源開發者，長期以來一直關注著「五大巨頭（Big Five）」的崛起，這些美"
+"國科技巨頭幾乎掌控了全球所有的日常通訊。我們一直在自問，為什麼人們會遠離以內"
+"容為中心的網站，以及我們能做些什麼來顛覆這種趨勢，並以一種非技術背景受眾也能"
+"輕鬆上手的方式來實現。"
 
 #: src/users/08-history-of-lemmy.md:7
 msgid ""
@@ -51,6 +55,11 @@ msgid ""
 "curate communities, that has made Reddit the 5th most popular site in the "
 "US, and where so many people around the world get their news."
 msgstr ""
+"我以前非常喜歡早期的 Reddit，不僅是因為它能將我感興趣的社群和主題的所有新聞整"
+"合在同一個地方，更因為每個連結背後的樹狀討論串。我至今仍收藏了許多這類討論，"
+"而且從連結背後的討論中獲得的收穫，遠比連結本身還要多。在我看來，正是這種以社"
+"群為中心、樹狀結構的討論方式，以及建立、發展和管理社群的能力，才讓 Reddit 成"
+"為全球排名第 5 的熱門網站。"
 
 #: src/users/08-history-of-lemmy.md:11
 msgid ""
@@ -112,6 +121,10 @@ msgid ""
 "someone can build or run a small site, but still be connected to a wider "
 "universe of users."
 msgstr ""
+"開發一個 Reddit 替代方案的想法原本似乎毫無意義，直到 Mastodon（一個聯邦式的 "
+"Twitter 替代方案）開始流行。透過使用 ActivityPub（一種社群媒體服務之間互相溝"
+"通的協定/共通語言），我們終於有了針對「先發優勢」的解決方案：現在任何人都可以"
+"建立或運行一個小型站點，但仍能與更廣大的使用者宇宙保持聯繫。"
 
 #: src/users/08-history-of-lemmy.md:21
 msgid ""
@@ -120,3 +133,5 @@ msgid ""
 "source of news and discussion, existing outside of the US’s jurisdictional "
 "domain and control."
 msgstr ""
+"Nutomic 和我最初開發 Lemmy 是為了將其作為 Reddit 的聯邦化替代方案，但隨著它的"
+"成長，它有潛力成為新聞與討論的主要來源，並存在於美國的司法管轄與控制之外。"

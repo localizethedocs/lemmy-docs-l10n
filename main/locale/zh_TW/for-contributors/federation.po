@@ -273,7 +273,7 @@ msgstr ""
 #: src/contributors/05-federation.md:794 src/contributors/05-federation.md:1018
 #: src/contributors/05-federation.md:1021
 msgid "\"mediaType\""
-msgstr ""
+msgstr "\"mediaType\""
 
 #: src/contributors/05-federation.md:46 src/contributors/05-federation.md:116
 #: src/contributors/05-federation.md:170 src/contributors/05-federation.md:227
@@ -281,56 +281,56 @@ msgstr ""
 #: src/contributors/05-federation.md:562 src/contributors/05-federation.md:609
 #: src/contributors/05-federation.md:1021
 msgid "\"text/markdown\""
-msgstr ""
+msgstr "\"text/markdown\""
 
 #: src/contributors/05-federation.md:48 src/contributors/05-federation.md:239
 #: src/contributors/05-federation.md:367 src/contributors/05-federation.md:395
 #: src/contributors/05-federation.md:457 src/contributors/05-federation.md:477
 #: src/contributors/05-federation.md:570 src/contributors/05-federation.md:796
 msgid "\"sensitive\""
-msgstr ""
+msgstr "\"sensitive\""
 
 #: src/contributors/05-federation.md:49 src/contributors/05-federation.md:118
 msgid "\"icon\""
-msgstr ""
+msgstr "\"icon\""
 
 #: src/contributors/05-federation.md:50 src/contributors/05-federation.md:54
 #: src/contributors/05-federation.md:119 src/contributors/05-federation.md:123
 #: src/contributors/05-federation.md:236
 msgid "\"Image\""
-msgstr ""
+msgstr "\"Image\""
 
 #: src/contributors/05-federation.md:51 src/contributors/05-federation.md:55
 #: src/contributors/05-federation.md:120 src/contributors/05-federation.md:124
 #: src/contributors/05-federation.md:237
 msgid "\"url\""
-msgstr ""
+msgstr "\"url\""
 
 #: src/contributors/05-federation.md:51
 msgid "\"https://enterprise.lemmy.ml/pictrs/image/waqyZwLAy4.webp\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/pictrs/image/waqyZwLAy4.webp\""
 
 #: src/contributors/05-federation.md:53 src/contributors/05-federation.md:122
 #: src/contributors/05-federation.md:235
 msgid "\"image\""
-msgstr ""
+msgstr "\"image\""
 
 #: src/contributors/05-federation.md:55
 msgid "\"https://enterprise.lemmy.ml/pictrs/image/Wt8zoMcCmE.jpg\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/pictrs/image/Wt8zoMcCmE.jpg\""
 
 #: src/contributors/05-federation.md:57 src/contributors/05-federation.md:127
 #: src/contributors/05-federation.md:172
 msgid "\"inbox\""
-msgstr ""
+msgstr "\"inbox\""
 
 #: src/contributors/05-federation.md:57
 msgid "\"https://enterprise.lemmy.ml/c/tenforward/inbox\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/c/tenforward/inbox\""
 
 #: src/contributors/05-federation.md:58
 msgid "\"followers\""
-msgstr ""
+msgstr "\"followers\""
 
 #: src/contributors/05-federation.md:58
 msgid "\"https://enterprise.lemmy.ml/c/tenforward/followers\""
@@ -654,39 +654,39 @@ msgstr ""
 
 #: src/contributors/05-federation.md:120
 msgid "\"https://enterprise.lemmy.ml/pictrs/image/ed9ej7.jpg\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/pictrs/image/ed9ej7.jpg\""
 
 #: src/contributors/05-federation.md:124
 msgid "\"https://enterprise.lemmy.ml/pictrs/image/XenaYI5hTn.png\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/pictrs/image/XenaYI5hTn.png\""
 
 #: src/contributors/05-federation.md:126
 msgid "\"matrixUserId\""
-msgstr ""
+msgstr "\"matrixUserId\""
 
 #: src/contributors/05-federation.md:126
 msgid "\"@picard:matrix.org\""
-msgstr ""
+msgstr "\"@picard:matrix.org\""
 
 #: src/contributors/05-federation.md:127
 msgid "\"https://enterprise.lemmy.ml/u/picard/inbox\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/u/picard/inbox\""
 
 #: src/contributors/05-federation.md:128
 msgid "\"https://enterprise.lemmy.ml/u/picard/outbox\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/u/picard/outbox\""
 
 #: src/contributors/05-federation.md:132
 msgid "\"2020-01-17T01:38:22.348392Z\""
-msgstr ""
+msgstr "\"2020-01-17T01:38:22.348392Z\""
 
 #: src/contributors/05-federation.md:133
 msgid "\"2021-08-13T00:11:15.941990Z\""
-msgstr ""
+msgstr "\"2021-08-13T00:11:15.941990Z\""
 
 #: src/contributors/05-federation.md:135
 msgid "\"https://enterprise.lemmy.ml/u/picard#main-key\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/u/picard#main-key\""
 
 #: src/contributors/05-federation.md:137
 msgid ""
@@ -699,10 +699,18 @@ msgid ""
 "lBF23vni7ZLv8HbmWh6YpaAf1R8h\\nE45zKR7OHqymdjzrg1ITBwovefpwMkVgnJ+Wdr4HPnFlBSkXPoZeM11+Z8L0anzA\\nXwIDAQAB\\n-----"
 "END PUBLIC KEY-----\\n\""
 msgstr ""
+"\"-----BEGIN PUBLIC KEY-----"
+"\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0lP99/"
+"s5Vv+XbPdkeqIJ\\nwoD4GFnHmBnBHdEKChEUWfWj1TtioC/"
+"rGNoXFQeXQA3Amhy4nxSceiDnUgwkkuQY\\nv0MtIW58NzgknEavtllxL+LSds5pg3gANaDIk8UiWTkqXTg0GnlJMpCK1Chen0l/"
+"\\nszL6DEvUyTSuS5ZYDXFgewF89Pe7U0S15V5U2Harv7AgJYDyxmUL0D1pGuUCRqcE\\nl5MTHJjrXeNnH1w2g8aly8YlO/"
+"Cr0L51rFg/"
+"lBF23vni7ZLv8HbmWh6YpaAf1R8h\\nE45zKR7OHqymdjzrg1ITBwovefpwMkVgnJ+Wdr4HPnFlBSkXPoZeM11+Z8L0anzA\\nXwIDAQAB\\n-----"
+"END PUBLIC KEY-----\\n\""
 
 #: src/contributors/05-federation.md:145
 msgid "The user's displayname"
-msgstr ""
+msgstr "使用者的顯示名稱"
 
 #: src/contributors/05-federation.md:146
 msgid "User bio"

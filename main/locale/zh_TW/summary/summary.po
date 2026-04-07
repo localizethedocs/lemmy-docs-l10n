@@ -25,7 +25,7 @@ msgstr ""
 
 #: src/SUMMARY.md:7
 msgid "Getting Started"
-msgstr ""
+msgstr "開始使用"
 
 #: src/SUMMARY.md:8
 msgid "Media"
@@ -33,7 +33,7 @@ msgstr ""
 
 #: src/SUMMARY.md:9
 msgid "Votes and Ranking"
-msgstr ""
+msgstr "投票與排名"
 
 #: src/SUMMARY.md:10
 msgid "Moderation"
@@ -53,7 +53,7 @@ msgstr "其他功能"
 
 #: src/SUMMARY.md:14
 msgid "History of Lemmy"
-msgstr ""
+msgstr "Lemmy 的歷史"
 
 #: src/SUMMARY.md:16
 msgid "For Admins"

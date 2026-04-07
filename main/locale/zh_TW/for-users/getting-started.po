@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/users/01-getting-started.md:1
 msgid "Getting Started"
-msgstr ""
+msgstr "開始使用"
 
 #: src/users/01-getting-started.md:3
 msgid "Choosing an Instance"
@@ -41,11 +41,11 @@ msgstr ""
 
 #: src/users/01-getting-started.md:9
 msgid "[**Instance List**](https://join-lemmy.org/instances)"
-msgstr ""
+msgstr "[**實例列表**](https://join-lemmy.org/instances)"
 
 #: src/users/01-getting-started.md:11
 msgid "Registration"
-msgstr ""
+msgstr "註冊"
 
 #: src/users/01-getting-started.md:13
 msgid ""
@@ -132,7 +132,7 @@ msgstr ""
 
 #: src/users/01-getting-started.md:32
 msgid "Following Communities"
-msgstr ""
+msgstr "關注社群"
 
 #: src/users/01-getting-started.md:34
 msgid ""
@@ -247,12 +247,15 @@ msgid ""
 "**Sort type**: How posts and comments should be sorted by default. See "
 "[Votes and Ranking](03-votes-and-ranking.md) for details."
 msgstr ""
+"**排序類型**：貼文和留言預設的排序方式。詳情請參閱[投票與排名](03-votes-and-"
+"ranking.md)。"
 
 #: src/users/01-getting-started.md:58
 msgid ""
 "**Show NSFW content**: Whether or not you want to see content that is \"not "
 "safe for work\" (or adult-only)."
 msgstr ""
+"**顯示 NSFW 內容**：是否要查看「不適合在工作場合瀏覽」（或僅限成人）的內容。"
 
 #: src/users/01-getting-started.md:59
 msgid ""
@@ -299,7 +302,7 @@ msgstr ""
 
 #: src/users/01-getting-started.md:67
 msgid "Start Posting"
-msgstr ""
+msgstr "開始發文"
 
 #: src/users/01-getting-started.md:69
 msgid ""

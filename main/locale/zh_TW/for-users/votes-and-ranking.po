@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/users/03-votes-and-ranking.md:1
 msgid "Votes and Ranking"
-msgstr ""
+msgstr "投票與排名"
 
 #: src/users/03-votes-and-ranking.md:3
 msgid "Posts"
