@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"POT-Creation-Date: 2026-04-07T09:27:16Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -52,27 +52,27 @@ msgstr ""
 
 #: src/administration/federation_getting_started.md:11
 msgid "`https://lemmy.ml/c/programming` (Community)"
-msgstr ""
+msgstr "`https://lemmy.ml/c/programming`（社群）"
 
 #: src/administration/federation_getting_started.md:12
 msgid "`https://lemmy.ml/u/nutomic` (User)"
-msgstr ""
+msgstr "`https://lemmy.ml/u/nutomic`（使用者）"
 
 #: src/administration/federation_getting_started.md:13
 msgid "`https://lemmy.ml/post/123` (Post)"
-msgstr ""
+msgstr "`https://lemmy.ml/post/123`（貼文）"
 
 #: src/administration/federation_getting_started.md:14
 msgid "`https://lemmy.ml/comment/321` (Comment)"
-msgstr ""
+msgstr "`https://lemmy.ml/comment/321`（評論）"
 
 #: src/administration/federation_getting_started.md:15
 msgid "`!main@lemmy.ml` (Community)"
-msgstr ""
+msgstr "`!main@lemmy.ml`（社群）"
 
 #: src/administration/federation_getting_started.md:16
 msgid "`@nutomic@lemmy.ml` (User)"
-msgstr ""
+msgstr "`@nutomic@lemmy.ml`（使用者）"
 
 #: src/administration/federation_getting_started.md:18
 msgid ""

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"POT-Creation-Date: 2026-04-07T09:27:16Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -74,7 +74,7 @@ msgstr ""
 
 #: src/administration/install_docker.md:35
 msgid "Folder permissions"
-msgstr ""
+msgstr "資料夾權限"
 
 #: src/administration/install_docker.md:37
 msgid "Set the correct permissions for pictrs folder:"
@@ -82,11 +82,11 @@ msgstr ""
 
 #: src/administration/install_docker.md:44
 msgid "Finally, run:"
-msgstr ""
+msgstr "最後，執行："
 
 #: src/administration/install_docker.md:46
 msgid "`docker compose up -d`"
-msgstr ""
+msgstr "`docker compose up -d`"
 
 #: src/administration/install_docker.md:48
 msgid ""

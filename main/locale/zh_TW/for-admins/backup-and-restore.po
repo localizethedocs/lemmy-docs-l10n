@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"POT-Creation-Date: 2026-04-07T09:27:16Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/administration/backup_and_restore.md:1
 msgid "Backup and Restore"
-msgstr ""
+msgstr "備份與還原"
 
 #: src/administration/backup_and_restore.md:3
 msgid "Docker and Ansible"
-msgstr ""
+msgstr "Docker 與 Ansible"
 
 #: src/administration/backup_and_restore.md:5
 msgid ""
@@ -28,7 +28,7 @@ msgstr ""
 
 #: src/administration/backup_and_restore.md:7
 msgid "Full Database backup"
-msgstr ""
+msgstr "完整資料庫備份"
 
 #: src/administration/backup_and_restore.md:9
 msgid "To take a complete backup of the DB to a `.sql.gz` file, you can run:"
@@ -67,7 +67,7 @@ msgstr ""
 
 #: src/administration/backup_and_restore.md:28
 msgid "Restoring the DB"
-msgstr ""
+msgstr "還原資料庫"
 
 #: src/administration/backup_and_restore.md:30
 msgid "To restore, run:"
@@ -230,7 +230,7 @@ msgstr ""
 
 #: src/administration/backup_and_restore.md:113
 msgid "More resources"
-msgstr ""
+msgstr "更多資源"
 
 #: src/administration/backup_and_restore.md:115
 msgid ""

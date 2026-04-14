@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"POT-Creation-Date: 2026-04-07T09:27:16Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -80,11 +80,11 @@ msgstr ""
 
 #: src/administration/theming.md:25
 msgid "`theme.scss`"
-msgstr ""
+msgstr "`theme.scss`"
 
 #: src/administration/theming.md:26
 msgid "`_variables.theme.scss`"
-msgstr ""
+msgstr "`_variables.theme.scss`"
 
 #: src/administration/theming.md:28
 msgid ""
@@ -98,7 +98,7 @@ msgstr ""
 
 #: src/administration/theming.md:31
 msgid "Using SCSS Files"
-msgstr ""
+msgstr "使用 SCSS 檔案"
 
 #: src/administration/theming.md:33
 msgid ""
@@ -108,7 +108,7 @@ msgstr ""
 
 #: src/administration/theming.md:35
 msgid "Export Your CSS File"
-msgstr ""
+msgstr "匯出您的 CSS 檔案"
 
 #: src/administration/theming.md:37
 msgid ""
@@ -175,7 +175,7 @@ msgstr ""
 
 #: src/administration/theming.md:58
 msgid "External Stylesheets"
-msgstr ""
+msgstr "外部樣式表"
 
 #: src/administration/theming.md:60
 msgid ""
@@ -229,7 +229,7 @@ msgstr ""
 
 #: src/administration/theming.md:76
 msgid "Theme Names"
-msgstr ""
+msgstr "主題名稱"
 
 #: src/administration/theming.md:78
 msgid ""

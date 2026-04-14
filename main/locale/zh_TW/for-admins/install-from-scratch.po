@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"POT-Creation-Date: 2026-04-07T09:27:16Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/administration/from_scratch.md:1
 msgid "Install from Scratch"
-msgstr ""
+msgstr "從零開始安裝"
 
 #: src/administration/from_scratch.md:3
 msgid ""
@@ -85,6 +85,10 @@ msgid ""
 "sudo -iu postgres psql -c \"CREATE DATABASE lemmy WITH OWNER lemmy;\"\n"
 "```"
 msgstr ""
+"```\n"
+"sudo -iu postgres psql -c \"CREATE USER lemmy WITH PASSWORD 'db-passwd';\"\n"
+"sudo -iu postgres psql -c \"CREATE DATABASE lemmy WITH OWNER lemmy;\"\n"
+"```"
 
 #: src/administration/from_scratch.md:35
 msgid ""
@@ -98,6 +102,9 @@ msgid ""
 "sudo -iu postgres psql -c \"ALTER USER lemmy WITH SUPERUSER;\"\n"
 "```"
 msgstr ""
+"```\n"
+"sudo -iu postgres psql -c \"ALTER USER lemmy WITH SUPERUSER;\"\n"
+"```"
 
 #: src/administration/from_scratch.md:41
 msgid ""
@@ -118,7 +125,7 @@ msgstr ""
 
 #: src/administration/from_scratch.md:51
 msgid "Install Rust"
-msgstr ""
+msgstr "安裝 Rust"
 
 #: src/administration/from_scratch.md:53
 msgid ""
@@ -208,7 +215,7 @@ msgstr ""
 
 #: src/administration/from_scratch.md:89
 msgid "Lemmy Backend"
-msgstr ""
+msgstr "Lemmy 後端"
 
 #: src/administration/from_scratch.md:91
 msgid "Build the backend"
@@ -341,6 +348,13 @@ msgid ""
 "lemmy_websocket=debug\"\n"
 "```"
 msgstr ""
+"```\n"
+"Environment=RUST_LOG=\"debug,lemmy_server=debug,lemmy_api=debug,"
+"lemmy_api_common=debug,lemmy_api_crud=debug,lemmy_apub=debug,"
+"lemmy_db_schema=debug,lemmy_db_views=debug,lemmy_db_views_actor=debug,"
+"lemmy_db_views_moderator=debug,lemmy_routes=debug,lemmy_utils=debug,"
+"lemmy_websocket=debug\"\n"
+"```"
 
 #: src/administration/from_scratch.md:200
 msgid "Then run"
@@ -585,7 +599,7 @@ msgstr ""
 
 #: src/administration/from_scratch.md:417
 msgid "Lemmy"
-msgstr ""
+msgstr "Lemmy"
 
 #: src/administration/from_scratch.md:419
 msgid ""

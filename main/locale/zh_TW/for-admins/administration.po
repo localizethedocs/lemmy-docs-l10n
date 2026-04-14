@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"POT-Creation-Date: 2026-04-07T09:27:16Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -74,7 +74,7 @@ msgstr ""
 
 #: src/administration/administration.md:25
 msgid "Other installation methods"
-msgstr ""
+msgstr "其他安裝方法"
 
 #: src/administration/administration.md:27
 msgid "⚠️ **Under your own risk.**"
@@ -115,7 +115,7 @@ msgstr ""
 
 #: src/administration/administration.md:40
 msgid "Lemmy components"
-msgstr ""
+msgstr "Lemmy 組件"
 
 #: src/administration/administration.md:42
 msgid "Lemmy-ui"

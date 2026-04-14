@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-03T14:52:57Z\n"
+"POT-Creation-Date: 2026-04-07T09:27:16Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -108,11 +108,11 @@ msgstr ""
 
 #: src/administration/on_aws.md:47
 msgid "Useful CDK commands"
-msgstr ""
+msgstr "實用的 CDK 命令"
 
 #: src/administration/on_aws.md:49
 msgid "`npm run build` compile typescript to js"
-msgstr ""
+msgstr "`npm run build` 會將 typescript 編譯成 js"
 
 #: src/administration/on_aws.md:50
 msgid "`npm run watch` watch for changes and compile"
