@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-07T09:27:16Z\n"
+"POT-Creation-Date: 2026-05-05T10:51:48Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -84,81 +84,85 @@ msgid "First Steps"
 msgstr ""
 
 #: src/SUMMARY.md:24
-msgid "Configuration"
+msgid "1.0 Upgrade Instructions"
 msgstr ""
 
 #: src/SUMMARY.md:25
-msgid "Theming Guide"
+msgid "Configuration"
 msgstr ""
 
 #: src/SUMMARY.md:26
-msgid "Getting started with Federation"
+msgid "Theming Guide"
 msgstr ""
 
 #: src/SUMMARY.md:27
-msgid "Troubleshooting"
+msgid "Getting started with Federation"
 msgstr ""
 
 #: src/SUMMARY.md:28
-msgid "Backup and Restore"
+msgid "Troubleshooting"
 msgstr ""
 
 #: src/SUMMARY.md:29
-msgid "Using Caddy as a reverse proxy"
+msgid "Backup and Restore"
 msgstr ""
 
 #: src/SUMMARY.md:30
-msgid "Lemmy on Separate Subdomains"
+msgid "Using Caddy as a reverse proxy"
 msgstr ""
 
 #: src/SUMMARY.md:31
-msgid "Running a Tor Hidden Service"
+msgid "Lemmy on Separate Subdomains"
 msgstr ""
 
 #: src/SUMMARY.md:32
-msgid "Prometheus Metrics"
+msgid "Running a Tor Hidden Service"
 msgstr ""
 
 #: src/SUMMARY.md:33
+msgid "Prometheus Metrics"
+msgstr ""
+
+#: src/SUMMARY.md:34
 msgid "Horizontal Scaling"
 msgstr ""
 
-#: src/SUMMARY.md:35
+#: src/SUMMARY.md:36
 msgid "For Contributors"
 msgstr ""
 
-#: src/SUMMARY.md:37
+#: src/SUMMARY.md:38
 msgid "Overview"
 msgstr ""
 
-#: src/SUMMARY.md:38
+#: src/SUMMARY.md:39
 msgid "Local Development"
 msgstr ""
 
-#: src/SUMMARY.md:39
+#: src/SUMMARY.md:40
 msgid "Docker Development"
 msgstr ""
 
-#: src/SUMMARY.md:40
+#: src/SUMMARY.md:41
 msgid "API"
 msgstr ""
 
-#: src/SUMMARY.md:41
+#: src/SUMMARY.md:42
 msgid "Federation"
 msgstr ""
 
-#: src/SUMMARY.md:42
+#: src/SUMMARY.md:43
 msgid "Resources"
 msgstr ""
 
-#: src/SUMMARY.md:43
+#: src/SUMMARY.md:44
 msgid "Ranking Algorithm"
 msgstr ""
 
-#: src/SUMMARY.md:44
+#: src/SUMMARY.md:45
 msgid "Plugins"
 msgstr ""
 
-#: src/SUMMARY.md:46 src/SUMMARY.md:48
+#: src/SUMMARY.md:47 src/SUMMARY.md:49
 msgid "Code of Conduct"
 msgstr ""

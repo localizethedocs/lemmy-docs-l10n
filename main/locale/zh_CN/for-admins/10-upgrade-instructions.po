@@ -1,0 +1,97 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-05-05T10:51:48Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/administration/1.0_upgrade.md:1
+msgid "1.0 Upgrade Instructions"
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:3
+msgid "Preparations"
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:5
+msgid ""
+"Make sure you have working [backups](./backup_and_restore.md), and test that "
+"they can be restored (e.g. to your local computer)"
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:6
+msgid ""
+"Before upgrading the production server, you can test if the migration works "
+"correctly and see how long it takes. For this take the backup from above and "
+"load it into a test database. Then run the latest 1.0 release with that "
+"database. If the test upgrade fails, open an issue."
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:7
+msgid ""
+"On lemmy.ml the migrations take about 24 hours, during which the site will "
+"be inaccessible. Post an announcement about the planned upgrade time and use "
+"\"Feature in Local\" so that all users see it."
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:9
+msgid "Run the Upgrade"
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:11
+msgid ""
+"If you run with multiple Lemmy backend processes as described in [horizontal "
+"scaling](./horizontal_scaling.md), make sure only one is active while "
+"running migrations."
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:12
+msgid ""
+"Adjust [lemmy-ui environment variables](https://github.com/LemmyNet/lemmy-ui?"
+"tab=readme-ov-file#configuration). The important ones are:"
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:14
+msgid ""
+"```\n"
+"- LEMMY_UI_BACKEND_INTERNAL=http://lemmy:8536\n"
+"- LEMMY_UI_BACKEND=https://voyager.lemmy.ml\n"
+"```"
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:19
+msgid ""
+"Adjust [lemmy.hjson config variables](https://github.com/LemmyNet/lemmy/blob/"
+"main/config/defaults.hjson)."
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:20
+msgid ""
+"Instead of separate database fields `host`, `password` etc, there is a "
+"single `connection` url"
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:21
+msgid "The email section also uses a `connection` url"
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:22
+msgid ""
+"Upgrade version names in your `docker-compose.yml` file (eg replace "
+"`dessalines/lemmy:0.19.XX` with `dessalines/lemmy:1.0.0-beta.1`)"
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:23
+msgid ""
+"Wait for migrations to complete (this may take many hours as noted above)"
+msgstr ""
+
+#: src/administration/1.0_upgrade.md:24
+msgid "Test that the site is working as expected"
+msgstr ""
