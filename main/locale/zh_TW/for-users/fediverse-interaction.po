@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/users/06-fediverse-interaction.md:1
 msgid "Fediverse interaction"
-msgstr ""
+msgstr "聯邦宇宙互動"
 
 #: src/users/06-fediverse-interaction.md:3
 msgid ""
@@ -25,6 +25,10 @@ msgid ""
 "Here, we only focus on how non-Lemmy users' activity is handled by Lemmy "
 "instances. There are only a few things to keep in mind:"
 msgstr ""
+"如介紹中所述，來自聯邦宇宙的 Lemmy 使用者與非 Lemmy 使用者之間也可以互相溝"
+"通。非 Lemmy 實例處理 Lemmy 使用者活動的方式，取決於後者所運行的軟體。如果您"
+"對此感興趣，應該閱讀該非 Lemmy 實例所運行軟體的文件。在這裡，我們僅關注 "
+"Lemmy 實例如何處理非 Lemmy 使用者的活動。只需記住以下幾點："
 
 #: src/users/06-fediverse-interaction.md:5
 msgid ""
@@ -44,21 +48,22 @@ msgstr ""
 
 #: src/users/06-fediverse-interaction.md:8
 msgid "Follow a Lemmy community"
-msgstr ""
+msgstr "關注一個 Lemmy 社群"
 
 #: src/users/06-fediverse-interaction.md:10
 msgid "You can freely follow any Lemmy community from non-Lemmy software."
-msgstr ""
+msgstr "您可以從非 Lemmy 軟體自由地關注任何 Lemmy 社群。"
 
 #: src/users/06-fediverse-interaction.md:12
 msgid "Post in a Lemmy community"
-msgstr ""
+msgstr "在 Lemmy 社群中發佈貼文"
 
 #: src/users/06-fediverse-interaction.md:14
 msgid ""
 "To post in a Lemmy community from a non-Lemmy fediverse account, simply "
 "create a post following these rules:"
 msgstr ""
+"若要從非 Lemmy 的聯邦宇宙帳號在 Lemmy 社群中發文，只需按照以下規則建立貼文："
 
 #: src/users/06-fediverse-interaction.md:16
 msgid ""
@@ -70,7 +75,7 @@ msgstr ""
 
 #: src/users/06-fediverse-interaction.md:17
 msgid "The post visibility must be \"Public\" or similar."
-msgstr ""
+msgstr "貼文可見度必須設定為「公開」或類似選項。"
 
 #: src/users/06-fediverse-interaction.md:18
 msgid "You must mention the Lemmy community's full handle."
@@ -97,7 +102,7 @@ msgstr ""
 
 #: src/users/06-fediverse-interaction.md:24
 msgid "Comment under a Lemmy post"
-msgstr ""
+msgstr "在 Lemmy 貼文底下留言"
 
 #: src/users/06-fediverse-interaction.md:26
 msgid ""
