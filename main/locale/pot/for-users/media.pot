@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-07T09:27:16Z\n"
+"POT-Creation-Date: 2026-08-11T09:26:27Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -308,18 +308,16 @@ msgid "[Stremio](https://www.stremio.com/) (Desktop, Android)"
 msgstr ""
 
 #: src/users/02-media.md:51
-msgid "[WebTorrent Desktop](https://webtorrent.io/desktop/) (Desktop)"
+msgid "[PikaTorrent](https://www.pikatorrent.com/)"
 msgstr ""
 
 #: src/users/02-media.md:52
-msgid ""
-"[Popcorn Time](https://github.com/popcorn-official/popcorn-desktop) (Desktop)"
+msgid "[WebTorrent Desktop](https://webtorrent.io/desktop/) (Desktop)"
 msgstr ""
 
 #: src/users/02-media.md:53
 msgid ""
-"[xTorrent](https://play.google.com/store/apps/details?id=com.gamemalt."
-"streamtorrentvideos) (Android)"
+"[Popcorn Time](https://github.com/popcorn-official/popcorn-desktop) (Desktop)"
 msgstr ""
 
 #: src/users/02-media.md:55
