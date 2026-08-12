@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-05-05T10:51:48Z\n"
+"POT-Creation-Date: 2026-08-11T09:26:27Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -163,6 +163,10 @@ msgstr ""
 msgid "Plugins"
 msgstr ""
 
-#: src/SUMMARY.md:47 src/SUMMARY.md:49
+#: src/SUMMARY.md:46
+msgid "API v4 Upgrade Guide"
+msgstr ""
+
+#: src/SUMMARY.md:48 src/SUMMARY.md:50
 msgid "Code of Conduct"
 msgstr "行為守則"
