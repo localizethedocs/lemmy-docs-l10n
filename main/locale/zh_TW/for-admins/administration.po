@@ -30,7 +30,7 @@ msgstr ""
 
 #: src/administration/administration.md:7
 msgid "Install"
-msgstr ""
+msgstr "安裝"
 
 #: src/administration/administration.md:9
 msgid "Official/Supported methods"
@@ -38,21 +38,21 @@ msgstr ""
 
 #: src/administration/administration.md:11
 msgid "Lemmy has two primary installation methods:"
-msgstr ""
+msgstr "Lemmy 主要有兩種安裝方式："
 
 #: src/administration/administration.md:13
 msgid "[Manually with Docker](install_docker.md)"
-msgstr ""
+msgstr "[使用 Docker 手動安裝](install_docker.md)"
 
 #: src/administration/administration.md:14
 msgid "[Automated with Ansible](install_ansible.md)"
-msgstr ""
+msgstr "[使用 Ansible 自動安裝](install_ansible.md)"
 
 #: src/administration/administration.md:16
 msgid ""
 "We recommend using Ansible, because it simplifies the installation and also "
 "makes updating easier."
-msgstr ""
+msgstr "我們建議使用 Ansible，因為它能簡化安裝流程，也讓更新更加容易。"
 
 #: src/administration/administration.md:18
 msgid ""

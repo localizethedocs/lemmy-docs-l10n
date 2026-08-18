@@ -21,7 +21,7 @@ msgstr ""
 
 #: src/SUMMARY.md:5
 msgid "For Users"
-msgstr ""
+msgstr "使用者專區"
 
 #: src/SUMMARY.md:7
 msgid "Getting Started"
@@ -57,7 +57,7 @@ msgstr "Lemmy 的歷史"
 
 #: src/SUMMARY.md:16
 msgid "For Admins"
-msgstr ""
+msgstr "管理者專區"
 
 #: src/SUMMARY.md:18
 msgid "Administration"
@@ -129,7 +129,7 @@ msgstr ""
 
 #: src/SUMMARY.md:36
 msgid "For Contributors"
-msgstr ""
+msgstr "貢獻者專區"
 
 #: src/SUMMARY.md:38
 msgid "Overview"

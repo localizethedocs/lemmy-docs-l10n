@@ -29,33 +29,34 @@ msgstr ""
 #: src/contributors/02-local-development.md:43
 #: src/contributors/02-local-development.md:90
 msgid "Debian-based distro:"
-msgstr ""
+msgstr "基於 Debian 的散佈版："
 
 #: src/contributors/02-local-development.md:13
 #: src/contributors/02-local-development.md:50
 #: src/contributors/02-local-development.md:96
 msgid "Arch-based distro:"
-msgstr ""
+msgstr "基於 Arch 的散佈版："
 
 #: src/contributors/02-local-development.md:19
 msgid "Fedora-based distro:"
-msgstr ""
+msgstr "基於 Fedora 的散佈版："
 
 #: src/contributors/02-local-development.md:25
 #: src/contributors/02-local-development.md:62
 #: src/contributors/02-local-development.md:102
 msgid "macOS:"
-msgstr ""
+msgstr "macOS："
 
 #: src/contributors/02-local-development.md:27
 msgid ""
 "Install [Homebrew](https://brew.sh/) if you don't already have it installed. "
 "Then install Node and pnpm."
 msgstr ""
+"如果尚未安裝 [Homebrew](https://brew.sh/)，請先安裝。接著安裝 Node 和 pnpm。"
 
 #: src/contributors/02-local-development.md:33
 msgid "Install pnpm"
-msgstr ""
+msgstr "安裝 pnpm"
 
 #: src/contributors/02-local-development.md:35
 msgid ""
@@ -65,7 +66,7 @@ msgstr ""
 
 #: src/contributors/02-local-development.md:41
 msgid "Setup PostgreSQL database"
-msgstr ""
+msgstr "設定 PostgreSQL 資料庫"
 
 #: src/contributors/02-local-development.md:54
 msgid "# If the systemctl command errors, then run the following\n"
@@ -79,7 +80,7 @@ msgstr ""
 
 #: src/contributors/02-local-development.md:73
 msgid "\"create user lemmy with password 'password' superuser;\""
-msgstr ""
+msgstr "\"create user lemmy with password 'password' superuser;\""
 
 #: src/contributors/02-local-development.md:74
 msgid "'create database lemmy with owner lemmy;'"
@@ -87,7 +88,7 @@ msgstr ""
 
 #: src/contributors/02-local-development.md:75
 msgid "postgres://lemmy:password@localhost:5432/lemmy"
-msgstr ""
+msgstr "postgres://lemmy:password@localhost:5432/lemmy"
 
 #: src/contributors/02-local-development.md:78
 msgid "Code formatting tools"
@@ -104,7 +105,7 @@ msgstr ""
 
 #: src/contributors/02-local-development.md:88
 msgid "pg_format"
-msgstr ""
+msgstr "pg_format"
 
 #: src/contributors/02-local-development.md:108
 msgid "Get the code"
@@ -118,7 +119,7 @@ msgstr ""
 
 #: src/contributors/02-local-development.md:117
 msgid "Backend development"
-msgstr ""
+msgstr "後端開發"
 
 #: src/contributors/02-local-development.md:119
 msgid ""
@@ -152,6 +153,15 @@ msgid ""
 "\"threads=16\"]\n"
 "```"
 msgstr ""
+"```toml\n"
+"[build]\n"
+"rustc-wrapper = \"/usr/bin/sccache\"\n"
+"\n"
+"[target.x86_64-unknown-linux-gnu]\n"
+"linker = \"clang\"\n"
+"rustflags = [\"-C\", \"link-arg=-fuse-ld=/usr/bin/mold\", \"-Z\", "
+"\"threads=16\"]\n"
+"```"
 
 #: src/contributors/02-local-development.md:134
 msgid "To make changes to the database schema:"
@@ -165,11 +175,11 @@ msgstr ""
 
 #: src/contributors/02-local-development.md:137
 msgid "Run `./scripts/update_schema_file.sh`."
-msgstr ""
+msgstr "執行 `./scripts/update_schema_file.sh`。"
 
 #: src/contributors/02-local-development.md:139
 msgid "Frontend development"
-msgstr ""
+msgstr "前端開發"
 
 #: src/contributors/02-local-development.md:141
 msgid ""
@@ -187,7 +197,7 @@ msgstr ""
 
 #: src/contributors/02-local-development.md:146
 msgid "Tests"
-msgstr ""
+msgstr "測試"
 
 #: src/contributors/02-local-development.md:148
 msgid "Run Rust unit tests:"

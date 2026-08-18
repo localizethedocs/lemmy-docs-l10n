@@ -42,6 +42,8 @@ msgid ""
 "\"https://github.com/LemmyNet/lemmy-plugins/releases/download/0.1.3/"
 "rust_lingua.wasm\""
 msgstr ""
+"\"https://github.com/LemmyNet/lemmy-plugins/releases/download/0.1.3/"
+"rust_lingua.wasm\""
 
 #: src/contributors/08-plugins.md:13
 msgid "\"e1f58029f2ecca5127a4584609494120683b691fc63a543979ea071f32cf690f\""

@@ -21,11 +21,11 @@ msgstr ""
 
 #: src/contributors/03-docker-development.md:5
 msgid "Debian-based distro:"
-msgstr ""
+msgstr "基於 Debian 的散佈版："
 
 #: src/contributors/03-docker-development.md:13
 msgid "Arch-based distro:"
-msgstr ""
+msgstr "基於 Arch 的散佈版："
 
 #: src/contributors/03-docker-development.md:20
 msgid "Get the code with submodules:"

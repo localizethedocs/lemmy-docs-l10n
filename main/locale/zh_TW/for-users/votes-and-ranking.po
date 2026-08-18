@@ -17,7 +17,7 @@ msgstr "投票與排名"
 
 #: src/users/03-votes-and-ranking.md:3
 msgid "Posts"
-msgstr ""
+msgstr "貼文"
 
 #: src/users/03-votes-and-ranking.md:5
 msgid ""

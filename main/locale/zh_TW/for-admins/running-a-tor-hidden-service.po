@@ -47,7 +47,7 @@ msgstr ""
 
 #: src/administration/tor_hidden_service.md:11
 msgid "Installing Tor"
-msgstr ""
+msgstr "安裝 Tor"
 
 #: src/administration/tor_hidden_service.md:13
 msgid ""
@@ -56,10 +56,13 @@ msgid ""
 "org` repository because it always provides the latest stable release of the "
 "software."
 msgstr ""
+"官方[文件](https://support.torproject.org/apt/tor-deb-repo/)建議 Ubuntu 和 "
+"Debian 使用者從 `deb.torproject.org` 儲存庫安裝 Tor，因為該儲存庫總是提供最新"
+"的穩定發行版的軟體。"
 
 #: src/administration/tor_hidden_service.md:15
 msgid "**Administrative Access is Required**"
-msgstr ""
+msgstr "**需要管理員權限**"
 
 #: src/administration/tor_hidden_service.md:17
 msgid ""
@@ -69,11 +72,11 @@ msgstr ""
 
 #: src/administration/tor_hidden_service.md:19
 msgid "With `sudo`:"
-msgstr ""
+msgstr "使用 `sudo`："
 
 #: src/administration/tor_hidden_service.md:26
 msgid "With `su`:"
-msgstr ""
+msgstr "使用 `su`："
 
 #: src/administration/tor_hidden_service.md:33
 msgid "Note: To return to your account run: `exit`."
@@ -102,7 +105,7 @@ msgstr ""
 
 #: src/administration/tor_hidden_service.md:51
 msgid "**Enable the deb.torproject.org repository**"
-msgstr ""
+msgstr "**啟用 deb.torproject.org 儲存庫**"
 
 #: src/administration/tor_hidden_service.md:53
 msgid "Configure `apt` to pull packages from `deb.torproject.org`."
@@ -122,7 +125,7 @@ msgstr ""
 
 #: src/administration/tor_hidden_service.md:64
 msgid "**Import deb.torproject.org's GPG signing key**"
-msgstr ""
+msgstr "**匯入 deb.torproject.org's GPG 簽署金鑰**"
 
 #: src/administration/tor_hidden_service.md:66
 msgid ""
@@ -167,7 +170,7 @@ msgstr ""
 
 #: src/administration/tor_hidden_service.md:97
 msgid "Enable and start the Tor daemon"
-msgstr ""
+msgstr "啟用並啟動 Tor 守護進程"
 
 #: src/administration/tor_hidden_service.md:103
 msgid ""
@@ -454,6 +457,53 @@ msgid ""
 "* Connection #0 to host HIDDEN_SERVICE_ADDR left intact\n"
 "```"
 msgstr ""
+"```\n"
+"torsocks curl -vI http://HIDDEN_SERVICE_ADDR\n"
+"*   Trying 127.*.*.*:80...\n"
+"* Connected to HIDDEN_SERVICE_ADDR (127.*.*.*) port 80 (#0)\n"
+"> HEAD / HTTP/1.1\n"
+"> Host: HIDDEN_SERVICE_ADDR\n"
+"> User-Agent: curl/7.76.1\n"
+"> Accept: */*\n"
+">\n"
+"* Mark bundle as not supporting multiuse\n"
+"< HTTP/1.1 200 OK\n"
+"HTTP/1.1 200 OK\n"
+"< Server: nginx\n"
+"Server: nginx\n"
+"< Date: Wed, 07 Jun 2023 17:06:00 GMT\n"
+"Date: Wed, 07 Jun 2023 17:06:00 GMT\n"
+"< Content-Type: text/html; charset=utf-8\n"
+"Content-Type: text/html; charset=utf-8\n"
+"< Content-Length: 98487\n"
+"Content-Length: 98487\n"
+"< Connection: keep-alive\n"
+"Connection: keep-alive\n"
+"< Vary: Accept-Encoding\n"
+"Vary: Accept-Encoding\n"
+"< X-Powered-By: Express\n"
+"X-Powered-By: Express\n"
+"< Content-Security-Policy: default-src 'self'; manifest-src *; connect-src "
+"*; img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-"
+"src 'self' 'unsafe-inline'; form-action 'self'; base-uri 'self'; frame-src "
+"*\n"
+"Content-Security-Policy: default-src 'self'; manifest-src *; connect-src *; "
+"img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src "
+"'self' 'unsafe-inline'; form-action 'self'; base-uri 'self'; frame-src *\n"
+"< ETag: W/\"180b7-EC9iFYAIlbnN8zHCayBwL3wAm64\"\n"
+"ETag: W/\"180b7-EC9iFYAIlbnN8zHCayBwL3wAm64\"\n"
+"< Referrer-Policy: same-origin\n"
+"Referrer-Policy: same-origin\n"
+"< X-Content-Type-Options: nosniff\n"
+"X-Content-Type-Options: nosniff\n"
+"< X-Frame-Options: DENY\n"
+"X-Frame-Options: DENY\n"
+"< X-XSS-Protection: 1; mode=block\n"
+"X-XSS-Protection: 1; mode=block\n"
+"\n"
+"<\n"
+"* Connection #0 to host HIDDEN_SERVICE_ADDR left intact\n"
+"```"
 
 #: src/administration/tor_hidden_service.md:333
 msgid "Logging behavior"
