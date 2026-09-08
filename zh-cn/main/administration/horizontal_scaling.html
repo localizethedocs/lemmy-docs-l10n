@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Horizontal Scaling</title>
+
+
+        <!-- Custom HTML head -->
+        <script type="text/javascript" src="../ltd-provenance.js"></script>
+        <script type="text/javascript" src="../ltd-current.js"></script>
+        <script type="text/javascript" src="../../../ltd-config.js"></script>
+        <script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/LemmyNet/lemmy-docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="horizontal-scaling"><a class="header" href="#horizontal-scaling">Horizontal Scaling</a></h1>
+<p>This is a collection of notes on scaling different Lemmy components horizontally. This is not meant as a step-by-step guide, rather as general tips and knowledge that might be useful to somebody who is already familiar with and horizontal scaling concepts and best practices. If you don't already know about concepts like load balancing, object storage, and reverse proxies, then this document will probably be hard (or impossible) to understand.</p>
+<p><strong>Note: scaling Lemmy this way is not necessary, and for small instances, the added overhead most likely outweighs any benefits.</strong></p>
+<h2 id="why-scale-horizontally"><a class="header" href="#why-scale-horizontally">Why scale horizontally?</a></h2>
+<ul>
+<li>If one of your Lemmy servers dies for any reason, your instance can still remain operational</li>
+<li>Having multiple Lemmy servers allows you to do rolling upgrades (no downtime needed to upgrade Lemmy!)</li>
+<li>Horizontal scaling provides additional flexibility in how you upgrade your infrastructure</li>
+<li>As of Lemmy version 0.18.2, Lemmy appears to be able to use the same resources more efficiently if they are split between multiple Lemmy processes</li>
+</ul>
+<h2 id="breakdown-of-lemmy-components"><a class="header" href="#breakdown-of-lemmy-components">Breakdown of Lemmy components</a></h2>
+<p>See <a href="administration.html#lemmy-components">Lemmy components</a> for a high level overview of what each component does.</p>
+<h3 id="lemmy-ui"><a class="header" href="#lemmy-ui">Lemmy-ui</a></h3>
+<p>Lemmy-ui can be horizontally scaled, but make sure you read the following section for information about rolling upgrades.</p>
+<h4 id="rolling-upgrades"><a class="header" href="#rolling-upgrades">Rolling upgrades</a></h4>
+<p>In general, there is nothing preventing you from running multiple load balanced Lemmy-ui servers in parallel, but without some custom configuration, <strong>rolling upgrades will break Lemmy for your users!</strong> This is because by default, Lemmy-ui will serve static files through the express process.</p>
+<p>Consider the scenario where you have 2 Lemmy-ui servers, one is running on version 1, and the other has just come online running version 2. A user opening your Lemmy in their browser might have their front page html request routed to version 1. This html will contain a reference to many other static files which are specific to version 1. Most likely, some of these requests will get routed to the server running version 2. <strong>The files will not exist on this server, the server will respond with 404, and the UI will remain in a broken state.</strong></p>
+<p>There are a few ways to work around this issue:</p>
+<ol>
+<li>
+<p>The safest option is to ensure that all servers are able to serve static files for all currently active Lemmy-ui versions.</p>
+<ul>
+<li>There are many ways to achieve this, the most obvious one being to upload your static files to object storage, and have reverse proxies route static file requests to your static files bucket.</li>
+<li>Here's one possible example of how to do this with nginx:</li>
+</ul>
+<pre><code>location /static {
+   expires 1y;
+   add_header Cache-Control "public";
+   proxy_pass https://${bucket_fqdn};
+
+   limit_except GET {
+       deny  all;
+   }
+
+   proxy_intercept_errors on;
+   # invalid keys result in 403
+   error_page 403 =404 /@404static;
+}
+</code></pre>
+<p>Replace <code>${bucket_fqdn}</code> with the URL to your bucket. With this setup, you should upload the contents of the lemmy-ui <code>dist/</code> directory to a "directory" named <code>static/$LEMMY_UI_HASH</code> in your bucket, where the hash is calculated from the commit you are deploying: <code>export LEMMY_UI_HASH=$(git rev-parse --short HEAD)</code>. Note that this setup requires public acl on uploaded files, so it's recommended to limit access to your bucket with an IP allowlist policy.</p>
+</li>
+<li>
+<p>An alternative option is to configure sticky sessions in your load balancer. This will ensure that subsequent requests all end up on the same Lemmy-ui server, and as long as your sticky sessions last longer than your upgrade process, most clients should remain functional.</p>
+</li>
+<li>
+<p>Similarly to sticky sessions, another possibility is to configure ip hash based load balancing.</p>
+</li>
+<li>
+<p>There is always the option to just employ downtime and upgrade all servers at once (but that's not very fun!)</p>
+</li>
+</ol>
+<h3 id="lemmy_server"><a class="header" href="#lemmy_server">Lemmy_server</a></h3>
+<p>Lemmy_server can be horizontally scaled, with a few caveats.</p>
+<p>Here's a quick example on how you could start 3 web servers, 3 federation servers and one scheduled task process:</p>
+<pre><code># scheduled tasks
+lemmy_server --disable-http-server --disable-activity-sending
+</code></pre>
+<p>Or run the Docker container with the <code>-e LEMMY_DISABLE_HTTP_SERVER=true</code> and <code>-e LEMMY_DISABLE_ACTIVITY_SENDING=true</code> ENV parameters.</p>
+<pre><code># 3 http servers
+lemmy_server --disable-activity-sending --disable-scheduled-tasks
+lemmy_server --disable-activity-sending --disable-scheduled-tasks
+lemmy_server --disable-activity-sending --disable-scheduled-tasks
+</code></pre>
+<p>Or run the Docker containers with the <code>-e LEMMY_DISABLE_ACTIVITY_SENDING=true</code> and <code>-e LEMMY_DISABLE_SCHEDULED_TASKS=true</code> ENV parameters.</p>
+<pre><code># 3 servers for sending out federation activities
+lemmy_server --disable-http-server --disable-scheduled-tasks --federate-process-index=1 --federate-process-count=3
+lemmy_server --disable-http-server --disable-scheduled-tasks --federate-process-index=2 --federate-process-count=3
+lemmy_server --disable-http-server --disable-scheduled-tasks --federate-process-index=3 --federate-process-count=3
+</code></pre>
+<p>Or run the Docker containers with the <code>-e LEMMY_DISABLE_HTTP_SERVER=true</code>, <code>-e LEMMY_DISABLE_SCHEDULED_TASKS=true</code>, <code>-e LEMMY_FEDERATE_PROCESS_INDEX=1</code> and <code>-e LEMMY_FEDERATE_PROCESS_COUNT=3</code> ENV parameters.</p>
+<h4 id="scheduled-tasks"><a class="header" href="#scheduled-tasks">Scheduled tasks</a></h4>
+<p>By default, a Lemmy_server process will run background scheduled tasks, which must be run only on one server. Launching multiple processes with the default configuration will result in multiple duplicated scheduled tasks all starting at the same moment and trying to do the same thing at once.</p>
+<p>To solve this, Lemmy must be started with the <code>--disable-scheduled-tasks</code> flag (or <code>LEMMY_DISABLE_SCHEDULED_TASKS=true</code>) on all but one instance. In general, there are two approaches:</p>
+<ol>
+<li>Run all your load balanced Lemmy servers with the <code>--disable-scheduled-tasks</code> flag, and run one additional Lemmy server without this flag which is not in your load balancer and does not accept any HTTP traffic.</li>
+<li>Run one load balanced Lemmy server without the flag, and all other load balanced servers with the flag.</li>
+</ol>
+<h4 id="federation-queue"><a class="header" href="#federation-queue">Federation queue</a></h4>
+<p>The persistent federation queue (since 0.19) is split by federated domain and can be processed in equal-size parts run in separate processes. To split the queue up into N processes numbered 1...N, use the arguments <code>--federate-process-index=i --federate-process-count=N</code> on each (or <code>LEMMY_FEDERATE_PROCESS_INDEX=i</code> and <code>LEMMY_FEDERATE_PROCESS_COUNT=N</code> respectively). It is important that each index is is given to exactly one process, otherwise you will get undefined behaviour (missing, dupe federation, crashes).</p>
+<p>Federation processes can be started and stopped at will. They will restart federation to each instance from the last transmitted activity regardless of downtime.</p>
+<h4 id="rolling-upgrades-1"><a class="header" href="#rolling-upgrades-1">Rolling upgrades</a></h4>
+<p>For most versions, rolling releases have been completely OK, but there have been some cases where a database migration slips in which is NOT backwards compatible (causing any servers running the older version of Lemmy to potentially start generating errors). To be safe, you should always first take a look at <a href="https://github.com/LemmyNet/lemmy/tree/main/migrations">what database migrations are included in a new version</a>, and evaluate whether the changes are for sure safe to apply with running servers.</p>
+<p>Note that even if there are no backwards incompatible migrations between immediate version upgrades (version 1 -&gt; 2 is safe and 2 -&gt; 3 is safe), doing bigger upgrades might cause these same migrations to become backwards incompatible (a server running version 1 might not be compatible with migrations from version 3 in this scenario). <strong>It is generally best to only upgrade one version at a time!</strong>.</p>
+<p>For the scheduled task process, it shouldn't cause any major issues to have two servers running in parallel for a short duration during an upgrade, but shutting the old one down before starting the new one will always be safer.</p>
+<h3 id="pict-rs"><a class="header" href="#pict-rs">Pict-rs</a></h3>
+<p>Pict-rs does not scale horizontally as of writing this document. This is due to a dependency on a Sled database, which is a disk based database file.</p>
+<p>The developer of pict-rs has mentioned plans to eventually add Postgres support (which should in theory enable horizontal scaling), but work on this has not yet started.</p>
+<p>Note that by caching pict-rs images (for example, with nginx, or with a CDN), you can really minimize load on the pict-rs server!</p>
+<h2 id="other-tips"><a class="header" href="#other-tips">Other tips</a></h2>
+<ol>
+<li>
+<p>Your lemmy-ui servers need to access your backend as well. If you don't want a complicated setup with multiple load balancers, you could just have each of your servers contain nginx, lemmy-ui, and lemmy_server, and just load balance to an nginx on each of your servers</p>
+</li>
+<li>
+<p>Make sure you're passing the real client ip address to Lemmy, otherwise Lemmy's built in rate limiter will trigger very often (if it rate limits based on your load balancer's IP address, for example). With nginx, you should use something like this in your nginx.conf:</p>
+<pre><code>real_ip_recursive on;
+real_ip_header X-Forwarded-For;
+set_real_ip_from &lt;your load balancer ip here&gt;;
+</code></pre>
+</li>
+<li>
+<p>The internal Lemmy load balancer works based on an in-memory storage of ip addresses. That means that by adding more Lemmy servers, you are effectively making your rate limits less strict. If you rely on the built in limiter, make sure to adjust the limits accordingly!</p>
+</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../administration/prometheus.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../contributors/01-overview.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../administration/prometheus.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../contributors/01-overview.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
