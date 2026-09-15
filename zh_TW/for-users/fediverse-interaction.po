@@ -1,0 +1,137 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-07T09:27:16Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/users/06-fediverse-interaction.md:1
+msgid "Fediverse interaction"
+msgstr "聯邦宇宙互動"
+
+#: src/users/06-fediverse-interaction.md:3
+msgid ""
+"As mentioned in the introduction, Lemmy users and non-Lemmy users from the "
+"fediverse can communicate between each other, too. The way Lemmy users' "
+"activity is handled by non-Lemmy instances depends on the software running "
+"on the latter. If you are interested in that, you should read the "
+"documentation of the software run by the non-Lemmy instance in question. "
+"Here, we only focus on how non-Lemmy users' activity is handled by Lemmy "
+"instances. There are only a few things to keep in mind:"
+msgstr ""
+"如介紹中所述，來自聯邦宇宙的 Lemmy 使用者與非 Lemmy 使用者之間也可以互相溝"
+"通。非 Lemmy 實例處理 Lemmy 使用者活動的方式，取決於後者所運行的軟體。如果您"
+"對此感興趣，應該閱讀該非 Lemmy 實例所運行軟體的文件。在這裡，我們僅關注 "
+"Lemmy 實例如何處理非 Lemmy 使用者的活動。只需記住以下幾點："
+
+#: src/users/06-fediverse-interaction.md:5
+msgid ""
+"Many fediverse-compatible social media have no notion of \"group\". These "
+"display Lemmy communities as single users, e.g. `@meta@sopuli.xyz` rather "
+"than `!meta@sopuli.xyz`. Just open the community from your non-Lemmy "
+"instance to check the correct handle."
+msgstr ""
+
+#: src/users/06-fediverse-interaction.md:6
+msgid ""
+"Users of link aggregators like Lemmy tend not to use hashtags and mentions, "
+"so consider limiting yourself to the bare minimum when posting or "
+"commenting, even if the rules of the Lemmy community/instance in question do "
+"not mention it."
+msgstr ""
+
+#: src/users/06-fediverse-interaction.md:8
+msgid "Follow a Lemmy community"
+msgstr "關注一個 Lemmy 社群"
+
+#: src/users/06-fediverse-interaction.md:10
+msgid "You can freely follow any Lemmy community from non-Lemmy software."
+msgstr "您可以從非 Lemmy 軟體自由地關注任何 Lemmy 社群。"
+
+#: src/users/06-fediverse-interaction.md:12
+msgid "Post in a Lemmy community"
+msgstr "在 Lemmy 社群中發佈貼文"
+
+#: src/users/06-fediverse-interaction.md:14
+msgid ""
+"To post in a Lemmy community from a non-Lemmy fediverse account, simply "
+"create a post following these rules:"
+msgstr ""
+"若要從非 Lemmy 的聯邦宇宙帳號在 Lemmy 社群中發文，只需按照以下規則建立貼文："
+
+#: src/users/06-fediverse-interaction.md:16
+msgid ""
+"If your non-Lemmy software does not feature a \"title\" field for posts, the "
+"first line (i.e., the content before the first newline character) should be "
+"the desired title for your Lemmy post. Only its first 100 characters will be "
+"shown, while the rest will be ignored."
+msgstr ""
+
+#: src/users/06-fediverse-interaction.md:17
+msgid "The post visibility must be \"Public\" or similar."
+msgstr "貼文可見度必須設定為「公開」或類似選項。"
+
+#: src/users/06-fediverse-interaction.md:18
+msgid "You must mention the Lemmy community's full handle."
+msgstr ""
+
+#: src/users/06-fediverse-interaction.md:19
+msgid ""
+"Any other mentions should be placed after the one involving the target Lemmy "
+"community."
+msgstr ""
+
+#: src/users/06-fediverse-interaction.md:20
+msgid ""
+"Media should have alt text, as this is the same alt text that will be shown "
+"in Lemmy."
+msgstr ""
+
+#: src/users/06-fediverse-interaction.md:22
+msgid ""
+"If your post follows these rules, it should be automatically reposted by the "
+"Lemmy community almost immediately. Unlike media, links cannot be attached, "
+"but you can simply insert them within the content of your post."
+msgstr ""
+
+#: src/users/06-fediverse-interaction.md:24
+msgid "Comment under a Lemmy post"
+msgstr "在 Lemmy 貼文底下留言"
+
+#: src/users/06-fediverse-interaction.md:26
+msgid ""
+"Comments to a Lemmy post (or to one of its comments) will be visible on "
+"Lemmy."
+msgstr ""
+
+#: src/users/06-fediverse-interaction.md:28
+msgid "Troubleshooting"
+msgstr ""
+
+#: src/users/06-fediverse-interaction.md:30
+msgid "If your message does not appear in the community, you should:"
+msgstr ""
+
+#: src/users/06-fediverse-interaction.md:32
+msgid "Wait a few minutes."
+msgstr ""
+
+#: src/users/06-fediverse-interaction.md:33
+msgid "Double-check the rules mentioned above."
+msgstr ""
+
+#: src/users/06-fediverse-interaction.md:34
+msgid ""
+"Ensure the Lemmy instance has not defederated from your non-Lemmy instance "
+"(or the other way around). For example, the Lemmy administrator might have "
+"disabled federation with all instances (except for a limited whitelist), or "
+"they could have blacklisted the non-Lemmy instance specifically. To check "
+"this, Lemmy offers an \"Instances\" button in its footer. The software run "
+"by the non-Lemmy instance probably offers a similar functionality."
+msgstr ""
