@@ -1,0 +1,255 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-08-11T09:26:27Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/contributors/09-api-v4.md:1
+msgid "API v4 Upgrade Guide"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:3
+msgid ""
+"This document outlines the main changes between API v3 (Lemmy 0.19) and API "
+"v4 (Lemmy 1.0). You can use the following resources to adapt the new API:"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:5
+msgid ""
+"[Official API docs (including OpenAPI spec)](https://join-lemmy.org/api/main)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:6
+msgid ""
+"Browse [voyager.lemmy.ml](https://voyager.lemmy.ml), and use the browser "
+"console to see which API requests are made"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:7
+msgid ""
+"Look at the relevant pull requests for a given feature in lemmy-ui (eg "
+"[notifications](https://github.com/LemmyNet/lemmy-ui/pulls?"
+"q=is%3Apr+notifications+is%3Aclosed+))"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:9
+msgid ""
+"Note that this document only covers changes to existing features, not new "
+"features. If any breaking changes are missing, please make a pull request to "
+"[this file](https://github.com/LemmyNet/lemmy-docs/blob/main/src/"
+"contributors/09-api-v4.md). If you have any questions, use the [development "
+"chat on matrix](https://matrix.to/#/#lemmydev:matrix.org) or [/c/lemmy-"
+"support](https://lemmy.ml/c/lemmy_support)."
+msgstr ""
+
+#: src/contributors/09-api-v4.md:11
+msgid "Rename account endpoints"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:13
+msgid ""
+"Various endpoints have been renamed, especially those under `/api/v3/user` "
+"have been moved to `/api/v4/account/auth`."
+msgstr ""
+
+#: src/contributors/09-api-v4.md:15
+msgid "`/api/v3/user/register` to `/api/v4/account/auth/register`"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:16
+msgid "`/api/v3/user/login` to `/api/v4/account/auth/login`"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:17
+msgid "`/api/v3/user/logout` to `/api/v4/account/auth/logout`"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:18 src/contributors/09-api-v4.md:42
+msgid "..."
+msgstr ""
+
+#: src/contributors/09-api-v4.md:19
+msgid ""
+"`/api/v4/site` doesn't have `my_user` anymore, this is now available at "
+"[`GET /api/v4/account`](https://join-lemmy.org/api/main#operation/GetMyUser)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:21
+msgid "https://github.com/LemmyNet/lemmy/pull/5216"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:23
+msgid "Combined endpoints"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:25
+msgid ""
+"There are various places in the UI where different types of data are shown "
+"together, for example posts and comments in the user profile. Until `0.19` "
+"these were queried separately, to display the (last 20 posts) and (last 20 "
+"comments). For `1.0` Dessalines implemented combined queries, so that the "
+"new endpoint `/api/v4/person/content` returns the last 20 (posts and "
+"comments). See the [issue](https://github.com/LemmyNet/lemmy/issues/2444) "
+"and linked pull requests for more details."
+msgstr ""
+
+#: src/contributors/09-api-v4.md:27
+msgid "The combined endpoints are:"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:29
+msgid ""
+"[`GET /api/v4/person/content`](https://join-lemmy.org/api/main#operation/"
+"ListPersonContent)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:30
+msgid ""
+"[`GET /api/v4/account/inbox`](https://join-lemmy.org/api/main#operation/"
+"ListInbox)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:31
+msgid ""
+"[`GET /api/v4/account/saved`](https://join-lemmy.org/api/main#operation/"
+"ListPersonSaved)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:32
+msgid ""
+"[`GET /api/v4/modlog`](https://join-lemmy.org/api/main#operation/GetModlog)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:33
+msgid ""
+"[`GET /api/v4/report/list`](https://join-lemmy.org/api/main#operation/"
+"ListReports)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:35
+msgid "Image endpoints"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:37
+msgid ""
+"Uploading or deleting avatars, icons and banners is done through separate "
+"endpoints now. With this change it is possible to disable image uploads, "
+"while still allowing changes to avatars etc."
+msgstr ""
+
+#: src/contributors/09-api-v4.md:39
+msgid ""
+"[POST `/api/v4/account/avatar`](https://join-lemmy.org/api/main#operation/"
+"UploadUserAvatar)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:40
+msgid ""
+"[DELETE `/api/v4/account/avatar`](https://join-lemmy.org/api/main#operation/"
+"DeleteUserAvatar)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:41
+msgid ""
+"[POST `/api/v4/community/banner`](https://join-lemmy.org/api/main#operation/"
+"UploadCommunityBanner)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:44
+msgid ""
+"The endpoints for image upload and proxying have been moved to `GET /api/v4/"
+"image/{filename}` and `GET /api/v4/image/proxy` respectively."
+msgstr ""
+
+#: src/contributors/09-api-v4.md:46
+msgid "https://github.com/LemmyNet/lemmy/pull/5260"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:48
+msgid "Cursor Pagination"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:50
+msgid ""
+"Instead of a `page` parameter, API v4 uses cursors for pagination. To make "
+"it simple, a cursor is a string which encodes the id of the last item on the "
+"current page. When going to the next page, the client sends the `next_page` "
+"cursor as `page_cursor,` and the API sends back items which come after this "
+"one. This way users don't lose their place in the feed, but continue exactly "
+"where they left off."
+msgstr ""
+
+#: src/contributors/09-api-v4.md:52
+msgid "Notifications Rewrite"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:54
+msgid ""
+"With API v3 notification functionality was spread across various different "
+"endpoints. Now all is available under a single endpoint [/api/v4/account/"
+"notification/list](https://join-lemmy.org/api/main#tag/Account/operation/"
+"ListNotifications). Notifications also include modlog entries affecting the "
+"current user."
+msgstr ""
+
+#: src/contributors/09-api-v4.md:56
+msgid "Post Time Range Filter"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:58
+msgid ""
+"The previous sorts `TopHour`, `TopDay` etc are gone and replaced `Top` sort. "
+"Instead there is now a separate parameter `time_range_seconds` which accepts "
+"arbitrary time values and works with all sort types."
+msgstr ""
+
+#: src/contributors/09-api-v4.md:60
+msgid "Other Breaking Changes"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:62
+msgid ""
+"[Rename actor_id columns to ap_id](https://github.com/LemmyNet/lemmy/"
+"pull/5393)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:63
+msgid ""
+"[Removing local_user.show_scores column, since its now on the "
+"local_user_vote_display_mode table.](https://github.com/LemmyNet/lemmy/"
+"pull/4497)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:64
+msgid ""
+"[Move custom emojis and tagline views to separate endpoints](https://github."
+"com/LemmyNet/lemmy/pull/4580)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:65
+msgid ""
+"[Remove pointless block_views](https://github.com/LemmyNet/lemmy/pull/4841)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:66
+msgid ""
+"[Changing list_logins to return a ListLoginsResponse object.](https://github."
+"com/LemmyNet/lemmy/pull/4888)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:67
+msgid ""
+"[Remove pointless local_user_id from LocalUserVoteDisplayMode](https://"
+"github.com/LemmyNet/lemmy/pull/4890)"
+msgstr ""
+
+#: src/contributors/09-api-v4.md:68
+msgid "[Remove enable nsfw](https://github.com/LemmyNet/lemmy/pull/5017)"
+msgstr ""
