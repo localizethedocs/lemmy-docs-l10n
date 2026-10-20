@@ -1,0 +1,568 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Install from Scratch</title>
+
+
+        <!-- Custom HTML head -->
+        <script type="text/javascript" src="../ltd-provenance.js"></script>
+        <script type="text/javascript" src="../ltd-current.js"></script>
+        <script type="text/javascript" src="../../../ltd-config.js"></script>
+        <script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/LemmyNet/lemmy-docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="install-from-scratch"><a class="header" href="#install-from-scratch">Install from Scratch</a></h1>
+<p>These instructions are written for Ubuntu 20.04 / Ubuntu 22.04. They are particularly useful when you'd like to setup a Lemmy container (e.g. LXC on Proxmox) and cannot use Docker.</p>
+<p>Lemmy is built from source in this guide, so this may take a while, especially on slow devices. For example, Lemmy v0.18.5 takes around 7 minutes to build on a quad core VPS.</p>
+<p>Installing and configuring Lemmy using this guide takes about 60-90 minutes. You might need to make yourself a fresh cup of coffee before you start.</p>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<h3 id="database"><a class="header" href="#database">Database</a></h3>
+<p>For Ubuntu 20.04 the shipped PostgreSQL version is 12 which is not supported by Lemmy. So let's set up a newer one. The most recent stable version of PostgreSQL is 16 at the time of writing this guide.</p>
+<h4 id="install-dependencies"><a class="header" href="#install-dependencies">Install dependencies</a></h4>
+<pre><code>sudo apt install -y wget ca-certificates pkg-config
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" &gt;&gt; /etc/apt/sources.list.d/pgdg.list'
+sudo apt update
+sudo apt install libssl-dev libpq-dev postgresql
+</code></pre>
+<h4 id="setup-lemmy-database"><a class="header" href="#setup-lemmy-database">Setup Lemmy database</a></h4>
+<p>Replace db-passwd with a unique password of your choice in the commands below.</p>
+<pre><code>sudo -iu postgres psql -c "CREATE USER lemmy WITH PASSWORD 'db-passwd';"
+sudo -iu postgres psql -c "CREATE DATABASE lemmy WITH OWNER lemmy;"
+</code></pre>
+<p>If you're migrating from an older version of Lemmy, the following might be required.</p>
+<pre><code>sudo -iu postgres psql -c "ALTER USER lemmy WITH SUPERUSER;"
+</code></pre>
+<p>Tune your PostgreSQL settings to match your hardware via <a href="https://pgtune.leopard.in.ua/#/">this guide</a></p>
+<h4 id="setup-md5-auth"><a class="header" href="#setup-md5-auth">Setup md5 auth</a></h4>
+<p>Your Postgres config might need to be edited to allow password authentication instead of peer authentication. Simply add the following to your <code>pg_hba.conf</code>:</p>
+<pre><code>local   lemmy           lemmy                                   md5
+</code></pre>
+<h3 id="install-rust"><a class="header" href="#install-rust">Install Rust</a></h3>
+<p>For the Rust compiles, it is ideal to use a non-privileged Linux account on your system. Install Rust by following the instructions on <a href="https://rustup.rs/">Rustup</a> (using a non-privileged Linux account, it will install file in that user's home folder for rustup and cargo).</p>
+<p>protobuf-compiler may be required for Ubuntu 20.04 or 22.04 installs, please report testing in lemmy-docs issues.</p>
+<pre><code>sudo apt install protobuf-compiler gcc
+</code></pre>
+<h3 id="setup-pict-rs-optional"><a class="header" href="#setup-pict-rs-optional">Setup pict-rs (Optional)</a></h3>
+<p>You can skip this section if you don't require image hosting, but <strong>NOTE that Lemmy-ui will still allow users to attempt uploading images even if pict-rs is not configured. In this situation, the upload will fail and users will receive technical error messages.</strong></p>
+<p>Lemmy supports image hosting using <a href="https://git.asonix.dog/asonix/pict-rs/">pict-rs</a>. We need to install a couple of dependencies for this. It requires the <code>magick</code> command which comes with Imagemagick version 7, but Ubuntu 20.04 only comes with Imagemagick 6. So you need to install that command manually, eg from the <a href="https://imagemagick.org/script/download.php#linux">official website</a>.</p>
+<p><strong>NOTE: on standard LXC containers an AppImage-based ImageMagick installation <a href="https://github.com/LemmyNet/lemmy/issues/4112">will not work properly</a>. It uses FUSE which will emit "permission denied" errors when trying to upload an image through pict-rs. You must use alternative installation methods, such as <a href="https://github.com/SoftCreatR/imei">imei.sh</a>.</strong></p>
+<h4 id="appimage-based-installation-of-imagemagick"><a class="header" href="#appimage-based-installation-of-imagemagick">AppImage-based installation of ImageMagick</a></h4>
+<pre><code>sudo apt install ffmpeg exiftool libgexiv2-dev --no-install-recommends
+# save the file to a working folder it can be verified before copying to /usr/bin/
+wget https://download.imagemagick.org/ImageMagick/download/binaries/magick
+# compare hash with the "message digest" on the official page linked above
+sha256sum magick
+sudo mv magick /usr/bin/
+sudo chmod 755 /usr/bin/magick
+</code></pre>
+<h4 id="imeish-based-installation-of-imagemagick"><a class="header" href="#imeish-based-installation-of-imagemagick">imei.sh-based installation of ImageMagick</a></h4>
+<p>Follow the instructions from the <a href="https://github.com/SoftCreatR/imei">official imei.sh page on GitHub</a></p>
+<h4 id="standalone-pict-rs-installation"><a class="header" href="#standalone-pict-rs-installation">Standalone pict-rs installation</a></h4>
+<p>Since we're building stuff from source here, let's do the same for pict-rs. Follow the <a href="https://git.asonix.dog/asonix/pict-rs/#user-content-compile-from-source">instructions here</a>.</p>
+<h3 id="lemmy-backend"><a class="header" href="#lemmy-backend">Lemmy Backend</a></h3>
+<h4 id="build-the-backend"><a class="header" href="#build-the-backend">Build the backend</a></h4>
+<p>Create user account on Linux for the lemmy_server application</p>
+<pre><code>sudo adduser lemmy --system --disabled-login --no-create-home --group
+</code></pre>
+<p>Compile and install Lemmy, given the from-scratch intention, this will be done via GitHub checkout. This can be done by a normal unprivledged user (using the same Linux account you used for rustup).</p>
+<pre><code class="language-bash">git clone https://github.com/LemmyNet/lemmy.git lemmy
+cd lemmy
+git checkout 0.18.5
+git submodule init
+git submodule update
+</code></pre>
+<p>Then build Lemmy with the following command:</p>
+<pre><code>cargo build --release
+</code></pre>
+<h4 id="deployment"><a class="header" href="#deployment">Deployment</a></h4>
+<p>Because we should <a href="https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html">follow the Linux way</a>, we should use the <code>/opt</code> directory to colocate the backend, frontend and pict-rs.</p>
+<pre><code>sudo mkdir /opt/lemmy
+sudo mkdir /opt/lemmy/lemmy-server
+sudo mkdir /opt/lemmy/pictrs
+sudo mkdir /opt/lemmy/pictrs/files
+sudo mkdir /opt/lemmy/pictrs/sled-repo
+sudo mkdir /opt/lemmy/pictrs/old
+sudo chown -R lemmy:lemmy /opt/lemmy
+</code></pre>
+<p>Note that it might not be the most obvious thing, but <strong>creating the pictrs directories is not optional</strong>.</p>
+<p>Then copy the binary.</p>
+<pre><code>sudo cp target/release/lemmy_server /opt/lemmy/lemmy-server/lemmy_server
+</code></pre>
+<h4 id="configuration"><a class="header" href="#configuration">Configuration</a></h4>
+<p>This is the minimal Lemmy config, put this in <code>/opt/lemmy/lemmy-server/lemmy.hjson</code> (see <a href="https://github.com/LemmyNet/lemmy/blob/main/config/defaults.hjson">here</a> for more config options).</p>
+<pre><code class="language-hjson">{
+  database: {
+    # put your db-passwd from above
+    password: "db-passwd"
+  }
+  # replace with your domain
+  hostname: example.com
+  bind: "127.0.0.1"
+  federation: {
+    enabled: true
+  }
+  # remove this block if you don't require image hosting
+  pictrs: {
+    url: "http://localhost:8080/"
+  }
+}
+</code></pre>
+<p>Set the correct owner</p>
+<pre><code>chown -R lemmy:lemmy /opt/lemmy/
+</code></pre>
+<h4 id="server-daemon"><a class="header" href="#server-daemon">Server daemon</a></h4>
+<p>Add a systemd unit file, so that Lemmy automatically starts and stops, logs are handled via journalctl etc. Put this file into /etc/systemd/system/lemmy.service.</p>
+<pre><code>[Unit]
+Description=Lemmy Server
+After=network.target
+
+[Service]
+User=lemmy
+ExecStart=/opt/lemmy/lemmy-server/lemmy_server
+Environment=LEMMY_CONFIG_LOCATION=/opt/lemmy/lemmy-server/lemmy.hjson
+Environment=PICTRS_ADDR=127.0.0.1:8080
+Environment=RUST_LOG="info"
+Restart=on-failure
+WorkingDirectory=/opt/lemmy
+
+# Hardening
+ProtectSystem=yes
+PrivateTmp=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>If you need debug output in the logs, change the RUST_LOG line in the file above to</p>
+<pre><code>Environment=RUST_LOG="debug,lemmy_server=debug,lemmy_api=debug,lemmy_api_common=debug,lemmy_api_crud=debug,lemmy_apub=debug,lemmy_db_schema=debug,lemmy_db_views=debug,lemmy_db_views_actor=debug,lemmy_db_views_moderator=debug,lemmy_routes=debug,lemmy_utils=debug,lemmy_websocket=debug"
+</code></pre>
+<p>Then run</p>
+<pre><code>sudo systemctl daemon-reload
+sudo systemctl enable lemmy
+sudo systemctl start lemmy
+</code></pre>
+<p>If you did everything right, the Lemmy logs from <code>sudo journalctl -u lemmy</code> should show "Starting http server at 127.0.0.1:8536". You can also run <code>curl localhost:8536/api/v3/site</code> which should give a successful response, looking like <code>{"site_view":null,"admins":[],"banned":[],"online":0,"version":"unknown version","my_user":null,"federated_instances":null}</code>. For pict-rs, run <code>curl 127.0.0.1:8080</code> and ensure that it outputs nothing (particularly no errors).</p>
+<h3 id="lemmy-front-end-lemmy-ui"><a class="header" href="#lemmy-front-end-lemmy-ui">Lemmy Front-end (lemmy-ui)</a></h3>
+<h4 id="install-dependencies-1"><a class="header" href="#install-dependencies-1">Install dependencies</a></h4>
+<p>Nodejs in Ubuntu 20.04 / Ubuntu 22.04 repos are too old, so let's install Node 20.</p>
+<pre><code># nodejs
+sudo apt install -y ca-certificates curl gnupg
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+
+sudo apt update
+sudo apt install nodejs
+
+# pnpm
+npm i -g pnpm
+
+</code></pre>
+<h4 id="build-the-front-end"><a class="header" href="#build-the-front-end">Build the front-end</a></h4>
+<p>Clone the git repo, checkout the version you want (0.18.5 in this case), and compile it.</p>
+<pre><code># dont compile as admin
+cd /opt/lemmy
+sudo -u lemmy bash
+git clone https://github.com/LemmyNet/lemmy-ui.git --recursive
+cd lemmy-ui
+git checkout 0.18.5 # replace with the version you want to install
+pnpm i
+pnpm build:prod
+exit
+</code></pre>
+<h4 id="ui-daemon"><a class="header" href="#ui-daemon">UI daemon</a></h4>
+<p>Add another systemd unit file, this time for lemmy-ui. You need to replace <code>example.com</code> with your actual domain. Put the file in <code>/etc/systemd/system/lemmy-ui.service</code></p>
+<pre><code>[Unit]
+Description=Lemmy UI
+After=lemmy.service
+Before=nginx.service
+
+[Service]
+User=lemmy
+WorkingDirectory=/opt/lemmy/lemmy-ui
+ExecStart=/usr/bin/node dist/js/server.js
+Environment=LEMMY_UI_LEMMY_INTERNAL_HOST=localhost:8536
+Environment=LEMMY_UI_LEMMY_EXTERNAL_HOST=example.com
+Environment=LEMMY_UI_HTTPS=true
+Restart=on-failure
+
+# Hardening
+ProtectSystem=full
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>More UI-related variables can be <a href="https://github.com/LemmyNet/lemmy-ui#configuration">found here</a>.</p>
+<p>Then run.</p>
+<pre><code>sudo systemctl daemon-reload
+sudo systemctl enable lemmy-ui
+sudo systemctl start lemmy-ui
+</code></pre>
+<p>If everything went right, the command <code>curl -I localhost:1234</code> should show <code>200 OK</code> at the top.</p>
+<h3 id="configure-reverse-proxy-and-tls"><a class="header" href="#configure-reverse-proxy-and-tls">Configure reverse proxy and TLS</a></h3>
+<p>Install dependencies</p>
+<pre><code class="language-bash">sudo apt install nginx certbot python3-certbot-nginx
+</code></pre>
+<p>Request Let's Encrypt TLS certificate (just follow the instructions)</p>
+<pre><code class="language-bash">sudo certbot certonly --nginx
+</code></pre>
+<p>Let's Encrypt certificates should be renewed automatically, so add the line below to your crontab, by running <code>sudo crontab -e</code>. Replace <code>example.com</code> with your actual domain.</p>
+<pre><code>@daily certbot certonly --nginx --cert-name example.com -d example.com --deploy-hook 'nginx -s reload'
+</code></pre>
+<p>Finally, add the Nginx virtual host config file. Copy paste the file below to <code>/etc/nginx/sites-enabled/lemmy.conf</code></p>
+<pre><code>limit_req_zone $binary_remote_addr zone={{domain}}_ratelimit:10m rate=1r/s;
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name {{domain}};
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name {{domain}};
+
+    ssl_certificate /etc/letsencrypt/live/{{domain}}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{domain}}/privkey.pem;
+
+    # Various TLS hardening settings
+    # https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';
+    ssl_session_timeout  10m;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_tickets on;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+
+    # Hide nginx version
+    server_tokens off;
+
+    # Enable compression for JS/CSS/HTML bundle, for improved client load times.
+    # It might be nice to compress JSON, but leaving that out to protect against potential
+    # compression+encryption information leak attacks like BREACH.
+    gzip on;
+    gzip_types text/css application/javascript image/svg+xml;
+    gzip_vary on;
+
+    # Only connect to this site via HTTPS for the two years
+    add_header Strict-Transport-Security "max-age=63072000";
+
+    # Various content security headers
+    add_header Referrer-Policy "same-origin";
+    add_header X-Content-Type-Options "nosniff";
+    add_header X-Frame-Options "DENY";
+    add_header X-XSS-Protection "1; mode=block";
+
+    # Upload limit for pictrs
+    client_max_body_size 20M;
+
+    # frontend
+    location / {
+      # The default ports:
+
+      set $proxpass "http://0.0.0.0:1234";
+      if ($http_accept ~ "^application/.*$") {
+        set $proxpass "http://0.0.0.0:8536";
+      }
+      if ($request_method = POST) {
+        set $proxpass "http://0.0.0.0:8536";
+      }
+      proxy_pass $proxpass;
+
+      rewrite ^(.+)/+$ $1 permanent;
+
+      # Send actual client IP upstream
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header Host $host;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    # backend
+    location ~ ^/(api|pictrs|feeds|nodeinfo|.well-known) {
+      proxy_pass http://0.0.0.0:8536;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "upgrade";
+
+      # Rate limit
+      limit_req zone={{domain}}_ratelimit burst=30 nodelay;
+
+      # Add IP forwarding headers
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header Host $host;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+access_log /var/log/nginx/access.log combined;
+</code></pre>
+<p>And then replace some variables in the file. Put your actual domain instead of example.com</p>
+<pre><code>sudo sed -i -e 's/{{domain}}/example.com/g' /etc/nginx/sites-enabled/lemmy.conf
+sudo systemctl reload nginx
+</code></pre>
+<p>Now open your Lemmy domain in the browser, and it should show you a configuration screen. Use it to create the first admin user and the default community.</p>
+<h2 id="upgrading"><a class="header" href="#upgrading">Upgrading</a></h2>
+<h3 id="lemmy"><a class="header" href="#lemmy">Lemmy</a></h3>
+<p>Compile and install lemmy_server changes. This compile can be done by a normal unprivledged user (using the same Linux account you used for rustup and first install of Lemmy).</p>
+<pre><code>rustup update
+cd lemmy
+git checkout main
+git pull --tags
+git checkout 0.18.5 # replace with version you are updating to
+git submodule update
+cargo build --release
+# copy compiled binary to destination
+# the old file will be locked by the already running application, so this sequence is recommended:
+sudo -- sh -c 'systemctl stop lemmy &amp;&amp; cp target/release/lemmy_server /opt/lemmy/lemmy-server/lemmy_server &amp;&amp; systemctl start lemmy'
+</code></pre>
+<h3 id="lemmy-ui"><a class="header" href="#lemmy-ui">Lemmy UI</a></h3>
+<pre><code>cd /opt/lemmy/lemmy-ui
+sudo -u lemmy bash
+git checkout main
+git pull --tags
+git checkout 0.18.5 # replace with the version you are updating to
+git submodule update
+pnpm install
+pnpm build:prod
+exit
+sudo systemctl restart lemmy-ui
+</code></pre>
+<h3 id="pict-rs"><a class="header" href="#pict-rs">Pict-rs</a></h3>
+<p>Refer to <a href="https://git.asonix.dog/asonix/pict-rs">pict-rs documentation</a> for instructions on upgrading.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../administration/install_ansible.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../administration/on_aws.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../administration/install_ansible.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../administration/on_aws.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

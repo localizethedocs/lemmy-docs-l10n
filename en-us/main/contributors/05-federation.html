@@ -1,0 +1,1135 @@
+<!DOCTYPE HTML>
+<html lang="en_US" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Federation</title>
+
+
+        <!-- Custom HTML head -->
+        <script type="text/javascript" src="../ltd-provenance.js"></script>
+        <script type="text/javascript" src="../ltd-current.js"></script>
+        <script type="text/javascript" src="../../../ltd-config.js"></script>
+        <script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/LemmyNet/lemmy-docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="federation"><a class="header" href="#federation">Federation</a></h1>
+<p>Lemmy uses the ActivityPub protocol for communication between servers. If you are unfamiliar with the protocol, you can start by reading the <a href="06-resources.html#activitypub-resources">resource links</a>. This document explains how to interact with it from other projects.</p>
+<p>In Lemmy we use some specific terms to refer to ActivityPub items. They are essentially our specific implementations of well-known ActivityPub concepts:</p>
+<ul>
+<li>Community: <code>Group</code></li>
+<li>User: <code>Person</code></li>
+<li>Post: <code>Page</code></li>
+<li>Comment: <code>Note</code></li>
+</ul>
+<p>Almost every action in Lemmy happens inside a group. The Federation Enhancement Proposal <a href="https://codeberg.org/fediverse/fep/src/branch/main/feps/fep-1b12.md">Group Federation</a> gives a high-level overview how this works. The generic federation logic is implemented in the <a href="https://github.com/LemmyNet/activitypub-federation-rust">activitypub-federation</a> library. It can also be used by other Rust projects.</p>
+<p>Sometimes you will see a notation like <code>Create/Note</code>. This refers to a <code>Create</code> activity with a <code>Note</code> as object.</p>
+<p>Below are explanations and examples for all actors, objects and activities from Lemmy. These include many optional fields which you can safely ignore.</p>
+<p>If you have trouble to make your project federate with Lemmy, feel free to <a href="https://github.com/LemmyNet/lemmy/issues">open an issue</a>. Make sure to include the specific federation messages you are sending, and any errors returned by Lemmy.</p>
+<h2 id="context"><a class="header" href="#context">Context</a></h2>
+<pre><code class="language-json">"@context": [
+    "https://join-lemmy.org/context.json",
+    "https://www.w3.org/ns/activitystreams"
+],
+</code></pre>
+<p>The context is identical for all activities and objects.</p>
+<h2 id="actors"><a class="header" href="#actors">Actors</a></h2>
+<h3 id="community"><a class="header" href="#community">Community</a></h3>
+<p>An automated actor. Users can send posts or comments to it, which the community forwards to its followers in the form of <code>Announce</code>.</p>
+<pre><code class="language-json">{
+  "id": "https://enterprise.lemmy.ml/c/tenforward",
+  "type": "Group",
+  "preferredUsername": "tenforward",
+  "name": "Ten Forward",
+  "summary": "&lt;p&gt;Lounge and recreation facility&lt;/p&gt;\n&lt;hr /&gt;\n&lt;p&gt;Welcome to the &lt;a href=\"https://memory-alpha.fandom.com/wiki/USS_Enterprise_(NCC-1701-D)\"&gt;Enterprise&lt;/a&gt;!.&lt;/p&gt;\n",
+  "source": {
+    "content": "Lounge and recreation facility\n\n---\n\nWelcome to the [Enterprise](https://memory-alpha.fandom.com/wiki/USS_Enterprise_(NCC-1701-D))!.",
+    "mediaType": "text/markdown"
+  },
+  "sensitive": false,
+  "icon": {
+    "type": "Image",
+    "url": "https://enterprise.lemmy.ml/pictrs/image/waqyZwLAy4.webp"
+  },
+  "image": {
+    "type": "Image",
+    "url": "https://enterprise.lemmy.ml/pictrs/image/Wt8zoMcCmE.jpg"
+  },
+  "inbox": "https://enterprise.lemmy.ml/c/tenforward/inbox",
+  "followers": "https://enterprise.lemmy.ml/c/tenforward/followers",
+  "attributedTo": "https://enterprise.lemmy.ml/c/tenforward/moderators",
+  "featured": "https://enterprise.lemmy.ml/c/tenforward//featured",
+  "postingRestrictedToMods": false,
+  "endpoints": {
+    "sharedInbox": "https://enterprise.lemmy.ml/inbox"
+  },
+  "outbox": "https://enterprise.lemmy.ml/c/tenforward/outbox",
+  "publicKey": {
+    "id": "https://enterprise.lemmy.ml/c/tenforward#main-key",
+    "owner": "https://enterprise.lemmy.ml/c/tenforward",
+    "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzRjKTNtvDCmugplwEh+g\nx1bhKm6BHUZfXfpscgMMm7tXFswSDzUQirMgfkxa9ubfr1PDFKffA2vQ9x6CyuO/\n70xTafdOHyV1tSqzgKz0ZvFZ/VCOo6qy1mYWVkrtBm/fKzM+87MdkKYB/zI4VyEJ\nLfLQgjwxBAEYUH3CBG71U0gO0TwbimWNN0vqlfp0QfThNe1WYObF88ZVzMLgFbr7\nRHBItZjlZ/d8foPDidlIR3l2dJjy0EsD8F9JM340jtX7LXqFmU4j1AQKNHTDLnUF\nwYVhzuQGNJ504l5LZkFG54XfIFT7dx2QwuuM9bSnfPv/98RYrq1Si6tCkxEt1cVe\n4wIDAQAB\n-----END PUBLIC KEY-----\n"
+  },
+  "language": [
+    {
+      "identifier": "fr",
+      "name": "Français"
+    },
+    {
+      "identifier": "de",
+      "name": "Deutsch"
+    }
+  ],
+  "published": "2019-06-02T16:43:50.799554Z",
+  "updated": "2021-03-10T17:18:10.498868Z"
+}
+</code></pre>
+<div class="table-wrapper"><table><thead><tr><th>Field Name</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>preferredUsername</code></td><td>Name of the actor</td></tr>
+<tr><td><code>name</code></td><td>Title of the community</td></tr>
+<tr><td><code>sensitive</code></td><td>True indicates that all posts in the community are nsfw</td></tr>
+<tr><td><code>attributedTo</code></td><td>First the community creator, then all the remaining moderators</td></tr>
+<tr><td><code>summary</code></td><td>Text for the community sidebar, usually containing a description and rules</td></tr>
+<tr><td><code>icon</code></td><td>Icon, shown next to the community name</td></tr>
+<tr><td><code>image</code></td><td>Banner image, shown on top of the community page</td></tr>
+<tr><td><code>inbox</code></td><td>ActivityPub inbox URL</td></tr>
+<tr><td><code>outbox</code></td><td>ActivityPub outbox URL, only contains up to 20 latest posts, no comments, votes or other activities</td></tr>
+<tr><td><code>followers</code></td><td>Follower collection URL, only contains the number of followers, no references to individual followers</td></tr>
+<tr><td><code>endpoints</code></td><td>Contains URL of shared inbox</td></tr>
+<tr><td><code>published</code></td><td>Datetime when the community was first created</td></tr>
+<tr><td><code>updated</code></td><td>Datetime when the community was last changed</td></tr>
+<tr><td><code>publicKey</code></td><td>The public key used to verify signatures from this actor</td></tr>
+</tbody></table>
+</div>
+<h3 id="user"><a class="header" href="#user">User</a></h3>
+<p>A person, interacts primarily with the community where it sends and receives posts/comments. Can also create and moderate communities, and send private messages to other users. Can be followed from other platforms.</p>
+<pre><code class="language-json">{
+  "id": "https://enterprise.lemmy.ml/u/picard",
+  "type": "Person",
+  "preferredUsername": "picard",
+  "name": "Jean-Luc Picard",
+  "summary": "&lt;p&gt;Captain of the starship &lt;strong&gt;Enterprise&lt;/strong&gt;.&lt;/p&gt;\n",
+  "source": {
+    "content": "Captain of the starship **Enterprise**.",
+    "mediaType": "text/markdown"
+  },
+  "icon": {
+    "type": "Image",
+    "url": "https://enterprise.lemmy.ml/pictrs/image/ed9ej7.jpg"
+  },
+  "image": {
+    "type": "Image",
+    "url": "https://enterprise.lemmy.ml/pictrs/image/XenaYI5hTn.png"
+  },
+  "matrixUserId": "@picard:matrix.org",
+  "inbox": "https://enterprise.lemmy.ml/u/picard/inbox",
+  "outbox": "https://enterprise.lemmy.ml/u/picard/outbox",
+  "endpoints": {
+    "sharedInbox": "https://enterprise.lemmy.ml/inbox"
+  },
+  "published": "2020-01-17T01:38:22.348392Z",
+  "updated": "2021-08-13T00:11:15.941990Z",
+  "publicKey": {
+    "id": "https://enterprise.lemmy.ml/u/picard#main-key",
+    "owner": "https://enterprise.lemmy.ml/u/picard",
+    "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0lP99/s5Vv+XbPdkeqIJ\nwoD4GFnHmBnBHdEKChEUWfWj1TtioC/rGNoXFQeXQA3Amhy4nxSceiDnUgwkkuQY\nv0MtIW58NzgknEavtllxL+LSds5pg3gANaDIk8UiWTkqXTg0GnlJMpCK1Chen0l/\nszL6DEvUyTSuS5ZYDXFgewF89Pe7U0S15V5U2Harv7AgJYDyxmUL0D1pGuUCRqcE\nl5MTHJjrXeNnH1w2g8aly8YlO/Cr0L51rFg/lBF23vni7ZLv8HbmWh6YpaAf1R8h\nE45zKR7OHqymdjzrg1ITBwovefpwMkVgnJ+Wdr4HPnFlBSkXPoZeM11+Z8L0anzA\nXwIDAQAB\n-----END PUBLIC KEY-----\n"
+  }
+}
+</code></pre>
+<div class="table-wrapper"><table><thead><tr><th>Field Name</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>preferredUsername</code></td><td>Name of the actor</td></tr>
+<tr><td><code>name</code></td><td>The user's displayname</td></tr>
+<tr><td><code>summary</code></td><td>User bio</td></tr>
+<tr><td><code>icon</code></td><td>The user's avatar, shown next to the username</td></tr>
+<tr><td><code>image</code></td><td>The user's banner, shown on top of the profile</td></tr>
+<tr><td><code>inbox</code></td><td>ActivityPub inbox URL</td></tr>
+<tr><td><code>endpoints</code></td><td>Contains URL of shared inbox</td></tr>
+<tr><td><code>published</code></td><td>Datetime when the user signed up</td></tr>
+<tr><td><code>updated</code></td><td>Datetime when the user profile was last changed</td></tr>
+<tr><td><code>publicKey</code></td><td>The public key used to verify signatures from this actor</td></tr>
+</tbody></table>
+</div>
+<h3 id="instance"><a class="header" href="#instance">Instance</a></h3>
+<p>Represents a Lemmy instance, and is used to federate global data like the instance description or site bans. It can be fetched from the root path.</p>
+<pre><code class="language-json">{
+  "type": "Application",
+  "id": "https://enterprise.lemmy.ml/",
+  "name": "Enterprise",
+  "preferredUsername": "enterprise.lemmy.ml",
+  "summary": "A test instance",
+  "content": "&lt;p&gt;Enterprise sidebar&lt;/p&gt;\\n",
+  "mediaType": "text/html",
+  "source": {
+    "content": "Enterprise sidebar",
+    "mediaType": "text/markdown"
+  },
+  "inbox": "https://enterprise.lemmy.ml/inbox",
+  "outbox": "https://enterprise.lemmy.ml/outbox",
+  "publicKey": {
+    "id": "https://enterprise.lemmy.ml/#main-key",
+    "owner": "https://enterprise.lemmy.ml/",
+    "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAupcK0xTw5yQb/fnztAmb\n9LfPbhJJP1+1GwUaOXGYiDJD6uYJhl9CLmgztLl3RyV9ltOYoN8/NLNDfOMmgOjd\nrsNWEjDI9IcVPmiZnhU7hsi6KgQvJzzv8O5/xYjAGhDfrGmtdpL+lyG0B5fQod8J\n/V5VWvTQ0B0qFrLSBBuhOrp8/fTtDskdtElDPtnNfH2jn6FgtLOijidWwf9ekFo4\n0I1JeuEw6LuD/CzKVJTPoztzabUV1DQF/DnFJm+8y7SCJa9jEO56Uf9eVfa1jF6f\ndH6ZvNJMiafstVuLMAw7C/eNJy3ufXgtZ4403oOKA0aRSYf1cc9pHSZ9gDE/mevH\nLwIDAQAB\n-----END PUBLIC KEY-----\n"
+  },
+  "language": [
+    {
+      "identifier": "fr",
+      "name": "Français"
+    },
+    {
+      "identifier": "es",
+      "name": "Español"
+    }
+  ],
+  "published": "2022-01-19T21:52:11.110741Z"
+}
+</code></pre>
+<div class="table-wrapper"><table><thead><tr><th>Field Name</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>name</code></td><td>Instance name</td></tr>
+<tr><td><code>summary</code></td><td>Short description</td></tr>
+<tr><td><code>content</code></td><td>Long description (sidebar)</td></tr>
+<tr><td><code>icon</code></td><td>Instance icon</td></tr>
+<tr><td><code>image</code></td><td>Instance banner</td></tr>
+<tr><td><code>inbox</code></td><td>ActivityPub inbox URL</td></tr>
+<tr><td><code>endpoints</code></td><td>Contains URL of shared inbox</td></tr>
+<tr><td><code>published</code></td><td>Datetime when the instance was created</td></tr>
+<tr><td><code>updated</code></td><td>Datetime when the instance metadata</td></tr>
+<tr><td><code>publicKey</code></td><td>The public key used to verify signatures from this actor</td></tr>
+</tbody></table>
+</div>
+<h2 id="objects"><a class="header" href="#objects">Objects</a></h2>
+<h3 id="post"><a class="header" href="#post">Post</a></h3>
+<p>A page with title, and optional URL and text content. The attachment URL often leads to an image, in which case a thumbnail is included. Each post belongs to exactly one community. Sent out as <code>Page</code>, but for receiving the types <code>Article</code>, <code>Note</code>, <code>Video</code> and <code>Event</code> are also accepted.</p>
+<pre><code class="language-json">{
+  "id": "https://enterprise.lemmy.ml/post/55143",
+  "type": "Page",
+  "attributedTo": "https://enterprise.lemmy.ml/u/picard",
+  "to": [
+    "https://enterprise.lemmy.ml/c/tenforward",
+    "https://www.w3.org/ns/activitystreams#Public"
+  ],
+  "audience": "https://enterprise.lemmy.ml/c/tenforward",
+  "name": "Post title",
+  "content": "&lt;p&gt;This is a post in the /c/tenforward community&lt;/p&gt;\n",
+  "mediaType": "text/html",
+  "source": {
+    "content": "This is a post in the /c/tenforward community",
+    "mediaType": "text/markdown"
+  },
+  "attachment": [
+    {
+      "type": "Link",
+      "href": "https://enterprise.lemmy.ml/pictrs/image/eOtYb9iEiB.png"
+    }
+  ],
+  "image": {
+    "type": "Image",
+    "url": "https://enterprise.lemmy.ml/pictrs/image/eOtYb9iEiB.png"
+  },
+  "sensitive": false,
+  "language": {
+    "identifier": "fr",
+    "name": "Français"
+  },
+  "published": "2021-02-26T12:35:34.292626Z"
+}
+</code></pre>
+<div class="table-wrapper"><table><thead><tr><th>Field Name</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>attributedTo</code></td><td>ID of the user which created this post</td></tr>
+<tr><td><code>to</code></td><td>ID of the community where it was posted to</td></tr>
+<tr><td><code>name</code></td><td>Title of the post (mandatory)</td></tr>
+<tr><td><code>content</code></td><td>Body of the post</td></tr>
+<tr><td><code>attachment</code></td><td>A single website or image link</td></tr>
+<tr><td><code>image</code></td><td>Thumbnail for <code>url</code>, only present if it is an image link</td></tr>
+<tr><td><code>commentsEnabled</code></td><td>False indicates that the post is locked, and no comments can be added</td></tr>
+<tr><td><code>sensitive</code></td><td>True marks the post as NSFW, blurs the thumbnail and hides it from users with NSFW setting disabled</td></tr>
+<tr><td><code>stickied</code></td><td>True means that it is shown on top of the community</td></tr>
+<tr><td><code>published</code></td><td>Datetime when the post was created</td></tr>
+<tr><td><code>updated</code></td><td>Datetime when the post was edited (not present if it was never edited)</td></tr>
+</tbody></table>
+</div>
+<h3 id="comment"><a class="header" href="#comment">Comment</a></h3>
+<p>A reply to a post, or reply to another comment. Contains only text (including references to other users or communities). Lemmy displays comments in a tree structure.</p>
+<pre><code class="language-json">{
+  "id": "https://enterprise.lemmy.ml/comment/38741",
+  "type": "Note",
+  "attributedTo": "https://enterprise.lemmy.ml/u/picard",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "cc": [
+    "https://enterprise.lemmy.ml/c/tenforward",
+    "https://enterprise.lemmy.ml/u/picard"
+  ],
+  "audience": "https://enterprise.lemmy.ml/c/tenforward",
+  "inReplyTo": "https://enterprise.lemmy.ml/post/55143",
+  "content": "&lt;p&gt;first comment!&lt;/p&gt;\n",
+  "mediaType": "text/html",
+  "source": {
+    "content": "first comment!",
+    "mediaType": "text/markdown"
+  },
+  "tag": [
+    {
+      "href": "https://enterprise.lemmy.ml/u/picard",
+      "type": "Mention",
+      "name": "@picard@enterprise.lemmy.ml"
+    }
+  ],
+  "distinguished": false,
+  "language": {
+    "identifier": "fr",
+    "name": "Français"
+  },
+  "published": "2021-03-01T13:42:43.966208Z",
+  "updated": "2021-03-01T13:43:03.955787Z"
+}
+</code></pre>
+<div class="table-wrapper"><table><thead><tr><th>Field Name</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>attributedTo</code></td><td>ID of the user who created the comment</td></tr>
+<tr><td><code>to</code></td><td>Community where the comment was made</td></tr>
+<tr><td><code>content</code></td><td>The comment text</td></tr>
+<tr><td><code>inReplyTo</code></td><td>ID of the parent object. In case of a top-level comment this is the post ID, in case of a nested comment it is the parent comment ID.</td></tr>
+<tr><td><code>published</code></td><td>Datetime when the comment was created</td></tr>
+<tr><td><code>updated</code></td><td>Datetime when the comment was edited (not present if it was never edited)</td></tr>
+</tbody></table>
+</div>
+<h3 id="private-message"><a class="header" href="#private-message">Private Message</a></h3>
+<p>A direct message from one user to another. Can not include additional users. Threading is not implemented yet, so the <code>inReplyTo</code> field is missing.</p>
+<pre><code class="language-json">{
+  "id": "https://enterprise.lemmy.ml/private_message/1621",
+  "type": "ChatMessage",
+  "attributedTo": "https://enterprise.lemmy.ml/u/picard",
+  "to": ["https://queer.hacktivis.me/users/lanodan"],
+  "content": "&lt;p&gt;Hello hello, testing&lt;/p&gt;\n",
+  "mediaType": "text/html",
+  "source": {
+    "content": "Hello hello, testing",
+    "mediaType": "text/markdown"
+  },
+  "published": "2021-10-21T10:13:14.597721Z"
+}
+</code></pre>
+<div class="table-wrapper"><table><thead><tr><th>Field Name</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>attributedTo</code></td><td>ID of the user who created this private message</td></tr>
+<tr><td><code>to</code></td><td>ID of the recipient</td></tr>
+<tr><td><code>content</code></td><td>The text of the private message</td></tr>
+<tr><td><code>published</code></td><td>Datetime when the message was created</td></tr>
+<tr><td><code>updated</code></td><td>Datetime when the message was edited (not present if it was never edited)</td></tr>
+</tbody></table>
+</div>
+<h2 id="collections"><a class="header" href="#collections">Collections</a></h2>
+<h3 id="community-outbox"><a class="header" href="#community-outbox">Community Outbox</a></h3>
+<pre><code class="language-json">{
+  "type": "OrderedCollection",
+  "id": "https://ds9.lemmy.ml/c/testcom/outbox",
+  "totalItems": 2,
+  "orderedItems": [
+    {
+      "actor": "https://ds9.lemmy.ml/c/testcom",
+      "to": ["https://www.w3.org/ns/activitystreams#Public"],
+      "object": {
+        "actor": "https://ds9.lemmy.ml/u/nutomic",
+        "to": ["https://www.w3.org/ns/activitystreams#Public"],
+        "cc": ["https://ds9.lemmy.ml/c/testcom"],
+        "type": "Create",
+        "id": "http://ds9.lemmy.ml/activities/create/eee6a57a-622f-464d-b560-73ae1fcd3ddf",
+        "object": {
+          "type": "Page",
+          "id": "https://ds9.lemmy.ml/post/2328",
+          "attributedTo": "https://ds9.lemmy.ml/u/nutomic",
+          "to": [
+            "https://ds9.lemmy.ml/c/testcom",
+            "https://www.w3.org/ns/activitystreams#Public"
+          ],
+          "name": "another outbox test",
+          "mediaType": "text/html",
+          "sensitive": false,
+          "stickied": false,
+          "published": "2021-11-18T17:19:45.895163Z"
+        }
+      },
+      "cc": ["https://ds9.lemmy.ml/c/testcom/followers"],
+      "type": "Announce",
+      "id": "https://ds9.lemmy.ml/activities/announce/b204fe9f-b13d-4af2-9d22-239ac2d892e6"
+    },
+    {
+      "actor": "https://ds9.lemmy.ml/c/testcom",
+      "to": ["https://www.w3.org/ns/activitystreams#Public"],
+      "object": {
+        "actor": "https://ds9.lemmy.ml/u/nutomic",
+        "to": ["https://www.w3.org/ns/activitystreams#Public"],
+        "cc": ["https://ds9.lemmy.ml/c/testcom"],
+        "type": "Create",
+        "id": "http://ds9.lemmy.ml/activities/create/eee6a57a-622f-464d-b560-73ae1fcd3ddf",
+        "object": {
+          "type": "Page",
+          "id": "https://ds9.lemmy.ml/post/2327",
+          "attributedTo": "https://ds9.lemmy.ml/u/nutomic",
+          "to": [
+            "https://ds9.lemmy.ml/c/testcom",
+            "https://www.w3.org/ns/activitystreams#Public"
+          ],
+          "name": "outbox test",
+          "mediaType": "text/html",
+          "sensitive": false,
+          "stickied": false,
+          "published": "2021-11-18T17:19:05.763109Z"
+        }
+      },
+      "cc": ["https://ds9.lemmy.ml/c/testcom/followers"],
+      "type": "Announce",
+      "id": "https://ds9.lemmy.ml/activities/announce/c6c960ce-c8d8-4231-925e-3ba367468f18"
+    }
+  ]
+}
+</code></pre>
+<p>The outbox only contains <code>Create/Post</code> activities for now.</p>
+<h3 id="community-followers"><a class="header" href="#community-followers">Community Followers</a></h3>
+<pre><code class="language-json">{
+  "id": "http://enterprise.lemmy.ml/c/main/followers",
+  "type": "Collection",
+  "totalItems": 3,
+  "items": []
+}
+</code></pre>
+<p>The followers collection is only used to expose the number of followers. Actor IDs are not included, to protect user privacy.</p>
+<h3 id="community-moderators"><a class="header" href="#community-moderators">Community Moderators</a></h3>
+<p>List of moderators who can perform actions like removing posts or banning users.</p>
+<pre><code class="language-json">{
+  "type": "OrderedCollection",
+  "id": "https://enterprise.lemmy.ml/c/tenforward/moderators",
+  "orderedItems": ["https://enterprise.lemmy.ml/u/picard"]
+}
+</code></pre>
+<h3 id="community-featured-posts"><a class="header" href="#community-featured-posts">Community Featured Posts</a></h3>
+<p>List of posts which are stickied in the community.</p>
+<pre><code class="language-json">{
+  "type": "OrderedCollection",
+  "id": "https://ds9.lemmy.ml/c/main/featured",
+  "totalItems": 2,
+  "orderedItems": [
+    {
+      "type": "Page",
+      "id": "https://ds9.lemmy.ml/post/2",
+      "attributedTo": "https://ds9.lemmy.ml/u/lemmy_alpha",
+      "to": [
+        "https://ds9.lemmy.ml/c/main",
+        "https://www.w3.org/ns/activitystreams#Public"
+      ],
+      "name": "test 2",
+      "cc": [],
+      "mediaType": "text/html",
+      "attachment": [],
+      "sensitive": false,
+      "published": "2023-02-06T06:42:41.939437Z",
+      "language": {
+        "identifier": "de",
+        "name": "Deutsch"
+      },
+      "audience": "https://ds9.lemmy.ml/c/main"
+    },
+    {
+      "type": "Page",
+      "id": "https://ds9.lemmy.ml/post/1",
+      "attributedTo": "https://ds9.lemmy.ml/u/lemmy_alpha",
+      "to": [
+        "https://ds9.lemmy.ml/c/main",
+        "https://www.w3.org/ns/activitystreams#Public"
+      ],
+      "name": "test 1",
+      "cc": [],
+      "mediaType": "text/html",
+      "attachment": [],
+      "sensitive": false,
+      "published": "2023-02-06T06:42:37.119567Z",
+      "language": {
+        "identifier": "de",
+        "name": "Deutsch"
+      },
+      "audience": "https://ds9.lemmy.ml/c/main"
+    }
+  ]
+}
+</code></pre>
+<h3 id="user-outbox"><a class="header" href="#user-outbox">User Outbox</a></h3>
+<p>Only contains <code>totalItems</code> count, but no actual <code>items</code> for privacy reasons.</p>
+<pre><code class="language-json">{
+  "type": "OrderedCollection",
+  "id": "http://ds9.lemmy.ml/u/lemmy_alpha/outbox",
+  "orderedItems": [],
+  "totalItems": 0
+}
+</code></pre>
+<h2 id="activities"><a class="header" href="#activities">Activities</a></h2>
+<h3 id="user-to-community"><a class="header" href="#user-to-community">User to Community</a></h3>
+<h4 id="follow"><a class="header" href="#follow">Follow</a></h4>
+<p>Each Community page has a "Follow" button. Clicking this triggers a <code>Follow</code> activity to be sent from the user to the Community inbox. The Community will automatically respond with an <code>Accept/Follow</code> activity to the user inbox. It will also add the user to its list of followers, and deliver any activities about Posts/Comments in the Community to the user.</p>
+<pre><code class="language-json">{
+  "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "to": ["http://enterprise.lemmy.ml/c/main"],
+  "object": "http://enterprise.lemmy.ml/c/main",
+  "type": "Follow",
+  "id": "http://ds9.lemmy.ml/activities/follow/6abcd50b-b8ca-4952-86b0-a6dd8cc12866"
+}
+</code></pre>
+<h4 id="unfollow"><a class="header" href="#unfollow">Unfollow</a></h4>
+<p>After following a Community, the "Follow" button is replaced by "Unfollow". Clicking this sends an <code>Undo/Follow</code> activity to the Community inbox. The Community removes the User from its followers list and doesn't send any activities to it anymore.</p>
+<pre><code class="language-json">{
+  "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "to": ["http://enterprise.lemmy.ml/c/main"],
+  "object": {
+    "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+    "to": ["http://enterprise.lemmy.ml/c/main"],
+    "object": "http://enterprise.lemmy.ml/c/main",
+    "type": "Follow",
+    "id": "http://ds9.lemmy.ml/activities/follow/dc2f1bc5-f3a0-4daa-a46b-428cbfbd023c"
+  },
+  "type": "Undo",
+  "id": "http://ds9.lemmy.ml/activities/undo/dd83c482-8ebd-4b6c-9008-c8373bd1a86a"
+}
+</code></pre>
+<h4 id="create-or-update-post"><a class="header" href="#create-or-update-post">Create or Update Post</a></h4>
+<p>When a user creates a new post, it is sent to the respective community as <code>Create/Page</code>. Editing a previously created post sends an almost identical activity, except the <code>type</code> being <code>Update</code>.</p>
+<pre><code class="language-json">{
+  "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "object": {
+    "type": "Page",
+    "id": "http://ds9.lemmy.ml/post/1",
+    "attributedTo": "http://ds9.lemmy.ml/u/lemmy_alpha",
+    "to": [
+      "http://enterprise.lemmy.ml/c/main",
+      "https://www.w3.org/ns/activitystreams#Public"
+    ],
+    "audience": "https://enterprise.lemmy.ml/c/main",
+    "name": "test post",
+    "content": "&lt;p&gt;test body&lt;/p&gt;\n",
+    "mediaType": "text/html",
+    "source": {
+      "content": "test body",
+      "mediaType": "text/markdown"
+    },
+    "attachment": [
+      {
+        "type": "Link",
+        "href": "https://lemmy.ml/pictrs/image/xl8W7FZfk9.jpg"
+      }
+    ],
+    "sensitive": false,
+    "language": {
+      "identifier": "ko",
+      "name": "한국어"
+    },
+    "published": "2021-10-29T15:10:51.557399Z"
+  },
+  "cc": ["http://enterprise.lemmy.ml/c/main"],
+  "audience": "https://enterprise.lemmy.ml/c/main",
+  "type": "Create",
+  "id": "http://ds9.lemmy.ml/activities/create/eee6a57a-622f-464d-b560-73ae1fcd3ddf"
+}
+</code></pre>
+<h4 id="create-or-update-comment"><a class="header" href="#create-or-update-comment">Create or Update Comment</a></h4>
+<p>A reply to a post, or to another comment as <code>Create/Note</code>. Can contain mentions of other users. Editing a previously created post sends an almost identical activity, except the <code>type</code> being <code>Update</code>.</p>
+<p>The origin instance also scans the Comment for any User mentions, and sends the <code>Create/Note</code> to
+those Users as well.</p>
+<pre><code class="language-json">{
+  "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "object": {
+    "type": "Note",
+    "id": "http://ds9.lemmy.ml/comment/1",
+    "attributedTo": "http://ds9.lemmy.ml/u/lemmy_alpha",
+    "to": ["https://www.w3.org/ns/activitystreams#Public"],
+    "cc": [
+      "http://enterprise.lemmy.ml/c/main",
+      "http://ds9.lemmy.ml/u/lemmy_alpha"
+    ],
+    "audience": "http://ds9.lemmy.ml/u/lemmy_alpha",
+    "content": "hello",
+    "mediaType": "text/html",
+    "source": {
+      "content": "hello",
+      "mediaType": "text/markdown"
+    },
+    "inReplyTo": "http://ds9.lemmy.ml/post/1",
+    "published": "2021-11-01T11:45:49.794920Z"
+  },
+  "cc": [
+    "http://enterprise.lemmy.ml/c/main",
+    "http://ds9.lemmy.ml/u/lemmy_alpha"
+  ],
+  "audience": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "tag": [
+    {
+      "href": "http://ds9.lemmy.ml/u/lemmy_alpha",
+      "type": "Mention",
+      "name": "@lemmy_alpha@ds9.lemmy.ml"
+    }
+  ],
+  "type": "Create",
+  "id": "http://ds9.lemmy.ml/activities/create/1e77d67c-44ac-45ed-bf2a-460e21f60236"
+}
+</code></pre>
+<h4 id="like-post-or-comment"><a class="header" href="#like-post-or-comment">Like Post or Comment</a></h4>
+<p>An upvote for a post or comment.</p>
+<pre><code class="language-json">{
+  "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "object": "http://ds9.lemmy.ml/comment/1",
+  "audience": "https://enterprise.lemmy.ml/c/tenforward",
+  "type": "Like",
+  "id": "http://ds9.lemmy.ml/activities/like/fd61d070-7382-46a9-b2b7-6bb253732877"
+}
+</code></pre>
+<h4 id="dislike-post-or-comment"><a class="header" href="#dislike-post-or-comment">Dislike Post or Comment</a></h4>
+<p>A downvote for a post or comment.</p>
+<pre><code class="language-json">{
+  "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+  "object": "http://ds9.lemmy.ml/post/1",
+  "audience": "https://enterprise.lemmy.ml/c/tenforward",
+  "type": "Dislike",
+  "id": "http://enterprise.lemmy.ml/activities/dislike/64d40d40-a829-43a5-8247-1fb595b3ca1c"
+}
+</code></pre>
+<h4 id="undo-like-or-dislike-post-or-comment"><a class="header" href="#undo-like-or-dislike-post-or-comment">Undo Like or Dislike Post or Comment</a></h4>
+<p>Revert a vote that was previously done by the same user.</p>
+<pre><code class="language-json">{
+  "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "object": {
+    "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+    "object": "http://ds9.lemmy.ml/comment/1",
+    "audience": "https://enterprise.lemmy.ml/c/tenforward",
+    "type": "Like",
+    "id": "http://ds9.lemmy.ml/activities/like/efcf7ae2-dfcc-4ff4-9ce4-6adf251ff004"
+  },
+  "audience": "https://enterprise.lemmy.ml/c/tenforward",
+  "type": "Undo",
+  "id": "http://ds9.lemmy.ml/activities/undo/3518565c-24a7-4d9e-8e0a-f7a2f45ac618"
+}
+</code></pre>
+<h4 id="delete-post-or-comment"><a class="header" href="#delete-post-or-comment">Delete Post or Comment</a></h4>
+<p>Mods can remove Posts and Comments from their Communities. Admins can remove any Posts or Comments on the entire site. Communities can also be removed by admins. The item is then hidden from all users.</p>
+<p>Removals are sent to all followers of the Community, so that they also take effect there. The exception is if an admin removes an item from a Community which is hosted on a different instance. In this case, the removal only takes effect locally.</p>
+<pre><code class="language-json">{
+  "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "object": "http://ds9.lemmy.ml/post/1",
+  "cc": ["http://enterprise.lemmy.ml/c/main"],
+  "audience": "http://enterprise.lemmy.ml/u/main",
+  "type": "Delete",
+  "id": "http://ds9.lemmy.ml/activities/delete/f2abee48-c7bb-41d5-9e27-8775ff32db12"
+}
+</code></pre>
+<h4 id="undo-delete"><a class="header" href="#undo-delete">Undo Delete</a></h4>
+<p>Post or comment deletions can be reverted by the same user.</p>
+<pre><code class="language-json">{
+  "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "object": {
+    "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+    "to": ["https://www.w3.org/ns/activitystreams#Public"],
+    "object": "http://ds9.lemmy.ml/post/1",
+    "cc": ["http://enterprise.lemmy.ml/c/main"],
+    "audience": "http://enterprise.lemmy.ml/u/main",
+    "type": "Delete",
+    "id": "http://ds9.lemmy.ml/activities/delete/b13cca96-7737-41e1-9769-8fbf972b3509"
+  },
+  "cc": ["http://enterprise.lemmy.ml/c/main"],
+  "audience": "http://enterprise.lemmy.ml/u/main",
+  "type": "Undo",
+  "id": "http://ds9.lemmy.ml/activities/undo/5e939cfb-b8a1-4de8-950f-9d684e9162b9"
+}
+</code></pre>
+<h4 id="report-post-comment-or-private-message"><a class="header" href="#report-post-comment-or-private-message">Report Post, comment or private message</a></h4>
+<p>Reports content for rule violation, so that mods/admins can review it.</p>
+<pre><code class="language-json">{
+  "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "to": ["http://enterprise.lemmy.ml/c/main"],
+  "audience": "http://enterprise.lemmy.ml/u/main",
+  "object": "http://enterprise.lemmy.ml/post/7",
+  "summary": "report this post",
+  "type": "Flag",
+  "id": "http://ds9.lemmy.ml/activities/flag/98b0933f-5e45-4a95-a15f-e0dc86361ba4"
+}
+</code></pre>
+<h4 id="delete-user"><a class="header" href="#delete-user">Delete User</a></h4>
+<p>Sent when a user deletes his own account.</p>
+<pre><code class="language-json">{
+  "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "object": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "type": "Delete",
+  "id": "http://ds9.lemmy.ml/activities/delete/f2abee48-c7bb-41d5-9e27-8775ff32db12",
+  "removeData": true
+}
+</code></pre>
+<h3 id="community-to-user"><a class="header" href="#community-to-user">Community to User</a></h3>
+<h4 id="accept-follow"><a class="header" href="#accept-follow">Accept Follow</a></h4>
+<p>Automatically sent by the community in response to a <code>Follow</code>. At the same time, the community adds this user to its followers list.</p>
+<pre><code class="language-json">{
+  "actor": "http://enterprise.lemmy.ml/c/main",
+  "to": ["http://ds9.lemmy.ml/u/lemmy_alpha"],
+  "object": {
+    "actor": "http://ds9.lemmy.ml/u/lemmy_alpha",
+    "to": ["http://enterprise.lemmy.ml/c/main"],
+    "object": "http://enterprise.lemmy.ml/c/main",
+    "type": "Follow",
+    "id": "http://ds9.lemmy.ml/activities/follow/6abcd50b-b8ca-4952-86b0-a6dd8cc12866"
+  },
+  "type": "Accept",
+  "id": "http://enterprise.lemmy.ml/activities/accept/75f080cc-3d45-4654-8186-8f3bb853fa27"
+}
+</code></pre>
+<h4 id="announce"><a class="header" href="#announce">Announce</a></h4>
+<p>If the Community receives any Post or Comment related activity (Create, Update, Like, Dislike, Remove, Delete, Undo etc.), it will forward this to its followers. For this, an Announce is created with the Community as actor, and the received activity as object. This is sent to all followers, so they get updated in real time.</p>
+<pre><code class="language-json">{
+  "actor": "http://enterprise.lemmy.ml/c/main",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "object": {
+    "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+    "to": ["https://www.w3.org/ns/activitystreams#Public"],
+    "object": {
+      "type": "Page",
+      "id": "http://enterprise.lemmy.ml/post/7",
+      "attributedTo": "http://enterprise.lemmy.ml/u/lemmy_beta",
+      "to": [
+        "http://enterprise.lemmy.ml/c/main",
+        "https://www.w3.org/ns/activitystreams#Public"
+      ],
+      "name": "post 4",
+      "mediaType": "text/html",
+      "commentsEnabled": true,
+      "sensitive": false,
+      "stickied": false,
+      "published": "2021-11-01T12:11:22.871846Z"
+    },
+    "cc": ["http://enterprise.lemmy.ml/c/main"],
+    "type": "Create",
+    "id": "http://enterprise.lemmy.ml/activities/create/2807c9ec-3ad8-4859-a9e0-28b59b6e499f"
+  },
+  "cc": ["http://enterprise.lemmy.ml/c/main/followers"],
+  "type": "Announce",
+  "id": "http://enterprise.lemmy.ml/activities/announce/8030b171-803a-4108-94b1-342688f375cf"
+}
+</code></pre>
+<h3 id="moderation"><a class="header" href="#moderation">Moderation</a></h3>
+<p>These actions can only be done by instance admins or community moderators. They are sent to the community and announced by it. See <a href="../users/04-moderation.html"></a> for a general overview how moderation works in Lemmy. Communities can only be created on the same instance where a user is registered. After that, mods from other instances can be added with <code>Add/User</code> activity.</p>
+<h4 id="remove-post-or-comment"><a class="header" href="#remove-post-or-comment">Remove Post or Comment</a></h4>
+<p>Removes a post or comment. The difference to delete is that remove activities have a summary field, which contains the reason for removal, as provided by the mod/admin.</p>
+<pre><code class="language-json">{
+  "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "object": "http://ds9.lemmy.ml/comment/1",
+  "cc": ["http://enterprise.lemmy.ml/c/main"],
+  "audience": "http://enterprise.lemmy.ml/u/main",
+  "type": "Delete",
+  "summary": "bad comment",
+  "id": "http://enterprise.lemmy.ml/activities/delete/42ca1a79-f99e-4518-a2ca-ba2df221eb5e"
+}
+</code></pre>
+<h4 id="block-user"><a class="header" href="#block-user">Block User</a></h4>
+<p>Blocks a user so he can't participate anymore. The scope is determined by the <code>target</code> field: either a community, or a whole instance. The <code>removeData</code> field can optionally be set to indicate that all previous posts of the user should be deleted.</p>
+<pre><code class="language-json">{
+  "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "object": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "cc": ["http://enterprise.lemmy.ml/c/main"],
+  "audience": "http://enterprise.lemmy.ml/u/main",
+  "target": "http://enterprise.lemmy.ml/c/main",
+  "type": "Block",
+  "removeData": true,
+  "summary": "spam post",
+  "expires": "2021-11-01T12:23:50.151874Z",
+  "id": "http://enterprise.lemmy.ml/activities/block/5d42fffb-0903-4625-86d4-0b39bb344fc2"
+}
+</code></pre>
+<h4 id="lock-post"><a class="header" href="#lock-post">Lock post</a></h4>
+<p>Posts can be locked so that no new comments can be created.</p>
+<pre><code class="language-json">{
+  "id": "http://lemmy-alpha:8541/activities/lock/cb48761d-9e8c-42ce-aacb-b4bbe6408db2",
+  "actor": "http://lemmy-alpha:8541/u/lemmy_alpha",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "object": "http://lemmy-alpha:8541/post/2",
+  "cc": ["http://lemmy-alpha:8541/c/main"],
+  "type": "Lock",
+  "audience": "http://lemmy-alpha:8541/c/main"
+}
+</code></pre>
+<h4 id="undo-mod-actions"><a class="header" href="#undo-mod-actions">Undo mod actions</a></h4>
+<p>All previously listed mod actions can be reverted by wrapping the original activity in <code>Undo</code>. Note that Lemmy regenerates the inner activity with a new ID.</p>
+<pre><code class="language-json">{
+  "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "object": {
+    "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+    "to": ["https://www.w3.org/ns/activitystreams#Public"],
+    "object": "http://ds9.lemmy.ml/comment/1",
+    "cc": ["http://enterprise.lemmy.ml/c/main"],
+    "audience": "http://enterprise.lemmy.ml/u/main",
+    "type": "Delete",
+    "summary": "bad comment",
+    "id": "http://enterprise.lemmy.ml/activities/delete/2598435c-87a3-49cd-81f3-a44b03b7af9d"
+  },
+  "cc": ["http://enterprise.lemmy.ml/c/main"],
+  "audience": "http://enterprise.lemmy.ml/u/main",
+  "type": "Undo",
+  "id": "http://enterprise.lemmy.ml/activities/undo/a850cf21-3866-4b3a-b80b-56aa00997fee"
+}
+</code></pre>
+<pre><code class="language-json">{
+  "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "object": {
+    "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+    "to": ["https://www.w3.org/ns/activitystreams#Public"],
+    "object": "http://ds9.lemmy.ml/u/lemmy_alpha",
+    "cc": ["http://enterprise.lemmy.ml/c/main"],
+    "audience": "http://enterprise.lemmy.ml/u/main",
+    "target": "http://enterprise.lemmy.ml/c/main",
+    "type": "Block",
+    "removeData": true,
+    "summary": "spam post",
+    "expires": "2021-11-01T12:23:50.151874Z",
+    "id": "http://enterprise.lemmy.ml/activities/block/726f43ab-bd0e-4ab3-89c8-627e976f553c"
+  },
+  "cc": ["http://enterprise.lemmy.ml/c/main"],
+  "audience": "http://enterprise.lemmy.ml/u/main",
+  "type": "Undo",
+  "id": "http://enterprise.lemmy.ml/activities/undo/06a20ffb-3e32-42fb-8f4c-674b36d7c557"
+}
+</code></pre>
+<h4 id="add-or-remove-featured-post"><a class="header" href="#add-or-remove-featured-post">Add or remove featured post</a></h4>
+<p>Posts can be pinned so that they are always shown on top of the community. This is federated with the <a href="#community-featured-posts">Community featured posts</a> collection.</p>
+<pre><code class="language-json">{
+  "cc": ["https://ds9.lemmy.ml/c/main"],
+  "id": "https://ds9.lemmy.ml/activities/add/47d911f5-52c5-4659-b2fd-0e58c451a427",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "type": "Add",
+  "actor": "https://ds9.lemmy.ml/u/lemmy_alpha",
+  "object": "https://ds9.lemmy.ml/post/2",
+  "target": "https://ds9.lemmy.ml/c/main/featured",
+  "audience": "https://ds9.lemmy.ml/c/main"
+}
+</code></pre>
+<pre><code class="language-json">{
+  "cc": ["https://ds9.lemmy.ml/c/main"],
+  "id": "https://ds9.lemmy.ml/activities/add/47d911f5-52c5-4659-b2fd-0e58c451a427",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "type": "Remove",
+  "actor": "https://ds9.lemmy.ml/u/lemmy_alpha",
+  "object": "https://ds9.lemmy.ml/post/2",
+  "target": "https://ds9.lemmy.ml/c/main/featured",
+  "audience": "https://ds9.lemmy.ml/c/main"
+}
+</code></pre>
+<h4 id="add-or-remove-mod"><a class="header" href="#add-or-remove-mod">Add or remove mod</a></h4>
+<p>Add a new mod to the community. Has to be sent by an existing community mod, or an admin of the community's instance.</p>
+<pre><code class="language-json">{
+  "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "object": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "target": "http://enterprise.lemmy.ml/c/main/moderators",
+  "cc": ["http://enterprise.lemmy.ml/c/main"],
+  "audience": "http://enterprise.lemmy.ml/u/main",
+  "type": "Add",
+  "id": "http://enterprise.lemmy.ml/activities/add/ec069147-77c3-447f-88c8-0ef1df10403f"
+}
+</code></pre>
+<p>An existing mod can be removed in the same way.</p>
+<pre><code class="language-json">{
+  "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+  "to": ["https://www.w3.org/ns/activitystreams#Public"],
+  "object": "http://ds9.lemmy.ml/u/lemmy_alpha",
+  "cc": ["http://enterprise.lemmy.ml/c/main"],
+  "type": "Remove",
+  "target": "http://enterprise.lemmy.ml/c/main/moderators",
+  "audience": "http://enterprise.lemmy.ml/u/main",
+  "id": "http://enterprise.lemmy.ml/activities/remove/aab114f8-cfbd-4935-a5b7-e1a64603650d"
+}
+</code></pre>
+<h3 id="user-to-user"><a class="header" href="#user-to-user">User to User</a></h3>
+<h4 id="follow-a-user"><a class="header" href="#follow-a-user">Follow a user</a></h4>
+<p>Users from other platforms can follow Lemmy users and receive all of their posts to the inbox. Note that users who are registered on Lemmy can only follow groups, not other users.</p>
+<pre><code class="language-json">{
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://mycrowd.ca/schemas/litepub-0.1.jsonld",
+    {
+      "@language": "und"
+    }
+  ],
+  "actor": "https://mycrowd.ca/users/kinetix",
+  "cc": [],
+  "id": "https://mycrowd.ca/activities/dab6a4d3-0db0-41ee-8aab-7bfa4929b4fd",
+  "object": "https://lemmy.ca/u/kinetix",
+  "state": "pending",
+  "to": ["https://lemmy.ca/u/kinetix"],
+  "type": "Follow"
+}
+</code></pre>
+<h4 id="create-or-update-private-message"><a class="header" href="#create-or-update-private-message">Create or Update Private message</a></h4>
+<p>User profiles have a "Send Message" button, which opens a dialog permitting to send a private message to this user. It is sent as a <code>Create/ChatMessage</code> to the user inbox. Private messages can only be directed at a single User. They can also be edited with <code>Update/ChatMessage</code>.</p>
+<pre><code class="language-json">{
+  "id": "http://enterprise.lemmy.ml/activities/create/987d05fa-f637-46d7-85be-13d112bc269f",
+  "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+  "to": ["http://ds9.lemmy.ml/u/lemmy_alpha"],
+  "object": {
+    "type": "ChatMessage",
+    "id": "http://enterprise.lemmy.ml/private_message/1",
+    "attributedTo": "http://enterprise.lemmy.ml/u/lemmy_beta",
+    "to": ["http://ds9.lemmy.ml/u/lemmy_alpha"],
+    "content": "hello",
+    "mediaType": "text/html",
+    "source": {
+      "content": "hello",
+      "mediaType": "text/markdown"
+    },
+    "published": "2021-10-29T15:31:56.058289Z"
+  },
+  "type": "Create"
+}
+</code></pre>
+<h4 id="delete-private-message"><a class="header" href="#delete-private-message">Delete Private Message</a></h4>
+<p>Deletes a previous private message.</p>
+<pre><code class="language-json">{
+  "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+  "to": ["http://enterprise.lemmy.ml/u/lemmy_beta"],
+  "object": "http://enterprise.lemmy.ml/private_message/1",
+  "type": "Delete",
+  "id": "http://enterprise.lemmy.ml/activities/delete/041d9858-5eef-4ad9-84ae-7455b4d87ed9"
+}
+</code></pre>
+<h4 id="undo-delete-private-message"><a class="header" href="#undo-delete-private-message">Undo Delete Private Message</a></h4>
+<p>Restores a previously deleted private message. The <code>object</code> is regenerated from scratch, as such the activity ID and other fields are different.</p>
+<pre><code class="language-json">{
+  "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+  "to": ["http://ds9.lemmy.ml/u/lemmy_alpha"],
+  "object": {
+    "actor": "http://enterprise.lemmy.ml/u/lemmy_beta",
+    "to": ["http://enterprise.lemmy.ml/u/lemmy_beta"],
+    "object": "http://enterprise.lemmy.ml/private_message/1",
+    "type": "Delete",
+    "id": "http://enterprise.lemmy.ml/activities/delete/616c41be-04ed-4bd4-b865-30712186b122"
+  },
+  "type": "Undo",
+  "id": "http://enterprise.lemmy.ml/activities/undo/35e5b337-014c-4bbe-8d63-6fac96f51409"
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../contributors/04-api.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../contributors/06-resources.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../contributors/04-api.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../contributors/06-resources.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
