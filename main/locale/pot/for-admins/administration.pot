@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-07T09:27:16Z\n"
+"POT-Creation-Date: 2026-10-20T13:48:18Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -72,56 +72,60 @@ msgstr ""
 msgid "[Communick](https://communick.com/lemmy)"
 msgstr ""
 
-#: src/administration/administration.md:25
+#: src/administration/administration.md:24
+msgid "[Pethost](https://console.pethost.dev/?template=lemmy)"
+msgstr ""
+
+#: src/administration/administration.md:26
 msgid "Other installation methods"
 msgstr ""
 
-#: src/administration/administration.md:27
+#: src/administration/administration.md:28
 msgid "⚠️ **Under your own risk.**"
 msgstr ""
 
-#: src/administration/administration.md:29
+#: src/administration/administration.md:30
 msgid ""
 "In some cases, it might be necessary to use different installation methods."
 msgstr ""
 
-#: src/administration/administration.md:31
+#: src/administration/administration.md:32
 msgid "[From Scratch](from_scratch.md)"
 msgstr ""
 
-#: src/administration/administration.md:32
+#: src/administration/administration.md:33
 msgid ""
 "[YunoHost](https://install-app.yunohost.org/?app=lemmy) ([source code]"
 "(https://github.com/YunoHost-Apps/lemmy_ynh))"
 msgstr ""
 
-#: src/administration/administration.md:33
+#: src/administration/administration.md:34
 msgid "[On Amazon Web Services (AWS)](on_aws.md)"
 msgstr ""
 
-#: src/administration/administration.md:34
+#: src/administration/administration.md:35
 msgid ""
 "[Nomad](https://www.nomadproject.io/) ([see this external repo for examples]"
 "(https://github.com/Cottand/lemmy-on-nomad-examples))"
 msgstr ""
 
-#: src/administration/administration.md:36
+#: src/administration/administration.md:37
 msgid "You could use any other reverse proxy"
 msgstr ""
 
-#: src/administration/administration.md:38
+#: src/administration/administration.md:39
 msgid "An Example [Caddy configuration](caddy.md)."
 msgstr ""
 
-#: src/administration/administration.md:40
+#: src/administration/administration.md:41
 msgid "Lemmy components"
 msgstr ""
 
-#: src/administration/administration.md:42
+#: src/administration/administration.md:43
 msgid "Lemmy-ui"
 msgstr ""
 
-#: src/administration/administration.md:44
+#: src/administration/administration.md:45
 msgid ""
 "Lemmy-ui is the main frontend for Lemmy. It consists of an expressjs based "
 "server-side process (necessary for SSR) and client code which run in the "
@@ -129,35 +133,35 @@ msgid ""
 "low powered servers."
 msgstr ""
 
-#: src/administration/administration.md:46
+#: src/administration/administration.md:47
 msgid "Lemmy_server"
 msgstr ""
 
-#: src/administration/administration.md:48
+#: src/administration/administration.md:49
 msgid "Lemmy_server is the backend process, which handles:"
 msgstr ""
 
-#: src/administration/administration.md:50
+#: src/administration/administration.md:51
 msgid ""
 "Incoming HTTP requests (both from Lemmy clients and incoming federation from "
 "other servers)"
 msgstr ""
 
-#: src/administration/administration.md:51
+#: src/administration/administration.md:52
 msgid "Outgoing federation"
 msgstr ""
 
-#: src/administration/administration.md:52
+#: src/administration/administration.md:53
 msgid ""
 "Scheduled tasks (most notably, constant hot rank calculations, which keep "
 "the front page fresh)"
 msgstr ""
 
-#: src/administration/administration.md:54
+#: src/administration/administration.md:55
 msgid "Pict-rs"
 msgstr ""
 
-#: src/administration/administration.md:56
+#: src/administration/administration.md:57
 msgid ""
 "Pict-rs is a service which does image processing. It handles user-uploaded "
 "images as well as downloading thumbnails for external images."
