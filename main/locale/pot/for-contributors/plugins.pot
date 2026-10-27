@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-08-11T09:26:27Z\n"
+"POT-Creation-Date: 2026-10-27T14:08:57Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,47 +17,54 @@ msgstr ""
 
 #: src/contributors/08-plugins.md:3
 msgid ""
-"Plugin support will be added in the upcoming 1.0 release. You can already "
-"start developing plugins now."
+"Lemmy 1.0 has experimental support for WASM plugins. Depending on feedback "
+"for the current implementation, there may be breaking changes to the plugin "
+"API after 1.0 is released. See the [plugins label](https://github.com/"
+"LemmyNet/lemmy/issues?q=state%3Aopen%20label%3A%22plugins%22) and report "
+"your own suggestions!"
 msgstr ""
 
 #: src/contributors/08-plugins.md:5
-msgid "Follow these steps:"
-msgstr ""
-
-#: src/contributors/08-plugins.md:7
 msgid ""
-"Follow the normal [setup instructions](/docs/administration/administration."
-"html), using `:nightly` tags to get the latest development version."
+"To get started with plugins, check examples in the [lemmy-plugins](https://"
+"github.com/LemmyNet/lemmy-plugins) repo or read the documentation below. "
+"Follow these steps:"
 msgstr ""
 
 #: src/contributors/08-plugins.md:8
+msgid ""
+"Follow the normal [setup instructions](/docs/administration/"
+"administration.html), using `:nightly` tags to get the latest development "
+"version."
+msgstr ""
+
+#: src/contributors/08-plugins.md:9
 msgid ""
 "Specify plugins in `lemmy.hjson` ([docs](https://github.com/LemmyNet/lemmy/"
 "blob/main/config/defaults.hjson#L130)):"
 msgstr ""
 
-#: src/contributors/08-plugins.md:12
+#: src/contributors/08-plugins.md:13
 msgid ""
 "\"https://github.com/LemmyNet/lemmy-plugins/releases/download/0.1.3/"
 "rust_lingua.wasm\""
 msgstr ""
 
-#: src/contributors/08-plugins.md:13
+#: src/contributors/08-plugins.md:14
 msgid "\"e1f58029f2ecca5127a4584609494120683b691fc63a543979ea071f32cf690f\""
 msgstr ""
 
-#: src/contributors/08-plugins.md:14
+#: src/contributors/08-plugins.md:15
 msgid "\"0.0.0.0\""
 msgstr ""
 
-#: src/contributors/08-plugins.md:18
+#: src/contributors/08-plugins.md:19
 msgid ""
 "You can skip the hash check by setting the env var "
 "`DANGER_PLUGIN_SKIP_HASH_CHECK`."
 msgstr ""
 
-#: src/contributors/08-plugins.md:20
+#: src/contributors/08-plugins.md:21
 msgid ""
 "Plugins are implemented using [Extism](https://extism.org/) and Webassembly. "
 "They can be written in any language that compiles to Wasm. Checkout the "
@@ -65,98 +72,98 @@ msgid ""
 "general development instructions."
 msgstr ""
 
-#: src/contributors/08-plugins.md:22
+#: src/contributors/08-plugins.md:23
 msgid ""
 "The [lemmy-plugins](https://github.com/LemmyNet/lemmy-plugins/) repo "
 "contains various example plugins written in different languages."
 msgstr ""
 
-#: src/contributors/08-plugins.md:24
+#: src/contributors/08-plugins.md:25
 msgid "API `before` hooks"
 msgstr ""
 
-#: src/contributors/08-plugins.md:26
+#: src/contributors/08-plugins.md:27
 msgid ""
 "These are called before a given API endpoint is invoked, with the raw JSON "
 "data submitted by the user, and need to return data in the same format. "
 "Useful for moderation bots which can alter or reject posts."
 msgstr ""
 
-#: src/contributors/08-plugins.md:28 src/contributors/08-plugins.md:39
+#: src/contributors/08-plugins.md:29 src/contributors/08-plugins.md:40
 msgid "Examples:"
 msgstr ""
 
-#: src/contributors/08-plugins.md:30
+#: src/contributors/08-plugins.md:31
 msgid ""
 "`local_post_before_create` with data [CreatePost](https://github.com/"
 "LemmyNet/lemmy/blob/main/crates/db_views/post/src/api.rs#L16)"
 msgstr ""
 
-#: src/contributors/08-plugins.md:31
+#: src/contributors/08-plugins.md:32
 msgid ""
 "`local_comment_before_update` with data [EditComment](https://github.com/"
 "LemmyNet/lemmy/blob/main/crates/db_views/comment/src/api.rs#L145)"
 msgstr ""
 
-#: src/contributors/08-plugins.md:32
+#: src/contributors/08-plugins.md:33
 msgid ""
 "`federated_post_before_receive` with [PostInsertForm](https://github.com/"
 "LemmyNet/lemmy/blob/main/crates/db_schema/src/source/post.rs#L97)"
 msgstr ""
 
-#: src/contributors/08-plugins.md:33
+#: src/contributors/08-plugins.md:34
 msgid "Search the code for `plugin_hook_before` to find all available hooks"
 msgstr ""
 
-#: src/contributors/08-plugins.md:35
+#: src/contributors/08-plugins.md:36
 msgid "API `after` hooks"
 msgstr ""
 
-#: src/contributors/08-plugins.md:37
+#: src/contributors/08-plugins.md:38
 msgid ""
 "Called after an endpoint was successfully invoked and gets passed the API "
 "return data. Useful for notifications."
 msgstr ""
 
-#: src/contributors/08-plugins.md:41
+#: src/contributors/08-plugins.md:42
 msgid ""
 "`local_post_after_create` with data [CreatePost](https://github.com/LemmyNet/"
 "lemmy/blob/main/crates/db_views/post/src/api.rs#L16)"
 msgstr ""
 
-#: src/contributors/08-plugins.md:42
+#: src/contributors/08-plugins.md:43
 msgid ""
 "`local_comment_after_update` with data [EditComment](https://github.com/"
 "LemmyNet/lemmy/blob/main/crates/db_views/comment/src/api.rs#L145)"
 msgstr ""
 
-#: src/contributors/08-plugins.md:43
+#: src/contributors/08-plugins.md:44
 msgid ""
 "`federated_post_after_receive` with [Post](https://github.com/LemmyNet/lemmy/"
 "blob/main/crates/db_schema/src/source/post.rs#L25)"
 msgstr ""
 
-#: src/contributors/08-plugins.md:44
+#: src/contributors/08-plugins.md:45
 msgid ""
 "`notification_after_create` with [NotificationView](https://github.com/"
 "LemmyNet/lemmy/blob/main/crates/db_views/notification/src/lib.rs#L111)"
 msgstr ""
 
-#: src/contributors/08-plugins.md:45
+#: src/contributors/08-plugins.md:46
 msgid "Search the code for `plugin_hook_after` to find all available hooks"
 msgstr ""
 
-#: src/contributors/08-plugins.md:47
+#: src/contributors/08-plugins.md:48
 msgid "Captcha Plugin"
 msgstr ""
 
-#: src/contributors/08-plugins.md:49
+#: src/contributors/08-plugins.md:50
 msgid ""
 "`get_captcha` generates a new captcha, returns [CaptchaResponse](https://"
 "github.com/LemmyNet/lemmy/blob/main/crates/db_views/site/src/api.rs#L353)"
 msgstr ""
 
-#: src/contributors/08-plugins.md:50
+#: src/contributors/08-plugins.md:51
 msgid ""
 "`validate_captcha` takes [CaptchaAnswer](https://github.com/LemmyNet/lemmy/"
 "blob/141d12d9ab249b3e425313a9e4f59b2410f4b319/crates/db_views/"
