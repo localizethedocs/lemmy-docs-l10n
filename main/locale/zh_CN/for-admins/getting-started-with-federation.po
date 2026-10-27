@@ -22,9 +22,9 @@ msgid ""
 "instances](https://join-lemmy.org/instances) for interesting communities, or "
 "browse the community list on [lemmyverse.net](https://lemmyverse.net/"
 "communities). Once you find an interesting community, simply paste the URL "
-"into the search field on your own Lemmy instance, for example `https://lemmy."
-"ml/c/announcements`. To have new content in the community pushed to your "
-"instance, you need to click the \"Follow\" button in the sidebar."
+"into the search field on your own Lemmy instance, for example `https://"
+"lemmy.ml/c/announcements`. To have new content in the community pushed to "
+"your instance, you need to click the \"Follow\" button in the sidebar."
 msgstr ""
 
 #: src/administration/federation_getting_started.md:5
@@ -117,8 +117,8 @@ msgstr ""
 #: src/administration/federation_getting_started.md:30
 msgid ""
 "You can add allowed and blocked instances, by adding a list in your instance "
-"admin panel. IE to only federate with these instances, add: `enterprise."
-"lemmy.ml,lemmy.ml` to the allowed instances section."
+"admin panel. IE to only federate with these instances, add: "
+"`enterprise.lemmy.ml,lemmy.ml` to the allowed instances section."
 msgstr ""
 
 #: src/administration/federation_getting_started.md:32

@@ -23,9 +23,9 @@ msgstr ""
 #: src/administration/administration.md:5
 msgid ""
 "If you have any problems in the installation, you can ask for help in [!"
-"lemmy_support](https://lemmy.ml/c/lemmy_support) or [Matrix](https://matrix."
-"to/#/#lemmy-support-general:discuss.online). Do not open Github issues for "
-"support."
+"lemmy_support](https://lemmy.ml/c/lemmy_support) or [Matrix](https://"
+"matrix.to/#/#lemmy-support-general:discuss.online). Do not open Github "
+"issues for support."
 msgstr ""
 
 #: src/administration/administration.md:7

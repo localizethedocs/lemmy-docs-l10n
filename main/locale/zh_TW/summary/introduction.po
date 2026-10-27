@@ -129,8 +129,8 @@ msgstr ""
 
 #: src/introduction.md:24
 msgid ""
-"<sub>This page is adapted from [Mastodon documentation](https://docs."
-"joinmastodon.org/) under CC BY-SA 4.0.</sub>"
+"<sub>This page is adapted from [Mastodon documentation](https://"
+"docs.joinmastodon.org/) under CC BY-SA 4.0.</sub>"
 msgstr ""
 "<sub>本頁面改編自 [Mastodon 文件](https://docs.joinmastodon.org/)，採用 CC "
 "BY-SA 4.0 授權。</sub>"

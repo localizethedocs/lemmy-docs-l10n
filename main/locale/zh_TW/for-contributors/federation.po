@@ -408,8 +408,8 @@ msgid ""
 "\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzRjKTNtvDCmugplwEh+g\\nx1bhKm6BHUZfXfpscgMMm7tXFswSDzUQirMgfkxa9ubfr1PDFKffA2vQ9x6CyuO/"
 "\\n70xTafdOHyV1tSqzgKz0ZvFZ/VCOo6qy1mYWVkrtBm/fKzM+87MdkKYB/"
 "zI4VyEJ\\nLfLQgjwxBAEYUH3CBG71U0gO0TwbimWNN0vqlfp0QfThNe1WYObF88ZVzMLgFbr7\\nRHBItZjlZ/"
-"d8foPDidlIR3l2dJjy0EsD8F9JM340jtX7LXqFmU4j1AQKNHTDLnUF\\nwYVhzuQGNJ504l5LZkFG54XfIFT7dx2QwuuM9bSnfPv/98RYrq1Si6tCkxEt1cVe\\n4wIDAQAB\\n-----"
-"END PUBLIC KEY-----\\n\""
+"d8foPDidlIR3l2dJjy0EsD8F9JM340jtX7LXqFmU4j1AQKNHTDLnUF\\nwYVhzuQGNJ504l5LZkFG54XfIFT7dx2QwuuM9bSnfPv/"
+"98RYrq1Si6tCkxEt1cVe\\n4wIDAQAB\\n-----END PUBLIC KEY-----\\n\""
 msgstr ""
 
 #: src/contributors/05-federation.md:71 src/contributors/05-federation.md:179
@@ -1815,8 +1815,8 @@ msgstr ""
 
 #: src/contributors/05-federation.md:770
 msgid ""
-"\"http://enterprise.lemmy.ml/activities/"
-"accept/75f080cc-3d45-4654-8186-8f3bb853fa27\""
+"\"http://enterprise.lemmy.ml/activities/accept/"
+"75f080cc-3d45-4654-8186-8f3bb853fa27\""
 msgstr ""
 
 #: src/contributors/05-federation.md:774
@@ -1852,8 +1852,8 @@ msgstr ""
 
 #: src/contributors/05-federation.md:806
 msgid ""
-"\"http://enterprise.lemmy.ml/activities/"
-"announce/8030b171-803a-4108-94b1-342688f375cf\""
+"\"http://enterprise.lemmy.ml/activities/announce/"
+"8030b171-803a-4108-94b1-342688f375cf\""
 msgstr ""
 
 #: src/contributors/05-federation.md:810
@@ -1927,8 +1927,8 @@ msgstr ""
 
 #: src/contributors/05-federation.md:847
 msgid ""
-"\"http://enterprise.lemmy.ml/activities/"
-"block/5d42fffb-0903-4625-86d4-0b39bb344fc2\""
+"\"http://enterprise.lemmy.ml/activities/block/"
+"5d42fffb-0903-4625-86d4-0b39bb344fc2\""
 msgstr ""
 
 #: src/contributors/05-federation.md:851
@@ -1992,8 +1992,8 @@ msgstr ""
 
 #: src/contributors/05-federation.md:912
 msgid ""
-"\"http://enterprise.lemmy.ml/activities/"
-"undo/06a20ffb-3e32-42fb-8f4c-674b36d7c557\""
+"\"http://enterprise.lemmy.ml/activities/undo/"
+"06a20ffb-3e32-42fb-8f4c-674b36d7c557\""
 msgstr ""
 
 #: src/contributors/05-federation.md:916
@@ -2135,8 +2135,8 @@ msgstr ""
 
 #: src/contributors/05-federation.md:1039
 msgid ""
-"\"http://enterprise.lemmy.ml/activities/"
-"delete/041d9858-5eef-4ad9-84ae-7455b4d87ed9\""
+"\"http://enterprise.lemmy.ml/activities/delete/"
+"041d9858-5eef-4ad9-84ae-7455b4d87ed9\""
 msgstr ""
 
 #: src/contributors/05-federation.md:1043
@@ -2157,6 +2157,6 @@ msgstr ""
 
 #: src/contributors/05-federation.md:1059
 msgid ""
-"\"http://enterprise.lemmy.ml/activities/"
-"undo/35e5b337-014c-4bbe-8d63-6fac96f51409\""
+"\"http://enterprise.lemmy.ml/activities/undo/"
+"35e5b337-014c-4bbe-8d63-6fac96f51409\""
 msgstr ""

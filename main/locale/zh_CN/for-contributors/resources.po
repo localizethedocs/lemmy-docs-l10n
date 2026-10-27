@@ -79,8 +79,8 @@ msgstr ""
 
 #: src/contributors/06-resources.md:21
 msgid ""
-"[Hierarchical tree building javascript](https://stackoverflow.com/"
-"a/40732240/1655478)"
+"[Hierarchical tree building javascript](https://stackoverflow.com/a/"
+"40732240/1655478)"
 msgstr ""
 
 #: src/contributors/06-resources.md:22
@@ -134,8 +134,8 @@ msgstr ""
 
 #: src/contributors/06-resources.md:41
 msgid ""
-"[ActivityPub - one protocol to rule them all?](https://schub.io/"
-"blog/2018/02/01/activitypub-one-protocol-to-rule-them-all.html)"
+"[ActivityPub - one protocol to rule them all?](https://schub.io/blog/"
+"2018/02/01/activitypub-one-protocol-to-rule-them-all.html)"
 msgstr ""
 
 #: src/contributors/06-resources.md:42
@@ -152,14 +152,14 @@ msgstr ""
 
 #: src/contributors/06-resources.md:44
 msgid ""
-"[Mastodon Blog: How to implement a basic ActivityPub server](https://blog."
-"joinmastodon.org/2018/06/how-to-implement-a-basic-activitypub-server/)"
+"[Mastodon Blog: How to implement a basic ActivityPub server](https://"
+"blog.joinmastodon.org/2018/06/how-to-implement-a-basic-activitypub-server/)"
 msgstr ""
 
 #: src/contributors/06-resources.md:45
 msgid ""
-"[Mastodon Blog: Implementing an ActivityPub inbox](https://blog.joinmastodon."
-"org/2018/07/how-to-make-friends-and-verify-requests/)"
+"[Mastodon Blog: Implementing an ActivityPub inbox](https://"
+"blog.joinmastodon.org/2018/07/how-to-make-friends-and-verify-requests/)"
 msgstr ""
 
 #: src/contributors/06-resources.md:46

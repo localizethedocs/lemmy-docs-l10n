@@ -97,8 +97,8 @@ msgstr ""
 
 #: src/users/04-moderation.md:21
 msgid ""
-"![moderation_01.png](moderation_01.png) ![moderation_02.png](moderation_02."
-"png)"
+"![moderation_01.png](moderation_01.png) ![moderation_02.png]"
+"(moderation_02.png)"
 msgstr ""
 
 #: src/users/04-moderation.md:24

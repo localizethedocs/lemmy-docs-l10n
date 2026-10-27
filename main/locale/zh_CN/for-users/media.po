@@ -277,9 +277,9 @@ msgstr ""
 
 #: src/users/02-media.md:40
 msgid ""
-"Lemmy supports posting torrent magnet links (links that start with `magnet:"
-"`) in the post _URL_ field, or as Markdown links within comments. You can "
-"get a magnet link by clicking _copy magnet link_ in your torrent app."
+"Lemmy supports posting torrent magnet links (links that start with "
+"`magnet:`) in the post _URL_ field, or as Markdown links within comments. "
+"You can get a magnet link by clicking _copy magnet link_ in your torrent app."
 msgstr ""
 
 #: src/users/02-media.md:42

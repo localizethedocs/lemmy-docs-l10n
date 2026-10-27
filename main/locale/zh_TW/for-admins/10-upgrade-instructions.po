@@ -27,8 +27,8 @@ msgstr ""
 
 #: src/administration/1.0_upgrade.md:6
 msgid ""
-"[Tune your database for the specific hardware](https://pgtune.leopard.in."
-"ua/) to make the migrations run faster"
+"[Tune your database for the specific hardware](https://"
+"pgtune.leopard.in.ua/) to make the migrations run faster"
 msgstr ""
 
 #: src/administration/1.0_upgrade.md:7

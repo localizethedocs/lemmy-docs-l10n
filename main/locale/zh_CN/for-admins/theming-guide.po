@@ -88,12 +88,12 @@ msgstr ""
 
 #: src/administration/theming.md:28
 msgid ""
-"All `_variables.theme.scss` files will inherit variables from `_variables."
-"scss`. All `theme.scss` will import bootstrap variables from `\"../../../../"
-"node_modules/bootstrap/scss/bootstrap\";` and its `_variables.theme.scss` "
-"file. It may import additional variables from another theme if it is built "
-"off it. For example, `litely-compact.scss` imports from `_variables.litely."
-"scss`."
+"All `_variables.theme.scss` files will inherit variables from "
+"`_variables.scss`. All `theme.scss` will import bootstrap variables from "
+"`\"../../../../node_modules/bootstrap/scss/bootstrap\";` and its "
+"`_variables.theme.scss` file. It may import additional variables from "
+"another theme if it is built off it. For example, `litely-compact.scss` "
+"imports from `_variables.litely.scss`."
 msgstr ""
 
 #: src/administration/theming.md:31
@@ -217,10 +217,10 @@ msgstr ""
 
 #: src/administration/theming.md:72
 msgid ""
-"If a custom css theme is found, the handler will call `themes-list-handler."
-"ts` which will load `build-themes-list.ts` from `/lemmy-ui/src/server/utils/"
-"`. The file `build-themes-list.ts` will search the directories for files "
-"ending in `.css` and build a list."
+"If a custom css theme is found, the handler will call `themes-list-"
+"handler.ts` which will load `build-themes-list.ts` from `/lemmy-ui/src/"
+"server/utils/`. The file `build-themes-list.ts` will search the directories "
+"for files ending in `.css` and build a list."
 msgstr ""
 
 #: src/administration/theming.md:74

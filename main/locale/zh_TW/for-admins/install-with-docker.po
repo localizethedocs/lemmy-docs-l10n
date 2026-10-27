@@ -62,8 +62,8 @@ msgstr ""
 
 #: src/administration/install_docker.md:31
 msgid ""
-"You can input your system specs, using this tool: https://pgtune.leopard.in."
-"ua/"
+"You can input your system specs, using this tool: https://"
+"pgtune.leopard.in.ua/"
 msgstr ""
 
 #: src/administration/install_docker.md:33

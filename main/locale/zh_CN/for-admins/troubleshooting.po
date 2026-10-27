@@ -37,8 +37,8 @@ msgstr ""
 
 #: src/administration/troubleshooting.md:11
 msgid ""
-"For frontend issues, check the [browser console](https://webmasters."
-"stackexchange.com/a/77337) for any error messages."
+"For frontend issues, check the [browser console](https://"
+"webmasters.stackexchange.com/a/77337) for any error messages."
 msgstr ""
 
 #: src/administration/troubleshooting.md:13
@@ -128,8 +128,8 @@ msgid ""
 "some-local-user\n"
 "curl -H \"Accept: application/activity+json\" https://your-instance.com/c/"
 "some-local-community\n"
-"curl -H \"Accept: application/activity+json\" https://your-instance.com/"
-"post/123 # the id of a local post\n"
+"curl -H \"Accept: application/activity+json\" https://your-instance.com/post/"
+"123 # the id of a local post\n"
 "curl -H \"Accept: application/activity+json\" https://your-instance.com/"
 "comment/123 # the id of a local comment\n"
 "```"
@@ -162,8 +162,9 @@ msgstr ""
 
 #: src/administration/troubleshooting.md:71
 msgid ""
-"If you use a [separate container for outgoing federation](horizontal_scaling."
-"md), you need to apply the following steps to that container only"
+"If you use a [separate container for outgoing federation]"
+"(horizontal_scaling.md), you need to apply the following steps to that "
+"container only"
 msgstr ""
 
 #: src/administration/troubleshooting.md:72
@@ -348,9 +349,9 @@ msgstr ""
 
 #: src/administration/troubleshooting.md:126
 msgid ""
-"This can be avoided by setting the config value `federation."
-"concurrent_sends_per_instance` to a value greater than 1 on the sending "
-"instance."
+"This can be avoided by setting the config value "
+"`federation.concurrent_sends_per_instance` to a value greater than 1 on the "
+"sending instance."
 msgstr ""
 
 #: src/administration/troubleshooting.md:128
@@ -566,11 +567,12 @@ msgstr ""
 #: src/administration/troubleshooting.md:228
 msgid ""
 "A solution is to cache responses in nginx as seen in lemmy-ansible [here]"
-"(https://github.com/LemmyNet/lemmy-ansible/blob/1.5.3/templates/nginx."
-"conf#L2-L3) and [here](https://github.com/LemmyNet/lemmy-ansible/blob/1.5.3/"
-"templates/nginx.conf#L66-L71). This way lemmy-ui doesn't have to generate "
-"all responses from scratch, which reduces CPU load. However it won't help if "
-"a single crawler goes through thousands of unique urls in a short time."
+"(https://github.com/LemmyNet/lemmy-ansible/blob/1.5.3/templates/"
+"nginx.conf#L2-L3) and [here](https://github.com/LemmyNet/lemmy-ansible/blob/"
+"1.5.3/templates/nginx.conf#L66-L71). This way lemmy-ui doesn't have to "
+"generate all responses from scratch, which reduces CPU load. However it "
+"won't help if a single crawler goes through thousands of unique urls in a "
+"short time."
 msgstr ""
 
 #: src/administration/troubleshooting.md:230

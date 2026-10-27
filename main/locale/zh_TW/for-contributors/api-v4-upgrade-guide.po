@@ -216,21 +216,21 @@ msgstr ""
 
 #: src/contributors/09-api-v4.md:62
 msgid ""
-"[Rename actor_id columns to ap_id](https://github.com/LemmyNet/lemmy/"
-"pull/5393)"
+"[Rename actor_id columns to ap_id](https://github.com/LemmyNet/lemmy/pull/"
+"5393)"
 msgstr ""
 
 #: src/contributors/09-api-v4.md:63
 msgid ""
 "[Removing local_user.show_scores column, since its now on the "
-"local_user_vote_display_mode table.](https://github.com/LemmyNet/lemmy/"
-"pull/4497)"
+"local_user_vote_display_mode table.](https://github.com/LemmyNet/lemmy/pull/"
+"4497)"
 msgstr ""
 
 #: src/contributors/09-api-v4.md:64
 msgid ""
-"[Move custom emojis and tagline views to separate endpoints](https://github."
-"com/LemmyNet/lemmy/pull/4580)"
+"[Move custom emojis and tagline views to separate endpoints](https://"
+"github.com/LemmyNet/lemmy/pull/4580)"
 msgstr ""
 
 #: src/contributors/09-api-v4.md:65
@@ -240,8 +240,8 @@ msgstr ""
 
 #: src/contributors/09-api-v4.md:66
 msgid ""
-"[Changing list_logins to return a ListLoginsResponse object.](https://github."
-"com/LemmyNet/lemmy/pull/4888)"
+"[Changing list_logins to return a ListLoginsResponse object.](https://"
+"github.com/LemmyNet/lemmy/pull/4888)"
 msgstr ""
 
 #: src/contributors/09-api-v4.md:67

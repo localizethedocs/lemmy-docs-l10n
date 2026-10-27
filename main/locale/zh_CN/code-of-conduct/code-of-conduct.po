@@ -132,8 +132,8 @@ msgstr ""
 
 #: src/code_of_conduct.md:24
 msgid ""
-"If the user comes back and continues to make trouble, they will be banned, i."
-"e., indefinitely excluded."
+"If the user comes back and continues to make trouble, they will be banned, "
+"i.e., indefinitely excluded."
 msgstr ""
 
 #: src/code_of_conduct.md:25

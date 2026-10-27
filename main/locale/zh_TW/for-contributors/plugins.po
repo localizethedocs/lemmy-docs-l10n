@@ -27,8 +27,9 @@ msgstr ""
 
 #: src/contributors/08-plugins.md:7
 msgid ""
-"Follow the normal [setup instructions](/docs/administration/administration."
-"html), using `:nightly` tags to get the latest development version."
+"Follow the normal [setup instructions](/docs/administration/"
+"administration.html), using `:nightly` tags to get the latest development "
+"version."
 msgstr ""
 
 #: src/contributors/08-plugins.md:8
