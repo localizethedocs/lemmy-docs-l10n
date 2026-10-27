@@ -1,0 +1,413 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Troubleshooting</title>
+
+
+        <!-- Custom HTML head -->
+        <script type="text/javascript" src="../ltd-provenance.js"></script>
+        <script type="text/javascript" src="../ltd-current.js"></script>
+        <script type="text/javascript" src="../../../ltd-config.js"></script>
+        <script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/LemmyNet/lemmy-docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h1>
+<p>Different problems that can occur on a new instance, and how to solve them.</p>
+<p>Many Lemmy features depend on a correct reverse proxy configuration. Make sure yours is equivalent to our <a href="https://github.com/LemmyNet/lemmy-ansible/blob/main/templates/nginx.conf">nginx config</a>.</p>
+<h2 id="general"><a class="header" href="#general">General</a></h2>
+<h3 id="logs"><a class="header" href="#logs">Logs</a></h3>
+<p>For frontend issues, check the <a href="https://webmasters.stackexchange.com/a/77337">browser console</a> for any error messages.</p>
+<p>For server logs, run <code>docker compose logs -f lemmy</code> in your installation folder. You can also do <code>docker compose logs -f lemmy lemmy-ui pictrs</code> to get logs from different services.</p>
+<p>If that doesn't give enough info, try changing the line <code>RUST_LOG=error</code> in <code>docker-compose.yml</code> to <code>RUST_LOG=info</code> or <code>RUST_LOG=trace</code>, then do <code>docker compose restart lemmy</code>.</p>
+<h3 id="creating-admin-user-doesnt-work"><a class="header" href="#creating-admin-user-doesnt-work">Creating admin user doesn't work</a></h3>
+<p>Make sure that websocket is working correctly, by checking the browser console for errors. In nginx, the following headers are important for this:</p>
+<pre><code>proxy_http_version 1.1;
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection "upgrade";
+</code></pre>
+<h3 id="rate-limit-error-when-many-users-access-the-site"><a class="header" href="#rate-limit-error-when-many-users-access-the-site">Rate limit error when many users access the site</a></h3>
+<p>Check that the headers <code>X-Real-IP</code> and <code>X-Forwarded-For</code> are sent to Lemmy by the reverse proxy. Otherwise, it will count all actions towards the rate limit of the reverse proxy's IP. In nginx it should look like this:</p>
+<pre><code>proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header Host $host;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+</code></pre>
+<h2 id="federation"><a class="header" href="#federation">Federation</a></h2>
+<h3 id="other-instances-cant-fetch-local-objects-community-post-etc"><a class="header" href="#other-instances-cant-fetch-local-objects-community-post-etc">Other instances can't fetch local objects (community, post, etc)</a></h3>
+<p>Your reverse proxy (eg nginx) needs to forward requests with header <code>Accept: application/activity+json</code> to the backend. This is handled by the following lines:</p>
+<pre><code>set $proxpass "http://0.0.0.0:{{ lemmy_ui_port }}";
+if ($http_accept = "application/activity+json") {
+set $proxpass "http://0.0.0.0:{{ lemmy_port }}";
+}
+if ($http_accept = "application/ld+json; profile=\"https://www.w3.org/ns/activitystreams\"") {
+set $proxpass "http://0.0.0.0:{{ lemmy_port }}";
+}
+proxy_pass $proxpass;
+</code></pre>
+<p>You can test that it works correctly by running the following commands, all of them should return valid JSON:</p>
+<pre><code>curl -H "Accept: application/activity+json" https://your-instance.com/u/some-local-user
+curl -H "Accept: application/activity+json" https://your-instance.com/c/some-local-community
+curl -H "Accept: application/activity+json" https://your-instance.com/post/123 # the id of a local post
+curl -H "Accept: application/activity+json" https://your-instance.com/comment/123 # the id of a local comment
+</code></pre>
+<h3 id="fetching-remote-objects-works-but-postingcommenting-in-remote-communities-fails"><a class="header" href="#fetching-remote-objects-works-but-postingcommenting-in-remote-communities-fails">Fetching remote objects works, but posting/commenting in remote communities fails</a></h3>
+<p>Check that <a href="federation_getting_started.html">federation is allowed on both instances</a>.</p>
+<p>Also ensure that the time is correct on your server. Activities are signed with a timestamp, and will be discarded if it is off by more than one hour.</p>
+<p>It is possible that federation requests to <code>/inbox</code> are blocked by tools such as Cloudflare. The sending instance can find HTTP errors with the following steps:</p>
+<ul>
+<li>If you use a <a href="horizontal_scaling.html">separate container for outgoing federation</a>, you need to apply the following steps to that container only</li>
+<li>Set <code>RUST_LOG=lemmy_federate=trace</code> for Lemmy</li>
+<li>Reload the new configuration: <code>docker compose up -d</code></li>
+<li>Search for messages containing the target instance domain: <code>docker compose logs -f --tail=100 lemmy |  grep -F lemm.ee -C 10</code></li>
+<li>You also may have to reset the fail count for the target instance (see below)</li>
+</ul>
+<h3 id="reset-federation-fail-count-for-instance"><a class="header" href="#reset-federation-fail-count-for-instance">Reset federation fail count for instance</a></h3>
+<p>If federation sending to a specific instance has been failing consistently, Lemmy will slow down sending using exponential backoff. For testing it can be useful to reset this and make Lemmy send activities immediately. To do this use the following steps:</p>
+<ul>
+<li>Stop Lemmy, or specifically the container for outgoing federation <code>docker compose stop lemmy</code></li>
+<li>Enter SQL command line: <code>sudo docker compose exec postgres psql -U lemmy</code></li>
+<li>Reset failure count via SQL:</li>
+</ul>
+<pre><code class="language-sql">update federation_queue_state
+set fail_count = 0
+from instance
+where instance.id = federation_queue_state.instance_id
+and instance.domain = 'lemm.ee';
+</code></pre>
+<ul>
+<li>Exit SQL command line with <code>\q</code>, then restart Lemmy: <code>docker compose start lemmy</code></li>
+</ul>
+<h3 id="other-instances-dont-receive-actions-reliably"><a class="header" href="#other-instances-dont-receive-actions-reliably">Other instances don't receive actions reliably</a></h3>
+<p>Lemmy uses one queue per federated instance to send out activities. Search the logs for "Federation state" for summaries. Errors will also be logged.</p>
+<p>For details, execute this SQL query:</p>
+<pre><code class="language-sql">select domain,currval('sent_activity_id_seq') as latest_id, last_successful_id,fail_count,last_retry from federation_queue_state
+join instance on instance_id = instance.id order by last_successful_id asc;
+</code></pre>
+<p>You will see a table like the following:</p>
+<div class="table-wrapper"><table><thead><tr><th>domain</th><th>latest_id</th><th>last_successful_id</th><th>fail_count</th><th>last_retry</th></tr></thead><tbody>
+<tr><td>toad.work</td><td>6837196</td><td>6832351</td><td>14</td><td>2023-07-12 21:42:22.642379+00</td></tr>
+<tr><td>lemmy.deltaa.xyz</td><td>6837196</td><td>6837196</td><td>0</td><td>1970-01-01 00:00:00+00</td></tr>
+<tr><td>battleangels.net</td><td>6837196</td><td>6837196</td><td>0</td><td>1970-01-01 00:00:00+00</td></tr>
+<tr><td>social.fbxl.net</td><td>6837196</td><td>6837196</td><td>0</td><td>1970-01-01 00:00:00+00</td></tr>
+<tr><td>mastodon.coloradocrest.net</td><td>6837196</td><td>6837196</td><td>0</td><td>1970-01-01 00:00:00+00</td></tr>
+</tbody></table>
+</div>
+<p>This will show you exactly which instances are up to date or not.</p>
+<p>You can also use this website which will help you monitor this without admin rights, and also let others see it</p>
+<p>https://phiresky.github.io/lemmy-federation-state/site</p>
+<h3 id="you-dont-receive-actions-reliably"><a class="header" href="#you-dont-receive-actions-reliably">You don't receive actions reliably</a></h3>
+<p>Due to the lemmy queue, remote lemmy instances will be sending apub sync actions serially to you. If your server rate of processing them is slower than the rate the origin server is sending them, when visiting the <a href="https://phiresky.github.io/lemmy-federation-state/site">lemmy-federation-state</a> for the remote server, you'll see your instance in the "lagging behind" section.</p>
+<p>This can be avoided by setting the config value <code>federation.concurrent_sends_per_instance</code> to a value greater than 1 on the sending instance.</p>
+<p>Typically the speed at which you process an incoming action should be less than 100ms. If this is higher, this might signify problems with your database performance or your networking setup.</p>
+<p>Note that even apub action ingestion speed which seems sufficient for most other instances, might become insufficient if the origin server is receiving actions from their userbase faster than you can process them. I.e. if the origin server receives 10 actions per second, but you can only process 8 actions per second, you'll inevitably start falling behind that one server only.</p>
+<p>These steps might help you diagnose this.</p>
+<h4 id="check-processing-time-on-the-loadbalancer"><a class="header" href="#check-processing-time-on-the-loadbalancer">Check processing time on the loadbalancer</a></h4>
+<p>Check how long a request takes to process on the backend. In haproxy for example, the following command will show you the time it takes for apub actions to complete</p>
+<pre><code class="language-bash">tail -f /var/log/haproxy.log | grep  "POST \/inbox"
+</code></pre>
+<p><a href="https://www.nginx.com/blog/using-nginx-logging-for-application-performance-monitoring/">See here for nginx</a></p>
+<p>If these actions take more than 100ms, you might want to investigate deeper.</p>
+<h4 id="check-your-database-performance"><a class="header" href="#check-your-database-performance">Check your Database performance</a></h4>
+<p>Ensure that it's not very high in CPU or RAM utilization.</p>
+<p>Afterwards check for slow queries. If you regularly see common queries with high max and mean exec time, it might signify your database is struggling. The below SQL query will show you all queries (you will need <code>pg_stat_statements</code> <a href="https://www.postgresql.org/docs/current/pgstatstatements.html">enabled</a>)</p>
+<pre><code class="language-sql">\x auto
+SELECT user,query,max_exec_time,mean_exec_time,calls FROM pg_stat_statements WHERE max_exec_time &gt; 10 AND CALLS &gt; 100 ORDER BY max_exec_time DESC;
+</code></pre>
+<p>If you see very high time on inserts, you might want to consider disabling <code>synchronous_commit</code> to see if this helps.</p>
+<h4 id="check-your-backend-performance"><a class="header" href="#check-your-backend-performance">Check your backend performance.</a></h4>
+<p>Like the DB, if the server where your lemmy rust backend is running is overloaded, you might see such an impact</p>
+<h4 id="check-your-network-layout"><a class="header" href="#check-your-network-layout">Check your Network Layout</a></h4>
+<p>If your backend and database appear to be in good condition, it might be that your issue is network based.</p>
+<p>One problem can occur is your backend and your database are not in the same server and are too far from each other in geographic location. Due to the amount of DB queries performed for each apub sync request, even a small amount of latency can quickly add up.</p>
+<p>Check the latency between your rust backend and your DB using ping</p>
+<pre><code class="language-bash">ping your_database_ip
+</code></pre>
+<p>if the <code>time</code> you see if above 1-2ms, this can start causing such delays. In that case, you might want to consider moving your backend closer to your DB geographically, so that your latency is below 2ms</p>
+<p>Note that your external loadbalancer(s) (if any) do not necessarily need to be closer to the DB, as they do not do multiple small DB requests.</p>
+<h2 id="downgrading"><a class="header" href="#downgrading">Downgrading</a></h2>
+<p>If you upgraded your instance to a newer version (by mistake or planned) and need to downgrade it. Often you need to reverse database changes as well.</p>
+<p>First you need to figure out what SQL changes happened between your upgraded version, and the one you're downgrading. Then in that diff, check which files were added in the <code>migrations</code> dir.</p>
+<p>Let's say that for the migration you're doing, the following were added</p>
+<pre><code>2023-10-24-131607_proxy_links
+2023-10-27-142514_post_url_content_type
+2023-12-19-210053_tolerable-batch-insert-speed
+2023-12-22-040137_make-mixed-sorting-directions-work-with-tuple-comparison
+2024-01-05-213000_community_aggregates_add_local_subscribers
+2024-01-15-100133_local-only-community
+2024-01-22-105746_lemmynsfw-changes
+2024-01-25-151400_remove_auto_resolve_report_trigger
+2024-02-15-171358_default_instance_sort_type
+2024-02-27-204628_add_post_alt_text
+2024-02-28-144211_hide_posts
+</code></pre>
+<p>Each of these folders contains a <code>down.sql</code> file. We need to run that against our postgresql DB to rollback those DB changes.</p>
+<ol>
+<li>
+<p>Stop your lemmy backend, and take a backup of your DB.</p>
+</li>
+<li>
+<p>Copy the <code>migrations</code> folder to your DB container or server</p>
+</li>
+<li>
+<p>Acquire a shell in your postgresql container or server and switch to the <code>postgres</code> user</p>
+</li>
+<li>
+<p>Run each relevant script with this command</p>
+<pre><code class="language-bash">downfolder=2024-02-28-144211_hide_posts
+psql -d lemmy -a -f /path/to/migrations/${downfolder}/down.sql
+</code></pre>
+<p>Alternatively, copy the content of the file and paste into a psql session</p>
+</li>
+<li>
+<p>You now need to clean the <code>__diesel_schema_migrations</code> table from the migration records, so that they will be correctly applied the next time you upgrade. You can use this command to sort them</p>
+<pre><code class="language-sql">select * from __diesel_schema_migrations ORDER BY run_on ASC;
+</code></pre>
+<p>You have to delete the entries in that table which match the current timestamp you applied them (This should typically be any time in the past few minutes)</p>
+<pre><code class="language-sql">delete from __diesel_schema_migrations where version='20240228144211';
+</code></pre>
+</li>
+<li>
+<p>You should now be able to start your lemmy in the previous version</p>
+</li>
+</ol>
+<h2 id="ui-randomly-slow-or-offline"><a class="header" href="#ui-randomly-slow-or-offline">UI randomly slow or offline</a></h2>
+<p>If you notice that your lemmy-ui sometimes becomes sluggish or unresponsive over a period of minutes/hours and then it passes, you might be getting targeted by scraping bots.</p>
+<p>There's a lot of scraping bots online and they can easily overwhelm your site when they're behaving too "greedily". Unfortunately the existing lemmy-ui has a habit of falling over when polled too eagerly, while the backend still continues to work.</p>
+<p>A solution is to cache responses in nginx as seen in lemmy-ansible <a href="https://github.com/LemmyNet/lemmy-ansible/blob/1.5.3/templates/nginx.conf#L2-L3">here</a> and <a href="https://github.com/LemmyNet/lemmy-ansible/blob/1.5.3/templates/nginx.conf#L66-L71">here</a>. This way lemmy-ui doesn't have to generate all responses from scratch, which reduces CPU load. However it won't help if a single crawler goes through thousands of unique urls in a short time.</p>
+<p>Another option is to block the scraper's user agents. To do so, you can modify your <code>nginx_internal.conf</code> to block some of the usual suspects, with this line under <code>server</code></p>
+<pre><code class="language-bash">if ($http_user_agent ~* " Bytedance|Bytespider|Amazonbot|ClaudeBot") { return 444; }
+</code></pre>
+<p>This is an example blocking some the well-known misbehaving bots, but there are many more more. To discover the ones affecting you, you can use the following bash script at your lemmy backend (where your docker compose is) to enumerate any agents which are hitting you too much.</p>
+<pre><code class="language-bash">docker-compose logs --tail=10000 proxy |
+    grep -o '"[^"]*"$' |     # Extract the last quoted string (user agent)
+    grep -v '^"$' |          # Remove empty quotes
+    tr -d '"' |              # Remove the quotes
+    sort |                   # Sort the user agents
+    uniq -c |               # Count unique occurrences
+    sort -rn |              # Sort numerically in reverse order
+    head -n 10              # Show top 10 results
+</code></pre>
+<p>This will parse the last 10K log entries in your nginx internal proxy and show the agents which cause the most hits. This should give a good indicator of which agents are potentially misbehaving and you can proceed to block those as well by adding their names to the list above.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../administration/federation_getting_started.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../administration/backup_and_restore.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../administration/federation_getting_started.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../administration/backup_and_restore.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
