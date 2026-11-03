@@ -1,0 +1,336 @@
+<!DOCTYPE HTML>
+<html lang="en_US" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Local Development</title>
+
+
+        <!-- Custom HTML head -->
+        <script type="text/javascript" src="../ltd-provenance.js"></script>
+        <script type="text/javascript" src="../ltd-current.js"></script>
+        <script type="text/javascript" src="../../../ltd-config.js"></script>
+        <script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/LemmyNet/lemmy-docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="local-development"><a class="header" href="#local-development">Local Development</a></h1>
+<h3 id="install-build-requirements"><a class="header" href="#install-build-requirements">Install build requirements</a></h3>
+<p>Install the latest Rust version using <a href="https://www.rust-lang.org/tools/install">rustup</a>.</p>
+<p>Debian-based distro:</p>
+<pre><code class="language-bash">sudo apt install git cargo pkg-config libpq-dev curl jq
+</code></pre>
+<p>Arch-based distro:</p>
+<pre><code class="language-bash">sudo pacman -S git cargo pkg-config postgresql-libs curl jq
+</code></pre>
+<p>Fedora-based distro:</p>
+<pre><code class="language-bash">sudo dnf install git cargo pkg-config libpq-devel curl postgresql-server postgresql-contrib jq
+</code></pre>
+<p>macOS:</p>
+<p>Install <a href="https://brew.sh/">Homebrew</a> if you don't already have it installed. Then install Node and pnpm.</p>
+<pre><code class="language-bash">brew install node
+</code></pre>
+<h3 id="install-pnpm"><a class="header" href="#install-pnpm">Install pnpm</a></h3>
+<p>The install instructions are <a href="https://pnpm.io/installation">here</a>, or you can run</p>
+<pre><code class="language-bash">npm install -g pnpm
+</code></pre>
+<h3 id="setup-postgresql-database"><a class="header" href="#setup-postgresql-database">Setup PostgreSQL database</a></h3>
+<p>Debian-based distro:</p>
+<pre><code class="language-bash">sudo apt install postgresql
+sudo systemctl start postgresql
+</code></pre>
+<p>Arch-based distro:</p>
+<pre><code class="language-bash">sudo pacman -S postgresql
+sudo systemctl start postgresql
+# If the systemctl command errors, then run the following
+sudo mkdir /var/lib/postgres/data
+sudo chown postgres:postgres /var/lib/postgres/data
+sudo -u postgres initdb -D /var/lib/postgres/data
+sudo systemctl start postgresql
+</code></pre>
+<p>macOS:</p>
+<pre><code class="language-bash">brew install postgresql
+brew services start postgresql
+$(brew --prefix postgresql)/bin/createuser -s postgres
+</code></pre>
+<p>Either execute <code>scripts/db-init.sh</code>, or manually initialize the postgres database:</p>
+<pre><code class="language-bash">psql -c "create user lemmy with password 'password' superuser;" -U postgres
+psql -c 'create database lemmy with owner lemmy;' -U postgres
+export LEMMY_DATABASE_URL=postgres://lemmy:password@localhost:5432/lemmy
+</code></pre>
+<h3 id="code-formatting-tools"><a class="header" href="#code-formatting-tools">Code formatting tools</a></h3>
+<h4 id="taplo"><a class="header" href="#taplo">Taplo</a></h4>
+<p>See installation instructions <a href="https://taplo.tamasfe.dev/">here</a>, or run</p>
+<pre><code class="language-bash">cargo install taplo-cli --locked
+</code></pre>
+<h4 id="pg_format"><a class="header" href="#pg_format">pg_format</a></h4>
+<p>Debian-based distro:</p>
+<pre><code class="language-bash">sudo apt install pgformatter
+</code></pre>
+<p>Arch-based distro:</p>
+<pre><code class="language-bash">sudo pacman -S pgformatter
+</code></pre>
+<p>macOS:</p>
+<pre><code class="language-bash">brew install pgformatter
+</code></pre>
+<h3 id="get-the-code"><a class="header" href="#get-the-code">Get the code</a></h3>
+<p>Clone frontend and backend code to local folders. Be sure to include <code>--recursive</code> to initialize git submodules.</p>
+<pre><code class="language-bash">git clone https://github.com/LemmyNet/lemmy.git --recursive
+git clone https://github.com/LemmyNet/lemmy-ui.git --recursive
+</code></pre>
+<h3 id="backend-development"><a class="header" href="#backend-development">Backend development</a></h3>
+<p>Use <code>cargo check</code> to find compilation errors. To start the Lemmy backend, run <code>cargo run</code>. It will bind to <code>0.0.0.0:8536</code>.</p>
+<p>After making changes, you need to format the code with <code>cargo +nightly fmt --all</code> and run the linter with <code>./scripts/lint.sh</code>.</p>
+<p>If you'd like to speed up compilation times, you can install <a href="https://github.com/rui314/mold">mold</a>, and <a href="https://github.com/mozilla/sccache">sccache</a>, then add the following to <code>~/.cargo/config.toml</code>. Note that the parameter <code>-Zthreads=x</code> only works on nightly Rust.</p>
+<pre><code class="language-toml">[build]
+rustc-wrapper = "/usr/bin/sccache"
+
+[target.x86_64-unknown-linux-gnu]
+linker = "clang"
+rustflags = ["-C", "link-arg=-fuse-ld=/usr/bin/mold", "-Z", "threads=16"]
+</code></pre>
+<p>To make changes to the database schema:</p>
+<ol>
+<li>Add a new migration in the migrations folder. This is most easily done by running <code>diesel migration generate</code> then editing the added files.</li>
+<li>Run <code>./scripts/update_schema_file.sh</code>.</li>
+</ol>
+<h3 id="frontend-development"><a class="header" href="#frontend-development">Frontend development</a></h3>
+<p>Install dependencies by running <code>pnpm i</code>. Then run <code>pnpm dev</code> to launch lemmy-ui locally. It automatically connects to the Lemmy backend on <code>localhost:8536</code>. Open <a href="http://localhost:1234">localhost:1234</a> in your browser. The project is rebuilt automatically when you change any files.</p>
+<p>Note that this setup doesn't support image uploads. If you want to test those, you need to use the
+<a href="03-docker-development.html">Docker development</a>.</p>
+<h3 id="tests"><a class="header" href="#tests">Tests</a></h3>
+<p>Run Rust unit tests:</p>
+<pre><code class="language-bash">./scripts/test.sh
+</code></pre>
+<p>To run federation/API tests, first add the following lines to <code>/etc/hosts</code>:</p>
+<pre><code>127.0.0.1       lemmy-alpha
+127.0.0.1       lemmy-beta
+127.0.0.1       lemmy-gamma
+127.0.0.1       lemmy-delta
+127.0.0.1       lemmy-epsilon
+</code></pre>
+<p>Then run the following script:</p>
+<pre><code class="language-bash">cd api_tests
+./run-federation-test.sh
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../contributors/01-overview.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../contributors/03-docker-development.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../contributors/01-overview.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../contributors/03-docker-development.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
