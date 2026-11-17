@@ -17,7 +17,7 @@ msgstr ""
 
 #: src/administration/theming.md:3
 msgid "Bootstrap"
-msgstr ""
+msgstr "Bootstrap"
 
 #: src/administration/theming.md:5
 msgid ""
@@ -27,6 +27,10 @@ msgid ""
 "v5 theme. Export the `bootstrap.min.css` once you're done, and save the "
 "`_variables.scss` too."
 msgstr ""
+"Lemmy 使用 [Bootstrap v5](https://getbootstrap.com/)，且自訂 css 類別非常少，"
+"因此任何相容於 Bootstrap v5 的主題應該都能正常運作。你可以使用 "
+"[bootstrap.build](https://bootstrap.build/) 等工具創建 Bootstrap v5 主題。完"
+"成後，請匯出 `bootstrap.min.css`，並一併儲存 `_variables.scss`。"
 
 #: src/administration/theming.md:7
 msgid "Custom Theme Directory"
@@ -156,7 +160,7 @@ msgstr ""
 
 #: src/administration/theming.md:52
 msgid "Overwriting Variables"
-msgstr ""
+msgstr "覆寫變數"
 
 #: src/administration/theming.md:54
 msgid ""
@@ -240,7 +244,7 @@ msgstr ""
 
 #: src/administration/theming.md:80
 msgid "Build and Format Theme Files Quickly"
-msgstr ""
+msgstr "快速建置並格式化主題檔案"
 
 #: src/administration/theming.md:82
 msgid ""
@@ -251,7 +255,7 @@ msgstr ""
 
 #: src/administration/theming.md:84
 msgid "After changing variables or Sass files:"
-msgstr ""
+msgstr "變更變數或 Sass 檔案後："
 
 #: src/administration/theming.md:86
 msgid ""

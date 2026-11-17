@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/contributors/04-api.md:1
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: src/contributors/04-api.md:3
 msgid ""
@@ -168,7 +168,7 @@ msgstr ""
 
 #: src/contributors/04-api.md:53
 msgid "Community"
-msgstr ""
+msgstr "社群"
 
 #: src/contributors/04-api.md:53
 msgid "`/feeds/c/community-name.xml?sort=Hot`"

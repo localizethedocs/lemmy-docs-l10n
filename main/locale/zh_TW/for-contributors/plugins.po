@@ -87,7 +87,7 @@ msgstr ""
 
 #: src/contributors/08-plugins.md:28 src/contributors/08-plugins.md:39
 msgid "Examples:"
-msgstr ""
+msgstr "範例："
 
 #: src/contributors/08-plugins.md:30
 msgid ""

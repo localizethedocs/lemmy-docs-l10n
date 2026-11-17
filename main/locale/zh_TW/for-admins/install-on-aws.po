@@ -44,11 +44,11 @@ msgstr ""
 
 #: src/administration/on_aws.md:13
 msgid "Lemmy-UI"
-msgstr ""
+msgstr "Lemmy-UI"
 
 #: src/administration/on_aws.md:14
 msgid "Lemmy"
-msgstr ""
+msgstr "Lemmy"
 
 #: src/administration/on_aws.md:15
 msgid "Pictrs"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: src/administration/on_aws.md:16
 msgid "CloudFront CDN"
-msgstr ""
+msgstr "CloudFront CDN"
 
 #: src/administration/on_aws.md:17
 msgid "EFS storage for image uploads"

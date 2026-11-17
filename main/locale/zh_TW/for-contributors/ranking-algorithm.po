@@ -68,7 +68,7 @@ msgstr ""
 
 #: src/contributors/07-ranking-algo.md:19
 msgid "Lemmy"
-msgstr ""
+msgstr "Lemmy"
 
 #: src/contributors/07-ranking-algo.md:21
 msgid ""

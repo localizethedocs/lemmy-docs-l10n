@@ -41,7 +41,7 @@ msgstr ""
 
 #: src/administration/from_scratch.md:11
 msgid "Database"
-msgstr ""
+msgstr "資料庫"
 
 #: src/administration/from_scratch.md:13
 msgid ""
@@ -67,10 +67,19 @@ msgid ""
 "sudo apt install libssl-dev libpq-dev postgresql\n"
 "```"
 msgstr ""
+"```\n"
+"sudo apt install -y wget ca-certificates pkg-config\n"
+"wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo "
+"apt-key add -\n"
+"sudo sh -c 'echo \"deb http://apt.postgresql.org/pub/repos/apt/ $"
+"(lsb_release -cs)-pgdg main\" >> /etc/apt/sources.list.d/pgdg.list'\n"
+"sudo apt update\n"
+"sudo apt install libssl-dev libpq-dev postgresql\n"
+"```"
 
 #: src/administration/from_scratch.md:26
 msgid "Setup Lemmy database"
-msgstr ""
+msgstr "設定 Lemmy 資料庫"
 
 #: src/administration/from_scratch.md:28
 msgid ""
@@ -603,7 +612,7 @@ msgstr ""
 
 #: src/administration/from_scratch.md:434
 msgid "Lemmy UI"
-msgstr ""
+msgstr "Lemmy UI"
 
 #: src/administration/from_scratch.md:449
 msgid "Pict-rs"

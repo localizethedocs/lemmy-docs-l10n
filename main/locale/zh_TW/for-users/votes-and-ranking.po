@@ -30,7 +30,7 @@ msgstr ""
 
 #: src/users/03-votes-and-ranking.md:7
 msgid "Sorting Posts"
-msgstr ""
+msgstr "排序貼文"
 
 #: src/users/03-votes-and-ranking.md:9
 msgid ""

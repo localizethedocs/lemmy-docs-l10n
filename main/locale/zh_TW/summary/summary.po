@@ -137,7 +137,7 @@ msgstr "概覽"
 
 #: src/SUMMARY.md:39
 msgid "Local Development"
-msgstr ""
+msgstr "本機開發"
 
 #: src/SUMMARY.md:40
 msgid "Docker Development"
@@ -145,7 +145,7 @@ msgstr "Docker 開發"
 
 #: src/SUMMARY.md:41
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: src/SUMMARY.md:42
 msgid "Federation"
@@ -165,7 +165,7 @@ msgstr ""
 
 #: src/SUMMARY.md:46
 msgid "API v4 Upgrade Guide"
-msgstr ""
+msgstr "API v4 升級指南"
 
 #: src/SUMMARY.md:48 src/SUMMARY.md:50
 msgid "Code of Conduct"

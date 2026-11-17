@@ -101,7 +101,7 @@ msgstr ""
 
 #: src/contributors/05-federation.md:33
 msgid "Community"
-msgstr ""
+msgstr "社群"
 
 #: src/contributors/05-federation.md:35
 msgid ""
@@ -334,7 +334,7 @@ msgstr "\"followers\""
 
 #: src/contributors/05-federation.md:58
 msgid "\"https://enterprise.lemmy.ml/c/tenforward/followers\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/c/tenforward/followers\""
 
 #: src/contributors/05-federation.md:59 src/contributors/05-federation.md:216
 #: src/contributors/05-federation.md:270 src/contributors/05-federation.md:318
@@ -343,50 +343,50 @@ msgstr ""
 #: src/contributors/05-federation.md:551 src/contributors/05-federation.md:598
 #: src/contributors/05-federation.md:788 src/contributors/05-federation.md:1015
 msgid "\"attributedTo\""
-msgstr ""
+msgstr "\"attributedTo\""
 
 #: src/contributors/05-federation.md:59 src/contributors/05-federation.md:430
 msgid "\"https://enterprise.lemmy.ml/c/tenforward/moderators\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/c/tenforward/moderators\""
 
 #: src/contributors/05-federation.md:60
 msgid "\"featured\""
-msgstr ""
+msgstr "\"featured\""
 
 #: src/contributors/05-federation.md:60
 msgid "\"https://enterprise.lemmy.ml/c/tenforward//featured\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/c/tenforward//featured\""
 
 #: src/contributors/05-federation.md:61
 msgid "\"postingRestrictedToMods\""
-msgstr ""
+msgstr "\"postingRestrictedToMods\""
 
 #: src/contributors/05-federation.md:62 src/contributors/05-federation.md:129
 msgid "\"endpoints\""
-msgstr ""
+msgstr "\"endpoints\""
 
 #: src/contributors/05-federation.md:63 src/contributors/05-federation.md:130
 msgid "\"sharedInbox\""
-msgstr ""
+msgstr "\"sharedInbox\""
 
 #: src/contributors/05-federation.md:63 src/contributors/05-federation.md:130
 #: src/contributors/05-federation.md:172
 msgid "\"https://enterprise.lemmy.ml/inbox\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/inbox\""
 
 #: src/contributors/05-federation.md:65 src/contributors/05-federation.md:128
 #: src/contributors/05-federation.md:173
 msgid "\"outbox\""
-msgstr ""
+msgstr "\"outbox\""
 
 #: src/contributors/05-federation.md:65
 msgid "\"https://enterprise.lemmy.ml/c/tenforward/outbox\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/c/tenforward/outbox\""
 
 #: src/contributors/05-federation.md:66 src/contributors/05-federation.md:134
 #: src/contributors/05-federation.md:174
 msgid "\"publicKey\""
-msgstr ""
+msgstr "\"publicKey\""
 
 #: src/contributors/05-federation.md:67
 msgid "\"https://enterprise.lemmy.ml/c/tenforward#main-key\""
@@ -468,13 +468,13 @@ msgstr ""
 
 #: src/contributors/05-federation.md:82
 msgid "\"2021-03-10T17:18:10.498868Z\""
-msgstr ""
+msgstr "\"2021-03-10T17:18:10.498868Z\""
 
 #: src/contributors/05-federation.md:86 src/contributors/05-federation.md:142
 #: src/contributors/05-federation.md:193 src/contributors/05-federation.md:248
 #: src/contributors/05-federation.md:301 src/contributors/05-federation.md:330
 msgid "Field Name"
-msgstr ""
+msgstr "欄位名稱"
 
 #: src/contributors/05-federation.md:86 src/contributors/05-federation.md:142
 #: src/contributors/05-federation.md:193 src/contributors/05-federation.md:248
@@ -1197,7 +1197,7 @@ msgstr ""
 
 #: src/contributors/05-federation.md:340
 msgid "Community Outbox"
-msgstr ""
+msgstr "社群收件箱"
 
 #: src/contributors/05-federation.md:344 src/contributors/05-federation.md:429
 #: src/contributors/05-federation.md:441 src/contributors/05-federation.md:495
@@ -1552,11 +1552,11 @@ msgstr ""
 #: src/contributors/05-federation.md:652 src/contributors/05-federation.md:689
 #: src/contributors/05-federation.md:708
 msgid "\"http://ds9.lemmy.ml/post/1\""
-msgstr ""
+msgstr "\"http://ds9.lemmy.ml/post/1\""
 
 #: src/contributors/05-federation.md:556 src/contributors/05-federation.md:578
 msgid "\"https://enterprise.lemmy.ml/c/main\""
-msgstr ""
+msgstr "\"https://enterprise.lemmy.ml/c/main\""
 
 #: src/contributors/05-federation.md:557
 msgid "\"test post\""
@@ -1588,7 +1588,7 @@ msgstr ""
 
 #: src/contributors/05-federation.md:584
 msgid "Create or Update Comment"
-msgstr ""
+msgstr "創建或更新留言"
 
 #: src/contributors/05-federation.md:586
 msgid ""
@@ -1751,11 +1751,14 @@ msgid ""
 "\"http://ds9.lemmy.ml/activities/delete/"
 "b13cca96-7737-41e1-9769-8fbf972b3509\""
 msgstr ""
+"\"http://ds9.lemmy.ml/activities/delete/"
+"b13cca96-7737-41e1-9769-8fbf972b3509\""
 
 #: src/contributors/05-federation.md:717
 msgid ""
 "\"http://ds9.lemmy.ml/activities/undo/5e939cfb-b8a1-4de8-950f-9d684e9162b9\""
 msgstr ""
+"\"http://ds9.lemmy.ml/activities/undo/5e939cfb-b8a1-4de8-950f-9d684e9162b9\""
 
 #: src/contributors/05-federation.md:721
 msgid "Report Post, comment or private message"
@@ -1784,7 +1787,7 @@ msgstr ""
 
 #: src/contributors/05-federation.md:737
 msgid "Delete User"
-msgstr ""
+msgstr "刪除使用者"
 
 #: src/contributors/05-federation.md:739
 msgid "Sent when a user deletes his own account."
@@ -1849,12 +1852,16 @@ msgid ""
 "\"http://enterprise.lemmy.ml/activities/create/2807c9ec-3ad8-4859-"
 "a9e0-28b59b6e499f\""
 msgstr ""
+"\"http://enterprise.lemmy.ml/activities/create/2807c9ec-3ad8-4859-"
+"a9e0-28b59b6e499f\""
 
 #: src/contributors/05-federation.md:806
 msgid ""
 "\"http://enterprise.lemmy.ml/activities/announce/"
 "8030b171-803a-4108-94b1-342688f375cf\""
 msgstr ""
+"\"http://enterprise.lemmy.ml/activities/announce/"
+"8030b171-803a-4108-94b1-342688f375cf\""
 
 #: src/contributors/05-federation.md:810
 msgid "Moderation"
@@ -1933,7 +1940,7 @@ msgstr ""
 
 #: src/contributors/05-federation.md:851
 msgid "Lock post"
-msgstr ""
+msgstr "鎖定貼文"
 
 #: src/contributors/05-federation.md:853
 msgid "Posts can be locked so that no new comments can be created."
@@ -1944,18 +1951,20 @@ msgid ""
 "\"http://lemmy-alpha:8541/activities/lock/cb48761d-9e8c-42ce-aacb-"
 "b4bbe6408db2\""
 msgstr ""
+"\"http://lemmy-alpha:8541/activities/lock/cb48761d-9e8c-42ce-aacb-"
+"b4bbe6408db2\""
 
 #: src/contributors/05-federation.md:858
 msgid "\"http://lemmy-alpha:8541/u/lemmy_alpha\""
-msgstr ""
+msgstr "\"http://lemmy-alpha:8541/u/lemmy_alpha\""
 
 #: src/contributors/05-federation.md:860
 msgid "\"http://lemmy-alpha:8541/post/2\""
-msgstr ""
+msgstr "\"http://lemmy-alpha:8541/post/2\""
 
 #: src/contributors/05-federation.md:861 src/contributors/05-federation.md:863
 msgid "\"http://lemmy-alpha:8541/c/main\""
-msgstr ""
+msgstr "\"http://lemmy-alpha:8541/c/main\""
 
 #: src/contributors/05-federation.md:862
 msgid "\"Lock\""
@@ -1977,24 +1986,32 @@ msgid ""
 "\"http://enterprise.lemmy.ml/activities/delete/2598435c-87a3-49cd-81f3-"
 "a44b03b7af9d\""
 msgstr ""
+"\"http://enterprise.lemmy.ml/activities/delete/2598435c-87a3-49cd-81f3-"
+"a44b03b7af9d\""
 
 #: src/contributors/05-federation.md:888
 msgid ""
 "\"http://enterprise.lemmy.ml/activities/undo/a850cf21-3866-4b3a-"
 "b80b-56aa00997fee\""
 msgstr ""
+"\"http://enterprise.lemmy.ml/activities/undo/a850cf21-3866-4b3a-"
+"b80b-56aa00997fee\""
 
 #: src/contributors/05-federation.md:907
 msgid ""
 "\"http://enterprise.lemmy.ml/activities/block/726f43ab-"
 "bd0e-4ab3-89c8-627e976f553c\""
 msgstr ""
+"\"http://enterprise.lemmy.ml/activities/block/726f43ab-"
+"bd0e-4ab3-89c8-627e976f553c\""
 
 #: src/contributors/05-federation.md:912
 msgid ""
 "\"http://enterprise.lemmy.ml/activities/undo/"
 "06a20ffb-3e32-42fb-8f4c-674b36d7c557\""
 msgstr ""
+"\"http://enterprise.lemmy.ml/activities/undo/"
+"06a20ffb-3e32-42fb-8f4c-674b36d7c557\""
 
 #: src/contributors/05-federation.md:916
 msgid "Add or remove featured post"
@@ -2127,7 +2144,7 @@ msgstr ""
 
 #: src/contributors/05-federation.md:1029
 msgid "Delete Private Message"
-msgstr ""
+msgstr "刪除私人訊息"
 
 #: src/contributors/05-federation.md:1031
 msgid "Deletes a previous private message."

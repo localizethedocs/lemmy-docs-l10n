@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/contributors/02-local-development.md:1
 msgid "Local Development"
-msgstr ""
+msgstr "本機開發"
 
 #: src/contributors/02-local-development.md:3
 msgid "Install build requirements"
@@ -201,7 +201,7 @@ msgstr "測試"
 
 #: src/contributors/02-local-development.md:148
 msgid "Run Rust unit tests:"
-msgstr ""
+msgstr "執行 Rust 單元測試："
 
 #: src/contributors/02-local-development.md:154
 msgid ""
